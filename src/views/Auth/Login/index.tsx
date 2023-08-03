@@ -21,7 +21,6 @@ import {
     const { handleOnSubmit } = useLogic(onLogin)
   
     return (
-      <>
         <Container>
           <Formik
             initialValues={InitialValues}
@@ -64,7 +63,6 @@ import {
             )}
           </Formik>
         </Container>
-      </>
     )
   }
   
