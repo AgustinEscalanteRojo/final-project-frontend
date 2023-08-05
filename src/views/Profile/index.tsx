@@ -16,7 +16,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
         
       </Content>
       <Footer />
-      <VideoBackground videoSrc="/back.mp4" />
+      <VideoBackground videoSrc="/cocina.mp4" />
     </PerfilContainer>
   )
 }

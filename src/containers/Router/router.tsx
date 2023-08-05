@@ -9,11 +9,11 @@ import {
 import Signup from '../../views/Auth/Signup'
 import Login from '../../views/Auth/Login'
 import Dashboard from '../../views/Dashboard'
+import Profile from '../../views/Profile'
 import { getToken } from '../../services/storage/token'
 
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
-
 
   const recreateLogin = useCallback(() => {
     setIsLoading(true)
@@ -34,7 +34,7 @@ const Router: FC = () => {
   }
 
   const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {
-    // TODO: En desarollo, descomentar la ProtectedRoutes para volver a proteger las rutas, 
+    // TODO: En desarollo, descomentar la ProtectedRoutes para volver a proteger las rutas,
     // const token = getToken()
     // const location = useLocation()
     // if (!token) {
@@ -70,6 +70,7 @@ const Router: FC = () => {
             </HandleSession>
           }
         />
+
         <Route
           path="/signup"
           element={
@@ -78,6 +79,7 @@ const Router: FC = () => {
             </HandleSession>
           }
         />
+
         <Route
           path="/login"
           element={
@@ -86,11 +88,21 @@ const Router: FC = () => {
             </HandleSession>
           }
         />
+
         <Route
           path="/dashboard"
           element={
             <ProtectedRoutes>
               <Dashboard onLogout={recreateLogOut} />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoutes>
+              <Profile onLogout={recreateLogOut} />
             </ProtectedRoutes>
           }
         />

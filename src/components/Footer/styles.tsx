@@ -22,6 +22,6 @@ export const Content = styled.div`
 
 export const Text = styled.p`
   position: relative;
-  color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 14px;
 `
