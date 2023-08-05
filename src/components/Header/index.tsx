@@ -1,9 +1,9 @@
 import { FC, memo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { Props } from './types'
-// import { logout } from '../../services/api/auth'
+import { logout } from '../../services/api/auth'
 import { ButtonController, Container, Title } from './styles'
-// import Button from '../Button'
+import Button from '../Button'
 
 const Header: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -12,18 +12,18 @@ const Header: FC<Props> = ({ onLogout }) => {
     navigate('/profile')
   }, [navigate])
 
-  // const handleLogout = useCallback(async () => {
-  //   await logout()
-  //   onLogout()
-  //   navigate('/login')
-  // }, [navigate, onLogout])
+  const handleLogout = useCallback(async () => {
+    await logout()
+    onLogout()
+    navigate('/login')
+  }, [navigate, onLogout])
 
   return (
     <Container>
       <Title>RentCar</Title>
       <ButtonController>
-        {/* <Button onClick={handleGoToProfile}>Profile</Button>
-        <Button onClick={handleLogout}>Logout</Button> */}
+        <Button onClick={handleGoToProfile}>Profile</Button>
+        <Button onClick={handleLogout}>Logout</Button>
       </ButtonController>
     </Container>
   )

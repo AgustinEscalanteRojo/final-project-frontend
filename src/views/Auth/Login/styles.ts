@@ -28,6 +28,9 @@ export const Label = styled.label`
   margin-bottom: 14px;
 `
 
+
+export const Button = styled.input``
+
 export const Input = styled.input``
 
 export const InputError = styled.span`
@@ -48,4 +51,16 @@ export const Link = styled(DefaultLink)`
   &:hover {
     color: ${({ theme }) => theme.colors.blue900};
   }
+`
+
+export const Title = styled.h1`
+  font-size: 45px;
+  margin-bottom: 45px;
+`
+
+export const Info = styled.p`
+  color: black;
+  font-size: 14px;
+  margin-top: 16px;
+  text-align: center;
 `

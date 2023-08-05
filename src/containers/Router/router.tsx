@@ -6,11 +6,10 @@ import {
   Routes,
   useLocation,
 } from 'react-router-dom'
-// import Signup from '../../views/Auth/Signup'
-import Dashboard from '../../views/Dashboard'
+import Signup from '../../views/Auth/Signup'
 import Login from '../../views/Auth/Login'
-// import PostDetails from '../../views/PostDetails'
-// import { getToken } from '../../services/storage/token'
+import Dashboard from '../../views/Dashboard'
+import { getToken } from '../../services/storage/token'
 
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -30,38 +29,38 @@ const Router: FC = () => {
   }, [])
 
   if (isLoading) {
-    return <div>Cargando...</div>
+    return <div>Loading...</div>
   }
 
-  //   const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {
-  //     const token = getToken()
-  //     const location = useLocation()
-  //     if (!token) {
-  //       return <Navigate to="/" replace state={{ from: location }} />
-  //     }
+  const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {
+    const token = getToken()
+    const location = useLocation()
+    if (!token) {
+      return <Navigate to="/" replace state={{ from: location }} />
+    }
 
-  //     return children
-  //   }
-  //TODO Descomentar cuando Mario meta el TOKEN
-  //   const HandleSession = ({ children }: { children: JSX.Element }) => {
-  //     const token = getToken()
-  //     const location = useLocation()
-  //     if (token) {
-  //       if (
-  //         location.pathname === '/signup' ||
-  //         location.pathname === '/login' ||
-  //         location.pathname === '/'
-  //       ) {
-  //         return <Navigate to="/dashboard" replace state={{ from: location }} />
-  //       }
-  //     }
-  //     return children
-  //   }
+    return children
+  }
+
+  const HandleSession = ({ children }: { children: JSX.Element }) => {
+    const token = getToken()
+    const location = useLocation()
+    if (token) {
+      if (
+        location.pathname === '/signup' ||
+        location.pathname === '/login' ||
+        location.pathname === '/'
+      ) {
+        return <Navigate to="/dashboard" replace state={{ from: location }} />
+      }
+    }
+    return children
+  }
 
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route
+        <Route
           path="/*"
           element={
             <HandleSession>
@@ -92,7 +91,7 @@ const Router: FC = () => {
               <Dashboard onLogout={recreateLogOut} />
             </ProtectedRoutes>
           }
-        /> */}
+        />
       </Routes>
     </BrowserRouter>
   )
