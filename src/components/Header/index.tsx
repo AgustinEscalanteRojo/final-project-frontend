@@ -20,7 +20,7 @@ const Header: FC<Props> = ({ onLogout }) => {
 
   return (
     <Container>
-      <Title>RentCar</Title>
+      <Title>Social Recipes</Title>
       <ButtonController>
         <Button onClick={handleGoToProfile}>Profile</Button>
         <Button onClick={handleLogout}>Logout</Button>
