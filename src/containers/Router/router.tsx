@@ -14,6 +14,7 @@ import { getToken } from '../../services/storage/token'
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
 
+
   const recreateLogin = useCallback(() => {
     setIsLoading(true)
     setTimeout(() => {
@@ -33,11 +34,12 @@ const Router: FC = () => {
   }
 
   const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {
-    const token = getToken()
-    const location = useLocation()
-    if (!token) {
-      return <Navigate to="/" replace state={{ from: location }} />
-    }
+    // TODO: En desarollo, descomentar la ProtectedRoutes para volver a proteger las rutas, 
+    // const token = getToken()
+    // const location = useLocation()
+    // if (!token) {
+    //   return <Navigate to="/" replace state={{ from: location }} />
+    // }
 
     return children
   }
