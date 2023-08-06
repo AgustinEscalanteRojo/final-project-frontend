@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import type { Props } from './types'
 
 export const CustomButton = styled.button<{ $variant: Props['variant'] }>`
-  background-color: transparent;
-  color: white;
+  background-color: pink;
+  color: red;
 
   border-radius: 4px;
   cursor: pointer;
