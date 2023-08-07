@@ -3,14 +3,12 @@ import { Container } from './styles'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import { useNavigate } from 'react-router-dom'
-import VideoBackground from '../../components/VideoBackground/videoBackground'
+import VideoBackground from '../../components/VideoBackground'
 import type { Props } from './types'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
-
   const navigate = useNavigate()
 
-  
   return (
     <Container>
       <Header onLogout={onLogout} />
