@@ -1,5 +1,5 @@
-import { FC, memo, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { FC, memo} from 'react'
+
 import { PerfilContainer, Content } from './styles'
 
 import Header from '../../components/Header'

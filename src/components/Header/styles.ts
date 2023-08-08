@@ -1,9 +1,10 @@
 import { styled } from 'styled-components'
+import theme from '../../styles/theme';
 
 export const Container = styled.header`
   display: flex;
   flex-flow: row;
-  background-color: black;
+  background-color: ${theme.colors.black};
   justify-content: space-between;
   width: 100%;
   height: 90px;

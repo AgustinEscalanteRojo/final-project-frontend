@@ -34,6 +34,7 @@ const theme = {
     // Neutral Colors
     white: '#FFFFFF',
     black: '#000000',
+    lightGray: '#F0F0F0',
     grey100: '#FAFAFA',
     grey200: '#E1E1E5',
     grey300: '#BCC6CC',
