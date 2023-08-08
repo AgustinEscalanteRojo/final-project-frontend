@@ -2,8 +2,15 @@ import { FC, memo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { Props } from './types'
 import { logout } from '../../services/api/auth'
-import { ButtonController, Container, Title } from './styles'
 import Button from '../Button'
+
+import IconButton from '@mui/material/IconButton';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
+
+
+import { ButtonController, Container, Title } from './styles'
+
 
 const Header: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -22,8 +29,18 @@ const Header: FC<Props> = ({ onLogout }) => {
     <Container>
       <Title>Social Recipes</Title>
       <ButtonController>
-        <Button onClick={handleGoToProfile}>Profile</Button>
-        <Button onClick={handleLogout}>Logout</Button>
+
+      <IconButton size="large" >
+  <AccountCircleIcon onClick={handleGoToProfile} sx={{ color: 'white', fontSize: 40 } } />
+</IconButton>
+
+<IconButton size="large" >
+  <LogoutIcon onClick={handleLogout} sx={{ color: 'white', fontSize: 40 } } />
+</IconButton>
+
+
+        
+    
       </ButtonController>
     </Container>
   )
