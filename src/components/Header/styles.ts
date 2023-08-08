@@ -4,7 +4,7 @@ import theme from '../../styles/theme';
 export const Container = styled.header`
   display: flex;
   flex-flow: row;
-  background-color: ${theme.colors.black};
+  background-color: ${theme.colors.transparentBlack};
   justify-content: space-between;
   width: 100%;
   height: 90px;

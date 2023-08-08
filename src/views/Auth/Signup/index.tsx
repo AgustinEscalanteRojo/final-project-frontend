@@ -1,6 +1,7 @@
 import { FC, memo } from 'react'
 import { Formik } from 'formik'
 import Button from '../../../components/Button'
+
 import {
   Container,
   Form,
@@ -11,6 +12,7 @@ import {
   Label,
   Link,
 } from './styles'
+import VideoBackground from '../../../components/VideoBackground'
 import { InitialValues, ValidationSignupSchema } from './constant'
 import useLogic from './logic'
 import { Props } from './types'
@@ -42,21 +44,13 @@ const Signup: FC<Props> = ({ onSignup }) => {
                 />
                 {errors?.password && <InputError>{errors.password}</InputError>}
               </InputController>
-              <InputController>
-                <Label>Rol</Label>
-                <Input
-                  type="rol"
-                  name="rol"
-                  onChange={handleChange}
-                />
-                {errors?.password && <InputError>{errors.password}</InputError>}
-              </InputController>
               <Button type="submit">Crear cuenta</Button>
               <Link to="/login">Log in</Link>
             </FormContent>
           </Form>
         )}
       </Formik>
+      <VideoBackground videoSrc="/back.mp4" />
     </Container>
   )
 }

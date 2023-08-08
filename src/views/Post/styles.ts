@@ -1,19 +1,20 @@
 import styled from 'styled-components'
 import theme from '../../styles/theme';
 
-
 export const PostContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
- 
-`
 
+`;
 
 export const Content = styled.div`
 
-  justify-content: center;
-  align-items: center;
+`;
+
+export const Backgroundcolor = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: ${theme.colors.black};
+  height: 100%;
+  z-index: -1;
+  background-color: ${theme.colors.pastelMint};
 `;
