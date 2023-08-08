@@ -18,7 +18,7 @@ import VideoBackground from '../../../components/VideoBackground'
 import { InitialValues, ValidationSignupSchema } from './constant'
 import useLogic from './logic'
 import { Props } from './types'
-import VideoBackground from '../../../components/VideoBackground/videoBackground'
+
 
 const Signup: FC<Props> = ({ onSignup }) => {
   const { handleOnSubmit } = useLogic(onSignup)

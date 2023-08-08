@@ -1,18 +1,21 @@
 import styled from 'styled-components'
 import { Link as DefaultLink } from 'react-router-dom'
+import theme from '../../../styles/theme'
 
 export const Container = styled.div``
 
 export const Form = styled.form`
   border: 1px solid ${({ theme }) => theme.colors.grey900};
   border-radius: 4px;
-  margin: 10rem auto;
-  max-width: 15rem;
+  margin: 5rem auto;
+  background-color: ${theme.colors.transparentWhite};
+  max-width: 25rem;
 `
 
 export const FormContent = styled.div`
   color: ${({ theme }) => theme.colors.red300};
-  padding: 30px;
+  text-align: center;
+  padding: 10px;
 `
 
 export const InputController = styled.div`
@@ -30,11 +33,15 @@ export const Label = styled.label`
   margin-bottom: 14px;
 `
 
-export const Button = styled.input`
-
-`
+export const Button = styled.input``
 
 export const Input = styled.input``
+
+export const Title = styled.h1`
+  color: ${({ theme }) => theme.colors.red300};
+  font-size: 45px;
+  margin-bottom: 45px;
+`
 
 export const InputError = styled.span`
   color: ${({ theme }) => theme.colors.danger};
@@ -56,15 +63,10 @@ export const Link = styled(DefaultLink)`
   }
 `
 
-export const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.red300};
-  font-size: 45px;
-  margin-bottom: 45px;
-`
+
 
 export const Info = styled.p`
   color: black;
   font-size: 14px;
-  margin-top: 16px;
   text-align: center;
 `
