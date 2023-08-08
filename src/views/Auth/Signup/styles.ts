@@ -1,24 +1,21 @@
 import styled from 'styled-components'
 import { Link as DefaultLink } from 'react-router-dom'
-import theme from '../../../styles/theme';
+import theme from '../../../styles/theme'
 
-export const Container = styled.div`
-`
+export const Container = styled.div``
 
 export const Form = styled.form`
   border: 1px solid ${({ theme }) => theme.colors.grey900};
   border-radius: 4px;
-  margin: 10rem auto;
+  margin: 5rem auto;
   background-color: ${theme.colors.transparentWhite};
-  max-width: 15rem;
+  max-width: 25rem;
 `
 
 export const FormContent = styled.div`
-
   color: ${({ theme }) => theme.colors.red300};
- text-align: center;
+  text-align: center;
   padding: 10px;
-
 `
 
 export const InputController = styled.div`
