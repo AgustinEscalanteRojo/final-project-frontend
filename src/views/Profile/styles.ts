@@ -5,6 +5,7 @@ export const PerfilContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center; 
+
 `
 
 export const Content = styled.div`
@@ -13,6 +14,7 @@ export const Content = styled.div`
   color: ${theme.colors.white};
   display: flex;
   justify-content: center;
+  
 `;
 
 
@@ -20,6 +22,7 @@ export const Content = styled.div`
 export const ButtonController = styled.div`
   display: flex;
   flex-flow: row wrap;
+  
   gap: 10px;
   margin-top: 120px;
   margin-right: 10px;
