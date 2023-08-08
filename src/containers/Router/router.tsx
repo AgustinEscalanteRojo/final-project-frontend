@@ -10,6 +10,8 @@ import Signup from '../../views/Auth/Signup'
 import Login from '../../views/Auth/Login'
 import Dashboard from '../../views/Dashboard'
 import Profile from '../../views/Profile'
+import Followers from '../../views/Followers'
+import Post from '../../views/Post'
 import { getToken } from '../../services/storage/token'
 
 const Router: FC = () => {
@@ -103,6 +105,24 @@ const Router: FC = () => {
           element={
             <ProtectedRoutes>
               <Profile onLogout={recreateLogOut} />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/followers"
+          element={
+            <ProtectedRoutes>
+              <Followers onLogout={recreateLogOut} />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/post"
+          element={
+            <ProtectedRoutes>
+              <Post onLogout={recreateLogOut} />
             </ProtectedRoutes>
           }
         />

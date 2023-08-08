@@ -3,8 +3,8 @@ import {
   VideoBackgroundContainer,
   Video,
   Source,
-} from './videoBackgroundStyles'
-import type { Props } from './videoBackgroundTypes'
+} from './styles'
+import type { Props } from './types'
 
 const VideoBackground: FC<Props> = ({ videoSrc }) => {
   return (

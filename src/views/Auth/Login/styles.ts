@@ -30,8 +30,9 @@ export const Label = styled.label`
   margin-bottom: 14px;
 `
 
+export const Button = styled.input`
 
-export const Button = styled.input``
+`
 
 export const Input = styled.input``
 

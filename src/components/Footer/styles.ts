@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import theme from '../../styles/theme';
 
 export const Container = styled.footer`
   position: fixed;
@@ -6,7 +7,7 @@ export const Container = styled.footer`
   border: 3px solid ${({ theme }) => theme.colors.black};
   max-height: 1.5rem;
   width: 100%;
-  background: ${({ theme }) => theme.colors.transparentBlack4};
+  background-color: ${theme.colors.transparentBlack};
   padding-bottom: 19px;
   text-align: center;
   z-index: 3;

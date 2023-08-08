@@ -1,9 +1,10 @@
 import { styled } from 'styled-components'
+import theme from '../../styles/theme';
 
 export const Container = styled.header`
   display: flex;
   flex-flow: row;
-  background-color: black;
+  background-color: ${theme.colors.transparentBlack};
   justify-content: space-between;
   width: 100%;
   height: 90px;
@@ -18,9 +19,9 @@ export const Title = styled.h1`
 `
 
 export const ButtonController = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  gap: 10px;
+
+  gap: 30px;
+  margin: 20px;
   margin-top: 20px;
   margin-right: 10px;
 `

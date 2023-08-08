@@ -4,7 +4,8 @@ import useLogic from './logic'
 import { Formik } from 'formik'
 import Footer from '../../../components/Footer'
 import Button from '../../../components/Button'
-import { InitialValues, ValidationSchema } from './constants'
+import { InitialValues, ValidationSchema } from "./constants"
+import VideoBackground from '../../../components/VideoBackground'
 import {
   Container,
   Form,
@@ -17,7 +18,7 @@ import {
   Title,
   Link,
 } from './styles'
-import VideoBackground from '../../../components/VideoBackground/videoBackground'
+
 
 const Login: FC<Props> = ({ onLogin }) => {
   const { handleOnSubmit } = useLogic(onLogin)
