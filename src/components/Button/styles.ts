@@ -3,10 +3,12 @@ import type { Props } from './types';
 import theme from '../../styles/theme';
 
 export const CustomButton = styled.button<{ $variant: Props['variant'] }>`
+
   background-color: ${theme.colors.blue700};
   color: ${theme.colors.white};
   padding: 12px 24px;
   border-radius: 30px;
+
   cursor: pointer;
   border: none;
   font-size: 18px;

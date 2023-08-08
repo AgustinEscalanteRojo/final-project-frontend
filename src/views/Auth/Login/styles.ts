@@ -11,7 +11,8 @@ export const Form = styled.form`
 `
 
 export const FormContent = styled.div`
-  padding: 10px;
+  color: ${({ theme }) => theme.colors.red300};
+  padding: 30px;
 `
 
 export const InputController = styled.div`
@@ -24,6 +25,7 @@ export const InputController = styled.div`
 `
 
 export const Label = styled.label`
+  color: ${({ theme }) => theme.colors.red300};
   font-size: 16px;
   margin-bottom: 14px;
 `
@@ -55,6 +57,7 @@ export const Link = styled(DefaultLink)`
 `
 
 export const Title = styled.h1`
+  color: ${({ theme }) => theme.colors.red300};
   font-size: 45px;
   margin-bottom: 45px;
 `

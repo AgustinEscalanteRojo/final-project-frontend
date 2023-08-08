@@ -1,5 +1,6 @@
 import { FC, memo } from 'react'
 import { Formik } from 'formik'
+import Footer from '../../../components/Footer'
 import Button from '../../../components/Button'
 
 import {
@@ -10,18 +11,22 @@ import {
   InputController,
   InputError,
   Label,
+  Title,
   Link,
 } from './styles'
 import VideoBackground from '../../../components/VideoBackground'
 import { InitialValues, ValidationSignupSchema } from './constant'
 import useLogic from './logic'
 import { Props } from './types'
+import VideoBackground from '../../../components/VideoBackground/videoBackground'
 
 const Signup: FC<Props> = ({ onSignup }) => {
   const { handleOnSubmit } = useLogic(onSignup)
 
   return (
     <Container>
+      <Footer />
+      <VideoBackground videoSrc="/back.mp4" />
       <Formik
         initialValues={InitialValues}
         validationSchema={ValidationSignupSchema}
@@ -30,6 +35,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
         {({ errors, handleSubmit, handleChange, values }) => (
           <Form onSubmit={handleSubmit}>
             <FormContent>
+            <Title>FoodCook</Title>
               <InputController>
                 <Label>Email</Label>
                 <Input type="email" name="email" onChange={handleChange} />
@@ -44,7 +50,9 @@ const Signup: FC<Props> = ({ onSignup }) => {
                 />
                 {errors?.password && <InputError>{errors.password}</InputError>}
               </InputController>
-              <Button type="submit">Crear cuenta</Button>
+
+              <Button type="submit">Create account</Button>
+
               <Link to="/login">Log in</Link>
             </FormContent>
           </Form>
