@@ -3,6 +3,7 @@ import { Props } from "./types"
 import useLogic from "./logic"
 import { Formik } from 'formik'
 import { InitialValues, ValidationSchema } from "./constants"
+import VideoBackground from '../../../components/VideoBackground'
 import {
     Button,
     Container,
@@ -62,6 +63,7 @@ import {
               </Form>
             )}
           </Formik>
+          <VideoBackground videoSrc="/back.mp4" />
         </Container>
     )
   }

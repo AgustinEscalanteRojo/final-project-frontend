@@ -1,9 +1,7 @@
 import { FC, memo} from 'react'
-
-import { PerfilContainer, Content } from './styles'
-
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import { PerfilContainer, Content, Backgroundcolor } from './styles'
 
 import type { Props } from './types'
 
@@ -15,6 +13,7 @@ const Followers: FC<Props> = ({ onLogout }) => {
         
       </Content>
       <Footer />
+      <Backgroundcolor />
     </PerfilContainer>
   )
 }

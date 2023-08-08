@@ -1,5 +1,17 @@
 const theme = {
   colors: {
+    // Pastel
+    pastelPink: '#FFD1DC',
+    pastelBlue: '#AEC6CF',
+    pastelGreen: '#B4D8B7',
+    pastelLavender: '#E6E6FA',
+    pastelPeach: '#FFDAB9',
+    pastelMint: '#98FB98',
+    pastelYellow: '#FAFAD2',
+    pastelLemon: '#FFFACD',
+    pastelLilac: '#D8BFD8',
+    pastelCoral: '#FF6B6B',
+
     // Primary Colors
     blue25: '#F0F7FC',
     blue75: '#C2E0FC',
@@ -46,8 +58,8 @@ const theme = {
     grey900: '#6E7A76',
 
     // Transparent Colors (RGBA)
-    transparentWhite: 'rgba(255, 255, 255, 0.9)',
-    transparentBlack: 'rgba(0, 0, 0, 0.6)',
+    transparentWhite: 'rgba(255, 255, 255, 0.8)',
+    transparentBlack: 'rgba(0, 0, 0, 0.8)',
     transparentBlue: 'rgba(83, 147, 222, 0.8)',
     transparentGrey: 'rgba(129, 144, 152, 0.9)',
     transparentRed: 'rgba(239, 83, 80, 0.8)',

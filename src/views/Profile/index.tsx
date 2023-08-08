@@ -4,7 +4,7 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import type { Props } from './types'
 import Button from '../../components/Button'
-import { PerfilContainer, Content, ButtonController } from './styles'
+import { PerfilContainer, Content, ButtonController, Backgroundcolor } from './styles'
 
 const Profile: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -21,6 +21,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
           <Button onClick={handleGoToFollowers}>Followers / Following</Button>
         </ButtonController>
       </Content>
+      <Backgroundcolor />
       <Footer />
     </PerfilContainer>
   )
