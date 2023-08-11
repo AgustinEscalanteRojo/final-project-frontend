@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import VideoBackground from '../../components/VideoBackground'
 import type { Props } from './types'
 import Button from '../../components/Button'
+import Card from '../../components/Card'
 import { Container, ButtonController} from './styles'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
@@ -19,6 +20,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <ButtonController>
           <Button onClick={handleGoToPost}>Add New Recipe</Button>
         </ButtonController>
+
+        <Card  />
       <Footer />
       <VideoBackground videoSrc="/back.mp4" />
     </Container>

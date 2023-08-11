@@ -6,16 +6,16 @@ export const CustomButton = styled.button<{ $variant: Props['variant'] }>`
 
   background-color: ${theme.colors.blue700};
   color: ${theme.colors.white};
-  padding: 12px 24px;
+  padding: 10px 24px;
   border-radius: 30px;
 
   cursor: pointer;
   border: none;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: bold;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
-  min-width: 180px;
+  min-width: 130px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &:hover {
