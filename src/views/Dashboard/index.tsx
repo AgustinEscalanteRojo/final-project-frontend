@@ -2,7 +2,7 @@ import { FC, memo, useCallback } from 'react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import { useNavigate } from 'react-router-dom'
-import VideoBackground from '../../components/VideoBackground'
+import ImageBackground from '../../components/ImageBackground'
 import type { Props } from './types'
 import Button from '../../components/Button'
 import Card from '../../components/Card'
@@ -23,7 +23,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
 
         <Card  />
       <Footer />
-      <VideoBackground videoSrc="/back.mp4" />
+      <ImageBackground imageSrc="/codioful.jpg" />
     </Container>
   )
 }
