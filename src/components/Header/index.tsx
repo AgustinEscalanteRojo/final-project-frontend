@@ -2,15 +2,11 @@ import { FC, memo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { Props } from './types'
 import { logout } from '../../services/api/auth'
-import Button from '../Button'
-
-import IconButton from '@mui/material/IconButton';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import LogoutIcon from '@mui/icons-material/Logout';
-
-
-import { ButtonController, Container, Title } from './styles'
-
+import Image from '../Image'
+import IconButton from '@mui/material/IconButton'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import LogoutIcon from '@mui/icons-material/Logout'
+import { ButtonController, Container } from './styles'
 
 const Header: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -27,20 +23,22 @@ const Header: FC<Props> = ({ onLogout }) => {
 
   return (
     <Container>
-      <Title>Social Recipes</Title>
+      <Image src="/logo&tipo.png" alt="logo&tipo" variant="logoHeader" />
+
       <ButtonController>
+        <IconButton size="large">
+          <AccountCircleIcon
+            onClick={handleGoToProfile}
+            sx={{ color: 'white', fontSize: 40 }}
+          />
+        </IconButton>
 
-      <IconButton size="large" >
-  <AccountCircleIcon onClick={handleGoToProfile} sx={{ color: 'white', fontSize: 40 } } />
-</IconButton>
-
-<IconButton size="large" >
-  <LogoutIcon onClick={handleLogout} sx={{ color: 'white', fontSize: 40 } } />
-</IconButton>
-
-
-        
-    
+        <IconButton size="large">
+          <LogoutIcon
+            onClick={handleLogout}
+            sx={{ color: 'white', fontSize: 40 }}
+          />
+        </IconButton>
       </ButtonController>
     </Container>
   )
