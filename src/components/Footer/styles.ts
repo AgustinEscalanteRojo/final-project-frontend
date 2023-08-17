@@ -4,7 +4,7 @@ import theme from '../../styles/theme'
 export const Container = styled.footer`
   position: fixed;
   bottom: 0;
-  border: 3px solid ${({ theme }) => theme.colors.buff};
+  border: 3px solid ${theme.colors.buff};
   width: 100%;
   text-align: center;
   z-index: 3;
@@ -19,7 +19,7 @@ export const Container = styled.footer`
 `
 
 export const Content = styled.div`
-  background-color: ${({ theme }) => theme.colors.papayaWhip};
+  background-color: ${theme.colors.papayaWhip};
   display: flex;
   justify-content: center;
   align-items: stretch;
@@ -32,7 +32,7 @@ export const Content = styled.div`
 `
 
 export const Text = styled.p`
-  color: ${({ theme }) => theme.colors.black};
+  color: ${theme.colors.black};
   font-size: 14px;
   font-weight: bold;
   padding: 4px;

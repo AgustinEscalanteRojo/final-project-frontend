@@ -68,12 +68,17 @@ const theme = {
     transparentPurple: 'rgba(156, 39, 176, 0.8)',
     transparentOrange: 'rgba(251, 140, 0, 0.8)',
 
-    //Color palette (codes: "hex" and "rba")
+    //Colors palette (codes: "hex" and "rba")
     teaGreen: '#CCD5AE', // rgb: 204, 213, 174
     beige: '#E9EDC9', // rgb: 233, 237, 201
     cornsilk: '#FEFAE0', // rgb: 254, 250, 224
     papayaWhip: '#FAEDCD', // rgb: 250, 237, 205
     buff: '#D4A373', //rgb: 212, 163, 115
+    boldbuff: '#b37a42', //rgb: 179, 122, 66
+
+    // Transparent Colors palette (RGBA)rgba: 250, 237, 205, 0.8'
+    transparentpapayaWhip: 'rgba(250, 237, 205, 0.8)',
+    transparentboldbuff: 'rgba(179, 122, 66, 0.8)',
   },
 }
 

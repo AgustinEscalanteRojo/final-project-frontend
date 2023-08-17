@@ -5,7 +5,7 @@ const Footer: FC = () => {
   return (
     <Container>
       <Content>
-        <Text>© 2023 Social Recipes</Text>
+        <Text>© 2023 Shared Flavours</Text>
       </Content>
     </Container>
   )
