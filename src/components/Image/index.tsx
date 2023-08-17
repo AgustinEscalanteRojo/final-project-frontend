@@ -1,9 +1,9 @@
-import { FC, memo } from 'react'
-import type { Props } from './types'
-import { Img } from './styles'
+import { FC, memo } from 'react';
+import type { Props } from './types';
+import { CustomImg } from './styles'; 
 
-const Image: FC<Props> = ({ src, alt }) => {
-  return <Img src={src} alt={alt} />
-}
+const Image: FC<Props> = ({ src, alt, variant = 'default' }) => { 
+  return <CustomImg $variant={variant} src={src} alt={alt} />; 
+};
 
-export default memo(Image)
+export default memo(Image);

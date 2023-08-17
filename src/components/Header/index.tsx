@@ -53,15 +53,16 @@ import React, { FC, memo, useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import type { Props } from './types'
 import { logout } from '../../services/api/auth'
-import Button from '../Button'
-import { MobileIconButton } from './styles'
 
+import Image from '../Image'
+import IconButton from '@mui/material/IconButton'
+        
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LogoutIcon from '@mui/icons-material/Logout'
+import { ButtonController, Container } from './styles'
+import { MobileIconButton } from './styles'
+        import Button from '../Button'
 
-// Importa Container, Title y ButtonController desde './styles'
-import IconButton from '@mui/material/IconButton'
-import { Container, Title, ButtonController } from './styles'
 
 const Header: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -84,7 +85,8 @@ const Header: FC<Props> = ({ onLogout }) => {
 
   return (
     <Container>
-      <Title>Shared Flavours</Title>
+
+      <Image src="/logo&tipo.png" alt="logo&tipo" variant="logoHeader" />
       <ButtonController>
         <IconButton size="large" onClick={toggleMobileMenu}>
           <AccountCircleIcon sx={{ color: 'white', fontSize: 40 }} />
@@ -101,6 +103,7 @@ const Header: FC<Props> = ({ onLogout }) => {
             </MobileIconButton>
           </div>
         )}
+
       </ButtonController>
     </Container>
   )

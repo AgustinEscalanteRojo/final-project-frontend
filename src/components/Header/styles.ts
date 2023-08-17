@@ -12,13 +12,6 @@
 //   position: fixed;
 // `
 
-// export const Title = styled.h1`
-//   color: white;
-//   text-shadow:
-//     1px 1px 3px black,
-//     1px 1px 5px black;
-//   margin-left: 20px;
-// `
 
 // export const ButtonController = styled.div`
 //   gap: 30px;
@@ -47,18 +40,6 @@
 //     justify-content: space-between;
 //     height: 90px;
 //     padding: 20px; /* Mayor padding para escritorio */
-//   }
-// `
-
-// export const Title = styled.h1`
-//   color: white;
-//   text-shadow:
-//     1px 1px 3px black,
-//     1px 1px 5px black;
-//   margin-bottom: 10px; /* Separación inferior en dispositivos móviles */
-
-//   @media (min-width: 768px) {
-//     margin: 0; /* Resetear margen en escritorio */
 //   }
 // `
 
@@ -100,18 +81,6 @@ export const Container = styled.header`
   }
 `
 
-export const Title = styled.h1`
-  color: white;
-  text-shadow:
-    1px 1px 3px black,
-    1px 1px 5px black;
-  margin-bottom: 5px;
-
-  @media (min-width: 768px) {
-    margin: 0;
-    align-self: center;
-  }
-`
 
 export const ButtonController = styled.div`
   display: flex;
@@ -122,3 +91,4 @@ export const ButtonController = styled.div`
     align-self: center;
   }
 `
+
