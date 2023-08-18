@@ -23,7 +23,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
 
         <Card  />
       <Footer />
-      <ImageBackground imageSrc="/codioful.jpg" />
+      <ImageBackground imageSrc="/back.jpg" />
     </Container>
   )
 }
