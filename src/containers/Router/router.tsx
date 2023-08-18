@@ -126,6 +126,15 @@ const Router: FC = () => {
             </ProtectedRoutes>
           }
         />
+
+        <Route
+          path="/details"
+          element={
+            <ProtectedRoutes>
+              <Post onLogout={recreateLogOut} />
+            </ProtectedRoutes>
+          }
+        />
       </Routes>
     </BrowserRouter>
   )

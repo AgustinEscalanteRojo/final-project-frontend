@@ -6,7 +6,7 @@ import ImageBackground from '../../components/ImageBackground'
 import type { Props } from './types'
 import Button from '../../components/Button'
 import Card from '../../components/Card'
-import { Container, ButtonController} from './styles'
+import { Container, ButtonController } from './styles'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -18,10 +18,10 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     <Container>
       <Header onLogout={onLogout} />
       <ButtonController>
-          <Button onClick={handleGoToPost}>Add New Recipe</Button>
-        </ButtonController>
+        <Button onClick={handleGoToPost}>Add New Recipe</Button>
+      </ButtonController>
 
-        <Card  />
+      <Card />
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
     </Container>
