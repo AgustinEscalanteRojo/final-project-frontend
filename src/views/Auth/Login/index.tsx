@@ -1,23 +1,8 @@
 import { FC, memo } from 'react'
 import { Props } from './types'
 import useLogic from './logic'
-import { Formik } from 'formik'
 import Footer from '../../../components/Footer'
-// import Button from '../../../components/Button'
-import { InitialValues, ValidationSchema } from './constants'
 import VideoBackground from '../../../components/VideoBackground'
-import {
-  Container,
-  Form,
-  FormContent,
-  Info,
-  Input,
-  InputController,
-  InputError,
-  Label,
-  Title,
-  // Link,
-} from './styles'
 import {
   Grid,
   Paper,
@@ -25,23 +10,20 @@ import {
   TextField,
   Button,
   Typography,
-  // Link,
 } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
-import { Link } from 'react-router-dom';
-import { green } from '@material-ui/core/colors'
-import { Sign } from 'crypto'
+import { Link } from 'react-router-dom'
 
 const Login: FC<Props> = ({ onLogin }) => {
   const { handleOnSubmit } = useLogic(onLogin)
 
   const paperStyle = {
-    padding: 30,
-    height: '40vh',
-    width: 300,
-    margin: '200px auto',
+    padding: '20px 20px',
+    width: '50%', // Usa porcentaje para la responsividad
+    maxWidth: 300, // Agrega un ancho máximo para pantallas más grandes
+    margin: '80px auto', // Ajusta el margen para centrar verticalmente
   }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const btnstyle = { margin: '22px 0' }
@@ -51,15 +33,15 @@ const Login: FC<Props> = ({ onLogin }) => {
       <Footer />
       <VideoBackground videoSrc="/cocina.mp4" />
       <Paper elevation={10} style={paperStyle}>
-      <Grid container alignContent ="center">
+        <Grid container alignContent="center">
           <Avatar style={avatarStyle}>
             <LockOutlinedIcon />
           </Avatar>
-          <h2>SharedFlavors</h2>
+          <h3>SharedFlavours</h3>
         </Grid>
         <TextField
-          label="Username"
-          placeholder="Enter username"
+          label="Email"
+          placeholder="Enter email"
           variant="outlined"
           fullWidth
           required
@@ -82,11 +64,8 @@ const Login: FC<Props> = ({ onLogin }) => {
           variant="contained"
           style={btnstyle}
           fullWidth
-          onClick={() => {
-            alert('clicked');
-          }}
         >
-          Sign in
+          Log in
         </Button>
         <Typography>
           <Link to="#">Forgot password ?</Link>
@@ -98,51 +77,6 @@ const Login: FC<Props> = ({ onLogin }) => {
       </Paper>
     </Grid>
   )
-
-  // return (
-  //   <Container>
-  //     <Footer />
-  //     <VideoBackground videoSrc="/cocina.mp4" />
-  //     <Formik
-  //       initialValues={InitialValues}
-  //       validationSchema={ValidationSchema}
-  //       onSubmit={handleOnSubmit}
-  //     >
-  //       {({ errors, handleSubmit, handleChange, values }) => (
-  //         <Form onSubmit={handleSubmit}>
-  //           <FormContent>
-  //             <Title>FoodCook</Title>
-  //             <InputController>
-  //               <Label>Email</Label>
-  //               <Input
-  //                 type="email"
-  //                 name="email"
-  //                 onChange={handleChange}
-  //                 value={values.email}
-  //               />
-  //               {errors?.email && <InputError>{errors.email}</InputError>}
-  //             </InputController>
-  //             <InputController>
-  //               <Label>Password</Label>
-  //               <Input
-  //                 type="password"
-  //                 name="password"
-  //                 onChange={handleChange}
-  //                 value={values.password}
-  //               />
-  //               {errors?.password && <InputError>{errors.password}</InputError>}
-  //             </InputController>
-  //             <Button type="submit">Log in</Button>
-  //             <Info>
-  //               Don't have an account yet?{' '}
-  //               <Link to="/signup">Sign up here </Link>
-  //             </Info>
-  //           </FormContent>
-  //         </Form>
-  //       )}
-  //     </Formik>
-  //   </Container>
-  // )
 }
 
 export default memo(Login)
