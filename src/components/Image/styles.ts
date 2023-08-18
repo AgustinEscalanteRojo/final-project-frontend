@@ -17,7 +17,7 @@ export const CustomImg = styled.img<{ $variant: 'default' | 'logoHeader'}>`
       
         float: left;
         margin-left: 10px;
-        margin-top: 10px;
+       
         `;
 
       default:

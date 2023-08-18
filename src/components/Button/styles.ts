@@ -4,7 +4,7 @@ import theme from '../../styles/theme';
 
 export const CustomButton = styled.button<{ $variant: Props['variant'] }>`
 
-  background-color: ${theme.colors.blue700};
+  background-color: ${theme.colors.buff};
   color: ${theme.colors.white};
   padding: 10px 24px;
   border-radius: 30px;
@@ -19,7 +19,7 @@ export const CustomButton = styled.button<{ $variant: Props['variant'] }>`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: ${theme.colors.blue800};
+    background-color: ${theme.colors.black};
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   }
 

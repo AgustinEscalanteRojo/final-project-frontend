@@ -35,7 +35,7 @@ export const Text = styled.p`
   color: ${theme.colors.black};
   font-size: 14px;
   font-weight: bold;
-  padding: 4px;
+
 
   @media screen and (max-width: 768px) {
     padding: 8px 0;

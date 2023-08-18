@@ -66,12 +66,12 @@ export const MobileIconButton = styled(IconButton)`
 export const Container = styled.header`
   display: flex;
   flex-direction: column;
-  background-color: ${theme.colors.papayaWhip};
-  border-bottom: 5px solid ${theme.colors.buff};
+  background-color: ${theme.colors.black};
+  border-bottom: 2px solid ${theme.colors.buff};
   width: 100%;
   height: 70px;
   position: fixed;
-  padding: 10px;
+  z-index:1;
 
   @media (min-width: 768px) {
     flex-direction: row;
