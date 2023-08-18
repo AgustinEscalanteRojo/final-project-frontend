@@ -13,7 +13,9 @@ import Profile from '../../views/Profile'
 import Followers from '../../views/Followers'
 import Post from '../../views/Post'
 import Detail from '../../views/Detail'
+import Faq from '../../views/Faq'
 import { getToken } from '../../services/storage/token'
+
 
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -133,6 +135,15 @@ const Router: FC = () => {
           element={
             <ProtectedRoutes>
               <Detail onLogout={recreateLogOut} />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/faq"
+          element={
+            <ProtectedRoutes>
+              <Faq onLogout={recreateLogOut} />
             </ProtectedRoutes>
           }
         />
