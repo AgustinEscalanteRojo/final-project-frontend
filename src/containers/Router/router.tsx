@@ -12,6 +12,7 @@ import Dashboard from '../../views/Dashboard'
 import Profile from '../../views/Profile'
 import Followers from '../../views/Followers'
 import Post from '../../views/Post'
+import Detail from '../../views/Detail'
 import { getToken } from '../../services/storage/token'
 
 const Router: FC = () => {
@@ -131,7 +132,7 @@ const Router: FC = () => {
           path="/details"
           element={
             <ProtectedRoutes>
-              <Post onLogout={recreateLogOut} />
+              <Detail onLogout={recreateLogOut} />
             </ProtectedRoutes>
           }
         />
