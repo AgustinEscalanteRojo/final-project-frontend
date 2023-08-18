@@ -1,65 +1,108 @@
 import { FC, memo } from 'react'
-import { Formik } from 'formik'
 import Footer from '../../../components/Footer'
-import Button from '../../../components/Button'
-
-import {
-  Container,
-  Form,
-  FormContent,
-  Input,
-  InputController,
-  InputError,
-  Label,
-  Title,
-  Link,
-} from './styles'
 import VideoBackground from '../../../components/VideoBackground'
-import { InitialValues, ValidationSignupSchema } from './constant'
 import useLogic from './logic'
 import { Props } from './types'
-
+import { Grid, Paper, Avatar, TextField, Button } from '@material-ui/core'
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 
 const Signup: FC<Props> = ({ onSignup }) => {
   const { handleOnSubmit } = useLogic(onSignup)
 
+  const paperStyle = {
+    padding: '20px 20px',
+    width: '50%', // Usa porcentaje para la responsividad
+    maxWidth: 300, // Agrega un ancho máximo para pantallas más grandes
+    margin: '80px auto', // Ajusta el margen para centrar verticalmente
+  }
+  const avatarStyle = { backgroundColor: '#1bbd7e' }
+  const btnstyle = { margin: '22px 0' }
+
   return (
-    <Container>
+    <Grid>
       <Footer />
-      <VideoBackground videoSrc="/back.mp4" />
-      <Formik
-        initialValues={InitialValues}
-        validationSchema={ValidationSignupSchema}
-        onSubmit={handleOnSubmit}
-      >
-        {({ errors, handleSubmit, handleChange, values }) => (
-          <Form onSubmit={handleSubmit}>
-            <FormContent>
-            <Title>FoodCook</Title>
-              <InputController>
-                <Label>Email</Label>
-                <Input type="email" name="email" onChange={handleChange} />
-                {errors?.email && <InputError>{errors.email}</InputError>}
-              </InputController>
-              <InputController>
-                <Label>Password</Label>
-                <Input
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                />
-                {errors?.password && <InputError>{errors.password}</InputError>}
-              </InputController>
-
-              <Button type="submit">Create account</Button>
-
-              <Link to="/login">Log in</Link>
-            </FormContent>
-          </Form>
-        )}
-      </Formik>
-      <VideoBackground videoSrc="/back.mp4" />
-    </Container>
+      <VideoBackground videoSrc="/cocina.mp4" />
+      <Paper elevation={10} style={paperStyle}>
+        <Grid container alignContent="center">
+          <Avatar style={avatarStyle}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <h2>SharedFlavours</h2>
+        </Grid>
+        <TextField
+          label="Email"
+          placeholder="Enter email"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          label="Password"
+          placeholder="Enter password"
+          type="password"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          label="Username"
+          placeholder="Enter username"
+          type="username"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          label="First Name"
+          placeholder="Enter first name"
+          type="firstName"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          label="Last Name"
+          placeholder="Enter last name"
+          type="lastName"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          label="Age"
+          placeholder="Enter age"
+          type="age"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          label="Country"
+          placeholder="Enter country"
+          type="country"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          label="Gender"
+          placeholder="Enter gender"
+          type="gender"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <Button
+          type="submit"
+          color="primary"
+          variant="contained"
+          style={btnstyle}
+          fullWidth
+        >
+          Sign up
+        </Button>
+      </Paper>
+    </Grid>
   )
 }
 
