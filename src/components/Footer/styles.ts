@@ -13,7 +13,7 @@ export const Container = styled.footer`
     position: fixed;
     bottom: 0;
     border: none;
-    padding: 10px;
+    padding: 2.6px;
     max-height: none;
   }
 `
@@ -36,8 +36,7 @@ export const Text = styled.p`
   font-size: 14px;
   font-weight: bold;
 
-
   @media screen and (max-width: 768px) {
-    padding: 8px 0;
+    padding: 0px 0;
   }
 `
