@@ -73,7 +73,7 @@ export const ButtonController = styled.div`
   gap: 10px;
 
   @media (min-width: 768px) {
-    gap: 30px;
+    gap: 10px;
     align-self: center;
   }
 `
@@ -88,6 +88,7 @@ export const SearchButton = styled(IconButton)`
   display: none;
 
   @media (min-width: 768px) {
+
     display: flex;
     align-items: center;
     gap: 10px;
