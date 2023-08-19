@@ -14,6 +14,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
   const handleGoToPost = useCallback(() => {
     navigate('/post')
   }, [navigate])
+  
   return (
     <Container>
       <Header onLogout={onLogout} />

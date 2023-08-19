@@ -1,21 +1,29 @@
-import * as React from 'react'
-import { styled } from '@mui/material/styles'
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardMedia from '@mui/material/CardMedia'
-import Image from '../Image'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import Collapse from '@mui/material/Collapse'
-import Avatar from '@mui/material/Avatar'
-import IconButton, { IconButtonProps } from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import { red } from '@mui/material/colors'
-import FavoriteIcon from '@mui/icons-material/Favorite'
-import ShareIcon from '@mui/icons-material/Share'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import MoreVertIcon from '@mui/icons-material/MoreVert'
+// import de la card MI
+import React, { useState } from 'react';
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import Image from '../Image';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import Avatar from '@mui/material/Avatar';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import { red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
+
+// import de  comentario MI
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
+
+// ventana expandida  MI
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean
 }
@@ -34,9 +42,25 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 export default function RecipeReviewCard() {
   const [expanded, setExpanded] = React.useState(false)
 
+
+  // COMENTARIO
+  const [comment, setComment] = useState('');
   const handleExpandClick = () => {
-    setExpanded(!expanded)
-  }
+    setExpanded(!expanded);
+  };
+
+  const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setComment(event.target.value);
+  };
+
+  const handleCommentSubmit = () => {
+    // aqui lógica para guardar el comentario
+    console.log('Comentario enviado:', comment);
+    setComment('');
+  };
+
+    
+
 
   return (
     <Card sx={{ maxWidth: 800, backgroundColor: 'rgba(255, 255, 255, 0.911)', marginTop: 4,  marginBottom: 32 }}>
@@ -113,6 +137,30 @@ export default function RecipeReviewCard() {
           </Typography>
         </CardContent>
       </Collapse>
+
+
+
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',marginLeft: 3, marginRight: 3  }}>
+      <TextField
+        fullWidth
+        label="Comment"
+        id="comment"
+        value={comment}
+        onChange={handleCommentChange}
+        multiline
+        rows={1}
+      />
+
+
+<Button variant="contained" onClick={handleCommentSubmit} sx={{ marginTop: 1, marginBottom: 1,  backgroundColor: 'brown', color: 'white' }}>
+  Publish Comment
+</Button>
+
+    </Box>
+
+
+
     </Card>
   )
 }
+

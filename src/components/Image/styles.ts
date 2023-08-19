@@ -8,17 +8,22 @@ export const CustomImg = styled.img<{ $variant: 'default' | 'logoHeader'}>`
   margin: 0 auto;
 
 
+
+
   ${(props) => {
     switch (props.$variant) {
       case 'logoHeader':
         return `
-       
+
         height: 70px;
-      
         float: left;
         margin-left: 10px;
-       
-        `;
+
+
+
+`;
+
+
 
       default:
         return ''; 
