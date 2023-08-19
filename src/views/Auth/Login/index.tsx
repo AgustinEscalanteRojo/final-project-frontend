@@ -34,7 +34,7 @@ const Login: FC<Props> = ({ onLogin }) => {
       <VideoBackground videoSrc="/cocina.mp4" />
       <Paper elevation={10} style={paperStyle}>
         <Grid container alignContent="center">
-          <Avatar style={avatarStyle}>
+          <Avatar src="/logoicon.jpg" style={avatarStyle}>
             <LockOutlinedIcon />
           </Avatar>
           <h3>SharedFlavours</h3>

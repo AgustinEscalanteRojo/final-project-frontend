@@ -24,7 +24,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
       <VideoBackground videoSrc="/cocina.mp4" />
       <Paper elevation={10} style={paperStyle}>
         <Grid container alignContent="center">
-          <Avatar style={avatarStyle}>
+        <Avatar src="/logoicon.jpg" style={avatarStyle}>
             <LockOutlinedIcon />
           </Avatar>
           <h2>SharedFlavours</h2>
