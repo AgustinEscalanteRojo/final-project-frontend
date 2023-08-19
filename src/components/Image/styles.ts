@@ -1,12 +1,9 @@
-import { styled } from 'styled-components';
+import { styled } from 'styled-components'
 
-
-export const CustomImg = styled.img<{ $variant: 'default' | 'logoHeader'}>`
-
+export const CustomImg = styled.img<{ $variant: 'default' | 'logoHeader' }>`
   max-height: 300px;
   display: block;
   margin: 0 auto;
-
 
   ${(props) => {
     switch (props.$variant) {
@@ -17,11 +14,18 @@ export const CustomImg = styled.img<{ $variant: 'default' | 'logoHeader'}>`
       
         float: left;
         margin-left: 10px;
-       
-        `;
+        
+        @media (max-width: 768px) {
+          align-items: center;
+          display: flex;
+          max-height: 200px;
+          max-width: 100%; /* El logotipo no superará el ancho del contenedor */
+          margin: 0 auto; /* Centra horizontalmente */
+          }
+        `
 
       default:
-        return ''; 
+        return ''
     }
   }}
-`;
+`
