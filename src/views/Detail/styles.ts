@@ -14,6 +14,10 @@ export const DetailsContainer = styled.div`
 
 export const Content = styled.div`
   /* Estilos para el contenido, si es necesario */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
 `
 
 export const Backgroundcolor = styled.div`

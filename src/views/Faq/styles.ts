@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 import theme from '../../styles/theme'
 
-export const PerfilContainer = styled.div`
+export const FaqContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `
 
 export const Content = styled.div`
-  margin-top: 18px;
-  padding: 16px;
-  color: ${theme.colors.white};
+  margin-top: 100px;
+  padding: 100px;
+  color: ${theme.colors.pastelCoral};
   display: flex;
   justify-content: center;
 `
