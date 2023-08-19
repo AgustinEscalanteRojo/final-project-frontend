@@ -41,6 +41,7 @@
 //   gap: 10px;
 // `
 
+//19/08/2023
 import styled from 'styled-components'
 import theme from '../../styles/theme'
 import IconButton from '@mui/material/IconButton'
@@ -52,7 +53,6 @@ export const MobileIconButton = styled(IconButton)`
 
 export const Container = styled.header`
   display: flex;
-  flex-direction: column;
   background-color: ${theme.colors.black};
   border-bottom: 2px solid ${theme.colors.buff};
   width: 100%;
@@ -88,8 +88,9 @@ export const SearchButton = styled(IconButton)`
   display: none;
 
   @media (min-width: 768px) {
-    display: flex; 
-    align-items: center; 
+
+    display: flex;
+    align-items: center;
     gap: 10px;
   }
 `
@@ -108,9 +109,9 @@ export const SearchArea = styled.div`
     display: block;
     position: absolute;
     top: 100%;
-    left: 50%; /* Centrar el área de búsqueda horizontalmente */
-    transform: translateX(-50%); /* Desplazarla hacia la izquierda */
-    background-color: ${theme.colors.black}; /* Mantener el fondo negro */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: ${theme.colors.black};
     padding: 10px;
   }
 `

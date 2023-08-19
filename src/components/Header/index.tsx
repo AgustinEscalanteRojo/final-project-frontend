@@ -80,6 +80,7 @@
 
 // export default memo(Header)
 
+//19/08/2023
 import React, { FC, memo, useCallback, useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import type { Props } from './types'
@@ -90,8 +91,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LogoutIcon from '@mui/icons-material/Logout'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
-import { ButtonController, Container, MobileButtonController } from './styles'
-import { MobileIconButton, SearchArea } from './styles'
+import {
+  ButtonController,
+  Container,
+  MobileButtonController,
+  MobileIconButton,
+  SearchArea,
+} from './styles'
 
 const Header: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -115,7 +121,7 @@ const Header: FC<Props> = ({ onLogout }) => {
   }
 
   const toggleSearch = () => {
-    setIsSearchOpen((prevState) => !prevState) // Cambia el estado del área de búsqueda
+    setIsSearchOpen((prevState) => !prevState)
   }
 
   useEffect(() => {
@@ -139,45 +145,57 @@ const Header: FC<Props> = ({ onLogout }) => {
         {isMobileView ? (
           <MobileButtonController>
             <IconButton size="large" onClick={toggleMobileMenu}>
-              <MenuIcon sx={{ color: 'white', fontSize: 40 }} />
+              <MenuIcon sx={{ color: 'green', fontSize: 40 }} />
             </IconButton>
             {isMobileMenuOpen && (
               <div>
                 <MobileIconButton size="large" onClick={handleGoToProfile}>
-                  <AccountCircleIcon sx={{ color: 'white', fontSize: 40 }} />
+                  <AccountCircleIcon sx={{ color: 'red', fontSize: 40 }} />
                 </MobileIconButton>
                 <MobileIconButton size="large" onClick={handleLogout}>
-                  <LogoutIcon sx={{ color: 'white', fontSize: 40 }} />
+                  <LogoutIcon sx={{ color: 'yellow', fontSize: 40 }} />
                 </MobileIconButton>
+                <IconButton size="large" onClick={toggleSearch}>
+                  <SearchIcon sx={{ color: 'orange', fontSize: 40 }} />
+                </IconButton>
+                {isSearchOpen && (
+                  <SearchArea>
+                    <input
+                      type="text"
+                      placeholder="Buscar recetas..."
+                      // value={searchQuery}
+                      // onChange={handleSearchChange}
+                    />
+                  </SearchArea>
+                )}
               </div>
             )}
           </MobileButtonController>
         ) : (
           <>
             <IconButton size="large" onClick={handleGoToProfile}>
-              <AccountCircleIcon sx={{ color: 'white', fontSize: 40 }} />
+              <AccountCircleIcon sx={{ color: 'brown', fontSize: 40 }} />
             </IconButton>
             <MobileIconButton size="large" onClick={handleLogout}>
-              <LogoutIcon sx={{ color: 'white', fontSize: 40 }} />
+              <LogoutIcon sx={{ color: 'gray', fontSize: 40 }} />
             </MobileIconButton>
             {/* Nuevo botón de búsqueda */}
             <IconButton size="large" onClick={toggleSearch}>
               <SearchIcon sx={{ color: 'white', fontSize: 40 }} />
             </IconButton>
+            {isSearchOpen && (
+              <SearchArea>
+                <input
+                  type="text"
+                  placeholder="Buscar recetas..."
+                  // value={searchQuery}
+                  // onChange={handleSearchChange}
+                />
+              </SearchArea>
+            )}
           </>
         )}
       </ButtonController>
-      {/* Área de búsqueda */}
-      {isSearchOpen && (
-        <SearchArea>
-          <input
-            type="text"
-            placeholder="Buscar recetas..."
-            // value={searchQuery}
-            // onChange={handleSearchChange}
-          />
-        </SearchArea>
-      )}
     </Container>
   )
 }
