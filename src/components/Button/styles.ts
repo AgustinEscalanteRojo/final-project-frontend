@@ -13,6 +13,7 @@ export const CustomButton = styled.button<{ $variant: Props['variant'] }>`
   border: none;
   font-size: 13px;
   font-weight: bold;
+  margin-top: 100px;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
   min-width: 130px;
