@@ -17,6 +17,7 @@ import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
+import { Avatar } from '@material-ui/core'
 
 const Profile: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -31,13 +32,22 @@ const Profile: FC<Props> = ({ onLogout }) => {
     setValue(newValue)
   }
 
+  // const avatarStyle = { backgroundColor: '#c9101d' }
+
   return (
+
     <PerfilContainer>
+
       <Header onLogout={onLogout} />
+
+      <Avatar style={{ backgroundColor: '#c9101d', marginTop: '150px' }}></Avatar>
 
       <ButtonController>
         <Button onClick={handleGoToFollowers}>Followers / Following</Button>
       </ButtonController>
+
+
+
       <Content>
         <Box sx={{ marginTop: 7, width: '100%', typography: 'body1' }}>
           <TabContext value={value}>
