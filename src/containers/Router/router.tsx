@@ -11,7 +11,7 @@ import Login from '../../views/Auth/Login'
 import Dashboard from '../../views/Dashboard'
 import Profile from '../../views/Profile'
 import Followers from '../../views/Followers'
-import Post from '../../views/Post'
+import CreatePost from '../../views/CreatePost'
 import Detail from '../../views/Detail'
 import Faq from '../../views/Faq'
 import { getToken } from '../../services/storage/token'
@@ -122,10 +122,10 @@ const Router: FC = () => {
         />
 
         <Route
-          path="/post"
+          path="/create-post"
           element={
             <ProtectedRoutes>
-              <Post onLogout={recreateLogOut} />
+              <CreatePost onLogout={recreateLogOut} />
             </ProtectedRoutes>
           }
         />
