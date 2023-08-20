@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import theme from '../../styles/theme';
+import theme from '../../styles/theme'
 
 export const PerfilContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; 
-
+  align-items: center;
+  justify-content: flex-start;
 `
 
 export const Content = styled.div`
@@ -14,15 +14,12 @@ export const Content = styled.div`
   color: ${theme.colors.white};
   display: flex;
   justify-content: center;
-  
-`;
-
-
+`
 
 export const ButtonController = styled.div`
   display: flex;
   flex-flow: row wrap;
-  
+
   gap: 10px;
   margin-top: 120px;
   margin-right: 10px;
@@ -36,4 +33,4 @@ export const Backgroundcolor = styled.div`
   height: 100%;
   z-index: -1;
   background-color: ${theme.colors.pastelLilac};
-`;
+`
