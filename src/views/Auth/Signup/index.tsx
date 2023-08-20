@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, memo, useState } from 'react'
 import Footer from '../../../components/Footer'
 import VideoBackground from '../../../components/VideoBackground'
 import useLogic from './logic'
@@ -10,6 +10,10 @@ import {
   TextField,
   Button,
   Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import { Link } from 'react-router-dom'
@@ -26,6 +30,8 @@ const Signup: FC<Props> = ({ onSignup }) => {
   }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
   const btnstyle = { margin: '22px 0' }
+
+  const [gender, setGender] = useState('')
 
   return (
     <Grid>
@@ -94,9 +100,38 @@ const Signup: FC<Props> = ({ onSignup }) => {
           required
         />
         <TextField
-          label="Gender"
-          placeholder="Enter gender"
-          type="gender"
+          label="City"
+          placeholder="Enter city"
+          type="city"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <FormControl fullWidth variant="outlined" required>
+          <InputLabel id="gender-label">Gender</InputLabel>
+          <Select
+            labelId="gender-label"
+            label="Gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value as string)}
+          >
+            <MenuItem value="male">Male</MenuItem>
+            <MenuItem value="female">Female</MenuItem>
+            <MenuItem value="non-binary">Non-Binary</MenuItem>
+          </Select>
+        </FormControl>
+        <TextField
+          label="Biography"
+          placeholder="Write a brief biography"
+          type="biography"
+          variant="outlined"
+          fullWidth
+          required
+        />
+        <TextField
+          label="Avatar"
+          placeholder="Please select an avatar"
+          type="avatar"
           variant="outlined"
           fullWidth
           required
