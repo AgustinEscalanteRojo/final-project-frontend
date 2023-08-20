@@ -7,8 +7,8 @@ export const PostContainer = styled.div`
 
 export const Content = styled.div`
 margin-top: 200px;
-margin-left: 100px;
-margin-right: 100px;
+margin-left: 50px;
+margin-right: 50px;
 overflow: auto;
 `;
 
