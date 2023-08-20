@@ -16,6 +16,21 @@ import {
   Checkbox,
 } from '@mui/material'
 
+import celeryIcon from '../../icons/celeryAllergensIcon.png'
+import crustaceansIcon from '../../icons/crustaceansAllergensIcon.png'
+import dairyIcon from '../../icons/dairyAllergensIcon.png'
+import eggsIcon from '../../icons/eggsAllergensIcon.png'
+import fishIcon from '../../icons/fishAllergensIcon.png'
+import glutenIcon from '../../icons/glutenAllergensIcon.png'
+import lupinsIcon from '../../icons/lupinsAllergensIcon.png'
+import mollusksIcon from '../../icons/mollusksAllergensIcon.png'
+import mustardIcon from '../../icons/mustardAllergensIcon.png'
+import nutsIcon from '../../icons/nutsinshellAllergensIcon.png'
+import peanutsIcon from '../../icons/peanutsAllergensIcon.png'
+import sesameIcon from '../../icons/sesameAllergensIcon.png'
+import soyIcon from '../../icons/soyAllergensIcon.png'
+import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
+
 import type { Props } from './types'
 
 import { normalizePost, postResponse, PostInput } from '../../models/Post'
@@ -28,7 +43,7 @@ type Allergen =
   | 'Peanuts'
   | 'Soy'
   | 'Dairy'
-  | 'Nuts in shell'
+  | 'Nuts'
   | 'Celery'
   | 'Mustard'
   | 'Sesame'
@@ -37,23 +52,40 @@ type Allergen =
   | 'Mollusks'
 
 const allergensList: Allergen[] = [
-  'Gluten',
+  'Celery',
   'Crustaceans',
+  'Dairy',
   'Eggs',
   'Fish',
-  'Peanuts',
-  'Soy',
-  'Dairy',
-  'Nuts in shell',
-  'Celery',
-  'Mustard',
-  'Sesame',
-  'Sulphites',
+  'Gluten',
   'Lupins',
   'Mollusks',
+  'Mustard',
+  'Nuts',
+  'Peanuts',
+  'Sesame',
+  'Soy',
+  'Sulphites',
 ]
 
-const numberOptions = Array.from({ length: 10 }, (_, index) => index + 1);
+const allergyIcons: Record<string, string> = {
+  Celery: celeryIcon,
+  Crustaceans: crustaceansIcon,
+  Dairy: dairyIcon,
+  Eggs: eggsIcon,
+  Fish: fishIcon,
+  Gluten: glutenIcon,
+  Lupins: lupinsIcon,
+  Mollusks: mollusksIcon,
+  Mustard: mustardIcon,
+  Nuts: nutsIcon,
+  Peanuts: peanutsIcon,
+  Sesame: sesameIcon,
+  Soy: soyIcon,
+  Sulphites: sulphitesIcon,
+}
+
+const numberOptions = Array.from({ length: 10 }, (_, index) => index + 1)
 
 const CreatePost: FC<Props> = ({ onLogout }) => {
   const [formData, setFormData] = useState<PostInput>({
@@ -146,27 +178,27 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
               rows={5}
             />
 
-<TextField
-        style={{ marginTop: '26px' }}
-        label="Order"
-        name="order"
-        value={formData.order}
-        onChange={handleFormChange}
-        fullWidth
-        select
-        SelectProps={{
-          native: true,
-        }}
-      >
-        <option value="" disabled>
-          Select an option
-        </option>
-        {numberOptions.map((number) => (
-          <option key={number} value={number}>
-            {number}
-          </option>
-        ))}
-      </TextField>
+            <TextField
+              style={{ marginTop: '26px' }}
+              label="Order"
+              name="order"
+              value={formData.order}
+              onChange={handleFormChange}
+              fullWidth
+              select
+              SelectProps={{
+                native: true,
+              }}
+            >
+              <option value="" disabled>
+                Select an option
+              </option>
+              {numberOptions.map((number) => (
+                <option key={number} value={number}>
+                  {number}
+                </option>
+              ))}
+            </TextField>
 
             <FormControl fullWidth style={{ marginTop: '26px' }}>
               <InputLabel>Difficulty</InputLabel>
@@ -199,10 +231,17 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                   <Grid item xs={4} key={allergen}>
                     <FormControlLabel
                       control={
-                        <Checkbox
-                          checked={formData.allergies.includes(allergen)}
-                          onChange={handleAllergenChange(allergen)}
-                        />
+                        <>
+                          <Checkbox
+                            checked={formData.allergies.includes(allergen)}
+                            onChange={handleAllergenChange(allergen)}
+                          />
+                          <img
+                            src={allergyIcons[allergen]}
+                            alt={`${allergen} icon`}
+                            style={{ width: '30px', marginLeft: '2px' }}
+                          />
+                        </>
                       }
                       label={allergen}
                     />
@@ -219,7 +258,12 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
               fullWidth
             />
 
-            <Button type="submit" style={{ marginBottom: '96px', marginTop: '20px' }}>Post recipe</Button >
+            <Button
+              type="submit"
+              style={{ marginBottom: '96px', marginTop: '20px' }}
+            >
+              Post recipe
+            </Button>
           </form>
         </Content>
       </Backgroundcolor>
