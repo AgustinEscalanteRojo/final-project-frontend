@@ -1,13 +1,35 @@
 import { FC, memo } from 'react'
-import { Container, Message, Title } from './styles';
+import { Link } from 'react-router-dom'
+import { Box, Button, Typography } from '@mui/material'
+import { purple } from '@mui/material/colors'
 
-const NotFound : FC = () => {
+const primary = purple[500]
+
+const NotFound: FC = () => {
   return (
-    <Container>
-      <Title>Error 404</Title>
-      <Message>page not found</Message>
-    </Container>
-  );
-};
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        backgroundColor: primary,
+      }}
+    >
+      <Typography variant="h1" style={{ color: 'white' }}>
+        404
+      </Typography>
+      <Typography variant="h4" style={{ color: 'white' }}>
+        The page you’re looking for doesn’t exist.
+      </Typography>
+      <Button variant="contained">
+        <Typography>
+          <Link to="/signup">Back Home</Link>
+        </Typography>
+      </Button>
+    </Box>
+  )
+}
 
-export default memo (NotFound)
+export default memo(NotFound)
