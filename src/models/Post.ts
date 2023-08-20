@@ -6,7 +6,7 @@ export type postResponse = {
   type: 'Salad' | 'Dessert' | 'Breakfast';
   duration: string;
   difficulty: 'Easy' | 'Moderate' | 'Difficult';
-  allergies: ('Gluten' | 'Crustaceans' | 'Eggs' | 'Fish' | 'Peanuts' | 'Soy' | 'Dairy' | 'Nuts in shell' | 'Celery' | 'Mustard' | 'Sesame' | 'Sulphites' | 'Lupins' | 'Mollusks')[];
+  allergies: 'Gluten' | 'Crustaceans' | 'Eggs' | 'Fish' | 'Peanuts' | 'Soy' | 'Dairy' | 'Nuts in shell' | 'Celery' | 'Mustard' | 'Sesame' | 'Sulphites' | 'Lupins' | 'Mollusks'[];
   description?: string;
   ingredients: {
     name: string;

@@ -3,8 +3,17 @@ import Footer from '../../../components/Footer'
 import VideoBackground from '../../../components/VideoBackground'
 import useLogic from './logic'
 import { Props } from './types'
-import { Grid, Paper, Avatar, TextField, Button } from '@material-ui/core'
+import {
+  Grid,
+  Paper,
+  Avatar,
+  TextField,
+  Button,
+  Typography,
+} from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import { Link } from 'react-router-dom'
+import Login from '../Login'
 
 const Signup: FC<Props> = ({ onSignup }) => {
   const { handleOnSubmit } = useLogic(onSignup)
@@ -21,10 +30,10 @@ const Signup: FC<Props> = ({ onSignup }) => {
   return (
     <Grid>
       <Footer />
-      <VideoBackground videoSrc="/cocina.mp4" />
+      <VideoBackground videoSrc="/back.mp4" />
       <Paper elevation={10} style={paperStyle}>
         <Grid container alignContent="center">
-        <Avatar src="/logoicon.jpg" style={avatarStyle}>
+          <Avatar src="/logoicon.jpg" style={avatarStyle}>
             <LockOutlinedIcon />
           </Avatar>
           <h2>SharedFlavours</h2>
@@ -100,6 +109,17 @@ const Signup: FC<Props> = ({ onSignup }) => {
           fullWidth
         >
           Sign up
+        </Button>
+        <Button
+          type="submit"
+          color="secondary"
+          variant="contained"
+          style={btnstyle}
+          fullWidth
+        >
+          <Typography>
+            <Link to="/login">Log in</Link>
+          </Typography>
         </Button>
       </Paper>
     </Grid>
