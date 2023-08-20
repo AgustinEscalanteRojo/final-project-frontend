@@ -14,8 +14,8 @@ import Followers from '../../views/Followers'
 import CreatePost from '../../views/CreatePost'
 import Detail from '../../views/Detail'
 import Faq from '../../views/Faq'
+import NotFound from '../../views/NotFound'
 import { getToken } from '../../services/storage/token'
-
 
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -144,6 +144,14 @@ const Router: FC = () => {
           element={
             <ProtectedRoutes>
               <Faq onLogout={recreateLogOut} />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/404"
+          element={
+            <ProtectedRoutes>
+              <NotFound />
             </ProtectedRoutes>
           }
         />
