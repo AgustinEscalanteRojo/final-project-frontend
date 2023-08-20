@@ -15,6 +15,21 @@ import Select, { SelectChangeEvent } from '@mui/material/Select'
 import Checkbox from '@mui/material/Checkbox'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
+import Box from '@mui/material/Box'
+import celeryIcon from '../../icons/celeryAllergensIcon.png'
+import crustaceansIcon from '../../icons/crustaceansAllergensIcon.png'
+import dairyIcon from '../../icons/dairyAllergensIcon.png'
+import eggsIcon from '../../icons/eggsAllergensIcon.png'
+import fishIcon from '../../icons/fishAllergensIcon.png'
+import glutenIcon from '../../icons/glutenAllergensIcon.png'
+import lupinsIcon from '../../icons/lupinsAllergensIcon.png'
+import mollusksIcon from '../../icons/mollusksAllergensIcon.png'
+import mustardIcon from '../../icons/mustardAllergensIcon.png'
+import nutsIcon from '../../icons/nutsinshellAllergensIcon.png'
+import peanutsIcon from '../../icons/peanutsAllergensIcon.png'
+import sesameIcon from '../../icons/sesameAllergensIcon.png'
+import soyIcon from '../../icons/soyAllergensIcon.png'
+import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
 
 const allergiesOptions = [
   'Celery',
@@ -26,12 +41,29 @@ const allergiesOptions = [
   'Lupins',
   'Mollusks',
   'Mustard',
-  'Nuts in shell',
+  'Nuts',
   'Peanuts',
   'Sesame',
   'Soy',
   'Sulphites',
 ]
+
+const allergyIcons: Record<string, string> = {
+  Celery: celeryIcon,
+  Crustaceans: crustaceansIcon,
+  Dairy: dairyIcon,
+  Eggs: eggsIcon,
+  Fish: fishIcon,
+  Gluten: glutenIcon,
+  Lupins: lupinsIcon,
+  Mollusks: mollusksIcon,
+  Mustard: mustardIcon,
+  Nuts: nutsIcon,
+  Peanuts: peanutsIcon,
+  Sesame: sesameIcon,
+  Soy: soyIcon,
+  Sulphites: sulphitesIcon,
+}
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -70,6 +102,13 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
                 <ListItemIcon>
                   <Checkbox checked={allergies.indexOf(allergy) > -1} />
                 </ListItemIcon>
+                <Box sx={{ width: 45, height: 45 }}>
+                  <img
+                    src={allergyIcons[allergy]}
+                    alt={allergy}
+                    style={{ width: '100%', height: '100%' }}
+                  />
+                </Box>
                 <ListItemText primary={allergy} />
               </MenuItem>
             ))}
