@@ -42,7 +42,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
   };
 
   const handleGoToPost = useCallback(() => {
-    navigate('/post')
+    navigate('/create-post')
   }, [navigate])
 
   return (

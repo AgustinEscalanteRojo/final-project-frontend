@@ -2,11 +2,14 @@ import styled from 'styled-components'
 import theme from '../../styles/theme';
 
 export const PostContainer = styled.div`
-
+  overflow: auto;
 `;
 
 export const Content = styled.div`
-
+margin-top: 200px;
+margin-left: 50px;
+margin-right: 50px;
+overflow: auto;
 `;
 
 export const Backgroundcolor = styled.div`
@@ -16,5 +19,6 @@ export const Backgroundcolor = styled.div`
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: ${theme.colors.pastelMint};
+  overflow: auto;
+  background-color: ${theme.colors.beige};
 `;
