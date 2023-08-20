@@ -63,19 +63,19 @@ export default function RecipeReviewCard() {
 
 
   return (
-    <Card sx={{ maxWidth: 800, backgroundColor: 'rgba(255, 255, 255, 0.911)', marginTop: 4,  marginBottom: 32 }}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"></Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Paella de Gambas y Chorizo"
-        subheader="September 14, 2022"
-      />
+<Card sx={{ width: '100%', maxWidth: 800, backgroundColor: 'rgba(255, 255, 255, 0.911)', marginTop: 4, marginBottom: 32 }}>
+  <CardHeader
+    avatar={
+      <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"></Avatar>
+    }
+    action={
+      <IconButton aria-label="settings">
+        <MoreVertIcon />
+      </IconButton>
+    }
+    title="Paella de Gambas y Chorizo"
+    subheader="September 14, 2022"
+  />
 
 <Image src="/arroz.mariscos.jpg" alt="arroz mariscos.jpg" />
 
