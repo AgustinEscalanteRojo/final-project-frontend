@@ -31,7 +31,7 @@ const Login: FC<Props> = ({ onLogin }) => {
   return (
     <Grid>
       <Footer />
-      <VideoBackground videoSrc="/cocina.mp4" />
+      <VideoBackground videoSrc="/back.mp4" />
       <Paper elevation={10} style={paperStyle}>
         <Grid container alignContent="center">
           <Avatar src="/logoicon.jpg" style={avatarStyle}>
