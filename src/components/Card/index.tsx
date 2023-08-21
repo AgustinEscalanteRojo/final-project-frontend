@@ -16,7 +16,7 @@ import ShareIcon from '@mui/icons-material/Share'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import SendIcon from '@mui/icons-material/Send'
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt'
 
 // import de  comentario MI
 import Box from '@mui/material/Box'
@@ -59,13 +59,21 @@ export default function RecipeReviewCard() {
   }
 
   // like
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState(false)
 
   const handleLikeClick = () => {
-    setLiked(!liked);
+    setLiked(!liked)
+  }
+
+
+  const [favorited, setFavorited] = useState(false);
+
+  const handleFavoriteClick = () => {
+    setFavorited(!favorited);
   };
 
-  
+
+
   return (
     <Card
       sx={{
@@ -99,15 +107,16 @@ export default function RecipeReviewCard() {
         </Typography>
       </CardContent>
 
-
-
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
-        <ThumbUpAltIcon color={liked ? 'primary' : 'inherit'} />
+
+  <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
+        <FavoriteIcon color={favorited ? 'error' : 'inherit'} />
       </IconButton>
+
+        <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
+          <ThumbUpAltIcon color={liked ? 'primary' : 'inherit'} />
+        </IconButton>
+
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
@@ -121,18 +130,15 @@ export default function RecipeReviewCard() {
         </ExpandMore>
       </CardActions>
 
-
-
-
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
-          1º Calienta 1/2 taza del caldo en una olla hasta que hierva a fuego
+            1º Calienta 1/2 taza del caldo en una olla hasta que hierva a fuego
             lento, agrega el azafrán y deja reposar por 10 minutos.
           </Typography>
           <Typography paragraph>
-             2º Caliente el aceite en una paellera (de 14 a 16 pulgadas) o en una
+            2º Caliente el aceite en una paellera (de 14 a 16 pulgadas) o en una
             sartén grande y profunda a fuego medio-alto. Agregue el pollo, los
             camarones y el chorizo, y cocine, revolviendo ocasionalmente hasta
             que estén ligeramente dorados, de 6 a 8 minutos. Transfiera los
@@ -161,50 +167,46 @@ export default function RecipeReviewCard() {
       </Collapse>
 
       <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'row', 
-        alignItems: 'center',
-        marginLeft: 3,
-        marginRight: 3,
-        marginBottom: 3,
-      }}
-    >
-      <TextField
-        fullWidth
-        label="Comment"
-        id="comment"
-        value={comment}
-        onChange={handleCommentChange}
-        multiline
-        rows={1}
-      />
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginLeft: 3,
+          marginRight: 3,
+          marginBottom: 3,
+        }}
+      >
+        <TextField
+          fullWidth
+          label="Comment"
+          id="comment"
+          value={comment}
+          onChange={handleCommentChange}
+          multiline
+          rows={1}
+        />
 
-
-<Button
-  size="small"
-  variant="contained"
-  onClick={handleCommentSubmit}
-  sx={{
-    marginLeft: 1,
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: '#45A049',
-    },
-    height: 53,
-    // Estilos adicionales para el icono
-    '& .MuiButton-startIcon': {
-      fontSize: 44, // Tamaño del icono
-      margin: '0 auto', // Centrar el icono horizontalmente
-    },
-  }}
-  startIcon={<SendIcon />}
->
-
-</Button>
-
-    </Box>
+        <Button
+          size="small"
+          variant="contained"
+          onClick={handleCommentSubmit}
+          sx={{
+            marginLeft: 1,
+            backgroundColor: '#4CAF50',
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#45A049',
+            },
+            height: 53,
+            // Estilos adicionales para el icono
+            '& .MuiButton-startIcon': {
+              fontSize: 44, // Tamaño del icono
+              margin: '0 auto', // Centrar el icono horizontalmente
+            },
+          }}
+          startIcon={<SendIcon />}
+        ></Button>
+      </Box>
     </Card>
   )
 }
