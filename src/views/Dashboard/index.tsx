@@ -110,6 +110,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <Card />
 
       <ContainerAllergies>
+        
         <FormControl
           sx={{ minWidth: 220, marginLeft: '20px', backgroundColor: 'white' }}
         >
