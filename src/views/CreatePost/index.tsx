@@ -1,8 +1,8 @@
 import React, { FC, memo, useState, ChangeEvent, FormEvent } from 'react'
-import { PostContainer, Content, Backgroundcolor } from './styles'
+import { PostContainer, Content } from './styles'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-
+import ImageBackground from '../../components/ImageBackground'
 import {
   SelectChangeEvent,
   TextField,
@@ -138,136 +138,142 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
     // ...
   }
 
+
+  const [steps, setSteps] = useState<string[]>([]);
+
+
   return (
     <PostContainer>
       <Header onLogout={onLogout} />
-      <Backgroundcolor>
-        <Content>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              style={{ marginTop: '26px' }}
-              label="Title"
-              name="title"
-              value={formData.title}
-              onChange={handleFormChange}
-              required
-              fullWidth
-            />
 
-            <FormControl fullWidth style={{ marginTop: '26px' }}>
-              <InputLabel>Type</InputLabel>
-              <Select
-                name="type"
-                value={formData.type}
-                onChange={handleSelectChange('type')}
-              >
-                <MenuItem value="Salad">Salad</MenuItem>
-                <MenuItem value="Breakfast">Breakfast</MenuItem>
-                <MenuItem value="Dessert">Dessert</MenuItem>
-              </Select>
-            </FormControl>
+      <Content>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            style={{ marginTop: '26px' }}
+            label="Title"
+            name="title"
+            value={formData.title}
+            onChange={handleFormChange}
+            required
+            fullWidth
+          />
 
-            <TextField
-              style={{ marginTop: '26px' }}
-              label="Description"
-              name="description"
-              value={formData.description}
-              onChange={handleFormChange}
-              fullWidth
-              multiline
-              rows={5}
-            />
-
-            <TextField
-              style={{ marginTop: '26px' }}
-              label="Order"
-              name="order"
-              value={formData.order}
-              onChange={handleFormChange}
-              fullWidth
-              select
-              SelectProps={{
-                native: true,
-              }}
+          <FormControl fullWidth style={{ marginTop: '26px' }}>
+            <InputLabel>Type</InputLabel>
+            <Select
+              name="type"
+              value={formData.type}
+              onChange={handleSelectChange('type')}
             >
-              <option value="" disabled>
-                Select an option
+              <MenuItem value="Salad">Salad</MenuItem>
+              <MenuItem value="Breakfast">Breakfast</MenuItem>
+              <MenuItem value="Dessert">Dessert</MenuItem>
+            </Select>
+          </FormControl>
+
+          <TextField
+            style={{ marginTop: '26px' }}
+            label="Description"
+            name="description"
+            value={formData.description}
+            onChange={handleFormChange}
+            fullWidth
+            multiline
+            rows={5}
+          />
+
+          <TextField
+            style={{ marginTop: '26px' }}
+            label="Order"
+            name="order"
+            value={formData.order}
+            onChange={handleFormChange}
+            fullWidth
+            select
+            SelectProps={{
+              native: true,
+            }}
+          >
+            <option value="" disabled>
+              Select an option
+            </option>
+            {numberOptions.map((number) => (
+              <option key={number} value={number}>
+                {number}
               </option>
-              {numberOptions.map((number) => (
-                <option key={number} value={number}>
-                  {number}
-                </option>
+            ))}
+          </TextField>
+
+          <FormControl fullWidth style={{ marginTop: '26px' }}>
+            <InputLabel>Difficulty</InputLabel>
+            <Select
+              name="difficulty"
+              value={formData.difficulty}
+              onChange={handleSelectChange('difficulty')}
+            >
+              <MenuItem value="Easy">Easy</MenuItem>
+              <MenuItem value="Moderate">Intermediate</MenuItem>
+              <MenuItem value="Difficult">Advanced</MenuItem>
+            </Select>
+          </FormControl>
+
+          <TextField
+            style={{ marginTop: '26px' }}
+            label="Duration"
+            name="duration"
+            value={formData.duration}
+            onChange={handleFormChange}
+            fullWidth
+          />
+
+          <FormControl
+            fullWidth
+            style={{ marginTop: '26px', marginBottom: '26px' }}
+          >
+            <Grid container spacing={2}>
+              {allergensList.map((allergen) => (
+                <Grid item xs={4} key={allergen}>
+                  <FormControlLabel
+                    control={
+                      <>
+                        <Checkbox
+                          checked={formData.allergies.includes(allergen)}
+                          onChange={handleAllergenChange(allergen)}
+                        />
+                        <img
+                          src={allergyIcons[allergen]}
+                          alt={`${allergen} icon`}
+                          style={{ width: '30px', marginLeft: '2px' }}
+                        />
+                      </>
+                    }
+                    label={allergen}
+                  />
+                </Grid>
               ))}
-            </TextField>
+            </Grid>
+          </FormControl>
 
-            <FormControl fullWidth style={{ marginTop: '26px' }}>
-              <InputLabel>Difficulty</InputLabel>
-              <Select
-                name="difficulty"
-                value={formData.difficulty}
-                onChange={handleSelectChange('difficulty')}
-              >
-                <MenuItem value="Easy">Easy</MenuItem>
-                <MenuItem value="Moderate">Intermediate</MenuItem>
-                <MenuItem value="Difficult">Advanced</MenuItem>
-              </Select>
-            </FormControl>
+          <TextField
+            label="Main Image URL"
+            name="mainImage"
+            value={formData.mainImage}
+            onChange={handleFormChange}
+            fullWidth
+          />
 
-            <TextField
-              style={{ marginTop: '26px' }}
-              label="Duration"
-              name="duration"
-              value={formData.duration}
-              onChange={handleFormChange}
-              fullWidth
-            />
 
-            <FormControl
-              fullWidth
-              style={{ marginTop: '26px', marginBottom: '26px' }}
-            >
-              <Grid container spacing={2}>
-                {allergensList.map((allergen) => (
-                  <Grid item xs={4} key={allergen}>
-                    <FormControlLabel
-                      control={
-                        <>
-                          <Checkbox
-                            checked={formData.allergies.includes(allergen)}
-                            onChange={handleAllergenChange(allergen)}
-                          />
-                          <img
-                            src={allergyIcons[allergen]}
-                            alt={`${allergen} icon`}
-                            style={{ width: '30px', marginLeft: '2px' }}
-                          />
-                        </>
-                      }
-                      label={allergen}
-                    />
-                  </Grid>
-                ))}
-              </Grid>
-            </FormControl>
+          <Button
+            type="submit"
+            style={{ marginBottom: '96px', marginTop: '20px' }}
+          >
+            Post recipe
+          </Button>
+        </form>
+      </Content>
 
-            <TextField
-              label="Main Image URL"
-              name="mainImage"
-              value={formData.mainImage}
-              onChange={handleFormChange}
-              fullWidth
-            />
-
-            <Button
-              type="submit"
-              style={{ marginBottom: '96px', marginTop: '20px' }}
-            >
-              Post recipe
-            </Button>
-          </form>
-        </Content>
-      </Backgroundcolor>
       <Footer />
+      <ImageBackground imageSrc="/back.jpg" />
     </PostContainer>
   )
 }
