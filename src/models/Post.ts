@@ -46,9 +46,9 @@ export type postResponse = {
 }
 
 export type PostInput = {
-  order: unknown
-  _id: string
-  userId: string
+  order?: unknown
+  _id?: string
+  userId?: string
   mainImage?: string
   title: string
   type: 'Salad' | 'Dessert' | 'Breakfast'
@@ -91,7 +91,7 @@ export type PostInput = {
     order: number
     image: string[]
   }[]
-  createdAt: Date
+  createdAt?: Date
 }
 
 export const normalizePost = (input: postResponse | PostInput) => ({

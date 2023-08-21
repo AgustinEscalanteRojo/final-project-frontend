@@ -32,8 +32,7 @@ import soyIcon from '../../icons/soyAllergensIcon.png'
 import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
 
 import type { Props } from './types'
-
-import { normalizePost, postResponse, PostInput } from '../../models/Post'
+import { normalizePost, PostInput } from '../../models/Post'
 
 type Allergen =
   | 'Gluten'
@@ -226,10 +225,13 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
             fullWidth
           />
 
+
+
+
+
           <FormControl
             fullWidth
-            style={{ marginTop: '26px', marginBottom: '26px' }}
-          >
+            style={{ marginTop: '26px', marginBottom: '26px' }}>
             <Grid container spacing={2}>
               {allergensList.map((allergen) => (
                 <Grid item xs={4} key={allergen}>
@@ -253,6 +255,8 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
               ))}
             </Grid>
           </FormControl>
+
+
 
           <TextField
             label="Main Image URL"

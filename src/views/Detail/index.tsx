@@ -14,7 +14,7 @@ const Post: FC<Props> = ({ onLogout }) => {
     <DetailsContainer>
       <Header onLogout={onLogout} />
       <Content>
-        <Backgroundcolor />
+
       </Content>
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
