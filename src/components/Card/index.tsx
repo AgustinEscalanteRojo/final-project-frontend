@@ -16,6 +16,7 @@ import ShareIcon from '@mui/icons-material/Share'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import SendIcon from '@mui/icons-material/Send'
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 // import de  comentario MI
 import Box from '@mui/material/Box'
@@ -57,6 +58,13 @@ export default function RecipeReviewCard() {
     setComment('')
   }
 
+  // like
+  const [liked, setLiked] = useState(false);
+
+  const handleLikeClick = () => {
+    setLiked(!liked);
+  };
+
   
   return (
     <Card
@@ -90,10 +98,16 @@ export default function RecipeReviewCard() {
           guisantes congelados junto con los mejillones, si lo desea.
         </Typography>
       </CardContent>
+
+
+
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
+        <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
+        <ThumbUpAltIcon color={liked ? 'primary' : 'inherit'} />
+      </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
@@ -106,6 +120,10 @@ export default function RecipeReviewCard() {
           <ExpandMoreIcon />
         </ExpandMore>
       </CardActions>
+
+
+
+
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
