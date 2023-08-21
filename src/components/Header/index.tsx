@@ -8,19 +8,21 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LogoutIcon from '@mui/icons-material/Logout'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
+import theme from '../../styles/theme'
 import {
   ButtonController,
   Container,
+  Logocontainer,
   MobileButtonController,
-  MobileIconButton,
   SearchArea,
 } from './styles'
 
 const Header: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isSearchOpen, setIsSearchOpen] = useState(false) // Nuevo estado para el área de búsqueda
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768)
+  const [showProfileAndLogout, setShowProfileAndLogout] = useState(false) // Nuevo estado
 
   const handleGoToProfile = useCallback(() => {
     navigate('/profile')
@@ -34,7 +36,14 @@ const Header: FC<Props> = ({ onLogout }) => {
   }, [navigate, onLogout])
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen((prevState) => !prevState)
+    setIsMobileMenuOpen((prevState) => {
+      if (!prevState) {
+        setShowProfileAndLogout(true) // Mostrar los iconos al abrir el menú
+      } else {
+        setShowProfileAndLogout(false) // Ocultar los iconos al cerrar el menú
+      }
+      return !prevState
+    })
   }
 
   const toggleSearch = () => {
@@ -55,64 +64,108 @@ const Header: FC<Props> = ({ onLogout }) => {
 
   return (
     <Container>
-      <Link to="/dashboard">
-        <Image src="/logo&tipo.png" alt="logo&tipo" variant="logoHeader" />
-      </Link>
-      <ButtonController>
-        {isMobileView ? (
-          <MobileButtonController>
-            <IconButton size="large" onClick={toggleMobileMenu}>
-              <MenuIcon sx={{ color: 'green', fontSize: 40 }} />
-            </IconButton>
-            {isMobileMenuOpen && (
-              <div>
-                <MobileIconButton size="large" onClick={handleGoToProfile}>
-                  <AccountCircleIcon sx={{ color: 'red', fontSize: 40 }} />
-                </MobileIconButton>
-                <MobileIconButton size="large" onClick={handleLogout}>
-                  <LogoutIcon sx={{ color: 'yellow', fontSize: 40 }} />
-                </MobileIconButton>
-                <IconButton size="large" onClick={toggleSearch}>
-                  <SearchIcon sx={{ color: 'orange', fontSize: 40 }} />
-                </IconButton>
-                {isSearchOpen && (
-                  <SearchArea>
-                    <input
-                      type="text"
-                      placeholder="Buscar recetas..."
-                      // value={searchQuery}
-                      // onChange={handleSearchChange}
-                    />
-                  </SearchArea>
-                )}
-              </div>
-            )}
-          </MobileButtonController>
-        ) : (
-          <>
-            <IconButton size="large" onClick={handleGoToProfile}>
-              <AccountCircleIcon sx={{ color: 'brown', fontSize: 35 }} />
-            </IconButton>
-            <MobileIconButton size="large" onClick={handleLogout}>
-              <LogoutIcon sx={{ color: 'gray', fontSize: 35 }} />
-            </MobileIconButton>
-            {/* Nuevo botón de búsqueda */}
-            <IconButton size="large" onClick={toggleSearch}>
-              <SearchIcon sx={{ color: 'white', fontSize: 35 }} />
-            </IconButton>
-            {isSearchOpen && (
-              <SearchArea>
-                <input
-                  type="text"
-                  placeholder="Buscar recetas..."
-                  // value={searchQuery}
-                  // onChange={handleSearchChange}
+      {isMobileView && (
+        <MobileButtonController>
+          <IconButton size="large" onClick={toggleMobileMenu}>
+            <MenuIcon sx={{ color: theme.colors.cornsilk, fontSize: 30 }} />
+          </IconButton>
+          {showProfileAndLogout && (
+            <div>
+              <IconButton size="large" onClick={handleGoToProfile}>
+                <AccountCircleIcon
+                  sx={{ color: theme.colors.cornsilk, fontSize: 30 }}
                 />
-              </SearchArea>
-            )}
-          </>
-        )}
-      </ButtonController>
+              </IconButton>
+              <IconButton size="large" onClick={handleLogout}>
+                <LogoutIcon
+                  sx={{ color: theme.colors.cornsilk, fontSize: 30 }}
+                />
+              </IconButton>
+            </div>
+          )}
+        </MobileButtonController>
+      )}
+      <Logocontainer>
+        <Link to="/dashboard">
+          <Image src="/logo&tipo.png" alt="logo&tipo" variant="logoHeader" />
+        </Link>
+      </Logocontainer>
+      {isMobileView && (
+        <MobileButtonController>
+          <IconButton size="large" onClick={toggleSearch}>
+            <SearchIcon sx={{ color: theme.colors.cornsilk, fontSize: 30 }} />
+          </IconButton>
+        </MobileButtonController>
+      )}
+      {!isMobileView && (
+        <ButtonController>
+          <IconButton
+            size="large"
+            onClick={handleGoToProfile}
+            sx={{
+              '&:hover': {
+                '& svg': {
+                  color: theme.colors.cornsilk,
+                },
+              },
+              '&:active': {
+                '& svg': {
+                  color: theme.colors.buff,
+                },
+              },
+            }}
+          >
+            <AccountCircleIcon
+              sx={{ color: theme.colors.pastelPeach, fontSize: 35 }}
+            />
+          </IconButton>
+          <IconButton
+            size="large"
+            onClick={handleLogout}
+            sx={{
+              '&:hover': {
+                '& svg': {
+                  color: theme.colors.cornsilk,
+                },
+              },
+              '&:active': {
+                '& svg': {
+                  color: theme.colors.buff,
+                },
+              },
+            }}
+          >
+            <LogoutIcon
+              sx={{ color: theme.colors.pastelPeach, fontSize: 35 }}
+            />
+          </IconButton>
+          <IconButton
+            size="large"
+            onClick={toggleSearch}
+            sx={{
+              '&:hover': {
+                '& svg': {
+                  color: theme.colors.cornsilk,
+                },
+              },
+              '&:active': {
+                '& svg': {
+                  color: theme.colors.buff,
+                },
+              },
+            }}
+          >
+            <SearchIcon
+              sx={{ color: theme.colors.pastelPeach, fontSize: 35 }}
+            />
+          </IconButton>
+        </ButtonController>
+      )}
+      {isSearchOpen && (
+        <SearchArea>
+          <input type="text" placeholder="Buscar recetas..." />
+        </SearchArea>
+      )}
     </Container>
   )
 }
