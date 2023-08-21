@@ -6,7 +6,6 @@ import ImageBackground from '../../components/ImageBackground'
 import type { Props } from './types'
 import Button from '../../components/Button'
 import Card from '../../components/Card'
-import { Container, ButtonController } from './styles'
 import * as React from 'react'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
@@ -30,6 +29,8 @@ import peanutsIcon from '../../icons/peanutsAllergensIcon.png'
 import sesameIcon from '../../icons/sesameAllergensIcon.png'
 import soyIcon from '../../icons/soyAllergensIcon.png'
 import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
+
+import { Container, ButtonController, ContainerAllergies } from './styles'
 
 
 
@@ -89,10 +90,13 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         <Button onClick={handleGoToPost}>add new recipe</Button>
       </ButtonController>
 
-      <Card />
 
-      <div>
-        <FormControl sx={{ ml: -130, mt: -85, minWidth: 150 }}>
+
+
+        <Card />
+
+      <ContainerAllergies>
+        <FormControl sx={{ minWidth: 200, marginLeft: '20px', backgroundColor: 'white' }}>
           <InputLabel id="allergies-label">ALLERGIES</InputLabel>
           <Select
             labelId="allergies-label"
@@ -119,7 +123,9 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             ))}
           </Select>
         </FormControl>
-      </div>
+      </ContainerAllergies>
+
+
 
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />

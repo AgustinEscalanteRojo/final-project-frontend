@@ -1,6 +1,17 @@
 import styled from 'styled-components'
 import theme from '../../styles/theme'
 
+
+export const ContainerAllergies = styled.div`
+  position: fixed;
+  top: 190px; 
+  left: 60px; 
+  z-index: 3; 
+
+  display: flex;
+  align-items: flex-start;
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,3 +35,6 @@ export const ButtonController = styled.div`
     justify-content: center;
   }
 `
+
+
+
