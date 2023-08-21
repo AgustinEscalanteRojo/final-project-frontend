@@ -96,7 +96,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         <Card />
 
       <ContainerAllergies>
-        <FormControl sx={{ minWidth: 200, marginLeft: '20px', backgroundColor: 'white' }}>
+        <FormControl sx={{ minWidth: 220, marginLeft: '20px', backgroundColor: 'white' }}>
           <InputLabel id="allergies-label">ALLERGIES</InputLabel>
           <Select
             labelId="allergies-label"
@@ -105,17 +105,26 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             value={allergies}
             onChange={handleAllergiesChange}
             renderValue={(selected) => selected.join(', ')}
+            MenuProps={{
+              PaperProps: {
+                style: {
+                  maxHeight: 400, // Ajusta la altura máxima según tus necesidades
+                  width: 220, // Ajusta el ancho máximo según tus necesidades
+                },
+              },
+            }}
           >
+          
             {allergiesOptions.map((allergy) => (
               <MenuItem key={allergy} value={allergy}>
                 <ListItemIcon>
                   <Checkbox checked={allergies.indexOf(allergy) > -1} />
                 </ListItemIcon>
-                <Box sx={{ width: 45, height: 45 }}>
+                <Box sx={{ width: 25, height: 25 ,}}>
                   <img
                     src={allergyIcons[allergy]}
                     alt={allergy}
-                    style={{ width: '100%', height: '100%' }}
+                    style={{ width: '100%', height: '100%',  }}
                   />
                 </Box>
                 <ListItemText primary={allergy} />
