@@ -1,27 +1,26 @@
 // import de la card MI
-import React, { useState } from 'react';
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import Image from '../Image';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+import React, { useState } from 'react'
+import { styled } from '@mui/material/styles'
+import Card from '@mui/material/Card'
+import CardHeader from '@mui/material/CardHeader'
+import Image from '../Image'
+import CardContent from '@mui/material/CardContent'
+import CardActions from '@mui/material/CardActions'
+import Collapse from '@mui/material/Collapse'
+import Avatar from '@mui/material/Avatar'
+import IconButton, { IconButtonProps } from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import { red } from '@mui/material/colors'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ShareIcon from '@mui/icons-material/Share'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+import SendIcon from '@mui/icons-material/Send'
 
 // import de  comentario MI
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
 
 // ventana expandida  MI
 interface ExpandMoreProps extends IconButtonProps {
@@ -42,42 +41,47 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 export default function RecipeReviewCard() {
   const [expanded, setExpanded] = React.useState(false)
 
-
   // COMENTARIO
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState('')
   const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
 
   const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setComment(event.target.value);
-  };
+    setComment(event.target.value)
+  }
 
   const handleCommentSubmit = () => {
     // aqui lógica para guardar el comentario
-    console.log('Comentario enviado:', comment);
-    setComment('');
-  };
+    console.log('Comentario enviado:', comment)
+    setComment('')
+  }
 
-    
-
-
+  
   return (
-<Card sx={{ width: '100%', maxWidth: 800, backgroundColor: 'rgba(255, 255, 255, 0.911)', marginTop: 4, marginBottom: 32 }}>
-  <CardHeader
-    avatar={
-      <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"></Avatar>
-    }
-    action={
-      <IconButton aria-label="settings">
-        <MoreVertIcon />
-      </IconButton>
-    }
-    title="Paella de Gambas y Chorizo"
-    subheader="September 14, 2022"
-  />
+    <Card
+      sx={{
+        width: '100%',
+        maxWidth: 800,
+        backgroundColor: 'rgba(255, 255, 255, 0.911)',
+        marginTop: 4,
+        marginBottom: 32,
+      }}
+    >
+      <CardHeader
+        avatar={
+          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"></Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title="Paella de Gambas y Chorizo"
+        subheader="September 14, 2022"
+      />
 
-<Image src="/arroz.mariscos.jpg" alt="arroz mariscos.jpg" />
+      <Image src="/arroz.mariscos.jpg" alt="arroz mariscos.jpg" />
 
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -106,11 +110,11 @@ export default function RecipeReviewCard() {
         <CardContent>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
-            Calienta 1/2 taza del caldo en una olla hasta que hierva a fuego
+          1º Calienta 1/2 taza del caldo en una olla hasta que hierva a fuego
             lento, agrega el azafrán y deja reposar por 10 minutos.
           </Typography>
           <Typography paragraph>
-            Caliente el aceite en una paellera (de 14 a 16 pulgadas) o en una
+             2º Caliente el aceite en una paellera (de 14 a 16 pulgadas) o en una
             sartén grande y profunda a fuego medio-alto. Agregue el pollo, los
             camarones y el chorizo, y cocine, revolviendo ocasionalmente hasta
             que estén ligeramente dorados, de 6 a 8 minutos. Transfiera los
@@ -122,7 +126,7 @@ export default function RecipeReviewCard() {
             caldo de pollo; llevar a ebullición.
           </Typography>
           <Typography paragraph>
-            Agregue el arroz y revuelva muy suavemente para distribuir. Cubra
+            3º Agregue el arroz y revuelva muy suavemente para distribuir. Cubra
             con alcachofas y pimientos, y cocine sin revolver, hasta que se
             absorba la mayor parte del líquido, de 15 a 18 minutos. Reduzca el
             fuego a medio-bajo, agregue los camarones y los mejillones
@@ -132,15 +136,22 @@ export default function RecipeReviewCard() {
             abran).
           </Typography>
           <Typography>
-            Apartar del fuego para dejar reposar durante 10 minutos y luego
+            4º Apartar del fuego para dejar reposar durante 10 minutos y luego
             servir.
           </Typography>
         </CardContent>
       </Collapse>
 
-
-
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center',marginLeft: 3, marginRight: 3  }}>
+      <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'row', 
+        alignItems: 'center',
+        marginLeft: 3,
+        marginRight: 3,
+        marginBottom: 3,
+      }}
+    >
       <TextField
         fullWidth
         label="Comment"
@@ -152,15 +163,30 @@ export default function RecipeReviewCard() {
       />
 
 
-<Button variant="contained" onClick={handleCommentSubmit} sx={{ marginTop: 1, marginBottom: 1,  backgroundColor: 'brown', color: 'white' }}>
-  Publish Comment
+<Button
+  size="small"
+  variant="contained"
+  onClick={handleCommentSubmit}
+  sx={{
+    marginLeft: 1,
+    backgroundColor: '#4CAF50',
+    color: 'white',
+    '&:hover': {
+      backgroundColor: '#45A049',
+    },
+    height: 53,
+    // Estilos adicionales para el icono
+    '& .MuiButton-startIcon': {
+      fontSize: 44, // Tamaño del icono
+      margin: '0 auto', // Centrar el icono horizontalmente
+    },
+  }}
+  startIcon={<SendIcon />}
+>
+
 </Button>
 
     </Box>
-
-
-
     </Card>
   )
 }
-
