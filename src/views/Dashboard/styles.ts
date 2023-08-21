@@ -28,7 +28,7 @@ export const ButtonController = styled.div`
   display: flex;
   flex-flow: row wrap;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 140px;
 
   @media (max-width: 768px) {
     margin-top: 10px;

@@ -32,8 +32,8 @@ import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
 
 import { Container, ButtonController, ContainerAllergies } from './styles'
 
-
-
+import IconButton from '@mui/material/IconButton'
+import AddIcon from '@mui/icons-material/Add'
 
 const allergiesOptions = [
   'Celery',
@@ -86,17 +86,34 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <Header onLogout={onLogout} />
 
 
+
+
       <ButtonController>
-        <Button onClick={handleGoToPost}>add new recipe</Button>
-      </ButtonController>
+  <IconButton
+    onClick={handleGoToPost}
+    color="primary"
+    aria-label="add new post"
+    style={{
+      border: '3px solid #b5803f',  
+      borderRadius: '20%',            
+      width: '60px',                 
+      height: '60px',                 
+    }}
+  >
+    <AddIcon fontSize="large" style={{ color: 'black' }} /> {/* Cambiar el color del símbolo a blanco */}
+  </IconButton>
+</ButtonController>
 
 
 
 
-        <Card />
+
+      <Card />
 
       <ContainerAllergies>
-        <FormControl sx={{ minWidth: 220, marginLeft: '20px', backgroundColor: 'white' }}>
+        <FormControl
+          sx={{ minWidth: 220, marginLeft: '20px', backgroundColor: 'white' }}
+        >
           <InputLabel id="allergies-label">ALLERGIES</InputLabel>
           <Select
             labelId="allergies-label"
@@ -114,17 +131,16 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
               },
             }}
           >
-          
             {allergiesOptions.map((allergy) => (
               <MenuItem key={allergy} value={allergy}>
                 <ListItemIcon>
                   <Checkbox checked={allergies.indexOf(allergy) > -1} />
                 </ListItemIcon>
-                <Box sx={{ width: 25, height: 25 ,}}>
+                <Box sx={{ width: 25, height: 25 }}>
                   <img
                     src={allergyIcons[allergy]}
                     alt={allergy}
-                    style={{ width: '100%', height: '100%',  }}
+                    style={{ width: '100%', height: '100%' }}
                   />
                 </Box>
                 <ListItemText primary={allergy} />
@@ -133,8 +149,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           </Select>
         </FormControl>
       </ContainerAllergies>
-
-
 
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
