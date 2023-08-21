@@ -24,12 +24,12 @@ const Signup: FC<Props> = ({ onSignup }) => {
 
   const paperStyle = {
     padding: '20px 20px',
-    width: '50%', // Usa porcentaje para la responsividad
-    maxWidth: 300, // Agrega un ancho máximo para pantallas más grandes
-    margin: '80px auto', // Ajusta el margen para centrar verticalmente
+    width: '50%',
+    maxWidth: 300,
+    margin: '80px auto',
   }
   const avatarStyle = { backgroundColor: '#1bbd7e' }
-  const btnstyle = { margin: '22px 0' }
+  const btnstyle = { marginTop: '10px' }
 
   const [gender, setGender] = useState('')
 
@@ -136,24 +136,28 @@ const Signup: FC<Props> = ({ onSignup }) => {
           fullWidth
           required
         />
+
         <Button
           type="submit"
-          color="primary"
+          color="primary" // Aquí establecemos el color como "primary"
           variant="contained"
-          style={btnstyle}
+          style={{ ...btnstyle, marginTop: '10px' }} // Añadí un margen superior para separar los botones
           fullWidth
         >
           Sign up
         </Button>
+
         <Button
           type="submit"
-          color="secondary"
+          color="primary" 
           variant="contained"
           style={btnstyle}
           fullWidth
         >
           <Typography>
-            <Link to="/login">Log in</Link>
+            <Link style={{ color: 'white', fontSize: '14px' }} to="/login">
+              Login
+            </Link>
           </Typography>
         </Button>
       </Paper>
