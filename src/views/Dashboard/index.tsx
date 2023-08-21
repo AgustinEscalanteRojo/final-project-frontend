@@ -31,6 +31,9 @@ import sesameIcon from '../../icons/sesameAllergensIcon.png'
 import soyIcon from '../../icons/soyAllergensIcon.png'
 import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
 
+
+
+
 const allergiesOptions = [
   'Celery',
   'Crustaceans',
@@ -80,6 +83,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
   return (
     <Container>
       <Header onLogout={onLogout} />
+
+
       <ButtonController>
         <Button onClick={handleGoToPost}>add new recipe</Button>
       </ButtonController>
