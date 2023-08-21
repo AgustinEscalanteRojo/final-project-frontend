@@ -14,7 +14,7 @@ export const Container = styled.header`
   width: 100%;
   height: 70px;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
 
   @media (min-width: 768px) {
     flex-direction: row;

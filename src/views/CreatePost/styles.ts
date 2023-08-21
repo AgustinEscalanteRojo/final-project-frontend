@@ -12,13 +12,3 @@ margin-right: 50px;
 overflow: auto;
 `;
 
-export const Backgroundcolor = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: auto;
-  background-color: ${theme.colors.beige};
-`;
