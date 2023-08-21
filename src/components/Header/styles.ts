@@ -24,6 +24,29 @@ export const Container = styled.header`
   }
 `
 
+export const Logocontainer = styled.div`
+  display: flex;
+  gap: 10px;
+  /* border: 10px red solid; */
+  align-self: center;
+
+  &:hover,
+  &:active {
+    box-shadow: 0px 0px 40px 1px rgba(212, 163, 115, 0.328);
+  }
+
+  @media (min-width: 768px) {
+    gap: 10px;
+    width: auto;
+    height: auto;
+  }
+
+  @media (max-width: 768px) {
+    flex: 1;
+    justify-content: center;
+  }
+`
+
 export const ButtonController = styled.div`
   display: flex;
   gap: 10px;
@@ -43,14 +66,14 @@ export const MobileButtonController = styled.div`
 `
 
 export const SearchArea = styled.div`
-  position: absolute;
-  top: 100%;
-  left: 0;
+  text-align: center;
   width: 100%;
+  height: auto;
   background-color: ${theme.colors.black};
   padding: 10px;
   transition: all 0.3s ease-in-out;
-  display: none;
+  border-bottom: 2px solid ${theme.colors.buff};
+  /* border: 10px pink solid; */
 
   @media (min-width: 768px) {
     display: block;
@@ -60,5 +83,11 @@ export const SearchArea = styled.div`
     transform: translateX(-50%);
     background-color: ${theme.colors.black};
     padding: 10px;
+    z-index: 1;
+  }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    margin-top: 70.4px;
   }
 `
