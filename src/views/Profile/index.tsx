@@ -32,8 +32,6 @@ const Profile: FC<Props> = ({ onLogout }) => {
     setValue(newValue)
   }
 
-  // const avatarStyle = { backgroundColor: '#c9101d' }
-
   return (
 
     <PerfilContainer>
