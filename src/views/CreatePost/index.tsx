@@ -32,7 +32,7 @@ import soyIcon from '../../icons/soyAllergensIcon.png'
 import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
 
 import type { Props } from './types'
-import { normalizePost, PostInput } from '../../models/post'
+import { normalizePost, PostInput } from '../../models/Post'
 
 type Allergen =
   | 'Gluten'
