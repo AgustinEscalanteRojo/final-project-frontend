@@ -89,7 +89,7 @@ export type PostInput = {
     title: string
     description: string
     order: number
-    image: string[]
+    image?: string[]
   }[]
   createdAt?: Date
 }
