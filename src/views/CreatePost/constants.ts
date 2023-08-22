@@ -1,31 +1,42 @@
-import { object, string, number, array } from "yup";
+import { object, string, number, array } from 'yup'
 
 export const InitialValues = {
-  name: "",
-  type: "",
-  model: "",
-  plateNumber: "",
-  km: 0,
-  carSeats: 0,
-  fuelType: "",
-  gearBoxType: "",
-  description: "",
-  style: "",
-  status: "",
-  availableTimes: "",
-};
+  title: '',
+  type: '',
+  duration: '',
+  difficulty: '',
+  allergies: '',
+  description: '',
+  ingredients: [{ name: '', quantity: 0, unity: '' }],
+  diners: 1,
+  steps: [{ title: '', description: '', order: 1, image: [] }],
+}
 
-export const ValidationSchema = object({
-  name: string().required(),
-  type: string().required(),
-  model: string().required(),
-  plateNumber: string().required(),
-  km: number().integer().positive().required(),
-  carSeats: number().integer().positive().required(),
-  fuelType: string(),
-  gearBoxType: string(),
+export const ValidationSchema = object().shape({
+  title: string().required('Title is required'),
+  type: string()
+    .oneOf(['Salad', 'Dessert', 'Breakfast'])
+    .required('Type is required'),
+  duration: string().required('Duration is required'),
+  difficulty: string()
+    .oneOf(['Easy', 'Moderate', 'Difficult'])
+    .required('Difficulty is required'),
+  allergies: array().of(string()),
   description: string(),
-  status: string(),
-  style: string(),
-  availableTimes: array().required(),
-});
+  ingredients: array().of(
+    object().shape({
+      name: string().required('Ingredient name is required'),
+      quantity: number().required('Quantity is required'),
+      unity: string().required('Unity is required'),
+    })
+  ),
+  diners: number().required('Number of diners is required'),
+  steps: array().of(
+    object().shape({
+      title: string().required('Step title is required'),
+      description: string().required('Step description is required'),
+      order: number().required('Step order is required'),
+      image: array(),
+    })
+  ),
+})
