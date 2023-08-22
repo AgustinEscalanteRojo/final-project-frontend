@@ -16,8 +16,8 @@ import ShareIcon from '@mui/icons-material/Share'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import SendIcon from '@mui/icons-material/Send'
-import Paper from '@mui/material/Paper';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt'
+import Paper from '@mui/material/Paper'
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 // import de  comentario MI
 import Box from '@mui/material/Box'
@@ -43,7 +43,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 export default function RecipeReviewCard() {
   const [expanded, setExpanded] = React.useState(false)
   const [comments, setComments] = useState([]) // Estado para almacenar los comentarios
-  
+
   // COMENTARIO
   const [comment, setComment] = useState('')
   const handleExpandClick = () => {
@@ -107,13 +107,16 @@ export default function RecipeReviewCard() {
       </CardContent>
 
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
-          <FavoriteIcon color={favorited ? 'error' : 'inherit'} />
+
+      <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
+        <FavoriteIcon  color={liked ? 'error' : 'inherit'} />
         </IconButton>
 
-        <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
-          <ThumbUpAltIcon color={liked ? 'primary' : 'inherit'} />
-        </IconButton>
+        <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
+    <BookmarkIcon color={favorited ? 'primary' : 'inherit'} />
+  </IconButton>
+
+
 
         <IconButton aria-label="share">
           <ShareIcon />
@@ -128,43 +131,35 @@ export default function RecipeReviewCard() {
         </ExpandMore>
       </CardActions>
 
-
-
-
-
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-
         <CardContent>
           <Typography paragraph>Comments:</Typography>
 
-
           <Box
-  sx={{
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginLeft: 3,
-    marginRight: 3,
-    marginBottom: 3,
-  }}
->
-  <Paper
-    sx={{
-      width: '100%',
-      padding: 2,
-      backgroundColor: '#f9f9f9',
-      overflowY: 'auto',
-    }}
-  >
-    {comments.map((comment, index) => (
-      <Typography key={index} paragraph sx={{ marginBottom: 1 }}>
-        {comment}
-      </Typography>
-    ))}
-  </Paper>
-</Box>
-
-
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginLeft: 3,
+              marginRight: 3,
+              marginBottom: 3,
+            }}
+          >
+            <Paper
+              sx={{
+                width: '100%',
+                padding: 2,
+                backgroundColor: '#f9f9f9',
+                overflowY: 'auto',
+              }}
+            >
+              {comments.map((comment, index) => (
+                <Typography key={index} paragraph sx={{ marginBottom: 1 }}>
+                  {comment}
+                </Typography>
+              ))}
+            </Paper>
+          </Box>
         </CardContent>
       </Collapse>
 
@@ -208,12 +203,6 @@ export default function RecipeReviewCard() {
           }}
           startIcon={<SendIcon />}
         ></Button>
-
-
-
-
-
-
       </Box>
     </Card>
   )
