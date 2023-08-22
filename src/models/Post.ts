@@ -51,38 +51,16 @@ export type PostInput = {
   userId?: string
   mainImage?: string
   title: string
-  type: 'Salad' | 'Dessert' | 'Breakfast'
+  type: string
   duration: string
-  difficulty: 'Easy' | 'Moderate' | 'Difficult'
-  allergies: 
-    | 'Gluten'
-    | 'Crustaceans'
-    | 'Eggs'
-    | 'Fish'
-    | 'Peanuts'
-    | 'Soy'
-    | 'Dairy'
-    | 'Nuts'
-    | 'Celery'
-    | 'Mustard'
-    | 'Sesame'
-    | 'Sulphites'
-    | 'Lupins'
-    | 'Mollusks'
-  
+  difficulty: string
+  allergies: string
+
   description?: string
   ingredients: {
     name: string
     quantity: number
-    unity:
-      | 'Liter'
-      | 'Milliliters'
-      | 'Kilograms'
-      | 'Grams'
-      | 'Pound'
-      | 'Ounce'
-      | 'Tablespoon'
-      | 'Tablespoon dessert'
+    unity: string
   }[]
   diners?: number
   steps: {
