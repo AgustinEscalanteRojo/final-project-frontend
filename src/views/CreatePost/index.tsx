@@ -1,10 +1,9 @@
-import React, { FC, memo, useState, ChangeEvent, FormEvent } from 'react'
+import { FC, memo, useState, ChangeEvent, FormEvent } from 'react'
 import { PostContainer, Content } from './styles'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import ImageBackground from '../../components/ImageBackground'
 import {
-  SelectChangeEvent,
   TextField,
   Button,
   Select,
@@ -15,7 +14,6 @@ import {
   FormControlLabel,
   Checkbox,
 } from '@mui/material'
-
 import celeryIcon from '../../icons/celeryAllergensIcon.png'
 import crustaceansIcon from '../../icons/crustaceansAllergensIcon.png'
 import dairyIcon from '../../icons/dairyAllergensIcon.png'
@@ -30,42 +28,10 @@ import peanutsIcon from '../../icons/peanutsAllergensIcon.png'
 import sesameIcon from '../../icons/sesameAllergensIcon.png'
 import soyIcon from '../../icons/soyAllergensIcon.png'
 import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
-
 import type { Props } from './types'
-import { normalizePost, PostInput } from '../../models/Post'
-
-type Allergen =
-  | 'Gluten'
-  | 'Crustaceans'
-  | 'Eggs'
-  | 'Fish'
-  | 'Peanuts'
-  | 'Soy'
-  | 'Dairy'
-  | 'Nuts'
-  | 'Celery'
-  | 'Mustard'
-  | 'Sesame'
-  | 'Sulphites'
-  | 'Lupins'
-  | 'Mollusks'
-
-const allergensList: Allergen[] = [
-  'Celery',
-  'Crustaceans',
-  'Dairy',
-  'Eggs',
-  'Fish',
-  'Gluten',
-  'Lupins',
-  'Mollusks',
-  'Mustard',
-  'Nuts',
-  'Peanuts',
-  'Sesame',
-  'Soy',
-  'Sulphites',
-]
+import { Formik } from 'formik'
+import { InitialValues, ValidationSchema } from './constants'
+import useLogic from './logic'
 
 const allergyIcons: Record<string, string> = {
   Celery: celeryIcon,
@@ -87,193 +53,147 @@ const allergyIcons: Record<string, string> = {
 const numberOptions = Array.from({ length: 10 }, (_, index) => index + 1)
 
 const CreatePost: FC<Props> = ({ onLogout }) => {
-  const [formData, setFormData] = useState<PostInput>({
-    _id: '',
-    userId: '',
-    mainImage: '',
-    title: '',
-    type: 'Salad',
-    duration: '',
-    difficulty: 'Easy',
-    allergies: [],
-    ingredients: [],
-    diners: undefined,
-    steps: [],
-    createdAt: new Date(),
-    order: 0,
-  })
+  const { handleCreate } = useLogic()
 
-  const handleFormChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }))
-  }
-
-  const handleSelectChange =
-    (name: keyof PostInput) => (event: SelectChangeEvent) => {
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: event.target.value,
-      }))
-    }
-
-  const handleAllergenChange =
-    (allergen: Allergen) => (event: ChangeEvent<HTMLInputElement>) => {
-      const isChecked = event.target.checked
-      setFormData((prevData) => ({
-        ...prevData,
-        allergies: isChecked
-          ? [...prevData.allergies, allergen]
-          : prevData.allergies.filter((a) => a !== allergen),
-      }))
-    }
-
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-    // Handle form submission, possibly using the normalized data
-    const normalizedData = normalizePost(formData)
-    // ...
-  }
-
-
-  const [steps, setSteps] = useState<string[]>([]);
-
+  const allergiesOptions = [
+    'Gluten',
+    'Crustaceans',
+    'Eggs',
+    'Fish',
+    'Peanuts',
+    'Soy',
+    'Dairy',
+    'Nuts',
+    'Celery',
+    'Mustard',
+    'Sesame',
+    'Sulphites',
+    'Lupins',
+    'Mollusks',
+  ]
 
   return (
     <PostContainer>
       <Header onLogout={onLogout} />
 
       <Content>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            style={{ marginTop: '26px' }}
-            label="Title"
-            name="title"
-            value={formData.title}
-            onChange={handleFormChange}
-            required
-            fullWidth
-          />
+        <Formik
+          initialValues={InitialValues}
+          validationSchema={ValidationSchema}
+          onSubmit={handleCreate}
+        >
+          {({ handleSubmit, handleChange, values }) => (
+            <form onSubmit={handleSubmit}>
+              <TextField
+                style={{ marginTop: '26px' }}
+                label="Title"
+                name="title"
+                value={values.title}
+                onChange={handleChange}
+                required
+                fullWidth
+              />
 
-          <FormControl fullWidth style={{ marginTop: '26px' }}>
-            <InputLabel>Type</InputLabel>
-            <Select
-              name="type"
-              value={formData.type}
-              onChange={handleSelectChange('type')}
-            >
-              <MenuItem value="Salad">Salad</MenuItem>
-              <MenuItem value="Breakfast">Breakfast</MenuItem>
-              <MenuItem value="Dessert">Dessert</MenuItem>
-            </Select>
-          </FormControl>
+              <FormControl fullWidth style={{ marginTop: '26px' }}>
+                <InputLabel>Type</InputLabel>
+                <Select name="type" value={values.type} onChange={handleChange}>
+                  <MenuItem value="Salad">Salad</MenuItem>
+                  <MenuItem value="Breakfast">Breakfast</MenuItem>
+                  <MenuItem value="Dessert">Dessert</MenuItem>
+                </Select>
+              </FormControl>
 
-          <TextField
-            style={{ marginTop: '26px' }}
-            label="Description"
-            name="description"
-            value={formData.description}
-            onChange={handleFormChange}
-            fullWidth
-            multiline
-            rows={5}
-          />
+              <TextField
+                style={{ marginTop: '26px' }}
+                label="Description"
+                name="description"
+                value={values.description}
+                onChange={handleChange}
+                fullWidth
+                multiline
+                rows={5}
+              />
 
-          <TextField
-            style={{ marginTop: '26px' }}
-            label="Order"
-            name="order"
-            value={formData.order}
-            onChange={handleFormChange}
-            fullWidth
-            select
-            SelectProps={{
-              native: true,
-            }}
-          >
-            <option value="" disabled>
-              Select an option
-            </option>
-            {numberOptions.map((number) => (
-              <option key={number} value={number}>
-                {number}
-              </option>
-            ))}
-          </TextField>
+              <FormControl fullWidth style={{ marginTop: '26px' }}>
+                <InputLabel>Difficulty</InputLabel>
+                <Select
+                  name="difficulty"
+                  value={values.difficulty}
+                  onChange={handleChange}
+                >
+                  <MenuItem value="Easy">Easy</MenuItem>
+                  <MenuItem value="Moderate">Intermediate</MenuItem>
+                  <MenuItem value="Difficult">Advanced</MenuItem>
+                </Select>
+              </FormControl>
 
-          <FormControl fullWidth style={{ marginTop: '26px' }}>
-            <InputLabel>Difficulty</InputLabel>
-            <Select
-              name="difficulty"
-              value={formData.difficulty}
-              onChange={handleSelectChange('difficulty')}
-            >
-              <MenuItem value="Easy">Easy</MenuItem>
-              <MenuItem value="Moderate">Intermediate</MenuItem>
-              <MenuItem value="Difficult">Advanced</MenuItem>
-            </Select>
-          </FormControl>
+              <TextField
+                style={{ marginTop: '26px' }}
+                label="Duration"
+                name="duration"
+                value={values.duration}
+                onChange={handleChange}
+                fullWidth
+              />
 
-          <TextField
-            style={{ marginTop: '26px' }}
-            label="Duration"
-            name="duration"
-            value={formData.duration}
-            onChange={handleFormChange}
-            fullWidth
-          />
-
-
-
-
-
-          <FormControl
-            fullWidth
-            style={{ marginTop: '26px', marginBottom: '26px' }}>
-            <Grid container spacing={2}>
-              {allergensList.map((allergen) => (
-                <Grid item xs={4} key={allergen}>
-                  <FormControlLabel
-                    control={
-                      <>
-                        <Checkbox
-                          checked={formData.allergies.includes(allergen)}
-                          onChange={handleAllergenChange(allergen)}
-                        />
-                        <img
-                          src={allergyIcons[allergen]}
-                          alt={`${allergen} icon`}
-                          style={{ width: '30px', marginLeft: '2px' }}
-                        />
-                      </>
-                    }
-                    label={allergen}
-                  />
+              <FormControl
+                fullWidth
+                style={{ marginTop: '26px', marginBottom: '26px' }}
+              >
+                <Grid container spacing={2}>
+                  {allergiesOptions.map((allergy) => (
+                    <Grid item xs={4} key={allergy}>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            name="allergies"
+                            value={allergy}
+                            onChange={handleChange}
+                            checked={values.allergies.includes(allergy)}
+                          />
+                        }
+                        label={
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '10px', // Agregamos espacio entre el nombre y el icono
+                            }}
+                          >
+                            <img
+                              src={allergyIcons[allergy]}
+                              alt={`${allergy} Icon`}
+                              style={{
+                                width: '10%',
+                                marginLeft: '2px',
+                              }}
+                            />
+                            {allergy}
+                          </div>
+                        }
+                      />
+                    </Grid>
+                  ))}
                 </Grid>
-              ))}
-            </Grid>
-          </FormControl>
+              </FormControl>
 
+              <TextField
+                label="Main Image URL"
+                name="mainImage"
+                value={values.mainImage}
+                onChange={handleChange}
+                fullWidth
+              />
 
-
-          <TextField
-            label="Main Image URL"
-            name="mainImage"
-            value={formData.mainImage}
-            onChange={handleFormChange}
-            fullWidth
-          />
-
-
-          <Button
-            type="submit"
-            style={{ marginBottom: '96px', marginTop: '20px' }}
-          >
-            Post recipe
-          </Button>
-        </form>
+              <Button
+                type="submit"
+                style={{ marginBottom: '96px', marginTop: '20px' }}
+              >
+                Post recipe
+              </Button>
+            </form>
+          )}
+        </Formik>
       </Content>
 
       <Footer />

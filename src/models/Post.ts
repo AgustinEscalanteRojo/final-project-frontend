@@ -20,7 +20,7 @@ export type postResponse = {
     | 'Sesame'
     | 'Sulphites'
     | 'Lupins'
-    | 'Mollusks'[]
+    | 'Mollusks'
   description?: string
   ingredients: {
     name: string
@@ -54,7 +54,7 @@ export type PostInput = {
   type: 'Salad' | 'Dessert' | 'Breakfast'
   duration: string
   difficulty: 'Easy' | 'Moderate' | 'Difficult'
-  allergies: (
+  allergies: 
     | 'Gluten'
     | 'Crustaceans'
     | 'Eggs'
@@ -69,7 +69,7 @@ export type PostInput = {
     | 'Sulphites'
     | 'Lupins'
     | 'Mollusks'
-  )[]
+  
   description?: string
   ingredients: {
     name: string
