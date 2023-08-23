@@ -15,6 +15,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import { Link } from 'react-router-dom'
+import { Formik } from 'formik'
+import { InitialValues, ValidationSchema } from './constants'
 
 const Login: FC<Props> = ({ onLogin }) => {
   const { handleOnSubmit } = useLogic(onLogin)
@@ -33,47 +35,62 @@ const Login: FC<Props> = ({ onLogin }) => {
       <Footer />
       <VideoBackground videoSrc="/back.mp4" />
       <Paper elevation={10} style={paperStyle}>
-        <Grid container alignContent="center">
-          <Avatar src="/logoicon.jpg" style={avatarStyle}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <h3>SharedFlavours</h3>
-        </Grid>
-        <TextField
-          label="Email"
-          placeholder="Enter email"
-          variant="outlined"
-          fullWidth
-          required
-        />
-        <TextField
-          label="Password"
-          placeholder="Enter password"
-          type="password"
-          variant="outlined"
-          fullWidth
-          required
-        />
-        <FormControlLabel
-          control={<Checkbox name="checkedB" color="primary" />}
-          label="Remember me"
-        />
-        <Button
-          type="submit"
-          color="primary"
-          variant="contained"
-          style={btnstyle}
-          fullWidth
+        <Formik
+          initialValues={InitialValues}
+          validationSchema={ValidationSchema}
+          onSubmit={handleOnSubmit}
         >
-          Log in
-        </Button>
-        <Typography>
-          <Link to="#">Forgot password ?</Link>
-        </Typography>
-        <Typography>
-          {' '}
-          Do you have an account ?<Link to="/signup"> Sign up here </Link>
-        </Typography>
+          {({ handleSubmit, handleChange, values }) => (
+            <form onSubmit={handleSubmit}>
+              <Grid container alignContent="center">
+                <Avatar src="/logoicon.jpg" style={avatarStyle}>
+                  <LockOutlinedIcon />
+                </Avatar>
+                <h3>SharedFlavours</h3>
+              </Grid>
+              <TextField
+                label="Email"
+                placeholder="Enter email"
+                variant="outlined"
+                fullWidth
+                required
+                value={values.email}
+                onChange={handleChange}
+              />
+              <TextField
+                label="Password"
+                placeholder="Enter password"
+                type="password"
+                variant="outlined"
+                fullWidth
+                required
+                value={values.password}
+                onChange={handleChange}
+              />
+              <FormControlLabel
+                control={<Checkbox name="checkedB" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                style={btnstyle}
+                fullWidth
+                onClick={() => handleOnSubmit(values)}
+              >
+                Log in
+              </Button>
+              <Typography>
+                <Link to="#">Forgot password ?</Link>
+              </Typography>
+              <Typography>
+                {' '}
+                Do you have an account ?<Link to="/signup"> Sign up here </Link>
+              </Typography>
+            </form>
+          )}
+        </Formik>
       </Paper>
     </Grid>
   )

@@ -184,6 +184,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
                 variant="contained"
                 style={btnstyle}
                 fullWidth
+                onClick={() => handleOnSubmit(values)}
               >
                 Sign up
               </Button>
