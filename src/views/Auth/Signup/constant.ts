@@ -6,7 +6,7 @@ export const InitialValues = {
   username: '',
   firstName: '',
   lastName: '',
-  age: '',
+  age: 0,
   gender: '',
   country: '',
 }
