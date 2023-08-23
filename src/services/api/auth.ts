@@ -19,12 +19,24 @@ export const login = async (email: string, password: string): Promise<void> => {
 
 export const signup = async (
   email: string,
-  password: string
+  password: string,
+  username: string,
+  firstName: string,
+  lastName: string,
+  age: number,
+  gender: string,
+  country: string,
 ): Promise<void> => {
   const response = await fetch(`${BASE_URL}/signup`, {
     body: JSON.stringify({
       email,
       password,
+      username,
+      firstName,
+      lastName,
+      age,
+      gender,
+      country,
     }),
     method: 'POST',
     headers: {
