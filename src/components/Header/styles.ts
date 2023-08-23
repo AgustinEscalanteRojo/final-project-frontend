@@ -24,11 +24,13 @@ export const Container = styled.header`
   }
 `
 
-export const Logocontainer = styled.div`
+export const LogoContainer = styled.div`
   display: flex;
   gap: 10px;
+  border-radius: 10%;
   /* border: 10px red solid; */
   align-self: center;
+  margin-left: 20px;
 
   &:hover,
   &:active {
@@ -47,10 +49,11 @@ export const Logocontainer = styled.div`
   }
 `
 
-export const ButtonController = styled.div`
+export const DeskButtonController = styled.div`
   display: flex;
   gap: 10px;
-  /* border: 10px red solid; */
+  /* border: 10px pink solid; */
+  margin-right: 10px;
 
   @media (min-width: 768px) {
     gap: 10px;
@@ -61,7 +64,7 @@ export const ButtonController = styled.div`
 export const MobileButtonController = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 0px;
   /* border: 10px orange solid; */
 `
 

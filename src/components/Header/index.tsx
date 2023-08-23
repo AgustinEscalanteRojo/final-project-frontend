@@ -4,15 +4,16 @@ import type { Props } from './types'
 import { logout } from '../../services/api/auth'
 import Image from '../Image'
 import IconButton from '@mui/material/IconButton'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import ProfileCircleIcon from '@mui/icons-material/AccountCircle'
 import LogoutIcon from '@mui/icons-material/Logout'
 import MenuIcon from '@mui/icons-material/Menu'
 import SearchIcon from '@mui/icons-material/Search'
+import PlusIcon from '@mui/icons-material/AddBoxOutlined'
 import theme from '../../styles/theme'
 import {
-  ButtonController,
+  DeskButtonController,
   Container,
-  Logocontainer,
+  LogoContainer,
   MobileButtonController,
   SearchArea,
 } from './styles'
@@ -34,6 +35,10 @@ const Header: FC<Props> = ({ onLogout }) => {
     onLogout()
     navigate('/login')
   }, [navigate, onLogout])
+
+  const handleGoToPost = useCallback(() => {
+    navigate('/create-post')
+  }, [navigate])
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prevState) => {
@@ -67,38 +72,43 @@ const Header: FC<Props> = ({ onLogout }) => {
       {isMobileView && (
         <MobileButtonController>
           <IconButton size="large" onClick={toggleMobileMenu}>
-            <MenuIcon sx={{ color: theme.colors.cornsilk, fontSize: 30 }} />
+            <MenuIcon sx={{ color: theme.colors.pastelPeach, fontSize: 30 }} />
           </IconButton>
           {showProfileAndLogout && (
             <div>
               <IconButton size="large" onClick={handleGoToProfile}>
-                <AccountCircleIcon
-                  sx={{ color: theme.colors.cornsilk, fontSize: 30 }}
+                <ProfileCircleIcon
+                  sx={{ color: theme.colors.pastelPeach, fontSize: 30 }}
                 />
               </IconButton>
               <IconButton size="large" onClick={handleLogout}>
                 <LogoutIcon
-                  sx={{ color: theme.colors.cornsilk, fontSize: 30 }}
+                  sx={{ color: theme.colors.pastelPeach, fontSize: 30 }}
                 />
               </IconButton>
             </div>
           )}
         </MobileButtonController>
       )}
-      <Logocontainer>
+      <LogoContainer>
         <Link to="/dashboard">
           <Image src="/logo&tipo.png" alt="logo&tipo" variant="logoHeader" />
         </Link>
-      </Logocontainer>
+      </LogoContainer>
       {isMobileView && (
         <MobileButtonController>
           <IconButton size="large" onClick={toggleSearch}>
-            <SearchIcon sx={{ color: theme.colors.cornsilk, fontSize: 30 }} />
+            <SearchIcon
+              sx={{ color: theme.colors.pastelPeach, fontSize: 30 }}
+            />
+          </IconButton>
+          <IconButton size="large" onClick={handleGoToPost}>
+            <PlusIcon sx={{ color: theme.colors.pastelPeach, fontSize: 30 }} />
           </IconButton>
         </MobileButtonController>
       )}
       {!isMobileView && (
-        <ButtonController>
+        <DeskButtonController>
           <IconButton
             size="large"
             onClick={handleGoToProfile}
@@ -115,7 +125,7 @@ const Header: FC<Props> = ({ onLogout }) => {
               },
             }}
           >
-            <AccountCircleIcon
+            <ProfileCircleIcon
               sx={{ color: theme.colors.pastelPeach, fontSize: 35 }}
             />
           </IconButton>
@@ -159,7 +169,25 @@ const Header: FC<Props> = ({ onLogout }) => {
               sx={{ color: theme.colors.pastelPeach, fontSize: 35 }}
             />
           </IconButton>
-        </ButtonController>
+          <IconButton
+            size="large"
+            onClick={handleGoToPost}
+            sx={{
+              '&:hover': {
+                '& svg': {
+                  color: theme.colors.cornsilk,
+                },
+              },
+              '&:active': {
+                '& svg': {
+                  color: theme.colors.buff,
+                },
+              },
+            }}
+          >
+            <PlusIcon sx={{ color: theme.colors.pastelPeach, fontSize: 35 }} />
+          </IconButton>
+        </DeskButtonController>
       )}
       {isSearchOpen && (
         <SearchArea>
