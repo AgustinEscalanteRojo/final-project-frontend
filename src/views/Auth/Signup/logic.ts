@@ -13,6 +13,10 @@ const useLogic = (onSignup: Props['onSignup']) => {
       age: number
       gender: string
       country: string
+      city: string
+      biography: string
+      avatar: string
+
     }) => {
       try {
         await signup(
@@ -24,6 +28,10 @@ const useLogic = (onSignup: Props['onSignup']) => {
           values.age,
           values.gender,
           values.country,
+          values.city,
+          values.avatar,
+          values.biography
+
         )
         onSignup()
       } catch (error) {

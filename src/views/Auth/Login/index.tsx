@@ -51,6 +51,7 @@ const Login: FC<Props> = ({ onLogin }) => {
               <TextField
                 label="Email"
                 placeholder="Enter email"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
@@ -60,7 +61,7 @@ const Login: FC<Props> = ({ onLogin }) => {
               <TextField
                 label="Password"
                 placeholder="Enter password"
-                type="password"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required

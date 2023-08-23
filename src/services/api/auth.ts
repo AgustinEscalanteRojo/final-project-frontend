@@ -26,6 +26,9 @@ export const signup = async (
   age: number,
   gender: string,
   country: string,
+  city: string,
+  biography: string,
+  avatar: string
 ): Promise<void> => {
   const response = await fetch(`${BASE_URL}/signup`, {
     body: JSON.stringify({
@@ -36,7 +39,10 @@ export const signup = async (
       lastName,
       age,
       gender,
-      country,
+      country,      
+      city,
+      biography,
+      avatar
     }),
     method: 'POST',
     headers: {

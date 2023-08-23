@@ -57,6 +57,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
               <TextField
                 label="Email"
                 placeholder="Enter email"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
@@ -67,7 +68,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
               <TextField
                 label="Password"
                 placeholder="Enter password"
-                type="password"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
@@ -78,7 +79,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
               <TextField
                 label="Username"
                 placeholder="Enter username"
-                type="username"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
@@ -89,7 +90,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
               <TextField
                 label="First Name"
                 placeholder="Enter first name"
-                type="firstName"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
@@ -100,7 +101,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
               <TextField
                 label="Last Name"
                 placeholder="Enter last name"
-                type="lastName"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
@@ -111,7 +112,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
               <TextField
                 label="Age"
                 placeholder="Enter age"
-                type="age"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
@@ -122,7 +123,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
               <TextField
                 label="Country"
                 placeholder="Enter country"
-                type="country"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
@@ -130,17 +131,17 @@ const Signup: FC<Props> = ({ onSignup }) => {
                 value={values.country}
                 onChange={handleChange}
               />
-              {/* <TextField
+              <TextField
                 label="City"
                 placeholder="Enter city"
-                type="city"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
                 name="city"
-                // value={values.city}
+                value={values.city}
                 onChange={handleChange}
-              /> */}
+              />
               <FormControl fullWidth variant="outlined" required>
                 <InputLabel id="gender-label">Gender</InputLabel>
                 <Select
@@ -156,28 +157,28 @@ const Signup: FC<Props> = ({ onSignup }) => {
                   <MenuItem value={'non-binary'}>Non-Binary</MenuItem>
                 </Select>
               </FormControl>
-              {/* <TextField
+              <TextField
                 label="Biography"
                 placeholder="Write a brief biography"
-                type="biography"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
                 name="biography"
                 value={values.biography}
                 onChange={handleChange}
-              /> */}
-              {/* <TextField
+              />
+              <TextField
                 label="Avatar"
                 placeholder="Please select an avatar"
-                type="avatar"
+                type="string"
                 variant="outlined"
                 fullWidth
                 required
                 name="avatar"
                 value={values.avatar}
                 onChange={handleChange}
-              /> */}
+              />
               <Button
                 type="submit"
                 color="primary"
