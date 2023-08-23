@@ -178,6 +178,27 @@ const Signup: FC<Props> = ({ onSignup }) => {
                 value={values.avatar}
                 onChange={handleChange}
               /> */}
+              <Button
+                type="submit"
+                color="primary"
+                variant="contained"
+                style={btnstyle}
+                fullWidth
+              >
+                Sign up
+              </Button>
+
+              <Button
+                type="submit"
+                color="secondary"
+                variant="contained"
+                style={btnstyle}
+                fullWidth
+              >
+                <Typography>
+                  <Link to="/login">Log in</Link>
+                </Typography>
+              </Button>
             </form>
           )}
         </Formik>
