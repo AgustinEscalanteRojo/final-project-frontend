@@ -1,4 +1,5 @@
 // import de la card MI
+import { FC, memo } from 'react'
 import React, { useState } from 'react'
 import { styled } from '@mui/material/styles'
 import Card from '@mui/material/Card'
@@ -18,6 +19,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert'
 import SendIcon from '@mui/icons-material/Send'
 import Paper from '@mui/material/Paper'
 import BookmarkIcon from '@mui/icons-material/Bookmark';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 // import de  comentario MI
 import Box from '@mui/material/Box'
@@ -40,7 +43,9 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }))
 
-export default function RecipeReviewCard() {
+const RecipeReviewCard: FC = () => {
+
+
   const [expanded, setExpanded] = React.useState(false)
   const [comments, setComments] = useState([]) // Estado para almacenar los comentarios
 
@@ -83,19 +88,26 @@ export default function RecipeReviewCard() {
         marginBottom: 32,
       }}
     >
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"></Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Paella de Gambas y Chorizo"
-        subheader="September 14, 2022"
-      />
-
+<CardHeader
+  avatar={
+    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"></Avatar>
+  }
+  action={
+    <>
+      <IconButton aria-label="settings">
+        <EditIcon />
+      </IconButton>
+      <IconButton aria-label="settings">
+        <DeleteIcon />
+      </IconButton>
+      <IconButton aria-label="settings">
+        <MoreVertIcon />
+      </IconButton>
+    </>
+  }
+  title="Paella de Gambas y Chorizo"
+  subheader="September 14, 2022"
+/>
       <Image src="/arroz.mariscos.jpg" alt="arroz mariscos.jpg" />
 
       <CardContent>
@@ -195,10 +207,10 @@ export default function RecipeReviewCard() {
               backgroundColor: '#45A049',
             },
             height: 53,
-            // Estilos adicionales para el icono
+            
             '& .MuiButton-startIcon': {
-              fontSize: 44, // Tamaño del icono
-              margin: '0 auto', // Centrar el icono horizontalmente
+              fontSize: 44, 
+              margin: '0 auto', 
             },
           }}
           startIcon={<SendIcon />}
@@ -207,3 +219,6 @@ export default function RecipeReviewCard() {
     </Card>
   )
 }
+
+
+export default  memo(RecipeReviewCard);
