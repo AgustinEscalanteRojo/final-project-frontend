@@ -13,9 +13,7 @@ const Post: FC<Props> = ({ onLogout }) => {
     // <Sidebar>
     <DetailsContainer>
       <Header onLogout={onLogout} />
-      <Content>
-
-      </Content>
+      <Content></Content>
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
     </DetailsContainer>
