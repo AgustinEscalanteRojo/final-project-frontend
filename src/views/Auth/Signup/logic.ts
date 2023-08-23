@@ -7,11 +7,23 @@ const useLogic = (onSignup: Props['onSignup']) => {
     async (values: {
       email: string
       password: string
+      username: string
+      firstName: string
+      lastName: string
+      age: number
+      gender: string
+      country: string
     }) => {
       try {
         await signup(
           values.email,
-          values.password
+          values.password,
+          values.username,
+          values.firstName,
+          values.lastName,
+          values.age,
+          values.gender,
+          values.country,
         )
         onSignup()
       } catch (error) {
