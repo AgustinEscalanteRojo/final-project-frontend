@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from 'react'
+import React, { FC, memo, useState, useCallback } from 'react'
 import { styled } from '@mui/material/styles'
 import {
   Card,
@@ -23,6 +23,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import Image from '../Image'
+import type { Props } from './types'
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean
@@ -39,46 +40,47 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }))
 
-const RecipeReviewCard: FC = () => {
+const RecipeReviewCard: FC<Props> = ({ onRemove }) => {
   const [expanded, setExpanded] = useState(false)
   const [comments, setComments] = useState<string[]>([])
   const [comment, setComment] = useState('')
   const [liked, setLiked] = useState(false)
   const [favorited, setFavorited] = useState(false)
 
-  const handleDeleteClick = () => {
-    // TODO: Implement the logic for deleting the card
-    console.log('Card deletion logic goes here')
-  }
 
-  const handleEditClick = () => {
-    // TODO: Implement the logic for editing the card
-    console.log('Card editing logic goes here')
-  }
+  const handleDeleteClick = useCallback(() => {
+    // Lógica para manejar la eliminación
+  }, []);
 
-  const handleExpandClick = () => {
+  const handleEditClick = useCallback(() => {
+    // Lógica para manejar la edición
+  }, []);
+
+  
+  const handleExpandClick = useCallback( () => {
     setExpanded(!expanded)
-  }
+    }, [setExpanded])
 
-  const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setComment(event.target.value)
-  }
+    const handleCommentChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+      setComment(event.target.value);
+    }, []);
 
-  const handleCommentSubmit = () => {
+  const handleCommentSubmit = useCallback(() => {
     if (comment.trim() !== '') {
-      setComments([...comments, comment])
-      console.log('Comentario enviado:', comment)
-      setComment('')
+      setComments([...comments, comment]);
+      console.log('Comentario enviado:', comment);
+      setComment('');
     }
-  }
+  }, [comment, comments]);
 
-  const handleLikeClick = () => {
-    setLiked(!liked)
-  }
+  
+  const handleLikeClick = useCallback(() => {
+    setLiked(!liked);
+  }, [liked]);
 
-  const handleFavoriteClick = () => {
-    setFavorited(!favorited)
-  }
+  const handleFavoriteClick = useCallback(() => {
+    setFavorited(!favorited);
+  }, [favorited]);
 
   return (
     <Card
@@ -94,9 +96,10 @@ const RecipeReviewCard: FC = () => {
         avatar={<Avatar aria-label="recipe"></Avatar>}
         action={
           <>
-            <IconButton aria-label="settings" onClick={handleEditClick}>
+            <IconButton aria-label="settings" onClick={handleEditClick} >
               <EditIcon />
             </IconButton>
+            
             <IconButton aria-label="settings" onClick={handleDeleteClick}>
               <DeleteIcon />
             </IconButton>
