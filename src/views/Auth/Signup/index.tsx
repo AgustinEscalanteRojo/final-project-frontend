@@ -112,7 +112,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
               <TextField
                 label="Age"
                 placeholder="Enter age"
-                type="string"
+                type="number"
                 variant="outlined"
                 fullWidth
                 required

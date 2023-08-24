@@ -55,6 +55,7 @@ const Login: FC<Props> = ({ onLogin }) => {
                 variant="outlined"
                 fullWidth
                 required
+                name="email"
                 value={values.email}
                 onChange={handleChange}
               />
@@ -65,6 +66,7 @@ const Login: FC<Props> = ({ onLogin }) => {
                 variant="outlined"
                 fullWidth
                 required
+                name="password"
                 value={values.password}
                 onChange={handleChange}
               />
