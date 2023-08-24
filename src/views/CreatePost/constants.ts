@@ -8,7 +8,7 @@ export const InitialValues = {
   allergies: '',
   description: '',
   ingredients: [{ name: '', quantity: 0, unity: '' }],
-  diners: 1,
+  diners: 0,
   steps: [{ title: '', description: '', order: 1, image: [] }],
 }
 
