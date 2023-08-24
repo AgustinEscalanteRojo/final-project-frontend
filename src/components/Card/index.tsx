@@ -1,5 +1,5 @@
-import React, { FC, memo, useState } from 'react';
-import { styled } from '@mui/material/styles';
+import React, { FC, memo, useState } from 'react'
+import { styled } from '@mui/material/styles'
 import {
   Card,
   CardHeader,
@@ -14,70 +14,83 @@ import {
   TextField,
   Button,
   IconButtonProps,
-} from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import SendIcon from '@mui/icons-material/Send';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
-import Image from '../Image';
+} from '@mui/material'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ShareIcon from '@mui/icons-material/Share'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import MoreVertIcon from '@mui/icons-material/MoreVert'
+import SendIcon from '@mui/icons-material/Send'
+import BookmarkIcon from '@mui/icons-material/Bookmark'
+import DeleteIcon from '@mui/icons-material/Delete'
+import EditIcon from '@mui/icons-material/Edit'
+import Image from '../Image'
 
 interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
+  expand: boolean
 }
 
 const ExpandMore = styled((props: ExpandMoreProps) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
+  const { expand, ...other } = props
+  return <IconButton {...other} />
 })(({ theme, expand }) => ({
   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
   marginLeft: 'auto',
   transition: theme.transitions.create('transform', {
     duration: theme.transitions.duration.shortest,
   }),
-}));
+}))
 
 const RecipeReviewCard: FC = () => {
-  const [expanded, setExpanded] = useState(false);
-  const [comments, setComments] = useState<string[]>([]);
-  const [comment, setComment] = useState('');
-  const [liked, setLiked] = useState(false);
-  const [favorited, setFavorited] = useState(false);
+  const [expanded, setExpanded] = useState(false)
+  const [comments, setComments] = useState<string[]>([])
+  const [comment, setComment] = useState('')
+  const [liked, setLiked] = useState(false)
+  const [favorited, setFavorited] = useState(false)
 
   const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
 
   const handleCommentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setComment(event.target.value);
-  };
+    setComment(event.target.value)
+  }
 
   const handleCommentSubmit = () => {
     if (comment.trim() !== '') {
-      setComments([...comments, comment]);
-      console.log('Comentario enviado:', comment);
-      setComment('');
+      setComments([...comments, comment])
+      console.log('Comentario enviado:', comment)
+      setComment('')
     }
-  };
+  }
 
   const handleLikeClick = () => {
-    setLiked(!liked);
-  };
+    setLiked(!liked)
+  }
 
   const handleFavoriteClick = () => {
-    setFavorited(!favorited);
-  };
+    setFavorited(!favorited)
+  }
 
   return (
-    <Card sx={{ width: '100%', maxWidth: 800, backgroundColor: 'rgba(255, 255, 255, 0.911)', marginTop: 4, marginBottom: 32 }}>
+    <Card
+      sx={{
+        width: '100%',
+        maxWidth: 800,
+        backgroundColor: 'rgba(255, 255, 255, 0.911)',
+        marginTop: 4,
+        marginBottom: 32,
+      }}
+    >
       <CardHeader
         avatar={<Avatar aria-label="recipe"></Avatar>}
         action={
           <>
-
+            <IconButton aria-label="settings">
+              <EditIcon />
+            </IconButton>
+            <IconButton aria-label="settings">
+              <DeleteIcon />
+            </IconButton>
           </>
         }
         title="Paella de Gambas y Chorizo"
@@ -87,7 +100,9 @@ const RecipeReviewCard: FC = () => {
 
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Esta impresionante paella es un plato de fiesta perfecto y una comida divertida para cocinar junto con tus invitados. Agregue 1 taza de guisantes congelados junto con los mejillones, si lo desea.
+          Esta impresionante paella es un plato de fiesta perfecto y una comida
+          divertida para cocinar junto con tus invitados. Agregue 1 taza de
+          guisantes congelados junto con los mejillones, si lo desea.
         </Typography>
       </CardContent>
 
@@ -98,7 +113,9 @@ const RecipeReviewCard: FC = () => {
         <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
           <BookmarkIcon color={favorited ? 'primary' : 'inherit'} />
         </IconButton>
-        <IconButton aria-label="share"><ShareIcon /></IconButton>
+        <IconButton aria-label="share">
+          <ShareIcon />
+        </IconButton>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -112,7 +129,14 @@ const RecipeReviewCard: FC = () => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Comments:</Typography>
-          <Paper sx={{ width: '100%', padding: 2, backgroundColor: '#f9f9f9', overflowY: 'auto' }}>
+          <Paper
+            sx={{
+              width: '100%',
+              padding: 2,
+              backgroundColor: '#f9f9f9',
+              overflowY: 'auto',
+            }}
+          >
             {comments.map((comment, index) => (
               <Typography key={index} paragraph sx={{ marginBottom: 1 }}>
                 {comment}
@@ -122,7 +146,16 @@ const RecipeReviewCard: FC = () => {
         </CardContent>
       </Collapse>
 
-      <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: 3, marginRight: 3, marginBottom: 3 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginLeft: 3,
+          marginRight: 3,
+          marginBottom: 3,
+        }}
+      >
         <TextField
           fullWidth
           label="Comment"
@@ -153,7 +186,7 @@ const RecipeReviewCard: FC = () => {
         ></Button>
       </Box>
     </Card>
-  );
-};
+  )
+}
 
-export default memo(RecipeReviewCard);
+export default memo(RecipeReviewCard)
