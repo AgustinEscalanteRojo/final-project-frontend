@@ -69,6 +69,7 @@ const allergyIcons: Record<string, string> = {
 }
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
+  
   const navigate = useNavigate()
   const [allergies, setAllergies] = React.useState<string[]>([])
 
