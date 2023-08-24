@@ -18,7 +18,6 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ShareIcon from '@mui/icons-material/Share'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import MoreVertIcon from '@mui/icons-material/MoreVert'
 import SendIcon from '@mui/icons-material/Send'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -46,6 +45,16 @@ const RecipeReviewCard: FC = () => {
   const [comment, setComment] = useState('')
   const [liked, setLiked] = useState(false)
   const [favorited, setFavorited] = useState(false)
+
+  const handleDeleteClick = () => {
+    // TODO: Implement the logic for deleting the card
+    console.log('Card deletion logic goes here')
+  }
+
+  const handleEditClick = () => {
+    // TODO: Implement the logic for editing the card
+    console.log('Card editing logic goes here')
+  }
 
   const handleExpandClick = () => {
     setExpanded(!expanded)
@@ -85,10 +94,10 @@ const RecipeReviewCard: FC = () => {
         avatar={<Avatar aria-label="recipe"></Avatar>}
         action={
           <>
-            <IconButton aria-label="settings">
+            <IconButton aria-label="settings" onClick={handleEditClick}>
               <EditIcon />
             </IconButton>
-            <IconButton aria-label="settings">
+            <IconButton aria-label="settings" onClick={handleDeleteClick}>
               <DeleteIcon />
             </IconButton>
           </>
