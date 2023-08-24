@@ -72,6 +72,16 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
     'Mollusks',
   ]
 
+  const unityOptions = [
+      'Liter',
+      'Milliliters',
+      'Kilograms',
+      'Grams',
+      'Pound',
+      'Ounce',
+      'Tablespoon',
+      'Tablespoon dessert'
+  ]
   return (
     <PostContainer>
       <Header onLogout={onLogout} />
@@ -93,6 +103,55 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                 required
                 fullWidth
               />
+
+              <TextField
+                style={{ marginTop: '26px' }}
+                label="Diners"
+                name="diners"
+                value={values.diners}
+                onChange={handleChange}
+                required
+                fullWidth
+              />
+
+              <FormControl fullWidth style={{ marginTop: '26px' }}>
+                <InputLabel>Ingredients</InputLabel>
+                {values.ingredients.map((ingredient, index) => (
+                  <div key={index}>
+                    <TextField
+                      label=""
+                      name={`ingredients[${index}].name`}
+                      value={ingredient.name}
+                      onChange={handleChange}
+                      required
+                      fullWidth
+                    />
+                    <TextField
+                      label="Quantity"
+                      name={`ingredients[${index}].quantity`}
+                      value={ingredient.quantity}
+                      onChange={handleChange}
+                      required
+                      fullWidth
+                    />
+                    <FormControl fullWidth>
+                      <InputLabel>Unity</InputLabel>
+                      <Select
+                        name={`ingredients[${index}].unity`}
+                        value={ingredient.unity}
+                        onChange={handleChange}
+                        required
+                      >
+                        {unityOptions.map((option) => (
+                          <MenuItem key={option} value={option}>
+                            {option}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </div>
+                ))}
+              </FormControl>
 
               <FormControl fullWidth style={{ marginTop: '26px' }}>
                 <InputLabel>Type</InputLabel>
@@ -188,6 +247,7 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
               <Button
                 type="submit"
                 style={{ marginBottom: '96px', marginTop: '20px' }}
+                onClick={() => handleCreate(values)}
               >
                 Post recipe
               </Button>
