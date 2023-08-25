@@ -1,4 +1,4 @@
-export type User = {
+export type userResponse = {
   _id: string
   email: string
   password: string
@@ -19,7 +19,7 @@ export type User = {
   following: string[]
 }
 
-export type UserInput = {
+export type userInput = {
   _id?: string
   email: string
   password: string
@@ -40,7 +40,7 @@ export type UserInput = {
   following?: string[]
 }
 
-export const normalizeUser = (input: User | UserInput) => ({
+export const normalizeUser = (input: userResponse | userInput) => ({
   _id: input?._id || '',
   email: input?.email || '',
   password: input?.password || '',
@@ -61,4 +61,4 @@ export const normalizeUser = (input: User | UserInput) => ({
   following: input?.following || [],
 })
 
-export type NormalizedUser = ReturnType<typeof normalizeUser>
+export type User = ReturnType<typeof normalizeUser>

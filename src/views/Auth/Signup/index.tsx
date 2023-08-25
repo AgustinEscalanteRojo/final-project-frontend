@@ -207,21 +207,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
                           </Select>
                         </FormControl>
                       </Grid>
-                      <Grid item xs={6}>
-                        <TextField
-                          label="Biography"
-                          placeholder="Write a brief biography"
-                          type="string"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="biography"
-                          value={values.biography}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                    </Grid>
-                    <Grid item container spacing={2} justifyContent="center">
+
                       <Grid item xs={6}>
                         <TextField
                           label="Avatar"
@@ -233,6 +219,23 @@ const Signup: FC<Props> = ({ onSignup }) => {
                           name="avatar"
                           value={values.avatar}
                           onChange={handleChange}
+                        />
+                      </Grid>
+                    </Grid>
+                    <Grid item container spacing={2} justifyContent="center">
+                      <Grid item xs={12}>
+                        <TextField
+                          label="Biography"
+                          placeholder="Write a brief biography"
+                          type="string"
+                          variant="outlined"
+                          fullWidth
+                          required
+                          name="biography"
+                          value={values.biography}
+                          onChange={handleChange}
+                          multiline   // Esta línea permite múltiples líneas de texto
+                          minRows={4}
                         />
                       </Grid>
                     </Grid>
@@ -254,7 +257,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
                       color="primary"
                       variant="contained"
                       endIcon={<SendIcon style={{ color: '#3847a4' }} />}
-                      style={{ ...btnstyle, backgroundColor: '#FFFACD', }}
+                      style={{ ...btnstyle, backgroundColor: '#FFFACD' }}
                       size="large"
                       fullWidth
                     >
