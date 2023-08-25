@@ -22,13 +22,17 @@ const Login: FC<Props> = ({ onLogin }) => {
   const { handleOnSubmit } = useLogic(onLogin)
 
   const paperStyle = {
-    padding: '20px 20px',
-    width: '50%', // Usa porcentaje para la responsividad
+    padding: '30px 24px',
+    width: '100%', // Usa porcentaje para la responsividad
     maxWidth: 300, // Agrega un ancho máximo para pantallas más grandes
-    margin: '80px auto', // Ajusta el margen para centrar verticalmente
+    margin: '170px auto', // Ajusta el margen para centrar verticalmente
+    backgroundColor: '#FFDAB9',
   }
-  const avatarStyle = { backgroundColor: '#1bbd7e' }
-  const btnstyle = { margin: '22px 0' }
+
+  const avatarStyle = {
+    border: '2px solid black', 
+  }
+  const btnstyle = { margin: '10px 0', fontSize: '12px', width: '40%' }
 
   return (
     <Grid>
@@ -42,7 +46,7 @@ const Login: FC<Props> = ({ onLogin }) => {
         >
           {({ handleSubmit, handleChange, values }) => (
             <form onSubmit={handleSubmit}>
-              <Grid container alignContent="center">
+                  <Grid container alignContent="center" justifyContent="center">
                 <Avatar src="/logoicon.jpg" style={avatarStyle}>
                   <LockOutlinedIcon />
                 </Avatar>
