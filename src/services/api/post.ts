@@ -23,7 +23,19 @@ export const createPost = async (input: PostInput): Promise<Post> => {
 };
 
 
-
+export const removePostById = async (id: string): Promise<boolean> => {
+  try {
+    await fetch(`${BASE_URL}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+  } catch (error) {
+    alert('You dont have permission for this')
+  }
+  return true
+}
 
 
 

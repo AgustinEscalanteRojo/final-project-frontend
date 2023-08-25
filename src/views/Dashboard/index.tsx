@@ -39,6 +39,7 @@ import {
 
 import IconButton from '@mui/material/IconButton'
 import AddIcon from '@mui/icons-material/Add'
+import { removePostById } from '../../services/api/post'
 
 const allergiesOptions = [
   'Celery',
@@ -115,7 +116,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           }}
         >
           <AddIcon fontSize="large" style={{ color: 'black' }} />{' '}
-          {/* Cambiar el color del símbolo a blanco */}
+          {}
         </IconButton>
       </ButtonController>
 
@@ -172,3 +173,5 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
 }
 
 export default memo(Dashboard)
+
+

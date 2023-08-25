@@ -4,5 +4,5 @@ export type Props = {
   onClick?: () => void
   post: Post
   isProfile?: boolean
-  onRemove: (postId: string) => void
+  onRemove?: (postId: string) => void
 }
