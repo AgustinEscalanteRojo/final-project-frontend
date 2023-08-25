@@ -78,7 +78,6 @@ const allergyIcons: Record<string, string> = {
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const [posts, setPosts] = useState<Post[]>([])
 
-
   const navigate = useNavigate()
   const [allergies, setAllergies] = React.useState<string[]>([])
 
@@ -90,14 +89,12 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     navigate('/create-post')
   }, [navigate])
 
-
   const handleRemovePost = useCallback(
     async (postId: string) => {
       await removePostById(postId)
     },
     [removePostById]
   )
-
 
   return (
     <Container>
@@ -115,14 +112,17 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             height: '60px',
           }}
         >
-          <AddIcon fontSize="large" style={{ color: 'black' }} />{' '}
-          {}
+          <AddIcon fontSize="large" style={{ color: 'black' }} /> {}
         </IconButton>
       </ButtonController>
 
       <Cards>
-      {posts?.map((post, index) => (
-        <RecipeReviewCard key={index} post={post} onRemove={handleRemovePost}/>
+        {posts?.map((post, index) => (
+          <RecipeReviewCard
+            key={index}
+            post={post}
+            onRemove={handleRemovePost}
+          />
         ))}
       </Cards>
 
@@ -173,5 +173,3 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
 }
 
 export default memo(Dashboard)
-
-
