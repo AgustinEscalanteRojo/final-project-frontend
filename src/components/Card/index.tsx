@@ -24,6 +24,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import Image from '../Image'
 import type { Props } from './types'
+import { togglePostFavByUser } from '../../services/api/post'
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean
@@ -40,7 +41,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }))
 
-const RecipeReviewCard: FC<Props> = ({ onRemove }) => {
+const RecipeReviewCard: FC<Props> = ({ onRemove , post}) => {
   const [expanded, setExpanded] = useState(false)
   const [comments, setComments] = useState<string[]>([])
   const [comment, setComment] = useState('')
@@ -74,9 +75,10 @@ const RecipeReviewCard: FC<Props> = ({ onRemove }) => {
   }, [comment, comments]);
 
   
-  const handleLikeClick = useCallback(() => {
-    setLiked(!liked);
-  }, [liked]);
+  const handleLikeClick = useCallback(async () => {
+    await togglePostFavByUser(post._id)
+    setLiked(!liked)
+  }, [liked, post._id])
 
   const handleFavoriteClick = useCallback(() => {
     setFavorited(!favorited);
