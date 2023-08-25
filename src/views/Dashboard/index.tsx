@@ -39,7 +39,7 @@ import {
 
 import IconButton from '@mui/material/IconButton'
 import AddIcon from '@mui/icons-material/Add'
-import { removePostById } from '../../services/api/post'
+import { getPosts, removePostById } from '../../services/api/post'
 
 const allergiesOptions = [
   'Celery',
@@ -88,6 +88,16 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
   const handleGoToPost = useCallback(() => {
     navigate('/create-post')
   }, [navigate])
+
+    const fetchPosts = useCallback(async () => {
+      const postsList = await getPosts()
+      setPosts(postsList)
+    }, [])
+
+      useEffect(() => {
+        fetchPosts()
+      }, [fetchPosts])
+
 
   const handleRemovePost = useCallback(
     async (postId: string) => {
