@@ -52,9 +52,11 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
     // Lógica para manejar la edición
   }, [])
 
-  const handleExpandClick = useCallback(() => {
-    setExpanded(!expanded)
-  }, [setExpanded])
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
+
 
   const handleCommentChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
