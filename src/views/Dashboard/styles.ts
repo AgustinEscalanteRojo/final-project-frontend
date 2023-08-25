@@ -2,6 +2,14 @@ import styled from 'styled-components'
 import theme from '../../styles/theme'
 
 
+export const Cards = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  gap: 15px;
+  justify-content: space-around;
+`
+
+
 export const ContainerAllergies = styled.div`
   position: fixed;
   top: 190px; 

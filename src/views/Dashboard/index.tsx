@@ -1,11 +1,12 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, memo, useCallback, useState, useEffect } from 'react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import { useNavigate } from 'react-router-dom'
 import ImageBackground from '../../components/ImageBackground'
 import type { Props } from './types'
-import Card from '../../components/Card'
+import RecipeReviewCard from '../../components/Card'
 import * as React from 'react'
+import { Post } from '../../models/Post'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -29,7 +30,12 @@ import sesameIcon from '../../icons/sesameAllergensIcon.png'
 import soyIcon from '../../icons/soyAllergensIcon.png'
 import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
 
-import { Container, ButtonController, ContainerAllergies } from './styles'
+import {
+  Container,
+  ButtonController,
+  ContainerAllergies,
+  Cards,
+} from './styles'
 
 import IconButton from '@mui/material/IconButton'
 import AddIcon from '@mui/icons-material/Add'
@@ -69,7 +75,9 @@ const allergyIcons: Record<string, string> = {
 }
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
-  
+  const [posts, setPosts] = useState<Post[]>([])
+
+
   const navigate = useNavigate()
   const [allergies, setAllergies] = React.useState<string[]>([])
 
@@ -81,37 +89,43 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     navigate('/create-post')
   }, [navigate])
 
+
+  const handleRemovePost = useCallback(
+    async (postId: string) => {
+      await removePostById(postId)
+    },
+    [removePostById]
+  )
+
+
   return (
     <Container>
       <Header onLogout={onLogout} />
 
-
-
-
       <ButtonController>
-  <IconButton
-    onClick={handleGoToPost}
-    color="primary"
-    aria-label="add new post"
-    style={{
-      border: '3px solid #b5803f',  
-      borderRadius: '20%',            
-      width: '60px',                 
-      height: '60px',                 
-    }}
-  >
-    <AddIcon fontSize="large" style={{ color: 'black' }} /> {/* Cambiar el color del símbolo a blanco */}
-  </IconButton>
-</ButtonController>
+        <IconButton
+          onClick={handleGoToPost}
+          color="primary"
+          aria-label="add new post"
+          style={{
+            border: '3px solid #b5803f',
+            borderRadius: '20%',
+            width: '60px',
+            height: '60px',
+          }}
+        >
+          <AddIcon fontSize="large" style={{ color: 'black' }} />{' '}
+          {/* Cambiar el color del símbolo a blanco */}
+        </IconButton>
+      </ButtonController>
 
-
-
-
-
-      <Card />
+      <Cards>
+      {posts?.map((post, index) => (
+        <RecipeReviewCard key={index} post={post} onRemove={handleRemovePost}/>
+        ))}
+      </Cards>
 
       <ContainerAllergies>
-        
         <FormControl
           sx={{ minWidth: 220, marginLeft: '20px', backgroundColor: 'white' }}
         >
