@@ -72,13 +72,14 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   }, [comment, comments])
 
   const handleLikeClick = useCallback(async () => {
-    await togglePostFavByUser(post._id)
-    setLiked(!liked)
-  }, [liked, post._id])
 
-  const handleFavoriteClick = useCallback(() => {
+    setLiked(!liked)
+  }, [liked, ])
+
+  const handleFavoriteClick = useCallback(async() => {
+    await togglePostFavByUser(post._id)
     setFavorited(!favorited)
-  }, [favorited])
+  }, [favorited, post._id])
 
   return (
     <Card

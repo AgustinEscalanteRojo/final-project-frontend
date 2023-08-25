@@ -89,15 +89,14 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     navigate('/create-post')
   }, [navigate])
 
-    const fetchPosts = useCallback(async () => {
-      const postsList = await getPosts()
-      setPosts(postsList)
-    }, [])
+  const fetchPosts = useCallback(async () => {
+    const postsList = await getPosts()
+    setPosts(postsList)
+  }, [])
 
-      useEffect(() => {
-        fetchPosts()
-      }, [fetchPosts])
-
+  useEffect(() => {
+    fetchPosts()
+  }, [fetchPosts])
 
   const handleRemovePost = useCallback(
     async (postId: string) => {
