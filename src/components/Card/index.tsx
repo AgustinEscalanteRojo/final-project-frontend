@@ -41,49 +41,44 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
   }),
 }))
 
-const RecipeReviewCard: FC<Props> = ({ onRemove , post}) => {
-
+const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const [expanded, setExpanded] = useState(false)
   const [comments, setComments] = useState<string[]>([])
   const [comment, setComment] = useState('')
   const [liked, setLiked] = useState(false)
   const [favorited, setFavorited] = useState(false)
 
-
-  const handleDeleteClick = useCallback(() => {
-    // Lógica para manejar la eliminación
-  }, []);
-
   const handleEditClick = useCallback(() => {
     // Lógica para manejar la edición
-  }, []);
+  }, [])
 
-  
-  const handleExpandClick = useCallback( () => {
+  const handleExpandClick = useCallback(() => {
     setExpanded(!expanded)
-    }, [setExpanded])
+  }, [setExpanded])
 
-    const handleCommentChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-      setComment(event.target.value);
-    }, []);
+  const handleCommentChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setComment(event.target.value)
+    },
+    []
+  )
 
   const handleCommentSubmit = useCallback(() => {
     if (comment.trim() !== '') {
-      setComments([...comments, comment]);
-      console.log('Comentario enviado:', comment);
-      setComment('');
+      setComments([...comments, comment])
+      console.log('Comentario enviado:', comment)
+      setComment('')
     }
-  }, [comment, comments]);
+  }, [comment, comments])
 
-  
   const handleLikeClick = useCallback(async () => {
     await togglePostFavByUser(post._id)
     setLiked(!liked)
   }, [liked, post._id])
 
   const handleFavoriteClick = useCallback(() => {
-    setFavorited(!favorited);
-  }, [favorited]);
+    setFavorited(!favorited)
+  }, [favorited])
 
   return (
     <Card
@@ -99,23 +94,26 @@ const RecipeReviewCard: FC<Props> = ({ onRemove , post}) => {
         avatar={<Avatar aria-label="recipe"></Avatar>}
         action={
           <>
-            <IconButton aria-label="settings" onClick={handleEditClick} >
+            <IconButton aria-label="settings" onClick={handleEditClick}>
               <EditIcon />
             </IconButton>
-            
-            <IconButton aria-label="settings" onClick={handleDeleteClick}>
+
+            <IconButton
+              aria-label="settings"
+              onClick={() => onRemove(post._id)}
+            >
               <DeleteIcon />
             </IconButton>
           </>
         }
-        title= {post.title}
+        title={post.title}
         subheader="September 14, 2022"
       />
       <Image src="/arroz.mariscos.jpg" alt="arroz mariscos.jpg" />
 
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-        {post.description}
+          {post.description}
         </Typography>
       </CardContent>
 
@@ -128,7 +126,6 @@ const RecipeReviewCard: FC<Props> = ({ onRemove , post}) => {
           <BookmarkIcon color={favorited ? 'primary' : 'inherit'} />
         </IconButton>
 
-        
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>

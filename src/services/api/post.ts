@@ -1,5 +1,5 @@
-import { Post, PostInput, normalizePost } from "../../models/Post";
-import { getToken } from "../storage/token";
+import { Post, PostInput, normalizePost } from '../../models/Post'
+import { getToken } from '../storage/token'
 
 const BASE_URL = 'http://localhost:8080/posts'
 const token = getToken()
@@ -20,22 +20,19 @@ export const getPosts = async (): Promise<Post[]> => {
   return []
 }
 
-
-
 export const createPost = async (input: PostInput): Promise<Post> => {
   const response = await fetch(BASE_URL, {
     body: JSON.stringify(input),
-    method: "POST",
+    method: 'POST',
     headers: {
       authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
-  });
-  const data = await response.json();
+  })
+  const data = await response.json()
 
-  return normalizePost(data);
-};
-
+  return normalizePost(data)
+}
 
 export const togglePostFavByUser = async (id: string): Promise<Post> => {
   const response = await fetch(`http://localhost:8080/posts/${id}/favs`, {
@@ -50,9 +47,13 @@ export const togglePostFavByUser = async (id: string): Promise<Post> => {
   return normalizePost(data)
 }
 
+export const removePostById = async (id: string): Promise<boolean> => {
+  await fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  })
 
-
-
-
-
-
+  return true
+}
