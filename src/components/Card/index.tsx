@@ -122,9 +122,12 @@ const RecipeReviewCard: FC<Props> = ({ onRemove }) => {
         <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
           <FavoriteIcon color={liked ? 'error' : 'inherit'} />
         </IconButton>
+
         <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
           <BookmarkIcon color={favorited ? 'primary' : 'inherit'} />
         </IconButton>
+
+        
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
