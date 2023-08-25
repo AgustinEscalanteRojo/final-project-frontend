@@ -42,6 +42,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }))
 
 const RecipeReviewCard: FC<Props> = ({ onRemove , post}) => {
+
   const [expanded, setExpanded] = useState(false)
   const [comments, setComments] = useState<string[]>([])
   const [comment, setComment] = useState('')
@@ -107,16 +108,14 @@ const RecipeReviewCard: FC<Props> = ({ onRemove , post}) => {
             </IconButton>
           </>
         }
-        title="Paella de Gambas y Chorizo"
+        title= {post.title}
         subheader="September 14, 2022"
       />
       <Image src="/arroz.mariscos.jpg" alt="arroz mariscos.jpg" />
 
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          Esta impresionante paella es un plato de fiesta perfecto y una comida
-          divertida para cocinar junto con tus invitados. Agregue 1 taza de
-          guisantes congelados junto con los mejillones, si lo desea.
+        {post.description}
         </Typography>
       </CardContent>
 
