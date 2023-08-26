@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import theme from '../../styles/theme'
+import { AccordionDetails } from '@mui/material'
 
 export const FaqContainer = styled.div`
   display: flex;
@@ -13,23 +14,17 @@ export const Content = styled.div`
   color: ${theme.colors.pastelCoral};
   display: flex;
   justify-content: center;
+  max-width: 600px;
+  margin: 0 auto; 
 `
 
-export const ButtonController = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-
-  gap: 10px;
-  margin-top: 120px;
-  margin-right: 10px;
+export const Backgroundcolor = styled(AccordionDetails)`
+  background-color: ${theme.colors.buff};;
 `
 
-export const Backgroundcolor = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-color: ${theme.colors.pastelPeach};
+export const StyledHeading = styled.h1`
+  color: ${theme.colors.buff};;
+  font-size: 50px;
+  font-style: italic;
+  text-align: center;
 `

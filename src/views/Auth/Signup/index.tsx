@@ -234,7 +234,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
                           name="biography"
                           value={values.biography}
                           onChange={handleChange}
-                          multiline   // Esta línea permite múltiples líneas de texto
+                          multiline   
                           minRows={4}
                         />
                       </Grid>
