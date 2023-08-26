@@ -23,9 +23,9 @@ const Login: FC<Props> = ({ onLogin }) => {
 
   const paperStyle = {
     padding: '30px 24px',
-    width: '100%', // Usa porcentaje para la responsividad
-    maxWidth: 300, // Agrega un ancho máximo para pantallas más grandes
-    margin: '170px auto', // Ajusta el margen para centrar verticalmente
+    width: '100%', 
+    maxWidth: 300, 
+    margin: '170px auto', 
     backgroundColor: '#FFDAB9',
   }
 
