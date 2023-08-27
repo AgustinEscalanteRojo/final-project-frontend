@@ -26,6 +26,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import Image from '../Image'
 import type { Props } from './types'
 import { togglePostFavByUser } from '../../services/api/post'
+import { useNavigate } from 'react-router-dom'
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean
@@ -48,16 +49,15 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const [comment, setComment] = useState('')
   const [liked, setLiked] = useState(false)
   const [favorited, setFavorited] = useState(false)
+  const navigate = useNavigate()
 
   const handleEditClick = useCallback(() => {
-    // Lógica para manejar la edición
-  }, [])
+    navigate('/updatepost')
+  }, [navigate])
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
-
-
+  const handleExpandClick = useCallback(() => {
+    setExpanded(!expanded)
+  }, [setExpanded])
 
   const handleCommentChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
