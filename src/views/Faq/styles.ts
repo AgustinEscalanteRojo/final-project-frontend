@@ -22,7 +22,7 @@ export const Backgroundcolor = styled(AccordionDetails)`
   background-color: ${theme.colors.buff};;
 `
 
-export const StyledHeading = styled.h1`
+export const Tittle = styled.h1`
   color: ${theme.colors.buff};;
   font-size: 50px;
   font-style: italic;
