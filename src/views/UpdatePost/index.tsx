@@ -73,14 +73,14 @@ const UpdatePost: FC<Props> = ({ onLogout }) => {
   ]
 
   const unityOptions = [
-      'Liter',
-      'Milliliters',
-      'Kilograms',
-      'Grams',
-      'Pound',
-      'Ounce',
-      'Tablespoon',
-      'Tablespoon dessert'
+    'Liter',
+    'Milliliters',
+    'Kilograms',
+    'Grams',
+    'Pound',
+    'Ounce',
+    'Tablespoon',
+    'Tablespoon dessert',
   ]
   return (
     <PostContainer>
@@ -115,11 +115,17 @@ const UpdatePost: FC<Props> = ({ onLogout }) => {
               />
 
               <FormControl fullWidth style={{ marginTop: '26px' }}>
-                <InputLabel>Ingredients</InputLabel>
                 {values.ingredients.map((ingredient, index) => (
-                  <div key={index}>
+                  <div
+                    key={index}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      marginBottom: '16px',
+                    }}
+                  >
                     <TextField
-                      label=""
+                      placeholder="Ingredients"
                       name={`ingredients[${index}].name`}
                       value={ingredient.name}
                       onChange={handleChange}
@@ -135,7 +141,7 @@ const UpdatePost: FC<Props> = ({ onLogout }) => {
                       fullWidth
                     />
                     <FormControl fullWidth>
-                      <InputLabel>Unity</InputLabel>
+                      <InputLabel></InputLabel>
                       <Select
                         name={`ingredients[${index}].unity`}
                         value={ingredient.unity}
@@ -149,8 +155,42 @@ const UpdatePost: FC<Props> = ({ onLogout }) => {
                         ))}
                       </Select>
                     </FormControl>
+                    <Button
+                      variant="outlined"
+                      style={{ marginTop: '16px', color: 'red' }}
+                      onClick={() => {
+                        const updatedIngredients = [...values.ingredients]
+                        updatedIngredients.splice(index, 1)
+                        handleChange({
+                          target: {
+                            name: 'ingredients',
+                            value: updatedIngredients,
+                          },
+                        })
+                      }}
+                    >
+                      x
+                    </Button>
                   </div>
                 ))}
+                <Button
+                  variant="outlined"
+                  style={{ marginTop: '16px', color: 'green' }}
+                  onClick={() => {
+                    const updatedIngredients = [
+                      ...values.ingredients,
+                      { name: '', quantity: '', unity: unityOptions[0] },
+                    ]
+                    handleChange({
+                      target: {
+                        name: 'ingredients',
+                        value: updatedIngredients,
+                      },
+                    })
+                  }}
+                >
+                  Add Ingredient
+                </Button>
               </FormControl>
 
               <FormControl fullWidth style={{ marginTop: '26px' }}>
@@ -237,6 +277,7 @@ const UpdatePost: FC<Props> = ({ onLogout }) => {
               </FormControl>
 
               <TextField
+                style={{ marginTop: '26px' }}
                 label="Main Image URL"
                 name="mainImage"
                 value={values.mainImage}
@@ -255,7 +296,6 @@ const UpdatePost: FC<Props> = ({ onLogout }) => {
           )}
         </Formik>
       </Content>
-
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
     </PostContainer>
