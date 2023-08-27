@@ -1,8 +1,7 @@
 import { FC, memo } from 'react'
-import { StyledHeading } from './styles'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import { FaqContainer, Content, Backgroundcolor } from './styles'
+import { FaqContainer, Content, Backgroundcolor, Tittle } from './styles'
 import type { Props } from './types'
 import ImageBackground from '../../components/ImageBackground'
 import Accordion from '@mui/material/Accordion'
@@ -17,7 +16,7 @@ const Faq: FC<Props> = ({ onLogout }) => {
       <Header onLogout={onLogout} />
       <Content>
         <div>
-          <StyledHeading>How can we help you?</StyledHeading>
+          <Tittle>How can we help you?</Tittle>
 
           <Accordion>
             <AccordionSummary
