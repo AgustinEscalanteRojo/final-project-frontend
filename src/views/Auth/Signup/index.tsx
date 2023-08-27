@@ -95,7 +95,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
                         <TextField
                           label="Password"
                           placeholder="Enter password"
-                          type="string"
+                          type="password"
                           variant="outlined"
                           fullWidth
                           required
