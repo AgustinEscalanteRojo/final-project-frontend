@@ -114,44 +114,79 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                 fullWidth
               />
 
-              <FormControl fullWidth style={{ marginTop: '26px' }}>
-                <InputLabel>Ingredients</InputLabel>
-                {values.ingredients.map((ingredient, index) => (
-                  <div key={index}>
-                    <TextField
-                      label=""
-                      name={`ingredients[${index}].name`}
-                      value={ingredient.name}
-                      onChange={handleChange}
-                      required
-                      fullWidth
-                    />
-                    <TextField
-                      label="Quantity"
-                      name={`ingredients[${index}].quantity`}
-                      value={ingredient.quantity}
-                      onChange={handleChange}
-                      required
-                      fullWidth
-                    />
-                    <FormControl fullWidth>
-                      <InputLabel>Unity</InputLabel>
-                      <Select
-                        name={`ingredients[${index}].unity`}
-                        value={ingredient.unity}
-                        onChange={handleChange}
-                        required
-                      >
-                        {unityOptions.map((option) => (
-                          <MenuItem key={option} value={option}>
-                            {option}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </div>
-                ))}
-              </FormControl>
+
+
+
+<FormControl fullWidth style={{ marginTop: '26px' }}>
+  {values.ingredients.map((ingredient, index) => (
+    <div key={index} style={{ display: 'flex', alignItems: 'center', marginBottom: '16px' }}>
+      <TextField
+        placeholder="Ingredients"
+        name={`ingredients[${index}].name`}
+        value={ingredient.name}
+        onChange={handleChange}
+        required
+        fullWidth
+      />
+      <TextField
+        label="Quantity"
+        name={`ingredients[${index}].quantity`}
+        value={ingredient.quantity}
+        onChange={handleChange}
+        required
+        fullWidth
+      />
+      <FormControl fullWidth>
+        <InputLabel></InputLabel>
+        <Select
+          name={`ingredients[${index}].unity`}
+          value={ingredient.unity}
+          onChange={handleChange}
+          required
+        >
+          {unityOptions.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      <Button
+        variant="outlined"
+        style={{ marginTop: '16px', color: 'red' }}
+        onClick={() => {
+          const updatedIngredients = [...values.ingredients];
+          updatedIngredients.splice(index, 1);
+          handleChange({
+            target: { name: 'ingredients', value: updatedIngredients },
+          });
+        }}
+      >
+        x
+      </Button>
+    </div>
+  ))}
+  <Button
+
+    variant="outlined"
+    style={{ marginTop: '16px',  color: 'green' }}
+    onClick={() => {
+      const updatedIngredients = [
+        ...values.ingredients,
+        { name: '', quantity: '', unity: unityOptions[0] },
+      ];
+      handleChange({
+        target: { name: 'ingredients', value: updatedIngredients },
+      });
+    }}
+  >
+    Add Ingredient
+  </Button>
+</FormControl>
+
+
+
+
 
               <FormControl fullWidth style={{ marginTop: '26px' }}>
                 <InputLabel>Type</InputLabel>
@@ -195,7 +230,9 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                 fullWidth
               />
 
-              <FormControl
+
+
+<FormControl
                 fullWidth
                 style={{ marginTop: '26px', marginBottom: '26px' }}
               >
@@ -236,7 +273,12 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                 </Grid>
               </FormControl>
 
+
+
+
+
               <TextField
+                style={{ marginTop: '26px' }}
                 label="Main Image URL"
                 name="mainImage"
                 value={values.mainImage}
