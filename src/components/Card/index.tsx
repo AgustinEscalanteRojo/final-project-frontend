@@ -25,7 +25,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import Image from '../Image'
 import type { Props } from './types'
-import { togglePostFavByUser } from '../../services/api/post'
+import { togglePostFavByUser, togglePostLikeByUser } from '../../services/api/post'
 import { useNavigate } from 'react-router-dom'
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -75,9 +75,9 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   }, [comment, comments])
 
   const handleLikeClick = useCallback(async () => {
-
+    await togglePostLikeByUser(post._id)
     setLiked(!liked)
-  }, [liked, ])
+  }, [liked, post._id])
 
   const handleFavoriteClick = useCallback(async() => {
     await togglePostFavByUser(post._id)
