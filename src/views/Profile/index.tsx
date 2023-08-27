@@ -18,6 +18,7 @@ import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import { Avatar } from '@material-ui/core'
+import ImageBackground from '../../components/ImageBackground'
 
 const Profile: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -38,7 +39,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
 
       <Header onLogout={onLogout} />
 
-      <Avatar style={{ backgroundColor: '#c9101d', marginTop: '150px' }}></Avatar>
+      <Avatar style={{ backgroundColor: '#D4A373', marginTop: '150px' }}></Avatar>
 
       <ButtonController>
         <Button onClick={handleGoToFollowers}>Followers / Following</Button>
@@ -63,8 +64,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
           </TabContext>
         </Box>
       </Content>
-
-      <Backgroundcolor />
+      <ImageBackground imageSrc="/back.jpg" />
       <Footer />
     </PerfilContainer>
   )
