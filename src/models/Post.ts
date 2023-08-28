@@ -86,6 +86,8 @@ export const normalizePost = (input: postResponse | PostInput) => ({
   diners: input?.diners || undefined,
   steps: input?.steps || [],
   createdAt: input?.createdAt ? new Date(input.createdAt) : new Date(),
+  isFav: false,
+  isLike: false,
 })
 
 export type Post = ReturnType<typeof normalizePost>

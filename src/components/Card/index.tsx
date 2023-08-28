@@ -1,4 +1,5 @@
 import React, { FC, memo, useState, useCallback } from 'react'
+import { LikeIcon, FavIcon } from './style'
 import { styled } from '@mui/material/styles'
 import {
   Card,
@@ -14,18 +15,18 @@ import {
   TextField,
   Button,
   IconButtonProps,
-  Link,
 } from '@mui/material'
-import FavoriteIcon from '@mui/icons-material/Favorite'
 import ShareIcon from '@mui/icons-material/Share'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import SendIcon from '@mui/icons-material/Send'
-import BookmarkIcon from '@mui/icons-material/Bookmark'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import Image from '../Image'
 import type { Props } from './types'
-import { togglePostFavByUser, togglePostLikeByUser } from '../../services/api/post'
+import {
+  togglePostFavByUser,
+  togglePostLikeByUser,
+} from '../../services/api/post'
 import { useNavigate } from 'react-router-dom'
 
 interface ExpandMoreProps extends IconButtonProps {
@@ -47,17 +48,17 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const [expanded, setExpanded] = useState(false)
   const [comments, setComments] = useState<string[]>([])
   const [comment, setComment] = useState('')
-  const [liked, setLiked] = useState(false)
-  const [favorited, setFavorited] = useState(false)
+  const [isLike, setLike] = useState(post.isLike)
+  const [isFav, setFav] = useState(post.isFav)
   const navigate = useNavigate()
 
   const handleEditClick = useCallback(() => {
     navigate('/updatepost')
   }, [navigate])
 
-  const handleExpandClick = useCallback(() => {
-    setExpanded(!expanded)
-  }, [setExpanded])
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   const handleCommentChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,6 +66,8 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
     },
     []
   )
+
+
 
   const handleCommentSubmit = useCallback(() => {
     if (comment.trim() !== '') {
@@ -74,15 +77,18 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
     }
   }, [comment, comments])
 
+
+
+
   const handleLikeClick = useCallback(async () => {
     await togglePostLikeByUser(post._id)
-    setLiked(!liked)
-  }, [liked, post._id])
+    setLike(!isLike)
+  }, [isLike, post._id])
 
-  const handleFavoriteClick = useCallback(async() => {
+  const handleFavoriteClick = useCallback(async () => {
     await togglePostFavByUser(post._id)
-    setFavorited(!favorited)
-  }, [favorited, post._id])
+    setFav(!isFav)
+  }, [isFav, post._id])
 
   return (
     <Card
@@ -123,11 +129,11 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
 
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
-          <FavoriteIcon color={liked ? 'error' : 'inherit'} />
+          <LikeIcon isLike={isLike} />
         </IconButton>
 
         <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
-          <BookmarkIcon color={favorited ? 'primary' : 'inherit'} />
+          <FavIcon isFav={isFav} />
         </IconButton>
 
         <IconButton aria-label="share">
