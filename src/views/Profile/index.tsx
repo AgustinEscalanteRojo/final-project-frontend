@@ -4,12 +4,7 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import type { Props } from './types'
 import Button from '../../components/Button'
-import {
-  PerfilContainer,
-  Content,
-  ButtonController,
-  Backgroundcolor,
-} from './styles'
+import { PerfilContainer, Content, ButtonController } from './styles'
 
 import * as React from 'react'
 import Box from '@mui/material/Box'
@@ -23,15 +18,13 @@ import { getMe } from '../../services/api/user'
 import { User } from '../../models/User'
 
 const Profile: FC<Props> = ({ onLogout }) => {
-
+  const navigate = useNavigate()
 
   const handleGoToLikes = useCallback(() => {
     navigate('/ ')
   }, [navigate])
 
   const [user, setUser] = useState<User | null>(null)
-  const navigate = useNavigate()
-
 
   const handleGoToFollowers = useCallback(() => {
     navigate('/Followers')
@@ -43,24 +36,20 @@ const Profile: FC<Props> = ({ onLogout }) => {
     setValue(newValue)
   }
 
-const fetchUserMe = useCallback(async () => {
-  try {
-    const userInfo = await getMe()
-    console.log(userInfo)
-    setUser(userInfo)
-  } catch (error) {
-    console.error('Error fetching user data:', error)
-  }
-}, [])
+  const fetchUserMe = useCallback(async () => {
+    try {
+      const userInfo = await getMe()
+      console.log(userInfo)
+      setUser(userInfo)
+    } catch (error) {
+      console.error('Error fetching user data:', error)
+    }
+  }, [])
 
+  useEffect(() => {
+    fetchUserMe()
+  }, [fetchUserMe])
 
-useEffect(() => {
-  fetchUserMe()
-}, [fetchUserMe])
-
-
-
-  
   return (
     <PerfilContainer>
       <Header onLogout={onLogout} />
@@ -70,6 +59,7 @@ useEffect(() => {
       ></Avatar>
 
       <ButtonController>
+        <Button onClick={handleGoToLikes}>Likes</Button>
         <Button onClick={handleGoToFollowers}>Followers / Following</Button>
       </ButtonController>
 

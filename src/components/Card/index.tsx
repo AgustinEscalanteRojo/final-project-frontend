@@ -59,15 +59,6 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
     setExpanded(!expanded)
   }
 
-  const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
-    const [expanded, setExpanded] = useState(false)
-    const [comments, setComments] = useState<string[]>([])
-    const [comment, setComment] = useState('')
-
-    const [liked, setLiked] = useState(false)
-    const [favorited, setFavorited] = useState(false)
-    const navigate = useNavigate()
-
     const handleGoToEditForm = useCallback(() => {
       navigate(`/posts/${post._id}?edit=true`)
       console.log(post._id)
