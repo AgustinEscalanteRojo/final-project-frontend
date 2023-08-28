@@ -135,9 +135,12 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </Cards>
 
+
+
+
       <ContainerAllergies>
         <FormControl
-          sx={{ minWidth: 220, marginLeft: '20px', backgroundColor: 'white' }}
+          sx={{ minWidth: 200, marginLeft: '10px', backgroundColor: 'white' }}
         >
           <InputLabel id="allergies-label">ALLERGIES</InputLabel>
           <Select
@@ -150,8 +153,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             MenuProps={{
               PaperProps: {
                 style: {
-                  maxHeight: 400, // Ajusta la altura máxima según tus necesidades
-                  width: 220, // Ajusta el ancho máximo según tus necesidades
+                  maxHeight: 400, 
+                  width: 200,
                 },
               },
             }}

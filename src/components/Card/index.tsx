@@ -22,7 +22,7 @@ import SendIcon from '@mui/icons-material/Send'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 
-
+import MenuBookIcon from '@mui/icons-material/MenuBook'
 import Image from '../Image'
 import type { Props } from './types'
 import {
@@ -62,10 +62,9 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
     navigate('/details')
   }, [navigate])
 
-
   const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
 
   const handleCommentChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,8 +73,6 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
     []
   )
 
-
-
   const handleCommentSubmit = useCallback(() => {
     if (comment.trim() !== '') {
       setComments([...comments, comment])
@@ -83,9 +80,6 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
       setComment('')
     }
   }, [comment, comments])
-
-
-
 
   const handleLikeClick = useCallback(async () => {
     await togglePostLikeByUser(post._id)
@@ -100,11 +94,12 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   return (
     <Card
       sx={{
-        width: '100%',
-        maxWidth: 800,
-        backgroundColor: 'rgba(255, 255, 255, 0.911)',
+       
+        maxWidth: 510,
+        backgroundColor: 'rgba(255, 247, 230, 0.911)',
         marginTop: 4,
-        marginBottom: 32,
+        margin:11,
+        marginBottom: 2,
       }}
     >
       <CardHeader
@@ -135,7 +130,6 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
       </CardContent>
 
       <CardActions disableSpacing>
-
         <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
           <LikeIcon isLike={isLike} />
         </IconButton>
@@ -148,12 +142,18 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
           <ShareIcon />
         </IconButton>
 
-
-        <IconButton aria-label="Detalles" onClick={handleDetailsClick}>
-        <Typography variant="body1" style={{ marginLeft: '216px', marginRight: '216px', fontSize: 'medium', fontWeight: 'bold' }}>
-        Details 
-      </Typography>
-    </IconButton>
+        <IconButton aria-label="Detalles" onClick={handleDetailsClick} style={{ display: 'flex', alignItems: 'center' }}>
+  <MenuBookIcon style={{ marginRight: '8px' }} />
+  <Typography
+    variant="body1"
+    style={{
+      fontSize: 'medium',
+      fontWeight: 'bold',
+    }}
+  >
+    Details
+  </Typography>
+</IconButton>
 
 
         <ExpandMore
@@ -164,7 +164,6 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
         >
           <ExpandMoreIcon />
         </ExpandMore>
-
       </CardActions>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
