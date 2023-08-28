@@ -24,8 +24,14 @@ import { User } from '../../models/User'
 
 const Profile: FC<Props> = ({ onLogout }) => {
 
+
+  const handleGoToLikes = useCallback(() => {
+    navigate('/ ')
+  }, [navigate])
+
   const [user, setUser] = useState<User | null>(null)
   const navigate = useNavigate()
+
 
   const handleGoToFollowers = useCallback(() => {
     navigate('/Followers')
