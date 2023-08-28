@@ -55,6 +55,16 @@ const handleExpandClick = () => {
 }
 
 
+const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
+  const [expanded, setExpanded] = useState(false)
+  const [comments, setComments] = useState<string[]>([])
+  const [comment, setComment] = useState('')
+  
+  const [liked, setLiked] = useState(false)
+  const [favorited, setFavorited] = useState(false)
+  const navigate = useNavigate()
+
+
   const handleEditClick = useCallback(() => {
     navigate('/updatepost')
   }, [navigate])
@@ -83,13 +93,17 @@ const handleExpandClick = () => {
 
   const handleLikeClick = useCallback(async () => {
     await togglePostLikeByUser(post._id)
+
     setLike(!isLike)
   }, [isLike, post._id])
 
+
   const handleFavoriteClick = useCallback(async () => {
     await togglePostFavByUser(post._id)
+
     setFav(!isFav)
   }, [isFav, post._id])
+
 
 
 
