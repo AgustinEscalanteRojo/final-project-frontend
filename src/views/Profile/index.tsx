@@ -24,7 +24,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
 
   const handleGoToLikes = useCallback(() => {
-    navigate('/')
+    navigate('/ ')
   }, [navigate])
 
   const handleGoToFollowers = useCallback(() => {
