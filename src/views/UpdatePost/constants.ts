@@ -1,17 +1,5 @@
 import { object, string, number, array } from 'yup'
 
-export const InitialValues = {
-  title: '',
-  type: '',
-  duration: '',
-  difficulty: '',
-  allergies: '',
-  description: '',
-  ingredients: [{ name: '', quantity: 0, unity: '' }],
-  diners: 0,
-  steps: [{ title: '', description: '', order: 1, image: [] }],
-}
-
 export const ValidationSchema = object().shape({
   title: string().required('Title is required'),
   type: string()

@@ -1,12 +1,18 @@
-import { FC, memo, useCallback, useState, useEffect } from 'react'
+import React, { FC, memo, useCallback, useState, useEffect } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import type { Props } from './types'
+import { EditPostInput, Post } from '../../models/Post'
+import {
+  Container,
+  ButtonController,
+  ContainerAllergies,
+  Cards,
+} from './styles'
+import { getPosts, removePostById } from '../../services/api/post'
+import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import { useNavigate } from 'react-router-dom'
-import ImageBackground from '../../components/ImageBackground'
-import type { Props } from './types'
 import RecipeReviewCard from '../../components/Card'
-import * as React from 'react'
-import { Post } from '../../models/Post'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -15,6 +21,9 @@ import Checkbox from '@mui/material/Checkbox'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
+import AddIcon from '@mui/icons-material/Add'
+
 import celeryIcon from '../../icons/celeryAllergensIcon.png'
 import crustaceansIcon from '../../icons/crustaceansAllergensIcon.png'
 import dairyIcon from '../../icons/dairyAllergensIcon.png'
@@ -29,17 +38,7 @@ import peanutsIcon from '../../icons/peanutsAllergensIcon.png'
 import sesameIcon from '../../icons/sesameAllergensIcon.png'
 import soyIcon from '../../icons/soyAllergensIcon.png'
 import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
-
-import {
-  Container,
-  ButtonController,
-  ContainerAllergies,
-  Cards,
-} from './styles'
-
-import IconButton from '@mui/material/IconButton'
-import AddIcon from '@mui/icons-material/Add'
-import { getPosts, removePostById } from '../../services/api/post'
+import UpdatePost from '../UpdatePost'
 
 const allergiesOptions = [
   'Celery',
@@ -76,9 +75,11 @@ const allergyIcons: Record<string, string> = {
 }
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
-  const [posts, setPosts] = useState<Post[]>([])
-
+  const [queryData] = useSearchParams()
   const navigate = useNavigate()
+  const [posts, setPosts] = useState<Post[]>([])
+  const [post, setPost] = useState<Post | null>(null)
+  const [isEdit, setIsEdit] = useState(false)
   const [allergies, setAllergies] = React.useState<string[]>([])
 
   const handleAllergiesChange = (event: SelectChangeEvent<string[]>) => {
@@ -104,6 +105,35 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     },
     [removePostById]
   )
+
+  const handleOnCompleteEdition = useCallback(
+    (values: EditPostInput) => {
+      const editedPost = { ...post, ...values } as Post
+      setPost(editedPost)
+    },
+    [post]
+  )
+
+  if (post && isEdit) {
+    return (
+      <UpdatePost
+        onEditComplete={handleOnCompleteEdition}
+        id={post._id}
+        initialValues={{
+          title: post.title,
+          type: post.type,
+          duration: post.duration,
+          difficulty: post.difficulty,
+          allergies: post.allergies as string,
+          description: post.description,
+          ingredients: post.ingredients,
+          diners: post.diners,
+          steps: post.steps,
+        }}
+        onLogout={onLogout}
+      />
+    )
+  }
 
   return (
     <Container>
@@ -137,7 +167,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
 
       <ContainerAllergies>
         <FormControl
-          sx={{ minWidth: 220, marginLeft: '20px', backgroundColor: 'white' }}
+          sx={{ minWidth: 200, marginLeft: '10px', backgroundColor: 'white' }}
         >
           <InputLabel id="allergies-label">ALLERGIES</InputLabel>
           <Select
@@ -150,8 +180,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             MenuProps={{
               PaperProps: {
                 style: {
-                  maxHeight: 400, // Ajusta la altura máxima según tus necesidades
-                  width: 220, // Ajusta el ancho máximo según tus necesidades
+                  maxHeight: 400,
+                  width: 200,
                 },
               },
             }}

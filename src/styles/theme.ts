@@ -75,6 +75,7 @@ const theme = {
     papayaWhip: '#FAEDCD', // rgb: 250, 237, 205
     buff: '#D4A373', //rgb: 212, 163, 115
     boldbuff: '#b37a42', //rgb: 179, 122, 66
+    strongboldbuff: '#644527', //rgb: 100, 69, 39
 
     // Transparent Colors palette (RGBA)rgba: 250, 237, 205, 0.8'
     transparentpapayaWhip: 'rgba(250, 237, 205, 0.8)',

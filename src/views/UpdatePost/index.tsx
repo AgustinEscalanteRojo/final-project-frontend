@@ -30,7 +30,7 @@ import soyIcon from '../../icons/soyAllergensIcon.png'
 import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
 import type { Props } from './types'
 import { Formik } from 'formik'
-import { InitialValues, ValidationSchema } from './constants'
+import { ValidationSchema } from './constants'
 import useLogic from './logic'
 
 const allergyIcons: Record<string, string> = {
@@ -52,8 +52,13 @@ const allergyIcons: Record<string, string> = {
 
 const numberOptions = Array.from({ length: 10 }, (_, index) => index + 1)
 
-const UpdatePost: FC<Props> = ({ onLogout }) => {
-  const { handleCreate } = useLogic()
+const UpdatePost: FC<Props> = ({
+  id,
+  initialValues,
+  onEditComplete,
+  onLogout,
+}) => {
+  const { handleEdit } = useLogic(id, onEditComplete)
 
   const allergiesOptions = [
     'Gluten',
@@ -88,9 +93,9 @@ const UpdatePost: FC<Props> = ({ onLogout }) => {
 
       <Content>
         <Formik
-          initialValues={InitialValues}
+          initialValues={initialValues}
           validationSchema={ValidationSchema}
-          onSubmit={handleCreate}
+          onSubmit={handleEdit}
         >
           {({ handleSubmit, handleChange, values }) => (
             <form onSubmit={handleSubmit}>
@@ -288,7 +293,7 @@ const UpdatePost: FC<Props> = ({ onLogout }) => {
               <Button
                 type="submit"
                 style={{ marginBottom: '96px', marginTop: '20px' }}
-                onClick={() => handleCreate(values)}
+                onClick={() => handleEdit(values)}
               >
                 Post recipe
               </Button>
