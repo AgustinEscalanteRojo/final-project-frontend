@@ -8,9 +8,9 @@ import {
   PerfilContainer,
   Content,
   ButtonController,
-  Backgroundcolor,
+  Tittle,
+  AvatarContainer,
 } from './styles'
-
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
@@ -23,32 +23,42 @@ import ImageBackground from '../../components/ImageBackground'
 const Profile: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
 
+  const handleGoToLikes = useCallback(() => {
+    navigate('/')
+  }, [navigate])
+
   const handleGoToFollowers = useCallback(() => {
     navigate('/Followers')
   }, [navigate])
 
   const [value, setValue] = React.useState('1')
-
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue)
   }
-
   return (
-
     <PerfilContainer>
-
       <Header onLogout={onLogout} />
 
-      <Avatar style={{ backgroundColor: '#D4A373', marginTop: '150px' }}></Avatar>
-
-      <ButtonController>
-        <Button onClick={handleGoToFollowers}>Followers / Following</Button>
-      </ButtonController>
-
-
-
       <Content>
-        <Box sx={{ marginTop: 7, width: '100%', typography: 'body1' }}>
+        <Tittle>Profile</Tittle>
+
+        <AvatarContainer>
+          <Avatar
+            style={{
+              backgroundColor: '#D4A373',
+            }}
+          />
+        </AvatarContainer>
+
+        <ButtonController>
+          <Button onClick={handleGoToLikes}>Like</Button>
+        </ButtonController>
+
+        <ButtonController>
+          <Button onClick={handleGoToFollowers}>Followers / Following</Button>
+        </ButtonController>
+
+        <Box sx={{ marginTop: 2, width: '100%', typography: 'body1' }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList
@@ -69,5 +79,4 @@ const Profile: FC<Props> = ({ onLogout }) => {
     </PerfilContainer>
   )
 }
-
 export default memo(Profile)
