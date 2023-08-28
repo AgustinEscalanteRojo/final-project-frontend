@@ -72,6 +72,33 @@ export type PostInput = {
   createdAt?: Date
 }
 
+export type EditPostInput = {
+  order?: unknown
+  _id?: string
+  userId?: string
+  mainImage?: string
+  title: string
+  type: string
+  duration: string
+  difficulty: string
+  allergies: string
+
+  description?: string
+  ingredients: {
+    name: string
+    quantity: number
+    unity: string
+  }[]
+  diners?: number
+  steps: {
+    title: string
+    description: string
+    order: number
+    image?: string[]
+  }[]
+  createdAt?: Date
+}
+
 export const normalizePost = (input: postResponse | PostInput) => ({
   _id: input?._id || '',
   userId: input?.userId || '',

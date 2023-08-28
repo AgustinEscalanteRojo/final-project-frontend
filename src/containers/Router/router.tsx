@@ -18,7 +18,6 @@ import NotFound from '../../views/NotFound'
 import { getToken } from '../../services/storage/token'
 import UpdatePost from '../../views/UpdatePost'
 
-
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
 
@@ -157,15 +156,6 @@ const Router: FC = () => {
             </ProtectedRoutes>
           }
         />
-        <Route
-          path="/updatepost"
-          element={
-            <ProtectedRoutes>
-              <UpdatePost onLogout={recreateLogOut} />
-            </ProtectedRoutes>
-          }
-        />
-
       </Routes>
     </BrowserRouter>
   )
