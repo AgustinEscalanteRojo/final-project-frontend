@@ -1,10 +1,6 @@
-import { FC, memo} from 'react'
-import { PostContainer, Content } from './styles'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import ImageBackground from '../../components/ImageBackground'
+import { FC, memo } from 'react'
+import { Formik, Form } from 'formik'
 import {
-  TextField,
   Button,
   Select,
   MenuItem,
@@ -14,76 +10,25 @@ import {
   FormControlLabel,
   Checkbox,
 } from '@mui/material'
-import celeryIcon from '../../icons/celeryAllergensIcon.png'
-import crustaceansIcon from '../../icons/crustaceansAllergensIcon.png'
-import dairyIcon from '../../icons/dairyAllergensIcon.png'
-import eggsIcon from '../../icons/eggsAllergensIcon.png'
-import fishIcon from '../../icons/fishAllergensIcon.png'
-import glutenIcon from '../../icons/glutenAllergensIcon.png'
-import lupinsIcon from '../../icons/lupinsAllergensIcon.png'
-import mollusksIcon from '../../icons/mollusksAllergensIcon.png'
-import mustardIcon from '../../icons/mustardAllergensIcon.png'
-import nutsIcon from '../../icons/nutsinshellAllergensIcon.png'
-import peanutsIcon from '../../icons/peanutsAllergensIcon.png'
-import sesameIcon from '../../icons/sesameAllergensIcon.png'
-import soyIcon from '../../icons/soyAllergensIcon.png'
-import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
-import type { Props } from './types'
-import { Formik } from 'formik'
+import {
+  allergyIcons,
+  unityOptions,
+  allergiesOptions,
+} from '../../common/constants'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import ImageBackground from '../../components/ImageBackground'
 import { InitialValues, ValidationSchema } from './constants'
 import useLogic from './logic'
-
-const allergyIcons: Record<string, string> = {
-  Celery: celeryIcon,
-  Crustaceans: crustaceansIcon,
-  Dairy: dairyIcon,
-  Eggs: eggsIcon,
-  Fish: fishIcon,
-  Gluten: glutenIcon,
-  Lupins: lupinsIcon,
-  Mollusks: mollusksIcon,
-  Mustard: mustardIcon,
-  Nuts: nutsIcon,
-  Peanuts: peanutsIcon,
-  Sesame: sesameIcon,
-  Soy: soyIcon,
-  Sulphites: sulphitesIcon,
-}
+import { PostContainer, Content, TextField } from './styles'
+import type { Props } from './types'
 
 const CreatePost: FC<Props> = ({ onLogout }) => {
   const { handleCreate } = useLogic()
 
-  const allergiesOptions = [
-    'Gluten',
-    'Crustaceans',
-    'Eggs',
-    'Fish',
-    'Peanuts',
-    'Soy',
-    'Dairy',
-    'Nuts',
-    'Celery',
-    'Mustard',
-    'Sesame',
-    'Sulphites',
-    'Lupins',
-    'Mollusks',
-  ]
-
-  const unityOptions = [
-    'Liter',
-    'Milliliters',
-    'Kilograms',
-    'Grams',
-    'Pound',
-    'Ounce',
-    'Tablespoon',
-    'Tablespoon dessert',
-  ]
   return (
     <PostContainer>
       <Header onLogout={onLogout} />
-
       <Content>
         <Formik
           initialValues={InitialValues}
@@ -91,7 +36,10 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
           onSubmit={handleCreate}
         >
           {({ handleSubmit, handleChange, values }) => (
-            <form onSubmit={handleSubmit} style={{ maxWidth: '600px', margin: '0 auto' }}>
+            <Form
+              onSubmit={handleSubmit}
+              style={{ maxWidth: '600px', margin: '0 auto' }}
+            >
               <TextField
                 style={{ marginTop: '26px' }}
                 label="Title"
@@ -154,8 +102,6 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                 fullWidth
               />
 
-
-
               <FormControl fullWidth style={{ marginTop: '26px' }}>
                 {values.ingredients.map((ingredient, index) => (
                   <div
@@ -186,11 +132,10 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                       <InputLabel></InputLabel>
                       <Select
                         label="Unity"
-                        name={`ingredients[${index}].unity`} 
+                        name={`ingredients[${index}].unity`}
                         value={ingredient.unity}
                         onChange={handleChange}
                         required
-                        
                       >
                         {unityOptions.map((option) => (
                           <MenuItem key={option} value={option}>
@@ -237,8 +182,6 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                 </Button>
               </FormControl>
 
-
-
               <FormControl
                 fullWidth
                 style={{ marginTop: '26px', marginBottom: '26px' }}
@@ -260,7 +203,7 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                             style={{
                               display: 'flex',
                               alignItems: 'center',
-                              gap: '10px', 
+                              gap: '10px',
                             }}
                           >
                             <img
@@ -385,7 +328,7 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
               >
                 Post recipe
               </Button>
-            </form>
+            </Form>
           )}
         </Formik>
       </Content>

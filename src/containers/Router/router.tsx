@@ -40,12 +40,11 @@ const Router: FC = () => {
   }
 
   const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {
-    // TODO: En desarollo, descomentar la ProtectedRoutes para volver a proteger las rutas,
-    // const token = getToken()
-    // const location = useLocation()
-    // if (!token) {
-    //   return <Navigate to="/" replace state={{ from: location }} />
-    // }
+    const token = getToken()
+    const location = useLocation()
+    if (!token) {
+      return <Navigate to="/" replace state={{ from: location }} />
+    }
 
     return children
   }

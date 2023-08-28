@@ -1,18 +1,5 @@
 import React, { FC, memo, useCallback, useState, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import type { Props } from './types'
-import { EditPostInput, Post } from '../../models/Post'
-import {
-  Container,
-  ButtonController,
-  ContainerAllergies,
-  Cards,
-} from './styles'
-import { getPosts, removePostById } from '../../services/api/post'
-import ImageBackground from '../../components/ImageBackground'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import RecipeReviewCard from '../../components/Card'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -23,59 +10,23 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import AddIcon from '@mui/icons-material/Add'
-
-import celeryIcon from '../../icons/celeryAllergensIcon.png'
-import crustaceansIcon from '../../icons/crustaceansAllergensIcon.png'
-import dairyIcon from '../../icons/dairyAllergensIcon.png'
-import eggsIcon from '../../icons/eggsAllergensIcon.png'
-import fishIcon from '../../icons/fishAllergensIcon.png'
-import glutenIcon from '../../icons/glutenAllergensIcon.png'
-import lupinsIcon from '../../icons/lupinsAllergensIcon.png'
-import mollusksIcon from '../../icons/mollusksAllergensIcon.png'
-import mustardIcon from '../../icons/mustardAllergensIcon.png'
-import nutsIcon from '../../icons/nutsinshellAllergensIcon.png'
-import peanutsIcon from '../../icons/peanutsAllergensIcon.png'
-import sesameIcon from '../../icons/sesameAllergensIcon.png'
-import soyIcon from '../../icons/soyAllergensIcon.png'
-import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
+import { getPosts, removePostById } from '../../services/api/post'
+import ImageBackground from '../../components/ImageBackground'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import RecipeReviewCard from '../../components/Card'
+import { EditPostInput, Post } from '../../models/Post'
 import UpdatePost from '../UpdatePost'
-
-const allergiesOptions = [
-  'Celery',
-  'Crustaceans',
-  'Dairy',
-  'Eggs',
-  'Fish',
-  'Gluten',
-  'Lupins',
-  'Mollusks',
-  'Mustard',
-  'Nuts',
-  'Peanuts',
-  'Sesame',
-  'Soy',
-  'Sulphites',
-]
-
-const allergyIcons: Record<string, string> = {
-  Celery: celeryIcon,
-  Crustaceans: crustaceansIcon,
-  Dairy: dairyIcon,
-  Eggs: eggsIcon,
-  Fish: fishIcon,
-  Gluten: glutenIcon,
-  Lupins: lupinsIcon,
-  Mollusks: mollusksIcon,
-  Mustard: mustardIcon,
-  Nuts: nutsIcon,
-  Peanuts: peanutsIcon,
-  Sesame: sesameIcon,
-  Soy: soyIcon,
-  Sulphites: sulphitesIcon,
-}
+import { allergiesOptions, allergyIcons } from '../../common/constants'
+import {
+    Container,
+    ButtonController,
+    ContainerAllergies,
+    Cards,
+} from './styles'
+import type { Props } from './types'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
-  const [queryData] = useSearchParams()
   const navigate = useNavigate()
   const [posts, setPosts] = useState<Post[]>([])
   const [post, setPost] = useState<Post | null>(null)

@@ -1,47 +1,25 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { signup } from '../../../services/api/auth'
-import { Props } from './types'
+import type { UserFormFields } from '../../../models/User'
+import type { Props } from './types'
 
 const useLogic = (onSignup: Props['onSignup']) => {
+  const [error, setError] = useState('')
+
   const handleOnSubmit = useCallback(
-    async (values: {
-      email: string
-      password: string
-      username: string
-      firstName: string
-      lastName: string
-      age: number
-      gender: string
-      country: string
-      city: string
-      biography: string
-      avatar: string
-
-    }) => {
+    async (values: UserFormFields) => {
       try {
-        await signup(
-          values.email,
-          values.password,
-          values.username,
-          values.firstName,
-          values.lastName,
-          values.age,
-          values.gender,
-          values.country,
-          values.city,
-          values.avatar,
-          values.biography
-
-        )
+        console.log({ values })
+        await signup(values)
         onSignup()
       } catch (error) {
-        console.log(error)
+        setError((error as Error).message)
       }
     },
     [onSignup]
   )
 
-  return { handleOnSubmit }
+  return { handleOnSubmit, error }
 }
 
 export default useLogic
