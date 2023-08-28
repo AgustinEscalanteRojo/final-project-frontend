@@ -47,6 +47,7 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const [expanded, setExpanded] = useState(false)
   const [comments, setComments] = useState<string[]>([])
   const [comment, setComment] = useState('')
+  
   const [liked, setLiked] = useState(false)
   const [favorited, setFavorited] = useState(false)
   const navigate = useNavigate()
@@ -77,12 +78,12 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const handleLikeClick = useCallback(async () => {
     await togglePostLikeByUser(post._id)
     setLiked(!liked)
-  }, [liked, post._id])
+  }, [liked])
 
   const handleFavoriteClick = useCallback(async() => {
     await togglePostFavByUser(post._id)
     setFavorited(!favorited)
-  }, [favorited, post._id])
+  }, [favorited])
 
   return (
     <Card

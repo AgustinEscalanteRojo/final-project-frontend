@@ -18,6 +18,7 @@ import NotFound from '../../views/NotFound'
 import { getToken } from '../../services/storage/token'
 import UpdatePost from '../../views/UpdatePost'
 
+
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
 
