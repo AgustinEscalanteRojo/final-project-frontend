@@ -1,8 +1,8 @@
 import React, { FC, memo, useState, useCallback } from 'react'
+import { LikeIcon, FavIcon, CardStyled, DetailsIconButton, CardHeaderStyled } from './style'
 import { styled } from '@mui/material/styles'
 import {
-  Card,
-  CardHeader,
+
   CardContent,
   CardActions,
   Collapse,
@@ -14,24 +14,32 @@ import {
   TextField,
   Button,
   IconButtonProps,
-  Link,
 } from '@mui/material'
-import FavoriteIcon from '@mui/icons-material/Favorite'
 import ShareIcon from '@mui/icons-material/Share'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import SendIcon from '@mui/icons-material/Send'
-import BookmarkIcon from '@mui/icons-material/Bookmark'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import Image from '../Image'
 import type { Props } from './types'
-import { togglePostFavByUser, togglePostLikeByUser } from '../../services/api/post'
+import {
+  togglePostFavByUser,
+  togglePostLikeByUser,
+} from '../../services/api/post'
 import { useNavigate } from 'react-router-dom'
 
+const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
+  const [expanded, setExpanded] = useState(false)
+  const [comments, setComments] = useState<string[]>([])
+  const [comment, setComment] = useState('')
+  const [isLike, setLike] = useState(post.isLike)
+  const [isFav, setFav] = useState(post.isFav)
+  const navigate = useNavigate()
+
+//desplegable
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean
 }
-
 const ExpandMore = styled((props: ExpandMoreProps) => {
   const { expand, ...other } = props
   return <IconButton {...other} />
@@ -42,6 +50,10 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     duration: theme.transitions.duration.shortest,
   }),
 }))
+const handleExpandClick = () => {
+  setExpanded(!expanded)
+}
+
 
 const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const [expanded, setExpanded] = useState(false)
@@ -52,13 +64,16 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const [favorited, setFavorited] = useState(false)
   const navigate = useNavigate()
 
+
   const handleEditClick = useCallback(() => {
     navigate('/updatepost')
   }, [navigate])
 
-  const handleExpandClick = useCallback(() => {
-    setExpanded(!expanded)
-  }, [setExpanded])
+  const handleDetailsClick = useCallback(() => {
+    navigate('/details')
+  }, [navigate])
+
+
 
   const handleCommentChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,6 +82,7 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
     []
   )
 
+  // comentarios
   const handleCommentSubmit = useCallback(() => {
     if (comment.trim() !== '') {
       setComments([...comments, comment])
@@ -77,25 +93,24 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
 
   const handleLikeClick = useCallback(async () => {
     await togglePostLikeByUser(post._id)
-    setLiked(!liked)
-  }, [liked])
 
-  const handleFavoriteClick = useCallback(async() => {
+    setLike(!isLike)
+  }, [isLike, post._id])
+
+
+  const handleFavoriteClick = useCallback(async () => {
     await togglePostFavByUser(post._id)
-    setFavorited(!favorited)
-  }, [favorited])
+
+    setFav(!isFav)
+  }, [isFav, post._id])
+
+
+
 
   return (
-    <Card
-      sx={{
-        width: '100%',
-        maxWidth: 800,
-        backgroundColor: 'rgba(255, 255, 255, 0.911)',
-        marginTop: 4,
-        marginBottom: 32,
-      }}
-    >
-      <CardHeader
+    <CardStyled>
+
+      <CardHeaderStyled
         avatar={<Avatar aria-label="recipe"></Avatar>}
         action={
           <>
@@ -113,7 +128,9 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
         }
         title={post.title}
         subheader="September 14, 2022"
+   
       />
+
       <Image src="/arroz.mariscos.jpg" alt="arroz mariscos.jpg" />
 
       <CardContent>
@@ -124,16 +141,31 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
 
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
-          <FavoriteIcon color={liked ? 'error' : 'inherit'} />
+          <LikeIcon isLike={isLike} />
         </IconButton>
 
         <IconButton aria-label="add to favorites" onClick={handleFavoriteClick}>
-          <BookmarkIcon color={favorited ? 'primary' : 'inherit'} />
+          <FavIcon isFav={isFav} />
         </IconButton>
 
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+
+        <DetailsIconButton onClick={handleDetailsClick}>
+   
+
+          <Typography
+            variant="body1"
+            style={{
+              fontSize: 'medium',
+            
+            }}
+          >
+            Details
+          </Typography>
+        </DetailsIconButton>
+
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -194,16 +226,17 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
             '&:hover': {
               backgroundColor: '#45A049',
             },
-            height: 53,
+            height: 23,
             '& .MuiButton-startIcon': {
-              fontSize: 44,
+              fontSize: 34,
               margin: '0 auto',
             },
           }}
           startIcon={<SendIcon />}
         ></Button>
       </Box>
-    </Card>
+
+    </CardStyled>
   )
 }
 

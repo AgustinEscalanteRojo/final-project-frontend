@@ -1,4 +1,4 @@
-import { FC, memo, useState, ChangeEvent, FormEvent } from 'react'
+import { FC, memo} from 'react'
 import { PostContainer, Content } from './styles'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -50,8 +50,6 @@ const allergyIcons: Record<string, string> = {
   Sulphites: sulphitesIcon,
 }
 
-const numberOptions = Array.from({ length: 10 }, (_, index) => index + 1)
-
 const CreatePost: FC<Props> = ({ onLogout }) => {
   const { handleCreate } = useLogic()
 
@@ -93,7 +91,7 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
           onSubmit={handleCreate}
         >
           {({ handleSubmit, handleChange, values }) => (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{ maxWidth: '600px', margin: '0 auto' }}>
               <TextField
                 style={{ marginTop: '26px' }}
                 label="Title"
@@ -113,85 +111,6 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                 required
                 fullWidth
               />
-
-              <FormControl fullWidth style={{ marginTop: '26px' }}>
-                {values.ingredients.map((ingredient, index) => (
-                  <div
-                    key={index}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      marginBottom: '16px',
-                    }}
-                  >
-                    <TextField
-                      placeholder="Ingredients"
-                      name={`ingredients[${index}].name`}
-                      value={ingredient.name}
-                      onChange={handleChange}
-                      required
-                      fullWidth
-                    />
-                    <TextField
-                      label="Quantity"
-                      name={`ingredients[${index}].quantity`}
-                      value={ingredient.quantity}
-                      onChange={handleChange}
-                      required
-                      fullWidth
-                    />
-                    <FormControl fullWidth>
-                      <InputLabel></InputLabel>
-                      <Select
-                        name={`ingredients[${index}].unity`}
-                        value={ingredient.unity}
-                        onChange={handleChange}
-                        required
-                      >
-                        {unityOptions.map((option) => (
-                          <MenuItem key={option} value={option}>
-                            {option}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                    <Button
-                      variant="outlined"
-                      style={{ marginTop: '16px', color: 'red' }}
-                      onClick={() => {
-                        const updatedIngredients = [...values.ingredients]
-                        updatedIngredients.splice(index, 1)
-                        handleChange({
-                          target: {
-                            name: 'ingredients',
-                            value: updatedIngredients,
-                          },
-                        })
-                      }}
-                    >
-                      x
-                    </Button>
-                  </div>
-                ))}
-                <Button
-                  variant="outlined"
-                  style={{ marginTop: '16px', color: 'green' }}
-                  onClick={() => {
-                    const updatedIngredients = [
-                      ...values.ingredients,
-                      { name: '', quantity: '', unity: unityOptions[0] },
-                    ]
-                    handleChange({
-                      target: {
-                        name: 'ingredients',
-                        value: updatedIngredients,
-                      },
-                    })
-                  }}
-                >
-                  Add Ingredient
-                </Button>
-              </FormControl>
 
               <FormControl fullWidth style={{ marginTop: '26px' }}>
                 <InputLabel>Type</InputLabel>
@@ -235,6 +154,91 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                 fullWidth
               />
 
+
+
+              <FormControl fullWidth style={{ marginTop: '26px' }}>
+                {values.ingredients.map((ingredient, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    <TextField
+                      placeholder="Ingredients"
+                      name={`ingredients[${index}].name`}
+                      value={ingredient.name}
+                      onChange={handleChange}
+                      required
+                      fullWidth
+                    />
+                    <TextField
+                      label="Quantity"
+                      name={`ingredients[${index}].quantity`}
+                      value={ingredient.quantity}
+                      onChange={handleChange}
+                      required
+                      fullWidth
+                    />
+                    <FormControl fullWidth>
+                      <InputLabel></InputLabel>
+                      <Select
+                        label="Unity"
+                        name={`ingredients[${index}].unity`} 
+                        value={ingredient.unity}
+                        onChange={handleChange}
+                        required
+                        
+                      >
+                        {unityOptions.map((option) => (
+                          <MenuItem key={option} value={option}>
+                            {option}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                    <Button
+                      variant="outlined"
+                      style={{ marginTop: '16px', color: 'red' }}
+                      onClick={() => {
+                        const updatedIngredients = [...values.ingredients]
+                        updatedIngredients.splice(index, 1)
+                        handleChange({
+                          target: {
+                            name: 'ingredients',
+                            value: updatedIngredients,
+                          },
+                        })
+                      }}
+                    >
+                      x
+                    </Button>
+                  </div>
+                ))}
+                <Button
+                  variant="outlined"
+                  style={{ color: 'green' }}
+                  onClick={() => {
+                    const updatedIngredients = [
+                      ...values.ingredients,
+                      { name: '', quantity: '', unity: unityOptions[0] },
+                    ]
+                    handleChange({
+                      target: {
+                        name: 'ingredients',
+                        value: updatedIngredients,
+                      },
+                    })
+                  }}
+                >
+                  Add Ingredient
+                </Button>
+              </FormControl>
+
+
+
               <FormControl
                 fullWidth
                 style={{ marginTop: '26px', marginBottom: '26px' }}
@@ -256,14 +260,14 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                             style={{
                               display: 'flex',
                               alignItems: 'center',
-                              gap: '10px', // Agregamos espacio entre el nombre y el icono
+                              gap: '10px', 
                             }}
                           >
                             <img
                               src={allergyIcons[allergy]}
                               alt={`${allergy} Icon`}
                               style={{
-                                width: '10%',
+                                width: '25%',
                                 marginLeft: '2px',
                               }}
                             />
@@ -274,6 +278,88 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                     </Grid>
                   ))}
                 </Grid>
+              </FormControl>
+
+              <FormControl fullWidth style={{ marginTop: '16px' }}>
+                {values.steps.map((step, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    <TextField
+                      label="Order"
+                      type="number"
+                      name={`steps[${index}].order`}
+                      value={index + 1}
+                      InputProps={{ readOnly: true }}
+                      fullWidth
+                    />
+
+                    <TextField
+                      placeholder="Title"
+                      name={`steps[${index}].title`}
+                      value={step.title}
+                      onChange={handleChange}
+                      required
+                      fullWidth
+                    />
+
+                    <TextField
+                      label="Description"
+                      name={`steps[${index}].description`}
+                      value={step.description}
+                      onChange={handleChange}
+                      required
+                      fullWidth
+                    />
+                    <TextField
+                      label="Image URL"
+                      name={`steps[${index}].imageUrl`}
+                      value={step.image}
+                      onChange={handleChange}
+                      required
+                      fullWidth
+                    />
+                    <Button
+                      variant="outlined"
+                      style={{ color: 'red' }}
+                      onClick={() => {
+                        const updatedSteps = [...values.steps]
+                        updatedSteps.splice(index, 1)
+                        handleChange({
+                          target: {
+                            name: 'steps',
+                            value: updatedSteps,
+                          },
+                        })
+                      }}
+                    >
+                      Remove Step {index + 1}
+                    </Button>
+                  </div>
+                ))}
+                <Button
+                  variant="outlined"
+                  style={{ color: 'green' }}
+                  onClick={() => {
+                    const updatedSteps = [
+                      ...values.steps,
+                      { title: '', description: '', imageUrl: '' },
+                    ]
+                    handleChange({
+                      target: {
+                        name: 'steps',
+                        value: updatedSteps,
+                      },
+                    })
+                  }}
+                >
+                  Add Step
+                </Button>
               </FormControl>
 
               <TextField
@@ -287,7 +373,14 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
 
               <Button
                 type="submit"
-                style={{ marginBottom: '96px', marginTop: '20px' }}
+                style={{
+                  display: 'block',
+                  margin: '0 auto',
+                  backgroundColor: 'green',
+                  color: 'white',
+                  marginBottom: '96px',
+                  marginTop: '20px',
+                }}
                 onClick={() => handleCreate(values)}
               >
                 Post recipe

@@ -1,20 +1,29 @@
-import { FC, memo, useCallback, useState, useEffect } from 'react'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import { useNavigate } from 'react-router-dom'
-import ImageBackground from '../../components/ImageBackground'
-import type { Props } from './types'
-import RecipeReviewCard from '../../components/Card'
-import * as React from 'react'
-import { Post } from '../../models/Post'
-import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
-import Checkbox from '@mui/material/Checkbox'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import Box from '@mui/material/Box'
+import React, { FC, memo, useCallback, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import type { Props } from './types';
+import { Post } from '../../models/Post';
+import {
+  Container,
+  ButtonController,
+  ContainerAllergies,
+  Cards,
+} from './styles';
+import { getPosts, removePostById } from '../../services/api/post';
+import ImageBackground from '../../components/ImageBackground';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import RecipeReviewCard from '../../components/Card';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Checkbox from '@mui/material/Checkbox';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
+
 import celeryIcon from '../../icons/celeryAllergensIcon.png'
 import crustaceansIcon from '../../icons/crustaceansAllergensIcon.png'
 import dairyIcon from '../../icons/dairyAllergensIcon.png'
@@ -30,16 +39,9 @@ import sesameIcon from '../../icons/sesameAllergensIcon.png'
 import soyIcon from '../../icons/soyAllergensIcon.png'
 import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
 
-import {
-  Container,
-  ButtonController,
-  ContainerAllergies,
-  Cards,
-} from './styles'
 
-import IconButton from '@mui/material/IconButton'
-import AddIcon from '@mui/icons-material/Add'
-import { getPosts, removePostById } from '../../services/api/post'
+
+
 
 const allergiesOptions = [
   'Celery',
@@ -135,9 +137,12 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </Cards>
 
+
+
+
       <ContainerAllergies>
         <FormControl
-          sx={{ minWidth: 220, marginLeft: '20px', backgroundColor: 'white' }}
+          sx={{ minWidth: 200, marginLeft: '10px', backgroundColor: 'white' }}
         >
           <InputLabel id="allergies-label">ALLERGIES</InputLabel>
           <Select
@@ -150,8 +155,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             MenuProps={{
               PaperProps: {
                 style: {
-                  maxHeight: 400, // Ajusta la altura máxima según tus necesidades
-                  width: 220, // Ajusta el ancho máximo según tus necesidades
+                  maxHeight: 400, 
+                  width: 200,
                 },
               },
             }}

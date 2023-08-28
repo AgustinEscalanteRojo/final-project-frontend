@@ -1,24 +1,23 @@
 import styled from 'styled-components'
-import theme from '../../styles/theme'
-
 
 export const Cards = styled.div`
   display: flex;
-  flex-flow: row wrap;
-  gap: 15px;
-  justify-content: space-around;
-`
+  flex-wrap: wrap;
 
+  justify-content: center; 
+
+
+`;
 
 export const ContainerAllergies = styled.div`
   position: fixed;
-  top: 190px; 
-  left: 60px; 
-  z-index: 3; 
+  top: 190px;
+  left: 60px;
+  z-index: 3;
 
   display: flex;
   align-items: flex-start;
-`;
+`
 
 export const Container = styled.div`
   display: flex;
@@ -43,6 +42,3 @@ export const ButtonController = styled.div`
     justify-content: center;
   }
 `
-
-
-
