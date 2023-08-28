@@ -34,6 +34,23 @@ export const createPost = async (input: PostInput): Promise<Post> => {
   return normalizePost(data)
 }
 
+export const updatePostById = async (
+  id: string,
+  input: PostInput
+): Promise<Post> => {
+  const response = await fetch(`${BASE_URL}/${id}`, {
+    body: JSON.stringify(input),
+    method: 'PUT',
+    headers: {
+      authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
+  const data = await response.json()
+
+  return normalizePost(data)
+}
+
 export const togglePostFavByUser = async (id: string): Promise<Post> => {
   const response = await fetch(`http://localhost:8080/posts/${id}/favs`, {
     body: JSON.stringify(id),
