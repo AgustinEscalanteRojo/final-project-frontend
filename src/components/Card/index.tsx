@@ -21,6 +21,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import SendIcon from '@mui/icons-material/Send'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
+
+
 import Image from '../Image'
 import type { Props } from './types'
 import {
@@ -55,6 +57,11 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const handleEditClick = useCallback(() => {
     navigate('/updatepost')
   }, [navigate])
+
+  const handleDetailsClick = useCallback(() => {
+    navigate('/details')
+  }, [navigate])
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -128,6 +135,7 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
       </CardContent>
 
       <CardActions disableSpacing>
+
         <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
           <LikeIcon isLike={isLike} />
         </IconButton>
@@ -139,6 +147,15 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+
+
+        <IconButton aria-label="Detalles" onClick={handleDetailsClick}>
+        <Typography variant="body1" style={{ marginLeft: '216px', marginRight: '216px', fontSize: 'medium', fontWeight: 'bold' }}>
+        Details 
+      </Typography>
+    </IconButton>
+
+
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -147,6 +164,7 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
         >
           <ExpandMoreIcon />
         </ExpandMore>
+
       </CardActions>
 
       <Collapse in={expanded} timeout="auto" unmountOnExit>
