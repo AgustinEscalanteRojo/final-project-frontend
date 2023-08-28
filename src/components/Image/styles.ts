@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const CustomImg = styled.img<{ $variant: 'default' | 'logoHeader' }>`
-  max-height: 300px;
+  max-height: 230px;
   display: block;
   margin: 0 auto;
 

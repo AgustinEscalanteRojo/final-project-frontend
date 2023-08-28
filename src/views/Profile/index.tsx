@@ -1,4 +1,4 @@
-import { FC, memo, useCallback } from 'react'
+import { FC, memo, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -19,8 +19,12 @@ import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import { Avatar } from '@material-ui/core'
 import ImageBackground from '../../components/ImageBackground'
+import { getMe } from '../../services/api/user'
+import { User } from '../../models/User'
 
 const Profile: FC<Props> = ({ onLogout }) => {
+
+  const [user, setUser] = useState<User | null>(null)
   const navigate = useNavigate()
 
   const handleGoToLikes = useCallback(() => {
@@ -35,12 +39,37 @@ const Profile: FC<Props> = ({ onLogout }) => {
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue)
   }
+
+
+const fetchUserMe = useCallback(async () => {
+  try {
+    const userInfo = await getMe()
+    console.log(userInfo)
+    setUser(userInfo)
+  } catch (error) {
+    console.error('Error fetching user data:', error)
+  }
+}, [])
+
+
+useEffect(() => {
+  fetchUserMe()
+}, [fetchUserMe])
+
+
+
   return (
     <PerfilContainer>
       <Header onLogout={onLogout} />
 
+
       <Content>
         <Tittle>Profile</Tittle>
+
+      <Avatar
+        style={{ backgroundColor: '#D4A373', marginTop: '150px' }}
+      ></Avatar>
+
 
         <AvatarContainer>
           <Avatar
@@ -49,6 +78,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
             }}
           />
         </AvatarContainer>
+
 
         <ButtonController>
           <Button onClick={handleGoToLikes}>Like</Button>
@@ -59,6 +89,10 @@ const Profile: FC<Props> = ({ onLogout }) => {
         </ButtonController>
 
         <Box sx={{ marginTop: 2, width: '100%', typography: 'body1' }}>
+
+      <Content>
+        <Box sx={{ marginTop: 7, width: '100%', typography: 'body1' }}>
+
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList
@@ -70,7 +104,18 @@ const Profile: FC<Props> = ({ onLogout }) => {
               </TabList>
             </Box>
             <TabPanel value="1">recipe 1, recipe 2, recipe 3</TabPanel>
-            <TabPanel value="2">favorite 1, favorite 2, favorite 3</TabPanel>
+
+            <TabPanel value="2">
+              {user && user.favPosts && user.favPosts.length > 0 ? (
+                <ul>
+                  {user.favPosts.map((favoritePost, index) => (
+                    <li key={index}>{favoritePost}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p>Not have favorite posts yet.</p>
+              )}
+            </TabPanel>
           </TabContext>
         </Box>
       </Content>

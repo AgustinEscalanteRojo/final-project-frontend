@@ -47,6 +47,19 @@ export const togglePostFavByUser = async (id: string): Promise<Post> => {
   return normalizePost(data)
 }
 
+export const togglePostLikeByUser = async (id: string): Promise<Post> => {
+  const response = await fetch(`http://localhost:8080/posts/${id}/likes`, {
+    body: JSON.stringify(id),
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  const data = await response.json()
+
+  return normalizePost(data)
+}
+
 export const removePostById = async (id: string): Promise<boolean> => {
   await fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE',
