@@ -2,10 +2,7 @@ import { FC, memo } from 'react'
 import { Formik, Form } from 'formik'
 import {
   Grid,
-  Paper,
-  Avatar,
   TextField,
-  Button,
   FormControl,
   InputLabel,
   Select,
@@ -13,7 +10,6 @@ import {
 } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Footer from '../../../components/Footer'
-import VideoBackground from '../../../components/VideoBackground'
 import { InitialValues, ValidationSignupSchema } from './constant'
 import useLogic from './logic'
 import * as S from './styles'
@@ -22,24 +18,6 @@ import type { Props } from './types'
 const Signup: FC<Props> = ({ onSignup }) => {
   const { handleOnSubmit, error } = useLogic(onSignup)
 
-  const paperStyle = {
-    padding: '15px 15px',
-    width: '100%',
-    maxWidth: 400,
-    margin: '50px auto',
-    backgroundColor: '#FFDAB9',
-  }
-  const avatarStyle = {
-    border: '2px solid black',
-  }
-  const btnstyle = {
-    color: 'white',
-    margin: '10px 0',
-    marginBottom: '2px',
-    fontSize: '12px',
-    width: '60%',
-  }
-
   return (
     <S.Container>
       <Grid container justifyContent="center">
@@ -47,11 +25,10 @@ const Signup: FC<Props> = ({ onSignup }) => {
           <Footer />
         </Grid>
         <Grid item xs={6}>
-          <VideoBackground videoSrc="/back.mp4" />
-        </Grid>
 
+        </Grid>
         <Grid item xs={6}>
-          <Paper elevation={10} style={paperStyle}>
+        <S.PaperStyled elevation={10}>
             <Formik
               initialValues={InitialValues}
               validationSchema={ValidationSignupSchema}
@@ -67,9 +44,9 @@ const Signup: FC<Props> = ({ onSignup }) => {
               }) => (
                 <Form onSubmit={handleSubmit} noValidate autoComplete="off">
                   <S.TitleContainer>
-                    <Avatar src="/logoicon.jpg" style={avatarStyle}>
+                  <S.AvatarStyled src="/logoicon.jpg">
                       <LockOutlinedIcon />
-                    </Avatar>
+                      </S.AvatarStyled>
                     <S.Title>SharedFlavours</S.Title>
                   </S.TitleContainer>
                   <Grid item container spacing={2}>
@@ -236,23 +213,22 @@ const Signup: FC<Props> = ({ onSignup }) => {
                   </Grid>
                   {error && <S.InputError>{error}</S.InputError>}
                   <S.Buttons>
-                    <Button
+                  <S.ButtonStyled
                       type="submit"
                       color="primary"
                       variant="contained"
-                      style={btnstyle}
                       size="large"
                       disabled={!isValid}
                       fullWidth
                     >
                       Sign up
-                    </Button>
+                      </S.ButtonStyled>
                     <S.Link to="/login">Log in</S.Link>
                   </S.Buttons>
                 </Form>
               )}
             </Formik>
-          </Paper>
+            </S.PaperStyled>
         </Grid>
       </Grid>
     </S.Container>
