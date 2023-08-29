@@ -1,17 +1,25 @@
 import styled from 'styled-components'
 
+import IconButton from '@mui/material/IconButton'
+
+export const IconButtonStyled = styled(IconButton)`
+  border: 3px solid #b5803f !important;
+  border-radius: 20%;
+  width: 60px;
+  height: 60px;
+`
+
 export const Cards = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
-  gap: 10px; /* Adjust the gap between cards as needed */
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
   justify-content: center;
-  max-width: 1000px; /* Optional: Set a maximum width for the card container */
+  max-width: 1000px;
 
   @media (max-width: 1221px) {
-    /* For smaller screens, show only one column */
     grid-template-columns: 1fr;
   }
-`;
+`
 
 export const ContainerAllergies = styled.div`
   position: fixed;
