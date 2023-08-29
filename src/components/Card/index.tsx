@@ -185,75 +185,10 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
           </Typography>
         </DetailsIconButton>
 
-        <ExpandMore
-          expand={expanded}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </ExpandMore>
+
       </CardActions>
 
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Comments:</Typography>
-          <Paper
-            sx={{
-              width: '100%',
-              padding: 2,
-              backgroundColor: '#f9f9f9',
-              overflowY: 'auto',
-            }}
-          >
-            {comments.map((comment, index) => (
-              <Typography key={index} paragraph sx={{ marginBottom: 1 }}>
-                {comment}
-              </Typography>
-            ))}
-          </Paper>
-        </CardContent>
-      </Collapse>
-
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginLeft: 3,
-          marginRight: 3,
-          marginBottom: 3,
-        }}
-      >
-        <TextField
-          fullWidth
-          label="Comment"
-          id="comment"
-          value={comment}
-          onChange={handleCommentChange}
-          multiline
-          rows={1}
-        />
-        <Button
-          size="small"
-          variant="contained"
-          onClick={handleCommentSubmit}
-          sx={{
-            marginLeft: 1,
-            backgroundColor: '#4CAF50',
-            color: 'white',
-            '&:hover': {
-              backgroundColor: '#45A049',
-            },
-            height: 23,
-            '& .MuiButton-startIcon': {
-              fontSize: 34,
-              margin: '0 auto',
-            },
-          }}
-          startIcon={<SendIcon />}
-        ></Button>
-      </Box>
+    
     </CardStyled>
   )
 }
