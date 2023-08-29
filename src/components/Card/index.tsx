@@ -10,19 +10,13 @@ import { styled } from '@mui/material/styles'
 import {
   CardContent,
   CardActions,
-  Collapse,
   Avatar,
   IconButton,
   Typography,
-  Paper,
-  Box,
-  TextField,
-  Button,
   IconButtonProps,
 } from '@mui/material'
+import RepeatIcon from '@mui/icons-material/Repeat';
 import ShareIcon from '@mui/icons-material/Share'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import SendIcon from '@mui/icons-material/Send'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import Image from '../Image'
@@ -263,5 +257,6 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
     </CardStyled>
   )
 }
+
 
 export default memo(RecipeReviewCard)
