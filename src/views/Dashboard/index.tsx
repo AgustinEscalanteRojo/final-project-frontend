@@ -1,13 +1,5 @@
 import React, { FC, memo, useCallback, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
-import FormControl from '@mui/material/FormControl'
-import Select, { SelectChangeEvent } from '@mui/material/Select'
-import Checkbox from '@mui/material/Checkbox'
-import ListItemText from '@mui/material/ListItemText'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import Box from '@mui/material/Box'
 import AddIcon from '@mui/icons-material/Add'
 import { getPosts, removePostById } from '../../services/api/post'
 import ImageBackground from '../../components/ImageBackground'
@@ -23,6 +15,11 @@ import {
   ContainerAllergies,
   Cards,
   IconButtonStyled,
+  StyledCheckbox,
+  AllergyOption,
+  AllergyIcon,
+  AllergyLabel,
+
 } from './styles'
 import type { Props } from './types'
 
@@ -33,8 +30,16 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
   const [isEdit, setIsEdit] = useState(false)
   const [allergies, setAllergies] = React.useState<string[]>([])
 
-  const handleAllergiesChange = (event: SelectChangeEvent<string[]>) => {
-    setAllergies(event.target.value as string[])
+  const handleAllergiesChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    allergy: string
+  ) => {
+    const { checked } = event.target
+    if (checked) {
+      setAllergies([...allergies, allergy])
+    } else {
+      setAllergies(allergies.filter((a) => a !== allergy))
+    }
   }
 
   const handleGoToPost = useCallback(() => {
@@ -97,7 +102,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           onClick={handleGoToPost}
           color="primary"
           aria-label="add new post"
- 
         >
           <AddIcon fontSize="large" style={{ color: 'black' }} /> {}
         </IconButtonStyled>
@@ -113,50 +117,21 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </Cards>
 
-
-
-
-
-
       <ContainerAllergies>
-        <FormControl
-        
-        >
-          <InputLabel id="allergies-label">ALLERGIES</InputLabel>
-          <Select
-            labelId="allergies-label"
-            id="allergies-select"
-            multiple
-            value={allergies}
-            onChange={handleAllergiesChange}
-            renderValue={(selected) => selected.join(', ')}
-            MenuProps={{
-              PaperProps: {
-                style: {
-                  maxHeight: 400,
-                  width: 200,
-                },
-              },
-            }}
-          >
-            {allergiesOptions.map((allergy) => (
-              <MenuItem key={allergy} value={allergy}>
-                <ListItemIcon>
-                  <Checkbox checked={allergies.indexOf(allergy) > -1} />
-                </ListItemIcon>
-                <Box sx={{ width: 25, height: 25 }}>
-                  <img
-                    src={allergyIcons[allergy]}
-                    alt={allergy}
-                    style={{ width: '100%', height: '100%' }}
-                  />
-                </Box>
-                <ListItemText primary={allergy} />
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </ContainerAllergies>
+  {allergiesOptions.map((allergy) => (
+    <AllergyOption key={allergy}>
+      <StyledCheckbox
+        checked={allergies.indexOf(allergy) > -1}
+        onChange={(event) => handleAllergiesChange(event, allergy)}
+      />
+      <AllergyLabel>
+        <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
+        {allergy}
+      </AllergyLabel>
+    </AllergyOption>
+  ))}
+</ContainerAllergies>
+
 
 
 

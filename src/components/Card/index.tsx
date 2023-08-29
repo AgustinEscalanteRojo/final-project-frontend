@@ -6,14 +6,15 @@ import {
   IconButton,
   Typography,
 } from '@mui/material'
-import RepeatIcon from '@mui/icons-material/Repeat';
-import ShareIcon from '@mui/icons-material/Share'
+import RepeatIcon from '@mui/icons-material/Repeat'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
+
 import {
   togglePostFavByUser,
   togglePostLikeByUser,
 } from '../../services/api/post'
+
 import { useNavigate } from 'react-router-dom'
 import {
   LikeIcon,
@@ -85,7 +86,11 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
   return (
     <CardStyled>
       <CardHeaderStyled
-        avatar={<Avatar aria-label="recipe"></Avatar>}
+        avatar={
+          <Avatar aria-label="recipe">
+            {currentUser ? currentUser.username.charAt(0) : ''}
+          </Avatar>
+        }
         action={
           isCurrentUserCreator ? (
             <>
@@ -102,19 +107,13 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
             </>
           ) : null
         }
-        
-
         title={post.title}
         subheader={`${post.duration} ${post.type} ${post.difficulty}`}
-        
-        
       />
 
-
-
-<ImageContent>
-  <img src={post.mainImage} alt="Main Image" />
-</ImageContent>
+      <ImageContent>
+        <img src={post.mainImage} alt="Main Image" />
+      </ImageContent>
 
       <CardContent>
         <Typography variant="body2" color="text.secondary">

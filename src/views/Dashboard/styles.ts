@@ -1,6 +1,36 @@
 import styled from 'styled-components'
-
+import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
+
+export const ContainerAllergies = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  transform: scale(0.7);
+`;
+
+export const StyledCheckbox = styled(Checkbox)`
+  transform: scale(0.8);
+`
+
+export const AllergyOption = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+
+export const AllergyIcon = styled.img`
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+`
+
+export const AllergyLabel = styled.label`
+  display: flex;
+  align-items: center;
+`
 
 export const IconButtonStyled = styled(IconButton)`
   border: 3px solid #b5803f !important;
@@ -19,16 +49,6 @@ export const Cards = styled.div`
   @media (max-width: 1221px) {
     grid-template-columns: 1fr;
   }
-`
-
-export const ContainerAllergies = styled.div`
-  position: fixed;
-  top: 190px;
-  left: 60px;
-  z-index: 3;
-
-  display: flex;
-  align-items: flex-start;
 `
 
 export const Container = styled.div`
