@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 
 export const Cards = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 10px; /* Adjust the gap between cards as needed */
+  justify-content: center;
+  max-width: 1000px; /* Optional: Set a maximum width for the card container */
 
-  justify-content: center; 
-
-
+  @media (max-width: 1221px) {
+    /* For smaller screens, show only one column */
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ContainerAllergies = styled.div`
@@ -36,6 +40,7 @@ export const ButtonController = styled.div`
   flex-flow: row wrap;
   gap: 10px;
   margin-top: 140px;
+  margin-bottom: 10px;
 
   @media (max-width: 768px) {
     margin-top: 10px;

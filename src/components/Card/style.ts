@@ -4,7 +4,6 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { Card as MuiCard, IconButton, CardHeader } from '@mui/material'
 
-// LikeIcon and FavIcon components
 export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
   color: ${(props) => (props.isLike ? 'red' : 'grey')};
 `
@@ -13,21 +12,22 @@ export const FavIcon = styled(BookmarkIcon)<{ isFav: boolean }>`
   color: ${(props) => (props.isFav ? 'blue' : 'grey')};
 `
 
-// Styled Card component
 export const CardStyled = styled(MuiCard)`
-  max-width: 510px;
   background-color: ${theme.colors.cornsilk} !important;
-  margin-top: 4px;
-  margin: 19px;
-  margin-bottom: 29px;
+  margin: 10px;
   border: 3px solid ${theme.colors.boldbuff};
-  border-radius: 20px !important; 
+  border-radius: 20px !important;
+  max-width: 510px;
+  transition: max-width 0.3s ease-in-out;
+
+  @media (min-width:  10px) and (max-width: 1500px) {
+    max-width: 300px;
+  }
+
+
 `
 
-// Styled Details IconButton
-export const DetailsIconButton = styled(IconButton)`
-  margin-left: 89px !important;
-`
+export const DetailsIconButton = styled(IconButton)``
 
 export const CardHeaderStyled = styled(CardHeader)`
   font-size: 24px !important;
