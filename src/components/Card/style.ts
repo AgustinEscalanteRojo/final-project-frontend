@@ -10,8 +10,8 @@ import { Card as MuiCard, IconButton, CardHeader } from '@mui/material'
 export const ImageContent = styled.div`
   img {
     max-width: 100%;
-    height: auto; /* Ensures the image maintains its aspect ratio */
-    display: block; /* Removes any potential extra spacing below the image */
+    height: auto; 
+    display: block; 
   }
 `;
 
@@ -26,7 +26,7 @@ export const FavIcon = styled(BookmarkIcon)<{ isFav: boolean }>`
 export const CardStyled = styled(MuiCard)`
   background-color: ${theme.colors.cornsilk} !important;
   margin: 10px;
-  border: 3px solid ${theme.colors.boldbuff};
+  border: 1px solid ${theme.colors.boldbuff};
   border-radius: 20px !important;
   max-width: 410px;
   transition: max-width 0.3s ease-in-out;
