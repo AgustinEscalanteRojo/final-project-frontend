@@ -1,4 +1,4 @@
-import React, { FC, memo, useState, useCallback } from 'react'
+import React, { FC, memo, useState, useCallback, useEffect } from 'react'
 import {
   LikeIcon,
   FavIcon,
@@ -33,16 +33,17 @@ import {
 } from '../../services/api/post'
 import { useNavigate } from 'react-router-dom'
 
-const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
+const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
   const [expanded, setExpanded] = useState(false)
   const [comments, setComments] = useState<string[]>([])
   const [comment, setComment] = useState('')
 
   const [isLike, setLike] = useState(
-    localStorage.getItem('isLiked') === 'true' || false
+    localStorage.getItem(`isLiked_${post._id}`) === 'true' || false
   )
+
   const [isFav, setFav] = useState(
-    localStorage.getItem('isFavorited') === 'true' || false
+    localStorage.getItem(`isFav_${post._id}`) === 'true' || false
   )
 
   const navigate = useNavigate()
@@ -95,23 +96,51 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
 
     const newIsLiked = !isLike
     setLike(newIsLiked)
-    localStorage.setItem('isLiked', String(newIsLiked))
+    localStorage.setItem(`isLiked_${post._id}`, String(newIsLiked))
   }, [isLike, post._id])
+
+  useEffect(() => {
+
+    const storedIsLiked = localStorage.getItem(`isLiked_${post._id}`)
+    if (storedIsLiked !== null) {
+      setLike(storedIsLiked === 'true')
+    }
+  }, [post._id])
+
 
   const handleFavoriteClick = useCallback(async () => {
     await togglePostFavByUser(post._id)
 
     const newIsFavorited = !isFav
     setFav(newIsFavorited)
-    localStorage.setItem('isFavorited', String(newIsFavorited))
+    localStorage.setItem(`isFavorited_${post._id}`, String(newIsFavorited))
   }, [isFav, post._id])
+
+  useEffect(() => {
+
+    const storedIsLiked = localStorage.getItem(`isLiked_${post._id}`)
+    if (storedIsLiked !== null) {
+      setLike(storedIsLiked === 'true')
+    }
+
+    const storedIsFavorited = localStorage.getItem(`isFavorited_${post._id}`)
+    if (storedIsFavorited !== null) {
+      setFav(storedIsFavorited === 'true')
+    }
+  }, [post._id])
+
+  
+  const isCurrentUserCreator = currentUser && currentUser._id === post.userId
 
   return (
     <CardStyled>
       <CardHeaderStyled
         avatar={<Avatar aria-label="recipe"></Avatar>}
+
         action={
+          isCurrentUserCreator ? (          
           <>
+          
             <IconButton aria-label="settings" onClick={handleGoToEditForm}>
               <EditIcon />
             </IconButton>
@@ -123,6 +152,8 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
               <DeleteIcon />
             </IconButton>
           </>
+          ) : null
+
         }
         title={post.title}
         subheader="September 14, 2022"
