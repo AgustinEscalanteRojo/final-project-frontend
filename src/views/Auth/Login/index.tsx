@@ -1,68 +1,53 @@
 import { FC, memo } from 'react'
-import { Props } from './types'
+import { Form, Formik } from 'formik'
+import { TextField } from '@material-ui/core'
 import useLogic from './logic'
 import Footer from '../../../components/Footer'
-import VideoBackground from '../../../components/VideoBackground'
-import {
-  Grid,
-  Paper,
-  Avatar,
-  TextField,
-  Button,
-  Typography,
-} from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import { Link } from 'react-router-dom'
-import { Formik } from 'formik'
+
 import { InitialValues, ValidationSchema } from './constants'
+import * as S from './styles'
+import { Props } from './types'
 
 const Login: FC<Props> = ({ onLogin }) => {
   const { handleOnSubmit } = useLogic(onLogin)
 
-  const paperStyle = {
-    padding: '30px 24px',
-    width: '100%', 
-    maxWidth: 300, 
-    margin: '170px auto', 
-    backgroundColor: '#FFDAB9',
-  }
-
-  const avatarStyle = {
-    border: '2px solid black', 
-  }
-  const btnstyle = { margin: '10px 0', fontSize: '12px', width: '40%' }
-
   return (
-    <Grid>
+    <S.Container>
       <Footer />
-      <VideoBackground videoSrc="/back.mp4" />
-      <Paper elevation={10} style={paperStyle}>
+      <S.StyledPaper elevation={10}>
         <Formik
           initialValues={InitialValues}
           validationSchema={ValidationSchema}
           onSubmit={handleOnSubmit}
         >
-          {({ handleSubmit, handleChange, values }) => (
-            <form onSubmit={handleSubmit}>
-                  <Grid container alignContent="center" justifyContent="center">
-                <Avatar src="/logoicon.jpg" style={avatarStyle}>
+          {({ handleSubmit, handleChange, values, errors, isValid }) => (
+            <Form onSubmit={handleSubmit} noValidate autoComplete="off">
+              <S.TitleContainer>
+                <S.StyledAvatar src="/logoicon.jpg">
                   <LockOutlinedIcon />
-                </Avatar>
-                <h3>SharedFlavours</h3>
-              </Grid>
+                </S.StyledAvatar>
+                <S.Title>SharedFlavours</S.Title>
+              </S.TitleContainer>
+
               <TextField
                 label="Email"
                 placeholder="Enter email"
-                type="string"
                 variant="outlined"
                 fullWidth
                 required
                 name="email"
                 value={values.email}
                 onChange={handleChange}
+                error={!!errors?.email}
               />
+              {errors?.email && <S.InputError>{errors.email}</S.InputError>}
+
+              <S.Separation />
+
               <TextField
                 label="Password"
                 placeholder="Enter password"
@@ -73,33 +58,36 @@ const Login: FC<Props> = ({ onLogin }) => {
                 name="password"
                 value={values.password}
                 onChange={handleChange}
+                error={!!errors?.password}
               />
+              {errors?.password && (
+                <S.InputError>{errors.password}</S.InputError>
+              )}
               <FormControlLabel
                 control={<Checkbox name="checkedB" color="primary" />}
                 label="Remember me"
               />
-              <Button
-                type="submit"
-                color="primary"
-                variant="contained"
-                style={btnstyle}
-                fullWidth
-                onClick={() => handleOnSubmit(values)}
-              >
-                Log in
-              </Button>
-              <Typography>
-                <Link to="#">Forgot password ?</Link>
-              </Typography>
-              <Typography>
-                {' '}
-                Do you have an account ?<Link to="/signup"> Sign up here </Link>
-              </Typography>
-            </form>
+              <S.Buttons>
+                <S.StyledButton
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  fullWidth
+                  disabled={!isValid}
+                  onClick={() => handleOnSubmit(values)}
+                >
+                  Log in
+                </S.StyledButton>
+                <S.Link to="#">Forgot password ?</S.Link>
+                <S.Link to="/signup">
+                  Do you have an account? Sign up here
+                </S.Link>
+              </S.Buttons>
+            </Form>
           )}
         </Formik>
-      </Paper>
-    </Grid>
+      </S.StyledPaper>
+    </S.Container>
   )
 }
 
