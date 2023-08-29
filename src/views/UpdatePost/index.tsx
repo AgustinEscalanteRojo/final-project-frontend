@@ -1,8 +1,4 @@
-import { FC, memo, useState, ChangeEvent, FormEvent } from 'react'
-import { PostContainer, Content } from './styles'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import ImageBackground from '../../components/ImageBackground'
+import { FC, memo } from 'react'
 import {
   TextField,
   Button,
@@ -14,43 +10,19 @@ import {
   FormControlLabel,
   Checkbox,
 } from '@mui/material'
-import celeryIcon from '../../icons/celeryAllergensIcon.png'
-import crustaceansIcon from '../../icons/crustaceansAllergensIcon.png'
-import dairyIcon from '../../icons/dairyAllergensIcon.png'
-import eggsIcon from '../../icons/eggsAllergensIcon.png'
-import fishIcon from '../../icons/fishAllergensIcon.png'
-import glutenIcon from '../../icons/glutenAllergensIcon.png'
-import lupinsIcon from '../../icons/lupinsAllergensIcon.png'
-import mollusksIcon from '../../icons/mollusksAllergensIcon.png'
-import mustardIcon from '../../icons/mustardAllergensIcon.png'
-import nutsIcon from '../../icons/nutsinshellAllergensIcon.png'
-import peanutsIcon from '../../icons/peanutsAllergensIcon.png'
-import sesameIcon from '../../icons/sesameAllergensIcon.png'
-import soyIcon from '../../icons/soyAllergensIcon.png'
-import sulphitesIcon from '../../icons/sulfitesAllergensIcon.png'
-import type { Props } from './types'
 import { Formik } from 'formik'
+import {
+  allergiesOptions,
+  allergyIcons,
+  unityOptions,
+} from '../../common/constants'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import ImageBackground from '../../components/ImageBackground'
 import { ValidationSchema } from './constants'
 import useLogic from './logic'
-
-const allergyIcons: Record<string, string> = {
-  Celery: celeryIcon,
-  Crustaceans: crustaceansIcon,
-  Dairy: dairyIcon,
-  Eggs: eggsIcon,
-  Fish: fishIcon,
-  Gluten: glutenIcon,
-  Lupins: lupinsIcon,
-  Mollusks: mollusksIcon,
-  Mustard: mustardIcon,
-  Nuts: nutsIcon,
-  Peanuts: peanutsIcon,
-  Sesame: sesameIcon,
-  Soy: soyIcon,
-  Sulphites: sulphitesIcon,
-}
-
-const numberOptions = Array.from({ length: 10 }, (_, index) => index + 1)
+import { PostContainer, Content } from './styles'
+import type { Props } from './types'
 
 const UpdatePost: FC<Props> = ({
   id,
@@ -60,33 +32,6 @@ const UpdatePost: FC<Props> = ({
 }) => {
   const { handleEdit } = useLogic(id, onEditComplete)
 
-  const allergiesOptions = [
-    'Gluten',
-    'Crustaceans',
-    'Eggs',
-    'Fish',
-    'Peanuts',
-    'Soy',
-    'Dairy',
-    'Nuts',
-    'Celery',
-    'Mustard',
-    'Sesame',
-    'Sulphites',
-    'Lupins',
-    'Mollusks',
-  ]
-
-  const unityOptions = [
-    'Liter',
-    'Milliliters',
-    'Kilograms',
-    'Grams',
-    'Pound',
-    'Ounce',
-    'Tablespoon',
-    'Tablespoon dessert',
-  ]
   return (
     <PostContainer>
       <Header onLogout={onLogout} />

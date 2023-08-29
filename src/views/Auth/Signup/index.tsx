@@ -1,28 +1,26 @@
-import { FC, memo, useState } from 'react'
-import Footer from '../../../components/Footer'
-import VideoBackground from '../../../components/VideoBackground'
-import useLogic from './logic'
-import { Props } from './types'
+import { FC, memo } from 'react'
+import { Formik, Form } from 'formik'
 import {
   Grid,
   Paper,
   Avatar,
   TextField,
   Button,
-  Typography,
   FormControl,
   InputLabel,
   Select,
   MenuItem,
 } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import { Link } from 'react-router-dom'
-import { Formik } from 'formik'
+import Footer from '../../../components/Footer'
+import VideoBackground from '../../../components/VideoBackground'
 import { InitialValues, ValidationSignupSchema } from './constant'
-import SendIcon from '@mui/icons-material/Send'
+import useLogic from './logic'
+import * as S from './styles'
+import type { Props } from './types'
 
 const Signup: FC<Props> = ({ onSignup }) => {
-  const { handleOnSubmit } = useLogic(onSignup)
+  const { handleOnSubmit, error } = useLogic(onSignup)
 
   const paperStyle = {
     padding: '15px 15px',
@@ -42,17 +40,8 @@ const Signup: FC<Props> = ({ onSignup }) => {
     width: '60%',
   }
 
-  const [gender, setGender] = useState('')
-
-  const containerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '100vh',
-  }
-
   return (
-    <div style={containerStyle}>
+    <S.Container>
       <Grid container justifyContent="center">
         <Grid item xs={6}>
           <Footer />
@@ -68,211 +57,205 @@ const Signup: FC<Props> = ({ onSignup }) => {
               validationSchema={ValidationSignupSchema}
               onSubmit={handleOnSubmit}
             >
-              {({ handleSubmit, handleChange, handleBlur, values }) => (
-                <form onSubmit={handleSubmit}>
-                  <Grid container alignContent="center" justifyContent="center">
+              {({
+                handleSubmit,
+                handleChange,
+                handleBlur,
+                values,
+                errors,
+                isValid,
+              }) => (
+                <Form onSubmit={handleSubmit} noValidate autoComplete="off">
+                  <S.TitleContainer>
                     <Avatar src="/logoicon.jpg" style={avatarStyle}>
                       <LockOutlinedIcon />
                     </Avatar>
-                    <h2>SharedFlavours</h2>
+                    <S.Title>SharedFlavours</S.Title>
+                  </S.TitleContainer>
+                  <Grid item container spacing={2}>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="Email"
+                        placeholder="Enter email"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="email"
+                        value={values.email}
+                        onChange={handleChange}
+                        error={!!errors?.email}
+                      />
+                      {errors?.email && (
+                        <S.InputError>{errors.email}</S.InputError>
+                      )}
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="Password"
+                        placeholder="Enter password"
+                        type="password"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="password"
+                        value={values.password}
+                        onChange={handleChange}
+                        error={!!errors?.password}
+                      />
+                      {errors?.password && (
+                        <S.InputError>{errors.password}</S.InputError>
+                      )}
+                    </Grid>
                   </Grid>
-                  <Grid container direction="column">
-                    <Grid item container spacing={2}>
-                      <Grid item xs={6}>
-                        <TextField
-                          label="Email"
-                          placeholder="Enter email"
-                          type="string"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="email"
-                          value={values.email}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <TextField
-                          label="Password"
-                          placeholder="Enter password"
-                          type="password"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="password"
-                          value={values.password}
-                          onChange={handleChange}
-                        />
-                      </Grid>
+                  <Grid item container spacing={2}>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="Username"
+                        placeholder="Enter username"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="username"
+                        value={values.username}
+                        onChange={handleChange}
+                      />
                     </Grid>
-                    <Grid item container spacing={2}>
-                      <Grid item xs={6}>
-                        <TextField
-                          label="Username"
-                          placeholder="Enter username"
-                          type="string"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="username"
-                          value={values.username}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <TextField
-                          label="First Name"
-                          placeholder="Enter first name"
-                          type="string"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="firstName"
-                          value={values.firstName}
-                          onChange={handleChange}
-                        />
-                      </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="First Name"
+                        placeholder="Enter first name"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="firstName"
+                        value={values.firstName}
+                        onChange={handleChange}
+                      />
                     </Grid>
-                    <Grid item container spacing={2}>
-                      <Grid item xs={6}>
-                        <TextField
-                          label="Last Name"
-                          placeholder="Enter last name"
-                          type="string"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="lastName"
-                          value={values.lastName}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <TextField
-                          label="Age"
-                          placeholder="Enter age"
-                          type="number"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="age"
-                          value={values.age}
-                          onChange={handleChange}
-                        />
-                      </Grid>
+                  </Grid>
+                  <Grid item container spacing={2}>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="Last Name"
+                        placeholder="Enter last name"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="lastName"
+                        value={values.lastName}
+                        onChange={handleChange}
+                      />
                     </Grid>
-                    <Grid item container spacing={2}>
-                      <Grid item xs={6}>
-                        <TextField
-                          label="Country"
-                          placeholder="Enter country"
-                          type="string"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="country"
-                          value={values.country}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <TextField
-                          label="City"
-                          placeholder="Enter city"
-                          type="string"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="city"
-                          value={values.city}
-                          onChange={handleChange}
-                        />
-                      </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="Age"
+                        placeholder="Enter age"
+                        type="number"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="age"
+                        value={values.age}
+                        onChange={handleChange}
+                      />
                     </Grid>
-                    <Grid item container spacing={2}>
-                      <Grid item xs={6}>
-                        <FormControl fullWidth variant="outlined" required>
-                          <InputLabel id="gender-label">Gender</InputLabel>
-                          <Select
-                            labelId="gender-label"
-                            label="Gender"
-                            name="gender"
-                            value={values.gender}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                          >
-                            <MenuItem value={'male'}>Male</MenuItem>
-                            <MenuItem value={'female'}>Female</MenuItem>
-                            <MenuItem value={'non-binary'}>Non-Binary</MenuItem>
-                          </Select>
-                        </FormControl>
-                      </Grid>
+                  </Grid>
+                  <Grid item container spacing={2}>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="Country"
+                        placeholder="Enter country"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="country"
+                        value={values.country}
+                        onChange={handleChange}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="City"
+                        placeholder="Enter city"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="city"
+                        value={values.city}
+                        onChange={handleChange}
+                      />
+                    </Grid>
+                  </Grid>
+                  <Grid item container spacing={2}>
+                    <Grid item xs={6}>
+                      <FormControl fullWidth variant="outlined" required>
+                        <InputLabel id="gender-label">Gender</InputLabel>
+                        <Select
+                          labelId="gender-label"
+                          label="Gender"
+                          name="gender"
+                          value={values.gender}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        >
+                          <MenuItem value={'male'}>Male</MenuItem>
+                          <MenuItem value={'female'}>Female</MenuItem>
+                          <MenuItem value={'non-binary'}>Non-Binary</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Grid>
 
-                      <Grid item xs={6}>
-                        <TextField
-                          label="Avatar"
-                          placeholder="Please select an avatar"
-                          type="string"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="avatar"
-                          value={values.avatar}
-                          onChange={handleChange}
-                        />
-                      </Grid>
-                    </Grid>
-                    <Grid item container spacing={2} justifyContent="center">
-                      <Grid item xs={12}>
-                        <TextField
-                          label="Biography"
-                          placeholder="Write a brief biography"
-                          type="string"
-                          variant="outlined"
-                          fullWidth
-                          required
-                          name="biography"
-                          value={values.biography}
-                          onChange={handleChange}
-                          multiline   
-                          minRows={4}
-                        />
-                      </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        label="Avatar"
+                        placeholder="Please select an avatar"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="avatar"
+                        value={values.avatar}
+                        onChange={handleChange}
+                      />
                     </Grid>
                   </Grid>
-                  <Grid container justifyContent="center">
+                  <Grid item container spacing={2} justifyContent="center">
+                    <Grid item xs={12}>
+                      <TextField
+                        label="Biography"
+                        placeholder="Write a brief biography"
+                        variant="outlined"
+                        fullWidth
+                        required
+                        name="biography"
+                        value={values.biography}
+                        onChange={handleChange}
+                        multiline
+                        minRows={4}
+                      />
+                    </Grid>
+                  </Grid>
+                  {error && <S.InputError>{error}</S.InputError>}
+                  <S.Buttons>
                     <Button
                       type="submit"
                       color="primary"
                       variant="contained"
                       style={btnstyle}
                       size="large"
+                      disabled={!isValid}
                       fullWidth
-                      onClick={() => handleOnSubmit(values)}
                     >
                       Sign up
                     </Button>
-                    <Button
-                      type="submit"
-                      color="primary"
-                      variant="contained"
-                      endIcon={<SendIcon style={{ color: '#3847a4' }} />}
-                      style={{ ...btnstyle, backgroundColor: '#FFFACD' }}
-                      size="large"
-                      fullWidth
-                    >
-                      <Typography>
-                        <Link to="/login">Log in</Link>
-                      </Typography>
-                    </Button>
-                  </Grid>
-                </form>
+                    <S.Link to="/login">Log in</S.Link>
+                  </S.Buttons>
+                </Form>
               )}
             </Formik>
           </Paper>
         </Grid>
       </Grid>
-    </div>
+    </S.Container>
   )
 }
 

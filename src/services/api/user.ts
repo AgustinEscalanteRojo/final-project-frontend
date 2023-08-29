@@ -1,4 +1,4 @@
-import { User, userInput, normalizeUser } from '../../models/User'
+import { User, normalizeUser } from '../../models/User'
 import { getToken } from '../storage/token'
 
 const BASE_URL = 'http://localhost:8080/users'
@@ -29,7 +29,7 @@ export const getMe = async (): Promise<User | null> => {
     })
     const data = await response.json()
 
-    return data.user
+    return normalizeUser(data)
   } catch (e) {
     console.log(e)
   }

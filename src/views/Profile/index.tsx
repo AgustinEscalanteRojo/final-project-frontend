@@ -39,7 +39,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
   const fetchUserMe = useCallback(async () => {
     try {
       const userInfo = await getMe()
-      console.log(userInfo)
+      console.log({ userInfo })
       setUser(userInfo)
     } catch (error) {
       console.error('Error fetching user data:', error)
@@ -53,16 +53,14 @@ const Profile: FC<Props> = ({ onLogout }) => {
   return (
     <PerfilContainer>
       <Header onLogout={onLogout} />
-
       <Avatar
         style={{ backgroundColor: '#D4A373', marginTop: '150px' }}
       ></Avatar>
-
+      username: {user?.username} - email: {user?.email}
       <ButtonController>
         <Button onClick={handleGoToLikes}>Likes</Button>
         <Button onClick={handleGoToFollowers}>Followers / Following</Button>
       </ButtonController>
-
       <Content>
         <Box sx={{ marginTop: 7, width: '100%', typography: 'body1' }}>
           <TabContext value={value}>

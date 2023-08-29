@@ -1,4 +1,4 @@
-export type userResponse = {
+export type UserResponse = {
   _id: string
   email: string
   password: string
@@ -19,28 +19,21 @@ export type userResponse = {
   following: string[]
 }
 
-export type userInput = {
-  _id?: string
+export type UserFormFields = {
   email: string
   password: string
-  salt: string
   username: string
   firstName: string
   lastName: string
   age: number
   gender: string
-  biography?: string
-  avatar?: string
-  city?: string
   country: string
-  createdAt?: Date
-  favPosts?: string[]
-  sharedPosts?: string[]
-  followers?: string[]
-  following?: string[]
+  city: string
+  biography: string
+  avatar: string
 }
 
-export const normalizeUser = (input: userResponse | userInput) => ({
+export const normalizeUser = (input: UserResponse) => ({
   _id: input?._id || '',
   email: input?.email || '',
   password: input?.password || '',

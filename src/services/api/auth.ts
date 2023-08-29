@@ -1,4 +1,5 @@
 import { removeToken, setToken } from '../storage/token'
+import type { UserFormFields } from '../../models/User'
 
 const BASE_URL = 'http://localhost:8080/auth'
 
@@ -17,38 +18,20 @@ export const login = async (email: string, password: string): Promise<void> => {
   }
 }
 
-export const signup = async (
-  email: string,
-  password: string,
-  username: string,
-  firstName: string,
-  lastName: string,
-  age: number,
-  gender: string,
-  country: string,
-  city: string,
-  biography: string,
-  avatar: string
-): Promise<void> => {
+export const signup = async (data: UserFormFields): Promise<void> => {
   const response = await fetch(`${BASE_URL}/signup`, {
-    body: JSON.stringify({
-      email,
-      password,
-      username,
-      firstName,
-      lastName,
-      age,
-      gender,
-      country,      
-      city,
-      biography,
-      avatar
-    }),
+    body: JSON.stringify(data),
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
   })
+
+  if (response.status === 500) {
+    const msg = await response.json()
+    throw new Error(msg)
+  }
+
   const token = await response.json()
 
   if (token) {
