@@ -4,6 +4,17 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { Card as MuiCard, IconButton, CardHeader } from '@mui/material'
 
+
+
+
+export const ImageContent = styled.div`
+  img {
+    max-width: 100%;
+    height: auto; /* Ensures the image maintains its aspect ratio */
+    display: block; /* Removes any potential extra spacing below the image */
+  }
+`;
+
 export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
   color: ${(props) => (props.isLike ? 'red' : 'grey')};
 `
@@ -17,11 +28,17 @@ export const CardStyled = styled(MuiCard)`
   margin: 10px;
   border: 3px solid ${theme.colors.boldbuff};
   border-radius: 20px !important;
-  max-width: 510px;
+  max-width: 410px;
   transition: max-width 0.3s ease-in-out;
 
-  @media (min-width:  10px) and (max-width: 1500px) {
+  @media (min-width:  771px) and (max-width: 1500px) {
     max-width: 300px;
+  }
+
+
+  @media (min-width:  10px) and (max-width: 770px) {
+    max-width: 190px;
+    max-height: 470px;
   }
 
 

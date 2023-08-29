@@ -8,7 +8,6 @@ import Checkbox from '@mui/material/Checkbox'
 import ListItemText from '@mui/material/ListItemText'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Box from '@mui/material/Box'
-import IconButton from '@mui/material/IconButton'
 import AddIcon from '@mui/icons-material/Add'
 import { getPosts, removePostById } from '../../services/api/post'
 import ImageBackground from '../../components/ImageBackground'
@@ -23,6 +22,7 @@ import {
   ButtonController,
   ContainerAllergies,
   Cards,
+  IconButtonStyled,
 } from './styles'
 import type { Props } from './types'
 
@@ -93,19 +93,14 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <Header onLogout={onLogout} />
 
       <ButtonController>
-        <IconButton
+        <IconButtonStyled
           onClick={handleGoToPost}
           color="primary"
           aria-label="add new post"
-          style={{
-            border: '3px solid #b5803f',
-            borderRadius: '20%',
-            width: '60px',
-            height: '60px',
-          }}
+ 
         >
           <AddIcon fontSize="large" style={{ color: 'black' }} /> {}
-        </IconButton>
+        </IconButtonStyled>
       </ButtonController>
 
       <Cards>
@@ -118,9 +113,14 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </Cards>
 
+
+
+
+
+
       <ContainerAllergies>
         <FormControl
-          sx={{ minWidth: 200, marginLeft: '10px', backgroundColor: 'white' }}
+        
         >
           <InputLabel id="allergies-label">ALLERGIES</InputLabel>
           <Select
@@ -157,6 +157,9 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           </Select>
         </FormControl>
       </ContainerAllergies>
+
+
+
 
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
