@@ -3,23 +3,26 @@ import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
 
 export const ContainerAllergies = styled.div`
+  position: fixed;
+  left: 0;
+  margin-top: 350px;
+  transform: translateY(-50%);
+  width: 200px; 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
-  transform: scale(0.7);
 `;
-
 export const StyledCheckbox = styled(Checkbox)`
-  transform: scale(0.8);
+  transform: scale(0.7);
+ 
 `
 
 export const AllergyOption = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  transform: scale(0.9);
+  margin-bottom: -10px; 
 `;
-
 
 export const AllergyIcon = styled.img`
   width: 25px;
@@ -30,7 +33,27 @@ export const AllergyIcon = styled.img`
 export const AllergyLabel = styled.label`
   display: flex;
   align-items: center;
-`
+
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 320px; 
+  padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0; 
+
+`;
+
+export const AllergyIconContainer = styled.div`
+  width: 120px; 
+  display: flex;
+  align-items: center;
+`;
+
 
 export const IconButtonStyled = styled(IconButton)`
   border: 3px solid #b5803f !important;
@@ -51,17 +74,6 @@ export const Cards = styled.div`
   }
 `
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-`
 
 export const ButtonController = styled.div`
   display: flex;

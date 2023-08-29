@@ -19,7 +19,7 @@ import {
   AllergyOption,
   AllergyIcon,
   AllergyLabel,
-
+  AllergyIconContainer,
 } from './styles'
 import type { Props } from './types'
 
@@ -124,10 +124,12 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         checked={allergies.indexOf(allergy) > -1}
         onChange={(event) => handleAllergiesChange(event, allergy)}
       />
-      <AllergyLabel>
-        <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
-        {allergy}
-      </AllergyLabel>
+<AllergyLabel>
+  <AllergyIconContainer>
+    <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
+    {allergy}
+  </AllergyIconContainer>
+</AllergyLabel>
     </AllergyOption>
   ))}
 </ContainerAllergies>
