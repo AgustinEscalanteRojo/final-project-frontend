@@ -1,5 +1,5 @@
 import React, { FC, memo, useCallback, useState, useEffect } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -19,10 +19,10 @@ import { EditPostInput, Post } from '../../models/Post'
 import UpdatePost from '../UpdatePost'
 import { allergiesOptions, allergyIcons } from '../../common/constants'
 import {
-    Container,
-    ButtonController,
-    ContainerAllergies,
-    Cards,
+  Container,
+  ButtonController,
+  ContainerAllergies,
+  Cards,
 } from './styles'
 import type { Props } from './types'
 
@@ -50,12 +50,14 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     fetchPosts()
   }, [fetchPosts])
 
-  const handleRemovePost = useCallback(
-    async (postId: string) => {
-      await removePostById(postId)
-    },
-    [removePostById]
-  )
+  const handleRemovePost = useCallback(async (postId: string) => {
+    const currentPosts = await getPosts()
+    const filteredPosts = currentPosts.filter(
+      (currentPost) => postId !== currentPost._id
+    )
+    await removePostById(postId)
+    setPosts(filteredPosts)
+  }, [])
 
   const handleOnCompleteEdition = useCallback(
     (values: EditPostInput) => {
