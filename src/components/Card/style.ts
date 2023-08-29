@@ -30,15 +30,17 @@ export const CardStyled = styled(MuiCard)`
   border-radius: 20px !important;
   max-width: 410px;
   transition: max-width 0.3s ease-in-out;
+  font-size: 16px!important; 
 
-  @media (min-width:  771px) and (max-width: 1500px) {
+  @media (min-width: 771px) and (max-width: 1500px) {
     max-width: 300px;
+    font-size: 14px!important;
   }
 
-
-  @media (min-width:  10px) and (max-width: 770px) {
+  @media (min-width: 10px) and (max-width: 770px) {
     max-width: 190px;
     max-height: 470px;
+    font-size: 12px !important;
   }
 
 
