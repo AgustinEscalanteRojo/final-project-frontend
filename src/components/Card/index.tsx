@@ -129,9 +129,6 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
         }
       />
 
-
-
-
       <ImageContent>
         <img src={post.mainImage} alt="Main Image" />
       </ImageContent>
