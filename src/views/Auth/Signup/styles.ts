@@ -1,9 +1,10 @@
 import styled from 'styled-components'
-import { Link as DefaultLink } from 'react-router-dom'
 import theme from '../../../styles/theme'
 import { Paper, Avatar, Button } from '@material-ui/core'
+import { Link as DefaultLink } from 'react-router-dom'
 
 export const PaperStyled = styled(Paper)`
+  border-radius: 15px !important;
   padding: 15px 15px;
   width: 100%;
   max-width: 400px;
@@ -12,14 +13,14 @@ export const PaperStyled = styled(Paper)`
 `
 
 export const AvatarStyled = styled(Avatar)`
-  border: 2px solid black;
+  border: 2px solid ${({ theme }) => theme.colors.blue900};
 `
 
 export const ButtonStyled = styled(Button)`
   color: white;
   margin: 12px 0;
   margin-bottom: 10px;
-  margin-top: 20px!important;
+  margin-top: 10px !important;
   font-size: 12px;
   width: 30%;
 `
@@ -29,7 +30,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  background-color: ${({ theme }) => theme.colors.cornsilk};
 `
 
 export const Form = styled.form`

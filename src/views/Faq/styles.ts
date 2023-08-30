@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import theme from '../../styles/theme'
 import { AccordionDetails } from '@mui/material'
+import theme from '../../styles/theme'
 
 export const FaqContainer = styled.div`
   display: flex;

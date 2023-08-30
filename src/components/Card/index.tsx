@@ -5,7 +5,6 @@ import {
   Avatar,
   IconButton,
   Typography,
-  
 } from '@mui/material'
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
 import RepeatIcon from '@mui/icons-material/Repeat'
@@ -18,7 +17,7 @@ import {
   togglePostLikeByUser,
 } from '../../services/api/post'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   LikeIcon,
   FavIcon,
@@ -28,11 +27,13 @@ import {
   ImageContent,
   IconDetailsContainer,
   TimeIconContainer,
-  DiningIconContainer
+  DiningIconContainer,
 } from './style'
+import { User } from '../../models/User'
+import { getMe } from '../../services/api/user'
 import type { Props } from './types'
 
-const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
+const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const [isLike, setLike] = useState(
     localStorage.getItem(`isLiked_${post._id}`) === 'true' || false
   )
@@ -41,9 +42,25 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
     localStorage.getItem(`isFav_${post._id}`) === 'true' || false
   )
 
+  const [currentUser, setCurrentUser] = useState<User | null>(null)
+
+  const fetchUserMe = useCallback(async () => {
+    try {
+      const userInfo = await getMe()
+      console.log({ currentUser })
+      setCurrentUser(userInfo)
+    } catch (error) {
+      console.error('Error fetching user data:', error)
+    }
+  }, [])
+
+  useEffect(() => {
+    fetchUserMe()
+  }, [fetchUserMe])
+
   const navigate = useNavigate()
 
-  const handleGoToEditForm = useCallback(() => {
+  const handleGoToEditForm = useCallback(async () => {
     navigate(`/posts/${post._id}?edit=true`)
     console.log(post._id)
   }, [navigate])
@@ -92,10 +109,7 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
   return (
     <CardStyled>
       <CardHeaderStyled
-        avatar={
-          <Avatar aria-label="recipe">
-          </Avatar>
-        }
+        avatar={<Avatar aria-label="recipe"></Avatar>}
         action={
           isCurrentUserCreator ? (
             <>
@@ -112,25 +126,20 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
             </>
           ) : null
         }
-        
         title={post.title}
-        
         subheader={
           <IconDetailsContainer>
             <TimeIconContainer>
               <TimeIcon />
-              </TimeIconContainer>
+            </TimeIconContainer>
             {` ${post.duration}`}
             <DiningIconContainer>
-      <DiningIcon />
-    </DiningIconContainer>
+              <DiningIcon />
+            </DiningIconContainer>
             {` ${post.diners}`}
-            </IconDetailsContainer>
+          </IconDetailsContainer>
         }
       />
-
-
-
 
       <ImageContent>
         <img src={post.mainImage} alt="Main Image" />

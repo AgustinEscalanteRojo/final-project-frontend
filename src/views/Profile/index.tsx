@@ -2,10 +2,7 @@ import { FC, memo, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import type { Props } from './types'
 import Button from '../../components/Button'
-import { PerfilContainer, Content, ButtonController } from './styles'
-
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
@@ -16,6 +13,8 @@ import { Avatar } from '@material-ui/core'
 import ImageBackground from '../../components/ImageBackground'
 import { getMe } from '../../services/api/user'
 import { User } from '../../models/User'
+import { PerfilContainer, Content, ButtonController } from './styles'
+import type { Props } from './types'
 
 const Profile: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -53,11 +52,9 @@ const Profile: FC<Props> = ({ onLogout }) => {
   return (
     <PerfilContainer>
       <Header onLogout={onLogout} />
-      <Avatar
-  style={{ backgroundColor: '#D4A373', marginTop: '150px' }}
->
-  {user?.username ? user.username.charAt(0).toUpperCase() : ''}
-</Avatar>
+      <Avatar style={{ backgroundColor: '#D4A373', marginTop: '150px' }}>
+        {user?.username ? user.username.charAt(0).toUpperCase() : ''}
+      </Avatar>
       username: {user?.username} - email: {user?.email}
       <ButtonController>
         <Button onClick={handleGoToLikes}>Likes</Button>

@@ -17,9 +17,11 @@ import Faq from '../../views/Faq'
 import NotFound from '../../views/NotFound'
 import { getToken } from '../../services/storage/token'
 import UpdatePost from '../../views/UpdatePost'
+import { EditPostInput, Post } from '../../models/Post'
 
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
+  const [post, setPost] = useState<Post | null>(null)
 
   const recreateLogin = useCallback(() => {
     setIsLoading(true)
@@ -34,6 +36,14 @@ const Router: FC = () => {
       setIsLoading(false)
     }, 1000)
   }, [])
+
+  const handleOnCompleteEdition = useCallback(
+    (values: EditPostInput) => {
+      const editedPost = { ...post, ...values } as Post
+      setPost(editedPost)
+    },
+    [post]
+  )
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -152,6 +162,34 @@ const Router: FC = () => {
           element={
             <ProtectedRoutes>
               <NotFound />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/posts/:postId"
+          element={
+            <ProtectedRoutes>
+              {post ? (
+                <UpdatePost
+                  onEditComplete={handleOnCompleteEdition}
+                  id={post._id}
+                  initialValues={{
+                    title: post.title,
+                    type: post.type,
+                    duration: post.duration,
+                    difficulty: post.difficulty,
+                    allergies: post.allergies as string,
+                    description: post.description,
+                    ingredients: post.ingredients,
+                    diners: post.diners,
+                    steps: post.steps,
+                  }}
+                  onLogout={recreateLogOut}
+                />
+              ) : (
+                <NotFound />
+              )}
             </ProtectedRoutes>
           }
         />
