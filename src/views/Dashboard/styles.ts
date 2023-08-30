@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Checkbox from '@mui/material/Checkbox'
+import theme from '../../styles/theme'
 import IconButton from '@mui/material/IconButton'
 
 export const ContainerAllergies = styled.div`
@@ -56,10 +57,11 @@ export const AllergyIconContainer = styled.div`
 
 
 export const IconButtonStyled = styled(IconButton)`
-  border: 3px solid #b5803f !important;
+  border: 3px solid ${theme.colors.blue225} !important;
   border-radius: 20%;
   width: 60px;
   height: 60px;
+  background-color: ${theme.colors.black};
 `
 
 export const Cards = styled.div`

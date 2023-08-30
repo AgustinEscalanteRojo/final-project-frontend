@@ -24,9 +24,9 @@ export const FavIcon = styled(BookmarkIcon)<{ isFav: boolean }>`
 `
 
 export const CardStyled = styled(MuiCard)`
-  background-color: ${theme.colors.cornsilk} !important;
+  background-color: ${theme.colors.blue25} !important;
   margin: 10px;
-  border: 1px solid ${theme.colors.boldbuff};
+  border: 1px solid ${theme.colors.blue175};
   border-radius: 20px !important;
   max-width: 410px;
   transition: max-width 0.3s ease-in-out;
