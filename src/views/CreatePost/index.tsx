@@ -223,6 +223,10 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                 </Grid>
               </FormControl>
 
+
+
+
+
               <FormControl fullWidth style={{ marginTop: '16px' }}>
                 {values.steps.map((step, index) => (
                   <div
@@ -262,7 +266,7 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                     <TextField
                       label="Image URL"
                       name={`steps[${index}].imageUrl`}
-                      value={step.image}
+                      value={step.image[0]}
                       onChange={handleChange}
                       required
                       fullWidth
@@ -304,6 +308,9 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
                   Add Step
                 </Button>
               </FormControl>
+
+
+
 
               <TextField
                 style={{ marginTop: '26px' }}
