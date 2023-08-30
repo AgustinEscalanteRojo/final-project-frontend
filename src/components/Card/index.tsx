@@ -94,7 +94,6 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
       <CardHeaderStyled
         avatar={
           <Avatar aria-label="recipe">
-            {currentUser ? currentUser.username.charAt(0) : ''}
           </Avatar>
         }
         action={

@@ -10,7 +10,7 @@ export const MobileIconButton = styled(IconButton)`
 export const Container = styled.header`
   display: flex;
   background-color: ${theme.colors.black};
-  border-bottom: 2px solid ${theme.colors.buff};
+  border-bottom: 2px solid ${theme.colors.blue25};
   width: 100%;
   height: 70px;
   position: fixed;
@@ -75,7 +75,7 @@ export const SearchArea = styled.div`
   background-color: ${theme.colors.black};
   padding: 10px;
   transition: all 0.3s ease-in-out;
-  border-bottom: 2px solid ${theme.colors.buff};
+  border-bottom: 2px solid ${theme.colors.blue25};
   /* border: 10px pink solid; */
 
   @media (min-width: 768px) {
