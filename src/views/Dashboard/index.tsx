@@ -117,6 +117,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </Cards>
 
+
+
       <ContainerAllergies>
   {allergiesOptions.map((allergy) => (
     <AllergyOption key={allergy}>
