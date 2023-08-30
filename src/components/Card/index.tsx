@@ -5,10 +5,13 @@ import {
   Avatar,
   IconButton,
   Typography,
+  
 } from '@mui/material'
+import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
 import RepeatIcon from '@mui/icons-material/Repeat'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
+import TimeIcon from '@mui/icons-material/AccessTime'
 
 import {
   togglePostFavByUser,
@@ -23,6 +26,9 @@ import {
   DetailsIconButton,
   CardHeaderStyled,
   ImageContent,
+  IconDetailsContainer,
+  TimeIconContainer,
+  DiningIconContainer
 } from './style'
 import type { Props } from './types'
 
@@ -107,9 +113,25 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
             </>
           ) : null
         }
+        
         title={post.title}
-        subheader={`${post.duration} ${post.type} ${post.difficulty}`}
+        
+        subheader={
+          <IconDetailsContainer>
+            <TimeIconContainer>
+              <TimeIcon />
+              </TimeIconContainer>
+            {` ${post.duration}`}
+            <DiningIconContainer>
+      <DiningIcon />
+    </DiningIconContainer>
+            {` ${post.diners}`}
+            </IconDetailsContainer>
+        }
       />
+
+
+
 
       <ImageContent>
         <img src={post.mainImage} alt="Main Image" />
