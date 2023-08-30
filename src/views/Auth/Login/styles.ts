@@ -1,32 +1,32 @@
 import styled from 'styled-components'
 import theme from '../../../styles/theme'
+import { Paper, Avatar, Button } from '@material-ui/core'
 import { Link as DefaultLink } from 'react-router-dom'
-import { Paper, Avatar, Button } from '@material-ui/core';
 
-export const StyledPaper = styled(Paper)`
+export const PaperStyled = styled(Paper)`
+  border-radius: 15px !important;
   padding: 30px 24px;
   width: 100%;
   max-width: 300px;
   margin: 170px auto;
-  background-color: ${({ theme }) => theme.colors.blue25};
-`;
+  background-color: ${({ theme }) => theme.colors.blue25}!important;
+`
 
-export const StyledAvatar = styled(Avatar)`
-  border: 2px solid black;
-`;
+export const AvatarStyled = styled(Avatar)`
+  border: 2px solid ${({ theme }) => theme.colors.blue900};
+`
 
-export const StyledButton = styled(Button)`
+export const ButtonStyled = styled(Button)`
   margin: 12px 0;
   font-size: 12px;
   width: 40%;
-`;
+`
 
 export const Container = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  background-color: ${({ theme }) => theme.colors.cornsilk};
 `
 
 export const Form = styled.form`
@@ -76,16 +76,16 @@ export const InputError = styled.span`
 `
 
 export const Link = styled(DefaultLink)`
-color: ${({ theme }) => theme.colors.blue300};
-display: block;
-font-size: 14px;
-margin-top: 16px;
-text-align: center;
-transition: color 200ms ease-in-out;
+  color: ${({ theme }) => theme.colors.blue300};
+  display: block;
+  font-size: 14px;
+  margin-top: 16px;
+  text-align: center;
+  transition: color 200ms ease-in-out;
 
-&:hover {
-  color: ${({ theme }) => theme.colors.blue900};
-}
+  &:hover {
+    color: ${({ theme }) => theme.colors.blue900};
+  }
 `
 
 export const Info = styled.p`
@@ -95,7 +95,7 @@ export const Info = styled.p`
 `
 
 export const Separation = styled.div`
-  margin: 22px 0;
+  margin: 14px 0;
 `
 
 export const Buttons = styled.div`

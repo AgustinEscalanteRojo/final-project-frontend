@@ -117,28 +117,22 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </Cards>
 
-
-
       <ContainerAllergies>
-  {allergiesOptions.map((allergy) => (
-    <AllergyOption key={allergy}>
-      <StyledCheckbox
-        checked={allergies.indexOf(allergy) > -1}
-        onChange={(event) => handleAllergiesChange(event, allergy)}
-      />
-<AllergyLabel>
-  <AllergyIconContainer>
-    <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
-    {allergy}
-  </AllergyIconContainer>
-</AllergyLabel>
-    </AllergyOption>
-  ))}
-</ContainerAllergies>
-
-
-
-
+        {allergiesOptions.map((allergy) => (
+          <AllergyOption key={allergy}>
+            <StyledCheckbox
+              checked={allergies.indexOf(allergy) > -1}
+              onChange={(event) => handleAllergiesChange(event, allergy)}
+            />
+            <AllergyLabel>
+              <AllergyIconContainer>
+                <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
+                {allergy}
+              </AllergyIconContainer>
+            </AllergyLabel>
+          </AllergyOption>
+        ))}
+      </ContainerAllergies>
 
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />

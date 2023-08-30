@@ -1,14 +1,14 @@
 import { FC, memo } from 'react'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import { FaqContainer, Content, Backgroundcolor, Tittle } from './styles'
-import type { Props } from './types'
 import ImageBackground from '../../components/ImageBackground'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { FaqContainer, Content, Backgroundcolor, Tittle } from './styles'
+import type { Props } from './types'
 
 const Faq: FC<Props> = ({ onLogout }) => {
   return (
