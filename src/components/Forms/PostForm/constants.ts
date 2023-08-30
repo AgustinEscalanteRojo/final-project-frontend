@@ -1,11 +1,11 @@
 import { object, string, number, array } from 'yup'
 
-export const InitialValues = {
+export const DefaultInitialValues = {
   title: '',
   type: '',
   duration: '',
   difficulty: '',
-  allergies: '',
+  allergies: [],
   description: '',
   ingredients: [{ name: '', quantity: 0, unity: '' }],
   diners: 0,

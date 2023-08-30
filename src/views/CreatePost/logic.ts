@@ -1,35 +1,15 @@
-import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { createPost } from "../../services/api/post";
-
-
+import { useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { createPost } from '../../services/api/post'
+import type { PostFormFields } from '../../models/Post'
 
 const useLogic = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const handleCreate = useCallback(
-    async (values: {
-      title: string
-      type: string
-      duration: string
-      difficulty: string
-      allergies: string
-      description: string
-      ingredients: {
-        name: string
-        quantity: number
-        unity: string
-      }[]
-      diners: number
-      steps: {
-        title: string
-        description: string
-        order: number
-        image: string[]
-      }[]
-      mainImage?: string
-    }) => {
+    async (values: Partial<PostFormFields>) => {
       try {
         await createPost(values)
+        navigate('/dashboard')
       } catch (error) {
         console.error(error)
       }
@@ -37,8 +17,7 @@ const useLogic = () => {
     [navigate]
   )
 
-  return { handleCreate };
-};
+  return { handleCreate }
+}
 
-export default useLogic;
-
+export default useLogic

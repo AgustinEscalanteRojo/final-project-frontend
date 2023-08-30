@@ -11,98 +11,31 @@ import RepeatIcon from '@mui/icons-material/Repeat'
 import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import TimeIcon from '@mui/icons-material/AccessTime'
-
-import {
-  togglePostFavByUser,
-  togglePostLikeByUser,
-} from '../../services/api/post'
-
-import { useNavigate, useParams } from 'react-router-dom'
 import {
   LikeIcon,
   FavIcon,
   CardStyled,
   DetailsIconButton,
   CardHeaderStyled,
-  ImageContent,
   IconDetailsContainer,
   TimeIconContainer,
   DiningIconContainer,
+  Description,
+  Image,
 } from './style'
-import { User } from '../../models/User'
-import { getMe } from '../../services/api/user'
 import type { Props } from './types'
+import useLogic from './logic'
 
 const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
-  const [isLike, setLike] = useState(
-    localStorage.getItem(`isLiked_${post._id}`) === 'true' || false
-  )
-
-  const [isFav, setFav] = useState(
-    localStorage.getItem(`isFav_${post._id}`) === 'true' || false
-  )
-
-  const [currentUser, setCurrentUser] = useState<User | null>(null)
-
-  const fetchUserMe = useCallback(async () => {
-    try {
-      const userInfo = await getMe()
-      console.log({ currentUser })
-      setCurrentUser(userInfo)
-    } catch (error) {
-      console.error('Error fetching user data:', error)
-    }
-  }, [])
-
-  useEffect(() => {
-    fetchUserMe()
-  }, [fetchUserMe])
-
-  const navigate = useNavigate()
-
-  const handleGoToEditForm = useCallback(async () => {
-    navigate(`/posts/${post._id}?edit=true`)
-    console.log(post._id)
-  }, [navigate])
-
-  const handleDetailsClick = useCallback(() => {
-    navigate('/details')
-  }, [navigate])
-
-  const handleLikeClick = useCallback(async () => {
-    await togglePostLikeByUser(post._id)
-
-    const newIsLiked = !isLike
-    setLike(newIsLiked)
-    localStorage.setItem(`isLiked_${post._id}`, String(newIsLiked))
-  }, [isLike, post._id])
-
-  useEffect(() => {
-    const storedIsLiked = localStorage.getItem(`isLiked_${post._id}`)
-    if (storedIsLiked !== null) {
-      setLike(storedIsLiked === 'true')
-    }
-  }, [post._id])
-
-  const handleFavoriteClick = useCallback(async () => {
-    await togglePostFavByUser(post._id)
-
-    const newIsFavorited = !isFav
-    setFav(newIsFavorited)
-    localStorage.setItem(`isFavorited_${post._id}`, String(newIsFavorited))
-  }, [isFav, post._id])
-
-  useEffect(() => {
-    const storedIsLiked = localStorage.getItem(`isLiked_${post._id}`)
-    if (storedIsLiked !== null) {
-      setLike(storedIsLiked === 'true')
-    }
-
-    const storedIsFavorited = localStorage.getItem(`isFavorited_${post._id}`)
-    if (storedIsFavorited !== null) {
-      setFav(storedIsFavorited === 'true')
-    }
-  }, [post._id])
+  const {
+    currentUser,
+    handleGoToEditForm,
+    handleDetailsClick,
+    handleLikeClick,
+    handleFavoriteClick,
+    isLike,
+    isFav,
+  } = useLogic(post)
 
   const isCurrentUserCreator = currentUser && currentUser._id === post.userId
 
@@ -140,15 +73,11 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
           </IconDetailsContainer>
         }
       />
-
-      <ImageContent>
-        <img src={post.mainImage} alt="Main Image" />
-      </ImageContent>
-
+      <Image src={post.mainImage} alt="Main of post with some data" />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <Description variant="body2" color="text.secondary">
           {post.description}
-        </Typography>
+        </Description>
       </CardContent>
 
       <CardActions disableSpacing>
