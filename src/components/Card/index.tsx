@@ -25,8 +25,10 @@ import {
   ImageContent,
 } from './style'
 import type { Props } from './types'
+import { User } from '../../models/User'
+import { getMe } from '../../services/api/user'
 
-const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
+const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
   const [isLike, setLike] = useState(
     localStorage.getItem(`isLiked_${post._id}`) === 'true' || false
   )
@@ -34,6 +36,8 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
   const [isFav, setFav] = useState(
     localStorage.getItem(`isFav_${post._id}`) === 'true' || false
   )
+
+  const [currentUser, setCurrentUser] = useState<User | null>(null)
 
   const navigate = useNavigate()
 
@@ -81,6 +85,21 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
     }
   }, [post._id])
 
+
+    const fetchUserMe = useCallback(async () => {
+      try {
+        const userInfo = await getMe()
+        console.log({ currentUser })
+        setCurrentUser(userInfo)
+      } catch (error) {
+        console.error('Error fetching user data:', error)
+      }
+    }, [])
+
+    useEffect(() => {
+      fetchUserMe()
+    }, [fetchUserMe])
+
   const isCurrentUserCreator = currentUser && currentUser._id === post.userId
 
   return (
@@ -110,17 +129,15 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post, currentUser }) => {
         title={post.title}
         subheader={`${post.duration} ${post.type} ${post.difficulty}`}
       />
-
       <ImageContent>
         <img src={post.mainImage} alt="Main Image" />
       </ImageContent>
-
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {post.description}
         </Typography>
       </CardContent>
-
+      
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
           <LikeIcon isLike={isLike} />
