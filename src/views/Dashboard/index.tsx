@@ -136,10 +136,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
   ))}
 </ContainerAllergies>
 
-
-
-
-
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
     </Container>
