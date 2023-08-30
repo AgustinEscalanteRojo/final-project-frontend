@@ -6,8 +6,7 @@ import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import RecipeReviewCard from '../../components/Card'
-import { EditPostInput, Post } from '../../models/Post'
-import UpdatePost from '../UpdatePost'
+import { Post } from '../../models/Post'
 import { allergiesOptions, allergyIcons } from '../../common/constants'
 import {
   Container,
@@ -26,8 +25,6 @@ import type { Props } from './types'
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
   const [posts, setPosts] = useState<Post[]>([])
-  const [post, setPost] = useState<Post | null>(null)
-  const [isEdit, setIsEdit] = useState(false)
   const [allergies, setAllergies] = React.useState<string[]>([])
 
   const handleAllergiesChange = (
@@ -64,35 +61,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     setPosts(filteredPosts)
   }, [])
 
-  const handleOnCompleteEdition = useCallback(
-    (values: EditPostInput) => {
-      const editedPost = { ...post, ...values } as Post
-      setPost(editedPost)
-    },
-    [post]
-  )
-
-  if (post && isEdit) {
-    return (
-      <UpdatePost
-        onEditComplete={handleOnCompleteEdition}
-        id={post._id}
-        initialValues={{
-          title: post.title,
-          type: post.type,
-          duration: post.duration,
-          difficulty: post.difficulty,
-          allergies: post.allergies as string,
-          description: post.description,
-          ingredients: post.ingredients,
-          diners: post.diners,
-          steps: post.steps,
-        }}
-        onLogout={onLogout}
-      />
-    )
-  }
-
   return (
     <Container>
       <Header onLogout={onLogout} />
@@ -117,28 +85,22 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </Cards>
 
-
-
       <ContainerAllergies>
-  {allergiesOptions.map((allergy) => (
-    <AllergyOption key={allergy}>
-      <StyledCheckbox
-        checked={allergies.indexOf(allergy) > -1}
-        onChange={(event) => handleAllergiesChange(event, allergy)}
-      />
-<AllergyLabel>
-  <AllergyIconContainer>
-    <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
-    {allergy}
-  </AllergyIconContainer>
-</AllergyLabel>
-    </AllergyOption>
-  ))}
-</ContainerAllergies>
-
-
-
-
+        {allergiesOptions.map((allergy) => (
+          <AllergyOption key={allergy}>
+            <StyledCheckbox
+              checked={allergies.indexOf(allergy) > -1}
+              onChange={(event) => handleAllergiesChange(event, allergy)}
+            />
+            <AllergyLabel>
+              <AllergyIconContainer>
+                <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
+                {allergy}
+              </AllergyIconContainer>
+            </AllergyLabel>
+          </AllergyOption>
+        ))}
+      </ContainerAllergies>
 
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />

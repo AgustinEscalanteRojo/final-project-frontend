@@ -28,6 +28,24 @@ export const getPosts = async (): Promise<Post[]> => {
   return []
 }
 
+export const getPostById = async (id: string): Promise<Post> => {
+  try {
+    const token = getToken()
+    const response = await fetch(`${BASE_URL}/${id}`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    const data = await response.json()
+    console.log(data)
+
+    return normalizePost(data)
+  } catch (error) {
+    console.log(error)
+    throw new Error('404 not found')
+  }
+}
+
 export const createPost = async (input: PostInput): Promise<Post> => {
   const token = getToken()
   const response = await fetch(BASE_URL, {
