@@ -9,17 +9,16 @@ export const PerfilContainer = styled.div`
 `;
 
 export const Content = styled.div`
-  margin-top: 200px;
-  padding: 0 100px; 
-  color: ${theme.colors.white};
+  
+  color: ${theme.colors.black};
   text-align: center; 
 `;
 
 export const ButtonController = styled.div`
   display: flex;
   flex-flow: row wrap;
-  gap: 10px;
-  margin-top: 50px; 
+  
+
 `;
 
 export const Tittle = styled.h1`

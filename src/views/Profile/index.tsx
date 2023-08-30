@@ -54,8 +54,10 @@ const Profile: FC<Props> = ({ onLogout }) => {
     <PerfilContainer>
       <Header onLogout={onLogout} />
       <Avatar
-        style={{ backgroundColor: '#D4A373', marginTop: '150px' }}
-      ></Avatar>
+  style={{ backgroundColor: '#D4A373', marginTop: '150px' }}
+>
+  {user?.username ? user.username.charAt(0).toUpperCase() : ''}
+</Avatar>
       username: {user?.username} - email: {user?.email}
       <ButtonController>
         <Button onClick={handleGoToLikes}>Likes</Button>
@@ -73,7 +75,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
                 <Tab label="my favorites" value="2" />
               </TabList>
             </Box>
-            <TabPanel value="1">recipe 1, recipe 2, recipe 3</TabPanel>
+            <TabPanel value="1"></TabPanel>
 
             <TabPanel value="2">
               {user && user.favPosts && user.favPosts.length > 0 ? (
