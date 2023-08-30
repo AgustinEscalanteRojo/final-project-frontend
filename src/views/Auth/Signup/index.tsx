@@ -8,12 +8,12 @@ import {
   Select,
   MenuItem,
 } from '@material-ui/core'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Footer from '../../../components/Footer'
 import { InitialValues, ValidationSignupSchema } from './constant'
 import useLogic from './logic'
 import * as S from './styles'
 import type { Props } from './types'
+import ImageBackground from '../../../components/ImageBackground'
 
 const Signup: FC<Props> = ({ onSignup }) => {
   const { handleOnSubmit, error } = useLogic(onSignup)
@@ -24,11 +24,9 @@ const Signup: FC<Props> = ({ onSignup }) => {
         <Grid item xs={6}>
           <Footer />
         </Grid>
+        <Grid item xs={6}></Grid>
         <Grid item xs={6}>
-
-        </Grid>
-        <Grid item xs={6}>
-        <S.PaperStyled elevation={10}>
+          <S.PaperStyled elevation={10}>
             <Formik
               initialValues={InitialValues}
               validationSchema={ValidationSignupSchema}
@@ -44,9 +42,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
               }) => (
                 <Form onSubmit={handleSubmit} noValidate autoComplete="off">
                   <S.TitleContainer>
-                  <S.AvatarStyled src="/logoicon.jpg">
-                      <LockOutlinedIcon />
-                      </S.AvatarStyled>
+                    <S.AvatarStyled src="/logoicon.jpg"></S.AvatarStyled>
                     <S.Title>SharedFlavours</S.Title>
                   </S.TitleContainer>
                   <Grid item container spacing={2}>
@@ -213,7 +209,7 @@ const Signup: FC<Props> = ({ onSignup }) => {
                   </Grid>
                   {error && <S.InputError>{error}</S.InputError>}
                   <S.Buttons>
-                  <S.ButtonStyled
+                    <S.ButtonStyled
                       type="submit"
                       color="primary"
                       variant="contained"
@@ -222,15 +218,16 @@ const Signup: FC<Props> = ({ onSignup }) => {
                       fullWidth
                     >
                       Sign up
-                      </S.ButtonStyled>
+                    </S.ButtonStyled>
                     <S.Link to="/login">Log in</S.Link>
                   </S.Buttons>
                 </Form>
               )}
             </Formik>
-            </S.PaperStyled>
+          </S.PaperStyled>
         </Grid>
       </Grid>
+      <ImageBackground imageSrc="/back.jpg" />
     </S.Container>
   )
 }

@@ -3,14 +3,12 @@ import { Form, Formik } from 'formik'
 import { TextField } from '@material-ui/core'
 import useLogic from './logic'
 import Footer from '../../../components/Footer'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
-import { Link } from 'react-router-dom'
-
 import { InitialValues, ValidationSchema } from './constants'
 import * as S from './styles'
 import { Props } from './types'
+import ImageBackground from '../../../components/ImageBackground'
 
 const Login: FC<Props> = ({ onLogin }) => {
   const { handleOnSubmit } = useLogic(onLogin)
@@ -18,7 +16,7 @@ const Login: FC<Props> = ({ onLogin }) => {
   return (
     <S.Container>
       <Footer />
-      <S.StyledPaper elevation={10}>
+      <S.PaperStyled elevation={10}>
         <Formik
           initialValues={InitialValues}
           validationSchema={ValidationSchema}
@@ -27,9 +25,7 @@ const Login: FC<Props> = ({ onLogin }) => {
           {({ handleSubmit, handleChange, values, errors, isValid }) => (
             <Form onSubmit={handleSubmit} noValidate autoComplete="off">
               <S.TitleContainer>
-                <S.StyledAvatar src="/logoicon.jpg">
-                  <LockOutlinedIcon />
-                </S.StyledAvatar>
+                <S.AvatarStyled src="/logoicon.jpg"></S.AvatarStyled>
                 <S.Title>SharedFlavours</S.Title>
               </S.TitleContainer>
 
@@ -67,26 +63,23 @@ const Login: FC<Props> = ({ onLogin }) => {
                 control={<Checkbox name="checkedB" color="primary" />}
                 label="Remember me"
               />
-              <S.Buttons>
-                <S.StyledButton
-                  type="submit"
-                  color="primary"
-                  variant="contained"
-                  fullWidth
-                  disabled={!isValid}
-                  onClick={() => handleOnSubmit(values)}
-                >
-                  Log in
-                </S.StyledButton>
-                <S.Link to="#">Forgot password ?</S.Link>
-                <S.Link to="/signup">
-                  Do you have an account? Sign up here
-                </S.Link>
-              </S.Buttons>
+              <S.ButtonStyled
+                type="submit"
+                color="primary"
+                variant="contained"
+                fullWidth
+                disabled={!isValid}
+                onClick={() => handleOnSubmit(values)}
+              >
+                Log in
+              </S.ButtonStyled>
+              <S.Link to="#">Forgot password ?</S.Link>
+              <S.Link to="/signup">Do you have an account? Sign up here</S.Link>
             </Form>
           )}
         </Formik>
-      </S.StyledPaper>
+      </S.PaperStyled>
+      <ImageBackground imageSrc="/back.jpg" />
     </S.Container>
   )
 }
