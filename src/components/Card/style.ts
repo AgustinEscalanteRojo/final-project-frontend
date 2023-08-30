@@ -38,7 +38,7 @@ export const CardStyled = styled(MuiCard)`
   }
 
   @media (min-width: 10px) and (max-width: 770px) {
-    max-width: 190px;
+    max-width: 200px;
     max-height: 470px;
     font-size: 12px !important;
   }
@@ -52,3 +52,19 @@ export const CardHeaderStyled = styled(CardHeader)`
   font-size: 24px !important;
   font-weight: bold !important;
 `
+
+
+export const IconDetailsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre icono y texto */
+  /* Agrega otros estilos deseados para el contenedor icondetails */
+`;
+
+export const TimeIconContainer = styled.span`
+
+`;
+
+export const DiningIconContainer = styled.span`
+ margin-left: 8px;
+`;
