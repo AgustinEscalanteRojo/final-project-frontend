@@ -40,7 +40,7 @@ export type postResponse = {
     title: string
     description: string
     order: number
-    image: string[]
+    imageURL: string[]
   }[]
   createdAt: Date
 }
