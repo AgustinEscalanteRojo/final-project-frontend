@@ -20,6 +20,28 @@ export const getAllUsers = async (): Promise<User[]> => {
   return []
 }
 
+export const getUserById = async (id: string): Promise<User | null> => {
+  try {
+    const response = await fetch(`${BASE_URL}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    if (!response.ok) {
+      throw new Error('Error fetching user')
+    }
+
+    const data = await response.json()
+    const normalizedUser = normalizeUser(data) // Normalizar los datos del usuario
+
+    return normalizedUser
+  } catch (error) {
+    console.error(error)
+    return null
+  }
+}
+
 export const getMe = async (): Promise<User | null> => {
   try {
     const response = await fetch(`${BASE_URL}/me`, {
