@@ -11,15 +11,12 @@ export const Image = styled.img`
   object-fit: contain;
   width: 100%;
 `
-
 export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
   color: ${(props) => (props.isLike ? 'red' : 'grey')};
 `
-
 export const FavIcon = styled(BookmarkIcon)<{ isFav: boolean }>`
   color: ${(props) => (props.isFav ? 'blue' : 'grey')};
 `
-
 export const CardStyled = styled(MuiCard)`
   background-color: ${theme.colors.blue25} !important;
   margin: 10px;
@@ -40,21 +37,17 @@ export const CardStyled = styled(MuiCard)`
     font-size: 12px !important;
   }
 `
-
 export const DetailsIconButton = styled(IconButton)``
 
 export const CardHeaderStyled = styled(CardHeader)`
   font-size: 24px !important;
   font-weight: bold !important;
 `
-
 export const IconDetailsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px; /* Espacio entre icono y texto */
-  /* Agrega otros estilos deseados para el contenedor icondetails */
+  gap: 8px; 
 `
-
 export const TimeIconContainer = styled.span``
 
 export const DiningIconContainer = styled.span`

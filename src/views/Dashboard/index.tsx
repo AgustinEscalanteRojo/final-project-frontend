@@ -7,7 +7,12 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import RecipeReviewCard from '../../components/Card'
 import { Post } from '../../models/Post'
-import { allergiesOptions, allergyIcons } from '../../common/constants'
+import {
+  allergiesOptions,
+  allergyIcons,
+  difficultyOptions,
+  typeOptions,
+} from '../../common/constants'
 import {
   Container,
   ButtonController,
@@ -19,6 +24,17 @@ import {
   AllergyIcon,
   AllergyLabel,
   AllergyIconContainer,
+  ContainerType,
+  TypeOption,
+  StyledCheckboxType,
+  TypeLabel,
+  TypeIconContainer,
+  ContainerDifficulty,
+  DifficultyOption,
+  StyledCheckboxDifficulty,
+  DifficultyLabel,
+  DifficultyIconContainer,
+  ContainerFilters,
 } from './styles'
 import type { Props } from './types'
 
@@ -26,6 +42,20 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
   const [posts, setPosts] = useState<Post[]>([])
   const [allergies, setAllergies] = React.useState<string[]>([])
+  const [types, setTypes] = React.useState<string[]>([])
+  const [difficultys, setdifficultys] = React.useState<string[]>([])
+
+  const handleDifficultysChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    difficulty: string
+  ) => {
+    const { checked } = event.target
+    if (checked) {
+      setdifficultys([...difficultys, difficulty])
+    } else {
+      setdifficultys(difficultys.filter((a) => a !== difficulty))
+    }
+  }
 
   const handleAllergiesChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -36,6 +66,18 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       setAllergies([...allergies, allergy])
     } else {
       setAllergies(allergies.filter((a) => a !== allergy))
+    }
+  }
+
+  const handleTypeChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    type: string
+  ) => {
+    const { checked } = event.target
+    if (checked) {
+      setTypes([...types, type])
+    } else {
+      setTypes(types.filter((a) => a !== type))
     }
   }
 
@@ -85,24 +127,52 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </Cards>
 
-      <ContainerAllergies>
+      <ContainerFilters>
+        <ContainerAllergies>
+          {allergiesOptions.map((allergy) => (
+            <AllergyOption key={allergy}>
+              <StyledCheckbox
+                checked={allergies.indexOf(allergy) > -1}
+                onChange={(event) => handleAllergiesChange(event, allergy)}
+              />
+              <AllergyLabel>
+                <AllergyIconContainer>
+                  <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
+                  {allergy}
+                </AllergyIconContainer>
+              </AllergyLabel>
+            </AllergyOption>
+          ))}
+        </ContainerAllergies>
 
-        {allergiesOptions.map((allergy) => (
-          <AllergyOption key={allergy}>
-            <StyledCheckbox
-              checked={allergies.indexOf(allergy) > -1}
-              onChange={(event) => handleAllergiesChange(event, allergy)}
-            />
-            <AllergyLabel>
-              <AllergyIconContainer>
-                <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
-                {allergy}
-              </AllergyIconContainer>
-            </AllergyLabel>
-          </AllergyOption>
-        ))}
-      </ContainerAllergies>
+        <ContainerType>
+          {typeOptions.map((type) => (
+            <TypeOption key={type}>
+              <StyledCheckboxType
+                checked={types.indexOf(type) > -1}
+                onChange={(event) => handleTypeChange(event, type)}
+              />
+              <TypeLabel>
+                <TypeIconContainer>{type}</TypeIconContainer>
+              </TypeLabel>
+            </TypeOption>
+          ))}
+        </ContainerType>
 
+        <ContainerDifficulty>
+          {difficultyOptions.map((difficulty) => (
+            <DifficultyOption key={difficulty}>
+              <StyledCheckboxDifficulty
+                checked={difficultys.indexOf(difficulty) > -1}
+                onChange={(event) => handleDifficultysChange(event, difficulty)}
+              />
+              <DifficultyLabel>
+                <DifficultyIconContainer>{difficulty}</DifficultyIconContainer>
+              </DifficultyLabel>
+            </DifficultyOption>
+          ))}
+        </ContainerDifficulty>
+      </ContainerFilters>
 
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />

@@ -206,6 +206,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
               ))}
             </Grid>
           </FormControl>
+          
           <FormControl fullWidth style={{ marginTop: '16px' }}>
             {(values?.steps || []).map((step, index) => (
               <div
@@ -287,6 +288,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
               Add Step
             </Button>
           </FormControl>
+
           <TextField
             style={{ marginTop: '26px' }}
             label="Main Image URL"
