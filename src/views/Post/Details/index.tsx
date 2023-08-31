@@ -53,7 +53,7 @@ const Details: FC<Props> = ({ post }) => {
                 <S.StepTitle>
                   {step.order}. {step.title}
                 </S.StepTitle>
-                {step?.imageURL.map((image) => (
+                {step?.image.map((image) => (
                   <S.StepImage key={image} src={image} />
                 ))}
                 <S.StepDescription>{step.description}</S.StepDescription>
