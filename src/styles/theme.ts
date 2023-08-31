@@ -80,6 +80,12 @@ const theme = {
     // Transparent Colors palette (RGBA)rgba: 250, 237, 205, 0.8'
     transparentpapayaWhip: 'rgba(250, 237, 205, 0.8)',
     transparentboldbuff: 'rgba(179, 122, 66, 0.8)',
+
+    //Aditional colors palette (RGBA)rgba:
+    softSky: '#edf8fd', // rgb: 237, 248, 253
+    lagoonMist: '#03a9f4', // rgb: 3, 169, 244
+    oceanicBlue: '#02679d', // rgb: 2, 103, 157
+    aquaSky: '#58dcfd', // rgb: 88, 220, 253
   },
 }
 
