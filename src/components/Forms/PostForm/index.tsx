@@ -246,7 +246,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
                 <TextField
                   label="Image URL"
                   name={`steps[${index}].imageUrl`}
-                  value={step.image[0]}
+                  value={step.image}
                   onChange={handleChange}
                   required
                   fullWidth
