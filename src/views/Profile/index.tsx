@@ -38,7 +38,6 @@ const Profile: FC<Props> = ({ onLogout }) => {
   const fetchUserMe = useCallback(async () => {
     try {
       const userInfo = await getMe()
-      console.log({ userInfo })
       setUser(userInfo)
     } catch (error) {
       console.error('Error fetching user data:', error)

@@ -20,6 +20,7 @@ import {
 
 const Header: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
+  // TODO no se usa
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 768)
@@ -115,7 +116,7 @@ const Header: FC<Props> = ({ onLogout }) => {
             sx={{
               '&:hover': {
                 '& svg': {
-                  color: theme.colors. blue75,
+                  color: theme.colors.blue75,
                 },
               },
               '&:active': {
@@ -126,7 +127,7 @@ const Header: FC<Props> = ({ onLogout }) => {
             }}
           >
             <ProfileCircleIcon
-              sx={{ color: theme.colors. blue75, fontSize: 35 }}
+              sx={{ color: theme.colors.blue75, fontSize: 35 }}
             />
           </IconButton>
           <IconButton
@@ -135,18 +136,18 @@ const Header: FC<Props> = ({ onLogout }) => {
             sx={{
               '&:hover': {
                 '& svg': {
-                  color: theme.colors. blue75,
+                  color: theme.colors.blue75,
                 },
               },
               '&:active': {
                 '& svg': {
-                  color: theme.colors. blue75,
+                  color: theme.colors.blue75,
                 },
               },
             }}
           >
             <LogoutIcon
-              sx={{ color: theme.colors. blue75, fontSize: 35 }}
+              sx={{ color: theme.colors.blue75, fontSize: 35 }}
             />
           </IconButton>
           <IconButton
@@ -155,7 +156,7 @@ const Header: FC<Props> = ({ onLogout }) => {
             sx={{
               '&:hover': {
                 '& svg': {
-                  color: theme.colors. blue75,
+                  color: theme.colors.blue75,
                 },
               },
               '&:active': {
@@ -166,7 +167,7 @@ const Header: FC<Props> = ({ onLogout }) => {
             }}
           >
             <SearchIcon
-              sx={{ color: theme.colors. blue75, fontSize: 35 }}
+              sx={{ color: theme.colors.blue75, fontSize: 35 }}
             />
           </IconButton>
           <IconButton
@@ -175,7 +176,7 @@ const Header: FC<Props> = ({ onLogout }) => {
             sx={{
               '&:hover': {
                 '& svg': {
-                  color: theme.colors. blue75,
+                  color: theme.colors.blue75,
                 },
               },
               '&:active': {
@@ -185,7 +186,7 @@ const Header: FC<Props> = ({ onLogout }) => {
               },
             }}
           >
-            <PlusIcon sx={{ color: theme.colors. blue75, fontSize: 35 }} />
+            <PlusIcon sx={{ color: theme.colors.blue75, fontSize: 35 }} />
           </IconButton>
         </DeskButtonController>
       )}

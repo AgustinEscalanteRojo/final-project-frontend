@@ -11,7 +11,6 @@ const useLogic = (onLogin: Props['onLogin']) => {
   const handleOnSubmit = useCallback(
     async (values: { email: string; password: string }) => {
       try {
-        console.log({ values })
         await login(values.email, values.password)
         onLogin()
         navigate('/dashboard')

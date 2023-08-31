@@ -32,7 +32,7 @@ export const Content = styled.div`
 `
 
 export const Text = styled.p`
-  color:${theme.colors. blue75};
+  color:${theme.colors.blue75};
   font-size: 11px;
   font-weight: bold;
 

@@ -6,7 +6,7 @@ export type postResponse = {
   type: 'Salad' | 'Dessert' | 'Breakfast'
   duration: string
   difficulty: 'Easy' | 'Moderate' | 'Difficult'
-  allergies:
+  allergies: Array<
     | 'Gluten'
     | 'Crustaceans'
     | 'Eggs'
@@ -21,6 +21,8 @@ export type postResponse = {
     | 'Sulphites'
     | 'Lupins'
     | 'Mollusks'
+  >
+
   description?: string
   ingredients: {
     name: string
@@ -43,63 +45,36 @@ export type postResponse = {
     imageURL: string[]
   }[]
   createdAt: Date
+
+  // custom user fields
+  isFav?: boolean
+  isLike?: boolean
+  isShared?: boolean
 }
 
-export type PostInput = {
-  order?: unknown
-  _id?: string
-  userId?: string
-  mainImage?: string
+export type PostFormFields = {
   title: string
   type: string
   duration: string
   difficulty: string
-  allergies: string
-
-  description?: string
+  allergies: string[]
+  description: string
   ingredients: {
     name: string
     quantity: number
     unity: string
   }[]
-  diners?: number
+  diners: number
   steps: {
     title: string
     description: string
     order: number
-    image?: string[]
+    image: string[]
   }[]
-  createdAt?: Date
-}
-
-export type EditPostInput = {
-  order?: unknown
-  _id?: string
-  userId?: string
   mainImage?: string
-  title: string
-  type: string
-  duration: string
-  difficulty: string
-  allergies: string
-
-  description?: string
-  ingredients: {
-    name: string
-    quantity: number
-    unity: string
-  }[]
-  diners?: number
-  steps: {
-    title: string
-    description: string
-    order: number
-    image?: string[]
-  }[]
-  createdAt?: Date
 }
 
-export const normalizePost = (input: postResponse | PostInput) => ({
+export const normalizePost = (input: postResponse) => ({
   _id: input?._id || '',
   userId: input?.userId || '',
   mainImage: input?.mainImage || '',
@@ -113,8 +88,9 @@ export const normalizePost = (input: postResponse | PostInput) => ({
   diners: input?.diners || undefined,
   steps: input?.steps || [],
   createdAt: input?.createdAt ? new Date(input.createdAt) : new Date(),
-  isFav: false,
-  isLike: false,
+  isFav: input?.isFav || false,
+  isLike: input?.isLike || false,
+  isShared: input?.isShared || false,
 })
 
 export type Post = ReturnType<typeof normalizePost>

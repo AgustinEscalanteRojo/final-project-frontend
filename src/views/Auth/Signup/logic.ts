@@ -9,7 +9,6 @@ const useLogic = (onSignup: Props['onSignup']) => {
   const handleOnSubmit = useCallback(
     async (values: UserFormFields) => {
       try {
-        console.log({ values })
         await signup(values)
         onSignup()
       } catch (error) {

@@ -1,4 +1,4 @@
-import { Post, PostInput, normalizePost } from '../../models/Post'
+import { Post, PostFormFields, normalizePost } from '../../models/Post'
 import { getToken, removeToken } from '../storage/token'
 
 const BASE_URL = 'http://localhost:8080/posts'
@@ -28,7 +28,7 @@ export const getPosts = async (): Promise<Post[]> => {
   return []
 }
 
-export const getPostById = async (id: string): Promise<Post> => {
+export const getPostById = async (id: string) => {
   try {
     const token = getToken()
     const response = await fetch(`${BASE_URL}/${id}`, {
@@ -36,17 +36,28 @@ export const getPostById = async (id: string): Promise<Post> => {
         authorization: `Bearer ${token}`,
       },
     })
+
+    if (!response || (!response.ok && response.status === 401)) {
+      removeToken()
+      window.location.reload()
+      return null
+    }
+
     const data = await response.json()
-    console.log(data)
+
+    if (!data) {
+      return null
+    }
 
     return normalizePost(data)
   } catch (error) {
     console.log(error)
-    throw new Error('404 not found')
   }
 }
 
-export const createPost = async (input: PostInput): Promise<Post> => {
+export const createPost = async (
+  input: Partial<PostFormFields>
+): Promise<Post> => {
   const token = getToken()
   const response = await fetch(BASE_URL, {
     body: JSON.stringify(input),
@@ -61,10 +72,13 @@ export const createPost = async (input: PostInput): Promise<Post> => {
   return normalizePost(data)
 }
 
-export const updatePostById = async (
-  id: string,
-  input: PostInput
-): Promise<Post> => {
+export const updatePostById = async ({
+  id,
+  input,
+}: {
+  id: Post['_id']
+  input: Partial<PostFormFields>
+}): Promise<Post | null> => {
   const token = getToken()
   const response = await fetch(`${BASE_URL}/${id}`, {
     body: JSON.stringify(input),
@@ -74,6 +88,13 @@ export const updatePostById = async (
       'Content-Type': 'application/json',
     },
   })
+
+  if (!response || (!response.ok && response.status === 401)) {
+    removeToken()
+    window.location.reload()
+    return null
+  }
+
   const data = await response.json()
 
   return normalizePost(data)
