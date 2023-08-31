@@ -39,6 +39,7 @@ export type postResponse = {
   }[]
   diners?: number
   steps: {
+    image: any
     title: string
     description: string
     order: number
