@@ -9,7 +9,7 @@ export const FaqContainer = styled.div`
 `
 
 export const Content = styled.div`
-  margin-top: 100px;
+  margin-top: 300px;
   padding: 100px;
   color: ${theme.colors.pastelCoral};
   display: flex;
@@ -19,11 +19,12 @@ export const Content = styled.div`
 `
 
 export const Backgroundcolor = styled(AccordionDetails)`
-  background-color: ${theme.colors.buff};;
+  background-color: ${theme.colors.blue75};;
 `
 
 export const Tittle = styled.h1`
-  color: ${theme.colors.buff};;
+  color: ${theme.colors.blue125};;
+  margin-top: 150px;
   font-size: 50px;
   font-style: italic;
   text-align: center;

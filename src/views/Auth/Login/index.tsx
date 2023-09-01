@@ -3,8 +3,6 @@ import { Form, Formik } from 'formik'
 import { TextField } from '@material-ui/core'
 import useLogic from './logic'
 import Footer from '../../../components/Footer'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
 import { InitialValues, ValidationSchema } from './constants'
 import * as S from './styles'
 import { Props } from './types'
@@ -15,7 +13,6 @@ const Login: FC<Props> = ({ onLogin }) => {
 
   return (
     <S.Container>
-      <Footer />
       <S.PaperStyled elevation={10}>
         <Formik
           initialValues={InitialValues}
@@ -59,10 +56,6 @@ const Login: FC<Props> = ({ onLogin }) => {
               {errors?.password && (
                 <S.InputError>{errors.password}</S.InputError>
               )}
-              <FormControlLabel
-                control={<Checkbox name="checkedB" color="primary" />}
-                label="Remember me"
-              />
               <S.ButtonStyled
                 type="submit"
                 color="primary"
@@ -80,6 +73,7 @@ const Login: FC<Props> = ({ onLogin }) => {
         </Formik>
       </S.PaperStyled>
       <ImageBackground imageSrc="/back.jpg" />
+      <Footer />
     </S.Container>
   )
 }
