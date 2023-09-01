@@ -18,8 +18,9 @@ export const AvatarStyled = styled(Avatar)`
 
 export const ButtonStyled = styled(Button)`
   margin: 12px 0;
-  font-size: 12px;
-  width: 40%;
+  margin-top: 14px!important;
+  font-size: 25px;
+  width: 50%;
 `
 
 export const Container = styled.div`
@@ -66,6 +67,7 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.colors.red300};
   font-size: 16px;
   margin-bottom: 14px;
+  margin-top: 14px!important;
 `
 
 export const InputError = styled.span`
@@ -95,7 +97,7 @@ export const Info = styled.p`
 `
 
 export const Separation = styled.div`
-  margin: 14px 0;
+  margin: 14px;
 `
 
 export const Buttons = styled.div`
