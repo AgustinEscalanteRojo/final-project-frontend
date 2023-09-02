@@ -3,6 +3,13 @@ import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
 import theme from '../../styles/theme'
 
+
+
+export const Typography = styled.div`
+  margin-left: 10px;
+  font-weight: bold; 
+`;
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -30,7 +37,7 @@ export const ContainerFilters = styled.div`
 export const ContainerDifficulty = styled.div`
   position: fixed;
   left: 25px;
-  margin-top: 540px;
+  margin-top: 550px;
   transform: translateY(-50%);
   width: 200px;
   display: flex;
@@ -59,7 +66,7 @@ export const DifficultyIconContainer = styled.div`
 export const ContainerType = styled.div`
   position: fixed;
   left: 25px;
-  margin-top: 680px;
+  margin-top: 690px;
   transform: translateY(-50%);
   width: 200px;
   display: flex;

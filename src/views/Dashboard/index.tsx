@@ -36,6 +36,7 @@ import {
   DifficultyIconContainer,
   ContainerFilters,
   UserCards,
+  Typography,
 } from './styles'
 import type { Props } from './types'
 import { getAllUsers } from '../../services/api/user'
@@ -150,7 +151,9 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
 
 
       <ContainerFilters>
+
         <ContainerAllergies>
+        <Typography> Allergies </Typography>
           {allergiesOptions.map((allergy) => (
             <AllergyOption key={allergy}>
               <StyledCheckbox
@@ -158,6 +161,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
                 onChange={(event) => handleAllergiesChange(event, allergy)}
               />
               <AllergyLabel>
+                
                 <AllergyIconContainer>
                   <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
                   {allergy}
@@ -167,7 +171,25 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           ))}
         </ContainerAllergies>
 
+
+        <ContainerDifficulty>
+        <Typography> Difficulty</Typography>
+          {difficultyOptions.map((difficulty) => (
+            <DifficultyOption key={difficulty}>
+              <StyledCheckboxDifficulty
+                checked={difficultys.indexOf(difficulty) > -1}
+                onChange={(event) => handleDifficultysChange(event, difficulty)}
+              />
+              <DifficultyLabel>
+                <DifficultyIconContainer>{difficulty}</DifficultyIconContainer>
+              </DifficultyLabel>
+            </DifficultyOption>
+          ))}
+        </ContainerDifficulty>
+
+
         <ContainerType>
+        <Typography> Type</Typography>
           {typeOptions.map((type) => (
             <TypeOption key={type}>
               <StyledCheckboxType
@@ -181,19 +203,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           ))}
         </ContainerType>
 
-        <ContainerDifficulty>
-          {difficultyOptions.map((difficulty) => (
-            <DifficultyOption key={difficulty}>
-              <StyledCheckboxDifficulty
-                checked={difficultys.indexOf(difficulty) > -1}
-                onChange={(event) => handleDifficultysChange(event, difficulty)}
-              />
-              <DifficultyLabel>
-                <DifficultyIconContainer>{difficulty}</DifficultyIconContainer>
-              </DifficultyLabel>
-            </DifficultyOption>
-          ))}
-        </ContainerDifficulty>
+
+
       </ContainerFilters>
 
       <Footer />
