@@ -151,4 +151,16 @@ export const ButtonController = styled.div`
   }
 `
 
+export const UserCards = styled.div`
+  display: flex;
+  
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  justify-content: center;
+  max-width: 1000px;
+
+  @media (max-width: 1221px) {
+    grid-template-columns: 1fr;
+  }
+`
 
