@@ -3,7 +3,6 @@ import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
 import theme from '../../styles/theme'
 
-// transform: scale(0.9);
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
