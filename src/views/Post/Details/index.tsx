@@ -32,7 +32,6 @@ const Details: FC<Props> = ({ post }) => {
               <DiningIcon /> {post?.diners} Persons
             </S.InformationOption>
           </S.Information>
-          <S.ShortDescription>{post?.description}</S.ShortDescription>
           <S.IngredientTitle>
             <IngredientIcon />
             Ingredientes:
@@ -44,6 +43,7 @@ const Details: FC<Props> = ({ post }) => {
               </S.IngredientListOption>
             ))}
           </S.IngredientsList>
+          <S.ShortDescription>{post?.description}</S.ShortDescription>
         </S.MainImageContainer>
         <S.StepsContainer>
           <S.Title>Steps</S.Title>
