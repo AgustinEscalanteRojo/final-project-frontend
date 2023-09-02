@@ -35,12 +35,17 @@ import {
   DifficultyLabel,
   DifficultyIconContainer,
   ContainerFilters,
+  UserCards,
 } from './styles'
 import type { Props } from './types'
+import { getAllUsers } from '../../services/api/user'
+import { User } from '../../models/User'
+import UserCard from '../../components/UserCard'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
   const [posts, setPosts] = useState<Post[]>([])
+  const [users, setUsers] = useState<User[]>([])
   const [allergies, setAllergies] = React.useState<string[]>([])
   const [types, setTypes] = React.useState<string[]>([])
   const [difficultys, setdifficultys] = React.useState<string[]>([])
@@ -94,6 +99,15 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     fetchPosts()
   }, [fetchPosts])
 
+  const fetchUsers = useCallback(async () => {
+    const usersList = await getAllUsers()
+    setUsers(usersList)
+  }, [])
+
+  useEffect(() => {
+    fetchUsers()
+  }, [fetchUsers])
+
   const handleRemovePost = useCallback(async (postId: string) => {
     const currentPosts = await getPosts()
     const filteredPosts = currentPosts.filter(
@@ -117,6 +131,11 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         </IconButtonStyled>
       </ButtonController>
 
+      <UserCards>
+        {users?.map((user, index) => <UserCard key={index} user={user} />)}
+      </UserCards>
+
+      
       <Cards>
         {posts?.map((post, index) => (
           <RecipeReviewCard
@@ -125,7 +144,10 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             onRemove={handleRemovePost}
           />
         ))}
+
+        
       </Cards>
+
 
       <ContainerFilters>
         <ContainerAllergies>
