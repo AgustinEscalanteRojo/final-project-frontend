@@ -33,23 +33,25 @@ export const MainImageContainer = styled.div`
   width: 100%;
   max-width: 600px;
   height: auto;
-  border: 2px solid ${({ theme }) => theme.colors.buff};
-  border-radius: 3%;
-  background-color: ${({ theme }) => theme.colors.cornsilk};
-  box-shadow: 0 0 5px 0.2px black;
+  border: 1px solid ${({ theme }) => theme.colors.lagoonMist};
+  border-radius: 20px;
+  background-color: ${({ theme }) => theme.colors.softSky};
+  box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
   margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
 
   @media (min-width: 769px) {
     width: 45%;
     margin-top: 150px;
     margin-left: 100px;
+    margin-right: 0; /* Para evitar que se aplique en dispositivos móviles */
   }
 `
 
 export const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.strongboldbuff};
+  color: ${({ theme }) => theme.colors.oceanicTitleBlue};
   font-size: 25px;
   margin: 0;
   padding: 10px;
@@ -60,21 +62,13 @@ export const Title = styled.h1`
 
 export const MainImage = styled.img`
   align-self: center;
-  border-radius: 3%;
-  border: 2px solid ${({ theme }) => theme.colors.buff};
-  box-shadow: 0 0 5px 0.2px black;
+  border-radius: 12px;
+  border: 1.5px solid ${({ theme }) => theme.colors.lagoonMist};
+  box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
   margin: 10px;
   max-height: 20rem;
   width: 80%;
   object-fit: cover;
-`
-
-export const ShortDescription = styled.p`
-  font-size: 13px;
-  font-weight: bold;
-  text-align: left;
-  line-height: 1.3;
-  padding: 10px;
 `
 
 export const Information = styled.div`
@@ -86,28 +80,49 @@ export const Information = styled.div`
 
 export const InformationOption = styled.div`
   align-items: center;
-  color: ${({ theme }) => theme.colors.strongboldbuff};
+  color: ${({ theme }) => theme.colors.lagoonMist};
   display: flex;
   flex-flow: row;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
 `
 
 export const IngredientTitle = styled.div`
   align-items: center;
-  color: ${({ theme }) => theme.colors.strongboldbuff};
+  color: ${({ theme }) => theme.colors.oceanicTitleBlue};
   display: flex;
   flex-flow: row;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  margin-top: 16px;
+  text-decoration: underline;
+  margin-top: 30px;
+  margin-left: 55px;
 `
 
 export const IngredientsList = styled.ol`
-  list-style-type: square;
+  list-style-type: disc;
+  margin-bottom: 0px;
+  margin-left: 65px;
 `
 
-export const IngredientListOption = styled.li``
+export const IngredientListOption = styled.li`
+  color: ${({ theme }) => theme.colors.oceanicWriteBlue};
+  font-weight: bold;
+  font-size: 17px;
+`
+
+export const ShortDescription = styled.p`
+  font-size: 15px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: left;
+  line-height: 1.3;
+  margin-top: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 10px;
+  color: ${({ theme }) => theme.colors.oceanicWriteBlue};
+`
 
 export const StepsContainer = styled.div`
   display: flex;
@@ -115,11 +130,12 @@ export const StepsContainer = styled.div`
   width: 100%;
   max-width: 600px;
   height: auto;
-  border: 2px solid ${({ theme }) => theme.colors.buff};
-  border-radius: 3%;
-  background-color: ${({ theme }) => theme.colors.cornsilk};
-  box-shadow: 0 0 5px 0.2px black;
+  border: 1px solid ${({ theme }) => theme.colors.lagoonMist};
+  border-radius: 20px;
+  background-color: ${({ theme }) => theme.colors.softSky};
+  box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
   margin-top: 20px;
+  margin-bottom: 25px;
   margin-left: auto;
   margin-right: auto;
 
@@ -136,21 +152,35 @@ export const Steps = styled.div`
 `
 
 export const Step = styled.div`
-  color: ${({ theme }) => theme.colors.strongboldbuff};
+  color: ${({ theme }) => theme.colors.oceanicWriteBlue};
   text-align: left;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
 `
 
-export const StepTitle = styled.h5``
+export const StepTitle = styled.h3`
+  color: ${({ theme }) => theme.colors.oceanicTitleBlue};
+  text-decoration: underline;
+  margin-left: 30px;
+  margin-bottom: 0px;
+`
 
-export const StepDescription = styled.p``
+export const StepDescription = styled.p`
+  font-size: 16px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: left;
+  line-height: 1.3;
+  margin-left: 30px;
+  margin-right: 30px;
+  color: ${({ theme }) => theme.colors.oceanicWriteBlue};
+`
 
 export const StepImage = styled.img`
   align-self: center;
   border-radius: 3%;
-  border: 2px solid ${({ theme }) => theme.colors.buff};
-  box-shadow: 0 0 5px 0.2px black;
+  border: 1.5px solid ${({ theme }) => theme.colors.lagoonMist};
+  box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
   margin: 10px;
   max-height: 40%;
   max-width: 40%;

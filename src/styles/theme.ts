@@ -85,6 +85,9 @@ const theme = {
     softSky: '#edf8fd', // rgb: 237, 248, 253
     lagoonMist: '#03a9f4', // rgb: 3, 169, 244
     oceanicBlue: '#02679d', // rgb: 2, 103, 157
+    oceanicTitleBlue: '#004d76',
+    oceanicWriteBlue: '#083c57',
+    oceanicShadow: '#05354f',
     aquaSky: '#58dcfd', // rgb: 88, 220, 253
   },
 }

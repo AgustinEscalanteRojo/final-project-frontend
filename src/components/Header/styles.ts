@@ -9,7 +9,7 @@ export const Container = styled.header`
   display: flex;
   background-color: ${theme.colors.black};
   border-bottom: 2px solid ${theme.colors.blue25};
-  width: 100vw;
+  width: 100%;
   height: 70px;
   position: fixed;
   z-index: 2;
@@ -28,7 +28,7 @@ export const LogoContainer = styled.div`
 
   &:hover,
   &:active {
-    box-shadow: 0px 0px 5px 1px ${theme.colors.blue25};
+    box-shadow: 0px 0px 5px 0.5px ${theme.colors.softSky};
   }
 
   @media (min-width: 768px) {
@@ -39,9 +39,11 @@ export const LogoContainer = styled.div`
 
 export const DeskButtonController = styled.div`
   display: flex;
+  gap: 10px;
   margin: 10px;
 
   @media (min-width: 768px) {
+    gap: 10px;
     align-self: center;
   }
 `
@@ -49,6 +51,7 @@ export const DeskButtonController = styled.div`
 export const MobileButtonController = styled.div`
   display: flex;
   align-items: center;
+  gap: 10px;
   margin: 10px;
 `
 
@@ -59,12 +62,10 @@ export const HomeIconStyled = styled(Home)`
 
   &:hover {
     color: ${theme.colors.aquaSky};
-    font-size: 30px;
   }
 
   &:active {
     color: ${theme.colors.lagoonMist};
-    font-size: 36px;
   }
 `
 
@@ -75,12 +76,10 @@ export const PlusIconStyled = styled(PlusIcon)`
 
   &:hover {
     color: ${theme.colors.aquaSky};
-    font-size: 30px;
   }
 
   &:active {
     color: ${theme.colors.lagoonMist};
-    font-size: 36px;
   }
 `
 
@@ -91,12 +90,10 @@ export const ProfileCircleIconStyled = styled(ProfileCircleIcon)`
 
   &:hover {
     color: ${theme.colors.aquaSky};
-    font-size: 30px;
   }
 
   &:active {
     color: ${theme.colors.lagoonMist};
-    font-size: 36px;
   }
 `
 
@@ -107,11 +104,9 @@ export const LogoutIconStyled = styled(LogoutIcon)`
 
   &:hover {
     color: ${theme.colors.aquaSky};
-    font-size: 30px;
   }
 
   &:active {
     color: ${theme.colors.lagoonMist};
-    font-size: 36px;
   }
 `
