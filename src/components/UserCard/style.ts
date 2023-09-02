@@ -21,3 +21,10 @@ export const Username = styled.p`
   font-size: 18px;
   font-weight: bold;
 `
+
+
+export const FollowButton = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+`

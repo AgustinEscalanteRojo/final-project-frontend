@@ -57,3 +57,23 @@ export const getMe = async (): Promise<User | null> => {
   }
   return null
 }
+
+
+export const followUser = async (id:string): Promise<User | null> => {
+
+  try {
+    const token = getToken()
+    const response = await fetch(`${BASE_URL}/${id}/follow`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    const data = await response.json()
+
+    return normalizeUser(data)
+  } catch (e) {
+    console.log(e)
+  }
+  return null
+}
