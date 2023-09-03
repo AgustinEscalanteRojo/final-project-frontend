@@ -6,6 +6,8 @@ import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import RecipeReviewCard from '../../components/Card'
+
+
 import { Post } from '../../models/Post'
 import {
   allergiesOptions,
@@ -37,11 +39,14 @@ import {
   ContainerFilters,
   UserCards,
   Typography,
+  ContainerUsers,
+  ButtonStyled,
 } from './styles'
 import type { Props } from './types'
 import { getAllUsers } from '../../services/api/user'
 import { User } from '../../models/User'
-import UserCard from '../../components/UserCard'
+
+import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
@@ -118,6 +123,23 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     setPosts(filteredPosts)
   }, [])
 
+  function getRandomPastelColor() {
+    const pastelColors = [
+      '#FFD1DC', // Light Pink
+      '#FFABAB', // Light Red
+      '#FFC3A0', // Light Orange
+      '#FF677D', // Light Coral
+      '#D4A5A5', // Light Mauve
+      '#392F5A', // Light Indigo
+      '#31A2AC', // Light Teal
+      '#61C0BF', // Light Cyan
+      '#6B4226', // Light Brown
+      '#D9BF77', // Light Yellow
+    ]
+
+    return pastelColors[Math.floor(Math.random() * pastelColors.length)]
+  }
+
   return (
     <Container>
       <Header onLogout={onLogout} />
@@ -132,11 +154,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         </IconButtonStyled>
       </ButtonController>
 
-      <UserCards>
-        {users?.map((user, index) => <UserCard key={index} user={user} />)}
-      </UserCards>
-
-      
       <Cards>
         {posts?.map((post, index) => (
           <RecipeReviewCard
@@ -145,15 +162,32 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             onRemove={handleRemovePost}
           />
         ))}
-
-        
       </Cards>
 
+      <ContainerUsers>
+        <UserCards>
+          {users?.map((user, index) => (
+            <ListItem key={index}>
+              <ListItemAvatar>
+                <Avatar style={{ backgroundColor: getRandomPastelColor() }}>
+                  {user.username.charAt(0)}
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary={user.username}
+                secondary={user.firstName}
+              />
+            </ListItem>
+          ))}
+        </UserCards>
+        <ButtonStyled variant="contained" color="primary" onClick={() => {}}>
+          See all{' '}
+        </ButtonStyled>
+      </ContainerUsers>
 
       <ContainerFilters>
-
         <ContainerAllergies>
-        <Typography> Allergies </Typography>
+          <Typography> Allergies </Typography>
           {allergiesOptions.map((allergy) => (
             <AllergyOption key={allergy}>
               <StyledCheckbox
@@ -161,7 +195,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
                 onChange={(event) => handleAllergiesChange(event, allergy)}
               />
               <AllergyLabel>
-                
                 <AllergyIconContainer>
                   <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
                   {allergy}
@@ -171,9 +204,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           ))}
         </ContainerAllergies>
 
-
         <ContainerDifficulty>
-        <Typography> Difficulty</Typography>
+          <Typography> Difficulty</Typography>
           {difficultyOptions.map((difficulty) => (
             <DifficultyOption key={difficulty}>
               <StyledCheckboxDifficulty
@@ -187,9 +219,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           ))}
         </ContainerDifficulty>
 
-
         <ContainerType>
-        <Typography> Type</Typography>
+          <Typography> Type</Typography>
           {typeOptions.map((type) => (
             <TypeOption key={type}>
               <StyledCheckboxType
@@ -202,9 +233,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             </TypeOption>
           ))}
         </ContainerType>
-
-
-
       </ContainerFilters>
 
       <Footer />

@@ -1,14 +1,69 @@
 import styled from 'styled-components'
 import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button'
 import theme from '../../styles/theme'
 
+export const ContainerUsers = styled.div`
+  border: 1px solid ${theme.colors.blue175};
+  border-radius: 30px;
+  position: fixed;
+  right: 18px;
+  top: 120px;
+  width: 150px;
+  height: 750px;
+  padding: 20px;
+  background-color: ${theme.colors.transparentWhite};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
+export const UserCards = styled.div`
+  width: 100%;
+  margin-right: 20px;
+  padding: 20px;
+  overflow: auto;
+  scrollbar-width: thin; /* Para navegadores que no son WebKit */
+  scrollbar-color: #888 transparent; /* Define el color de la barra y su fondo */
+
+  &::-webkit-scrollbar {
+    width: 6px; /* Ancho del scroll */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    margin-right: 20px;
+    background-color: #888; /* Color de la barra de desplazamiento */
+    border-radius: 3px; /* Bordes redondeados para el thumb */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Cambia el color al pasar el mouse por encima */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent; /* Color de fondo de la barra de desplazamiento */
+  }
+`
+
+export const ButtonStyled = styled(Button)`
+  top: 10px;
+  transform: scale(0.8);
+  background-color: transparent !important;
+  color: ${theme.colors.black} !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  padding: 0 !important;
+
+  outline: none !important;
+`
 
 export const Typography = styled.div`
   margin-left: 10px;
-  font-weight: bold; 
-`;
+  font-weight: bold;
+`
 
 export const Container = styled.div`
   display: flex;
@@ -20,19 +75,20 @@ export const Container = styled.div`
   margin-bottom: 0;
   margin-left: 0;
 `
+
 export const ContainerFilters = styled.div`
   border: 1px solid ${theme.colors.blue175};
-  border-radius: 30px; 
+  border-radius: 30px;
   position: fixed;
   left: 18px;
-  top: 120px; 
+  top: 120px;
   width: 150px;
   height: 750px;
   padding: 20px;
 
   flex-direction: column;
   align-items: flex-start;
-`;
+`
 
 export const ContainerDifficulty = styled.div`
   position: fixed;
@@ -125,7 +181,6 @@ export const AllergyIconContainer = styled.div`
   align-items: center;
 `
 
-
 export const IconButtonStyled = styled(IconButton)`
   border: 3px solid ${theme.colors.blue225} !important;
   border-radius: 20%;
@@ -156,17 +211,3 @@ export const ButtonController = styled.div`
     justify-content: center;
   }
 `
-
-export const UserCards = styled.div`
-  display: flex;
-  
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  justify-content: center;
-  max-width: 1000px;
-
-  @media (max-width: 1221px) {
-    grid-template-columns: 1fr;
-  }
-`
-
