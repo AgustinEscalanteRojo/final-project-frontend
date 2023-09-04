@@ -11,6 +11,7 @@ const UserCard: FC<Props> = ({ user }) => {
       <Avatar>{user.email}</Avatar>
       <Username>{user.username}</Username>
       <FollowButton onClick={handleFollowClick}> FOLLOW </FollowButton>
+
     </CardContainer>
   )
 }
