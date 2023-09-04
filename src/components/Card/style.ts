@@ -43,14 +43,16 @@ export const CardStyled = styled(MuiCard)`
   font-size: 16px !important;
 
   @media (min-width: 771px) and (max-width: 1500px) {
-    max-width: 300px;
+    margin: -40px;
+    transform: scale(0.8);
     font-size: 14px !important;
   }
 
   @media (min-width: 10px) and (max-width: 770px) {
-    max-width: 200px;
-    max-height: 470px;
-    font-size: 12px !important;
+    margin: -150px;
+
+    transform: scale(0.4);
+   
   }
 `
 export const DetailsIconButton = styled(IconButton)``

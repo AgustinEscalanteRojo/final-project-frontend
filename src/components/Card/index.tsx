@@ -12,7 +12,6 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import {
-  allergiesOptions,
   allergyIcons,
 } from '../../common/constants'
 import {

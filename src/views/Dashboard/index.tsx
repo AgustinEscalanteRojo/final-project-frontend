@@ -6,8 +6,6 @@ import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import RecipeReviewCard from '../../components/Card'
-
-
 import { Post } from '../../models/Post'
 import {
   allergiesOptions,
@@ -45,7 +43,6 @@ import {
 import type { Props } from './types'
 import { getAllUsers } from '../../services/api/user'
 import { User } from '../../models/User'
-
 import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
