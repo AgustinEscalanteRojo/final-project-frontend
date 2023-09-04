@@ -11,13 +11,15 @@ import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import { Avatar } from '@material-ui/core'
 import ImageBackground from '../../components/ImageBackground'
-import { getMe } from '../../services/api/user'
+import { getMe, getUserById } from '../../services/api/user'
 import { User } from '../../models/User'
 import { PerfilContainer, Content, ButtonController } from './styles'
 import type { Props } from './types'
+import UserCard from '../../components/UserCard'
 
 const Profile: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
+const [followingUsers, setFollowingUsers] = useState<User[]>([])
 
   const handleGoToLikes = useCallback(() => {
     navigate('/ ')
@@ -39,6 +41,21 @@ const Profile: FC<Props> = ({ onLogout }) => {
     try {
       const userInfo = await getMe()
       setUser(userInfo)
+    
+            if (userInfo && userInfo.following) {
+              const followingUserPromises = userInfo.following.map(
+                (followingUserId) => getUserById(followingUserId)
+              )
+
+              const followingUserList = await Promise.all(followingUserPromises)
+              setFollowingUsers(
+                followingUserList.filter((user) => user !== null) as User[]
+              )
+            }
+    
+    
+    
+    
     } catch (error) {
       console.error('Error fetching user data:', error)
     }
@@ -57,7 +74,19 @@ const Profile: FC<Props> = ({ onLogout }) => {
       username: {user?.username} - email: {user?.email}
       <ButtonController>
         <Button onClick={handleGoToLikes}>Likes</Button>
-        <Button onClick={handleGoToFollowers}>Followers / Following</Button>
+        <div>Followers / Following</div>
+
+        <div>
+          {/* Representa a los usuarios que sigues usando UserCard */}
+          {followingUsers.map((followingUser) => (
+            <UserCard
+              key={followingUser._id}
+              user={followingUser}
+              username={followingUser.username}
+              avatar={followingUser.email}
+            />
+          ))}
+        </div>
       </ButtonController>
       <Content>
         <Box sx={{ marginTop: 7, width: '100%', typography: 'body1' }}>
