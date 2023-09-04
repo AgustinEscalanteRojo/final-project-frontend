@@ -17,6 +17,12 @@ export const ContainerUsers = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (min-width: 10px) and (max-width: 770px) {
+    top: -150px;
+    right: -45px;
+    transform: scale(0.4);
+  }
 `
 
 export const UserCards = styled.div`
@@ -24,25 +30,25 @@ export const UserCards = styled.div`
   margin-right: 20px;
   padding: 20px;
   overflow: auto;
-  scrollbar-width: thin; /* Para navegadores que no son WebKit */
-  scrollbar-color: #888 transparent; /* Define el color de la barra y su fondo */
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
 
   &::-webkit-scrollbar {
-    width: 6px; /* Ancho del scroll */
+    width: 6px; 
   }
 
   &::-webkit-scrollbar-thumb {
     margin-right: 20px;
-    background-color: #888; /* Color de la barra de desplazamiento */
-    border-radius: 3px; /* Bordes redondeados para el thumb */
+    background-color: #888; 
+    border-radius: 3px; 
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #555; /* Cambia el color al pasar el mouse por encima */
+    background-color: #555; 
   }
 
   &::-webkit-scrollbar-track {
-    background-color: transparent; /* Color de fondo de la barra de desplazamiento */
+    background-color: transparent; 
   }
 `
 
@@ -88,6 +94,12 @@ export const ContainerFilters = styled.div`
 
   flex-direction: column;
   align-items: flex-start;
+
+  @media (min-width: 10px) and (max-width: 770px) {
+    top: -150px;
+    left: -45px;
+    transform: scale(0.4);
+  }
 `
 
 export const ContainerDifficulty = styled.div`

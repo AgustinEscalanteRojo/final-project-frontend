@@ -15,7 +15,7 @@ export const Container = styled.header`
   z-index: 2;
 
   @media (min-width: 768px) {
-    flex-direction: row;
+ 
     justify-content: space-between;
     height: 60px;
     padding: 20px;

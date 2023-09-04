@@ -13,7 +13,6 @@ const useLogic = (post: Post) => {
   const [isLike, setLike] = useState(post.isLike)
   const [isFav, setFav] = useState(post.isFav)
   const [currentUser, setCurrentUser] = useState<User | null>(null)
-
   const fetchUserMe = useCallback(async () => {
     try {
       const userInfo = await getMe()
