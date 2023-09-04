@@ -146,15 +146,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </Cards>
 
-      <ContainerUsers>
-        <UserCards>
-        {users?.map((user, index) => <UserCard key={index} user={user} />)}
-        </UserCards>
-        <ButtonStyled variant="contained" color="primary" onClick={() => {}}>
-          See all{' '}
-        </ButtonStyled>
-      </ContainerUsers>
-
       <ContainerFilters>
         <ContainerAllergies>
           <Typography> Allergies </Typography>
@@ -204,6 +195,16 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           ))}
         </ContainerType>
       </ContainerFilters>
+
+      <ContainerUsers>
+        <UserCards>
+        {users?.map((user, index) => <UserCard key={index} user={user} />)}
+        </UserCards>
+        <ButtonStyled variant="contained" color="primary" onClick={() => {}}>
+          See all{' '}
+        </ButtonStyled>
+      </ContainerUsers>
+
 
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
