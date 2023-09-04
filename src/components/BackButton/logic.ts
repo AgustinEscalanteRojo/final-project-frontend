@@ -5,7 +5,7 @@ const useLogic = () => {
   const navigate = useNavigate()
   const handleGoBack = useCallback(() => {
     navigate(-1)
-  }, [])
+  }, [navigate])
 
   return {
     handleGoBack,
