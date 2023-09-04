@@ -5,6 +5,7 @@ import { getPosts, removePostById } from '../../services/api/post'
 import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import UserCard from '../../components/UserCard'
 import RecipeReviewCard from '../../components/Card'
 import { Post } from '../../models/Post'
 import {
@@ -120,23 +121,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     setPosts(filteredPosts)
   }, [])
 
-  function getRandomPastelColor() {
-    const pastelColors = [
-      '#FFD1DC', // Light Pink
-      '#FFABAB', // Light Red
-      '#FFC3A0', // Light Orange
-      '#FF677D', // Light Coral
-      '#D4A5A5', // Light Mauve
-      '#392F5A', // Light Indigo
-      '#31A2AC', // Light Teal
-      '#61C0BF', // Light Cyan
-      '#6B4226', // Light Brown
-      '#D9BF77', // Light Yellow
-    ]
-
-    return pastelColors[Math.floor(Math.random() * pastelColors.length)]
-  }
-
+ 
   return (
     <Container>
       <Header onLogout={onLogout} />
@@ -163,19 +148,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
 
       <ContainerUsers>
         <UserCards>
-          {users?.map((user, index) => (
-            <ListItem key={index}>
-              <ListItemAvatar>
-                <Avatar style={{ backgroundColor: getRandomPastelColor() }}>
-                  {user.username.charAt(0)}
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={user.username}
-                secondary={user.firstName}
-              />
-            </ListItem>
-          ))}
+        {users?.map((user, index) => <UserCard key={index} user={user} />)}
         </UserCards>
         <ButtonStyled variant="contained" color="primary" onClick={() => {}}>
           See all{' '}
