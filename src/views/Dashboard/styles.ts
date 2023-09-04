@@ -4,13 +4,13 @@ import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import theme from '../../styles/theme'
 
-
 export const ContainerUsers = styled.div`
   border: 1px solid ${theme.colors.blue175};
   border-radius: 30px;
   position: fixed;
   right: 18px;
   top: 120px;
+
   width: 150px;
   height: 510px;
   padding: 20px;
@@ -27,7 +27,7 @@ export const ContainerUsers = styled.div`
 `
 
 export const UserCards = styled.div`
-  width: 100%;
+  width: 110%;
   margin-right: 20px;
   padding: 20px;
   overflow: auto;
@@ -35,28 +35,23 @@ export const UserCards = styled.div`
   scrollbar-color: #888 transparent;
 
   &::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
   }
 
   &::-webkit-scrollbar-thumb {
     margin-right: 20px;
-    background-color: #888; 
-    border-radius: 3px; 
+    background-color: #888;
+    border-radius: 3px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #555; 
+    background-color: #555;
   }
 
   &::-webkit-scrollbar-track {
-    background-color: transparent; 
+    background-color: transparent;
   }
 `
-
-
-
-
-
 
 export const ContainerFilters = styled.div`
   border: 1px solid ${theme.colors.blue175};
@@ -109,17 +104,15 @@ export const ContainerType = styled.div`
   transform: translateY(-50%);
   width: 200px;
   display: flex;
-  
+
   transform: scale(0.7);
   flex-direction: column;
   align-items: flex-start;
 `
 
-
-
 export const ButtonStyled = styled(Button)`
   top: 10px;
-  transform: scale(0.8);
+  transform: scale(0.6);
   background-color: transparent !important;
   color: ${theme.colors.black} !important;
   display: flex;
@@ -163,7 +156,7 @@ export const DifficultyLabel = styled.label`
 export const DifficultyIconContainer = styled.div`
   width: 120px;
   display: flex;
-  
+
   align-items: center;
 `
 
@@ -234,7 +227,7 @@ export const ButtonController = styled.div`
 export const Cards = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
- margin-top: -50px;
+  margin-top: -50px;
   justify-content: center;
   max-width: 1000px;
 

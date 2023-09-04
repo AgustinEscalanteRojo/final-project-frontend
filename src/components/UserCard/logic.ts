@@ -9,12 +9,19 @@ import type { User } from '../../models/User'
 
 const useLogic = (user: User) => {
   const navigate = useNavigate()
-  const [isFollow, setFollow] = useState()
+  const [isFollowing, setIsFollowing] = useState(false);
+
+  const toggleFollow = () => {
+    // Aquí deberías realizar la lógica para seguir/dejar de seguir al usuario.
+   
+    setIsFollowing((prevFollowing) => !prevFollowing);
+  };
 
   const handleFollowClick = useCallback(async () => {
-    await followUser(user._id)
-    setFollow(isFollow)
-  }, [user])
+    await followUser(user._id);
+    toggleFollow(); 
+  }, [user]);
+
 
   function getRandomPastelColor() {
     const pastelColors = [
@@ -35,6 +42,8 @@ const useLogic = (user: User) => {
   return {
     handleFollowClick,
     getRandomPastelColor,
+    toggleFollow,
+    isFollowing,
   }
 }
 
