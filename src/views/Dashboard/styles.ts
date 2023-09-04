@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import theme from '../../styles/theme'
 
+
 export const ContainerUsers = styled.div`
   border: 1px solid ${theme.colors.blue175};
   border-radius: 30px;
@@ -11,7 +12,7 @@ export const ContainerUsers = styled.div`
   right: 18px;
   top: 120px;
   width: 150px;
-  height: 750px;
+  height: 510px;
   padding: 20px;
   background-color: ${theme.colors.transparentWhite};
   display: flex;
@@ -52,6 +53,65 @@ export const UserCards = styled.div`
   }
 `
 
+export const ContainerFilters = styled.div`
+  border: 1px solid ${theme.colors.blue175};
+  border-radius: 30px;
+  position: fixed;
+  left: 18px;
+  top: 120px;
+  width: 150px;
+  height: 510px;
+  padding: 20px;
+
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (min-width: 10px) and (max-width: 770px) {
+    top: -150px;
+    left: -45px;
+    transform: scale(0.4);
+  }
+`
+
+export const ContainerAllergies = styled.div`
+  position: fixed;
+  left: 25px;
+  margin-top: -80px;
+  transform: translateY(-50%);
+  width: 200px;
+  display: flex;
+  transform: scale(0.7);
+  flex-direction: column;
+  align-items: flex-start;
+`
+
+export const ContainerDifficulty = styled.div`
+  position: fixed;
+  left: 25px;
+  margin-top: 320px;
+  transform: translateY(-50%);
+  width: 200px;
+  transform: scale(0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
+
+export const ContainerType = styled.div`
+  position: fixed;
+  left: 25px;
+  margin-top: 420px;
+  transform: translateY(-50%);
+  width: 200px;
+  display: flex;
+  
+  transform: scale(0.7);
+  flex-direction: column;
+  align-items: flex-start;
+`
+
+
+
 export const ButtonStyled = styled(Button)`
   top: 10px;
   transform: scale(0.8);
@@ -82,36 +142,6 @@ export const Container = styled.div`
   margin-left: 0;
 `
 
-export const ContainerFilters = styled.div`
-  border: 1px solid ${theme.colors.blue175};
-  border-radius: 30px;
-  position: fixed;
-  left: 18px;
-  top: 120px;
-  width: 150px;
-  height: 750px;
-  padding: 20px;
-
-  flex-direction: column;
-  align-items: flex-start;
-
-  @media (min-width: 10px) and (max-width: 770px) {
-    top: -150px;
-    left: -45px;
-    transform: scale(0.4);
-  }
-`
-
-export const ContainerDifficulty = styled.div`
-  position: fixed;
-  left: 25px;
-  margin-top: 550px;
-  transform: translateY(-50%);
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`
 export const DifficultyOption = styled.div`
   display: flex;
   align-items: center;
@@ -128,19 +158,10 @@ export const DifficultyLabel = styled.label`
 export const DifficultyIconContainer = styled.div`
   width: 120px;
   display: flex;
+  
   align-items: center;
 `
 
-export const ContainerType = styled.div`
-  position: fixed;
-  left: 25px;
-  margin-top: 690px;
-  transform: translateY(-50%);
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`
 export const TypeOption = styled.div`
   display: flex;
   align-items: center;
@@ -160,16 +181,6 @@ export const TypeIconContainer = styled.div`
   align-items: center;
 `
 
-export const ContainerAllergies = styled.div`
-  position: fixed;
-  left: 25px;
-  margin-top: 230px;
-  transform: translateY(-50%);
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`
 export const StyledCheckbox = styled(Checkbox)`
   transform: scale(0.7);
 `
@@ -196,21 +207,12 @@ export const AllergyIconContainer = styled.div`
 export const IconButtonStyled = styled(IconButton)`
   border: 3px solid ${theme.colors.blue225} !important;
   border-radius: 20%;
-  width: 60px;
-  height: 60px;
+  top: -20px;
+  width: 30px;
+  height: 30px;
   background-color: ${theme.colors.black};
 `
-export const Cards = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  justify-content: center;
-  max-width: 1000px;
 
-  @media (max-width: 1221px) {
-    grid-template-columns: 1fr;
-  }
-`
 export const ButtonController = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -221,5 +223,17 @@ export const ButtonController = styled.div`
   @media (max-width: 768px) {
     margin-top: 10px;
     justify-content: center;
+  }
+`
+
+export const Cards = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+ margin-top: -50px;
+  justify-content: center;
+  max-width: 1000px;
+
+  @media (max-width: 1221px) {
+    grid-template-columns: 1fr;
   }
 `

@@ -147,7 +147,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           color="primary"
           aria-label="add new post"
         >
-          <AddIcon fontSize="large" style={{ color: 'black' }} /> {}
+          <AddIcon fontSize="medium" style={{ color: 'black' }} /> {}
         </IconButtonStyled>
       </ButtonController>
 
