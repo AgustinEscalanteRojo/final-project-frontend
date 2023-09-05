@@ -2,18 +2,17 @@ import { FC, memo, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import Button from '../../components/Button'
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
-import { Avatar } from '@material-ui/core'
+import { Avatar, Button, ButtonGroup, Grid } from '@material-ui/core'
 import ImageBackground from '../../components/ImageBackground'
 import { getMe } from '../../services/api/user'
 import { User } from '../../models/User'
-import { PerfilContainer, Content, ButtonController } from './styles'
+import { PerfilContainer, Content } from './styles'
 import type { Props } from './types'
 
 const Profile: FC<Props> = ({ onLogout }) => {
@@ -49,18 +48,55 @@ const Profile: FC<Props> = ({ onLogout }) => {
   }, [fetchUserMe])
 
   return (
+    <div>
+    <Header onLogout={onLogout} />
     <PerfilContainer>
-      <Header onLogout={onLogout} />
-      <Avatar style={{ backgroundColor: '#D4A373', marginTop: '150px' }}>
-        {user?.username ? user.username.charAt(0).toUpperCase() : ''}
-      </Avatar>
-      username: {user?.username} - email: {user?.email}
-      <ButtonController>
-        <Button onClick={handleGoToLikes}>Likes</Button>
-        <Button onClick={handleGoToFollowers}>Followers / Following</Button>
-      </ButtonController>
+
+      <Box sx={{ width: '50%', marginTop: '400px' }}>
+        <Grid container>
+          <Grid container xs={2}>
+            <Avatar style={{ backgroundColor: '#42adbd' }}>
+              {user?.username ? user.username.charAt(0).toUpperCase() : ''}
+            </Avatar>
+          </Grid>
+          <Grid container xs={2}>
+            <div>
+              username: {user?.username} - email: {user?.email}
+            </div>
+          </Grid>
+          <Grid container xs={5} alignItems="center" justifyContent="center">
+            <ButtonGroup
+              variant="contained"
+              aria-label="outlined primary button group"
+            >
+              <Button
+                variant="contained"
+                onClick={handleGoToLikes}
+                style={{ backgroundColor: '#42adbd' }}
+              >
+                Likes
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleGoToFollowers}
+                style={{ backgroundColor: '#42adbd' }}
+              >
+                Followers{' '}
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleGoToFollowers}
+                style={{ backgroundColor: '#42adbd' }}
+              >
+                Following{' '}
+              </Button>
+            </ButtonGroup>
+          </Grid>
+        </Grid>
+      </Box>
+
       <Content>
-        <Box sx={{ marginTop: 7, width: '100%', typography: 'body1' }}>
+        <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList
@@ -71,6 +107,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
                 <Tab label="my favorites" value="2" />
               </TabList>
             </Box>
+
             <TabPanel value="1"></TabPanel>
 
             <TabPanel value="2">
@@ -90,6 +127,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
       <ImageBackground imageSrc="/back.jpg" />
       <Footer />
     </PerfilContainer>
+    </div>
   )
 }
 
