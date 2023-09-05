@@ -5,14 +5,17 @@ import { logout } from '../../services/api/auth'
 import Image from '../Image'
 import IconButton from '@mui/material/IconButton'
 import {
-  DeskButtonController,
   Container,
-  LogoContainer,
+  DeskButtonController,
+  LogoDeskContainer,
+  IconDeskContainer,
   MobileButtonController,
-  ProfileCircleIconStyled,
-  LogoutIconStyled,
+  LogoMobileContainer,
+  MobileIconPosition,
   HomeIconStyled,
   PlusIconStyled,
+  ProfileCircleIconStyled,
+  LogoutIconStyled,
 } from './styles'
 
 const Header: FC<Props> = ({ onLogout }) => {
@@ -54,46 +57,55 @@ const Header: FC<Props> = ({ onLogout }) => {
     <Container>
       {!isMobileView && (
         <DeskButtonController>
-          <IconButton onClick={handleGoToHome}>
-            <HomeIconStyled />
-          </IconButton>
-          <IconButton onClick={handleGoToPost}>
-            <PlusIconStyled />
-          </IconButton>
-          <IconButton onClick={handleGoToProfile}>
-            <ProfileCircleIconStyled />
-          </IconButton>
-          <IconButton onClick={handleLogout}>
-            <LogoutIconStyled />
-          </IconButton>
+          <LogoDeskContainer>
+            <Link to="/dashboard">
+              <Image
+                src="/logo&tipo.png"
+                alt="logo&tipo"
+                variant="logoHeader"
+              />
+            </Link>
+          </LogoDeskContainer>
+          <IconDeskContainer>
+            <IconButton onClick={handleGoToHome}>
+              <HomeIconStyled />
+            </IconButton>
+            <IconButton onClick={handleGoToPost}>
+              <PlusIconStyled />
+            </IconButton>
+            <IconButton onClick={handleGoToProfile}>
+              <ProfileCircleIconStyled />
+            </IconButton>
+            <IconButton onClick={handleLogout}>
+              <LogoutIconStyled />
+            </IconButton>
+          </IconDeskContainer>
         </DeskButtonController>
       )}
 
       {isMobileView && (
         <MobileButtonController>
-          <IconButton onClick={handleGoToHome}>
-            <HomeIconStyled />
-          </IconButton>
-          <IconButton onClick={handleGoToPost}>
-            <PlusIconStyled />
-          </IconButton>
-        </MobileButtonController>
-      )}
-
-      <LogoContainer>
-        <Link to="/dashboard">
-          <Image src="/logo&tipo.png" alt="logo&tipo" variant="logoHeader" />
-        </Link>
-      </LogoContainer>
-
-      {isMobileView && (
-        <MobileButtonController>
-          <IconButton onClick={handleGoToProfile}>
-            <ProfileCircleIconStyled />
-          </IconButton>
-          <IconButton onClick={handleLogout}>
-            <LogoutIconStyled />
-          </IconButton>
+          <MobileIconPosition>
+            <IconButton onClick={handleGoToHome}>
+              <HomeIconStyled />
+            </IconButton>
+            <IconButton onClick={handleGoToPost}>
+              <PlusIconStyled />
+            </IconButton>
+          </MobileIconPosition>
+          <LogoMobileContainer>
+            <Link to="/dashboard">
+              <Image src="/logo&tipo.png" alt="logo&tipo" variant="default" />
+            </Link>
+          </LogoMobileContainer>
+          <MobileIconPosition>
+            <IconButton onClick={handleGoToProfile}>
+              <ProfileCircleIconStyled />
+            </IconButton>
+            <IconButton onClick={handleLogout}>
+              <LogoutIconStyled />
+            </IconButton>
+          </MobileIconPosition>
         </MobileButtonController>
       )}
     </Container>
