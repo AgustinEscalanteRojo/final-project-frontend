@@ -17,7 +17,7 @@ import {
   unityOptions,
 } from '../../../common/constants'
 import { DefaultInitialValues, ValidationSchema } from './constants'
-import { TextField } from './styles'
+import { TextField, Title } from './styles'
 import type { Props } from './types'
 
 const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
@@ -32,9 +32,9 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
           onSubmit={handleSubmit}
           style={{ maxWidth: '600px', margin: '0 auto' }}
         >
-           <Typography variant="h4" align="center" gutterBottom>
+           <Title variant="h4" align="center" gutterBottom>
             Create Your New Recipe
-          </Typography>
+          </Title>
           <TextField
             style={{ marginTop: '26px' }}
             label="Title"
