@@ -1,27 +1,24 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
+import { toggleFollowUser } from '../../services/api/user'
+import type { User } from '../../models/User'
 import { useNavigate } from 'react-router-dom'
 
-import { followUser } from '../../services/api/user'
-import type { User } from '../../models/User'
-
-
-
-
-const useLogic = (user: User) => {
+const useLogic = (user: Partial<User>) => {
   const navigate = useNavigate()
-  const [isFollowing, setIsFollowing] = useState(false);
-
-  const toggleFollow = () => {
-    // Aquí deberías realizar la lógica para seguir/dejar de seguir al usuario.
-   
-    setIsFollowing((prevFollowing) => !prevFollowing);
-  };
+  const [isFollowing, setIsFollowing] = useState(false)
 
   const handleFollowClick = useCallback(async () => {
-    await followUser(user._id);
-    toggleFollow(); 
-  }, [user]);
+    if (user._id) {
+      await toggleFollowUser(user._id)
+      setIsFollowing((prevFollowing) => !prevFollowing)
+    }
+  }, [user])
 
+  const handleGoToDetails = useCallback(async () => {
+    if (user._id) {
+      navigate(`/users/${user._id}`)
+    }
+  }, [user, navigate])
 
   function getRandomPastelColor() {
     const pastelColors = [
@@ -39,11 +36,12 @@ const useLogic = (user: User) => {
 
     return pastelColors[Math.floor(Math.random() * pastelColors.length)]
   }
+
   return {
     handleFollowClick,
     getRandomPastelColor,
-    toggleFollow,
     isFollowing,
+    handleGoToDetails,
   }
 }
 

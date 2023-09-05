@@ -1,214 +1,122 @@
-import React, { FC, memo, useCallback, useState, useEffect } from 'react'
+import { FC, memo, useCallback, useState, useEffect, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AddIcon from '@mui/icons-material/Add'
 import { getPosts, removePostById } from '../../services/api/post'
+import { getAllUsers } from '../../services/api/user'
 import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import UserCard from '../../components/UserCard'
 import RecipeReviewCard from '../../components/Card'
-import { Post } from '../../models/Post'
 import {
   allergiesOptions,
   allergyIcons,
   difficultyOptions,
   typeOptions,
 } from '../../common/constants'
-import {
-  Container,
-  ButtonController,
-  ContainerAllergies,
-  Cards,
-  IconButtonStyled,
-  StyledCheckbox,
-  AllergyOption,
-  AllergyIcon,
-  AllergyLabel,
-  AllergyIconContainer,
-  ContainerType,
-  TypeOption,
-  StyledCheckboxType,
-  TypeLabel,
-  TypeIconContainer,
-  ContainerDifficulty,
-  DifficultyOption,
-  StyledCheckboxDifficulty,
-  DifficultyLabel,
-  DifficultyIconContainer,
-  ContainerFilters,
-  UserCards,
-  Typography,
-  ContainerUsers,
-  ButtonStyled,
-} from './styles'
+import * as S from './styles'
+import type { User } from '../../models/User'
+import type { Post } from '../../models/Post'
 import type { Props } from './types'
-import { getAllUsers } from '../../services/api/user'
-import { User } from '../../models/User'
-import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
+import useLogic from './logic'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
-  const navigate = useNavigate()
-  const [posts, setPosts] = useState<Post[]>([])
-  const [users, setUsers] = useState<User[]>([])
-  const [allergies, setAllergies] = React.useState<string[]>([])
-  const [types, setTypes] = React.useState<string[]>([])
-  const [difficultys, setdifficultys] = React.useState<string[]>([])
+  const {
+    allergies,
+    currentUser,
+    difficultys,
+    handleAllergiesChange,
+    handleDifficultysChange,
+    handleGoToPost,
+    handleRemovePost,
+    handleTypeChange,
+    posts,
+    users,
+    types,
+  } = useLogic()
 
-  const handleDifficultysChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    difficulty: string
-  ) => {
-    const { checked } = event.target
-    if (checked) {
-      setdifficultys([...difficultys, difficulty])
-    } else {
-      setdifficultys(difficultys.filter((a) => a !== difficulty))
-    }
-  }
-
-  const handleAllergiesChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    allergy: string
-  ) => {
-    const { checked } = event.target
-    if (checked) {
-      setAllergies([...allergies, allergy])
-    } else {
-      setAllergies(allergies.filter((a) => a !== allergy))
-    }
-  }
-
-  const handleTypeChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    type: string
-  ) => {
-    const { checked } = event.target
-    if (checked) {
-      setTypes([...types, type])
-    } else {
-      setTypes(types.filter((a) => a !== type))
-    }
-  }
-
-  const handleGoToPost = useCallback(() => {
-    navigate('/create-post')
-  }, [navigate])
-
-  const fetchPosts = useCallback(async () => {
-    const postsList = await getPosts()
-    setPosts(postsList)
-  }, [])
-
-  useEffect(() => {
-    fetchPosts()
-  }, [fetchPosts])
-
-  const fetchUsers = useCallback(async () => {
-    const usersList = await getAllUsers()
-    setUsers(usersList)
-  }, [])
-
-  useEffect(() => {
-    fetchUsers()
-  }, [fetchUsers])
-
-  const handleRemovePost = useCallback(async (postId: string) => {
-    const currentPosts = await getPosts()
-    const filteredPosts = currentPosts.filter(
-      (currentPost) => postId !== currentPost._id
-    )
-    await removePostById(postId)
-    setPosts(filteredPosts)
-  }, [])
-
- 
   return (
-    <Container>
+    <S.Container>
       <Header onLogout={onLogout} />
-
-      <ButtonController>
-        <IconButtonStyled
+      <S.ButtonController>
+        <S.IconButtonStyled
           onClick={handleGoToPost}
           color="primary"
           aria-label="add new post"
         >
           <AddIcon fontSize="medium" style={{ color: 'black' }} /> {}
-        </IconButtonStyled>
-      </ButtonController>
-
-      <Cards>
-        {posts?.map((post, index) => (
+        </S.IconButtonStyled>
+      </S.ButtonController>
+      <S.Cards>
+        {posts?.map((post) => (
           <RecipeReviewCard
-            key={index}
+            key={post._id}
             post={post}
+            isCurrentUserCreator={currentUser?._id === post.userId}
             onRemove={handleRemovePost}
           />
         ))}
-      </Cards>
-
-      <ContainerFilters>
-        <ContainerAllergies>
-          <Typography> Allergies </Typography>
+      </S.Cards>
+      <S.ContainerFilters>
+        <S.ContainerAllergies>
+          <S.Typography> Allergies </S.Typography>
           {allergiesOptions.map((allergy) => (
-            <AllergyOption key={allergy}>
-              <StyledCheckbox
+            <S.AllergyOption key={allergy}>
+              <S.StyledCheckbox
                 checked={allergies.indexOf(allergy) > -1}
                 onChange={(event) => handleAllergiesChange(event, allergy)}
               />
-              <AllergyLabel>
-                <AllergyIconContainer>
-                  <AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
+              <S.AllergyLabel>
+                <S.AllergyIconContainer>
+                  <S.AllergyIcon src={allergyIcons[allergy]} alt={allergy} />
                   {allergy}
-                </AllergyIconContainer>
-              </AllergyLabel>
-            </AllergyOption>
+                </S.AllergyIconContainer>
+              </S.AllergyLabel>
+            </S.AllergyOption>
           ))}
-        </ContainerAllergies>
-
-        <ContainerDifficulty>
-          <Typography> Difficulty</Typography>
+        </S.ContainerAllergies>
+        <S.ContainerDifficulty>
+          <S.Typography> Difficulty</S.Typography>
           {difficultyOptions.map((difficulty) => (
-            <DifficultyOption key={difficulty}>
-              <StyledCheckboxDifficulty
+            <S.DifficultyOption key={difficulty}>
+              <S.StyledCheckboxDifficulty
                 checked={difficultys.indexOf(difficulty) > -1}
                 onChange={(event) => handleDifficultysChange(event, difficulty)}
               />
-              <DifficultyLabel>
-                <DifficultyIconContainer>{difficulty}</DifficultyIconContainer>
-              </DifficultyLabel>
-            </DifficultyOption>
+              <S.DifficultyLabel>
+                <S.DifficultyIconContainer>
+                  {difficulty}
+                </S.DifficultyIconContainer>
+              </S.DifficultyLabel>
+            </S.DifficultyOption>
           ))}
-        </ContainerDifficulty>
-
-        <ContainerType>
-          <Typography> Type</Typography>
+        </S.ContainerDifficulty>
+        <S.ContainerType>
+          <S.Typography> Type</S.Typography>
           {typeOptions.map((type) => (
-            <TypeOption key={type}>
-              <StyledCheckboxType
+            <S.TypeOption key={type}>
+              <S.StyledCheckboxType
                 checked={types.indexOf(type) > -1}
                 onChange={(event) => handleTypeChange(event, type)}
               />
-              <TypeLabel>
-                <TypeIconContainer>{type}</TypeIconContainer>
-              </TypeLabel>
-            </TypeOption>
+              <S.TypeLabel>
+                <S.TypeIconContainer>{type}</S.TypeIconContainer>
+              </S.TypeLabel>
+            </S.TypeOption>
           ))}
-        </ContainerType>
-      </ContainerFilters>
-
-      <ContainerUsers>
-        <UserCards>
-        {users?.map((user, index) => <UserCard key={index} user={user} />)}
-        </UserCards>
-        <ButtonStyled variant="contained" color="primary" onClick={() => {}}>
+        </S.ContainerType>
+      </S.ContainerFilters>
+      <S.ContainerUsers>
+        <S.UserCards>
+          {users?.map((user, index) => <UserCard key={index} user={user} />)}
+        </S.UserCards>
+        <S.ButtonStyled variant="contained" color="primary" onClick={() => {}}>
           See all{' '}
-        </ButtonStyled>
-      </ContainerUsers>
-
-
+        </S.ButtonStyled>
+      </S.ContainerUsers>
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
-    </Container>
+    </S.Container>
   )
 }
 

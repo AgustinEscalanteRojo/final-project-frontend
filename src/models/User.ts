@@ -1,22 +1,25 @@
+import { postResponse, normalizePost } from './Post'
+
 export type UserResponse = {
   _id: string
-  email: string
-  password: string
-  salt: string
-  username: string
-  firstName: string
-  lastName: string
   age: number
-  gender: string
-  biography?: string
   avatar?: string
+  biography?: string
   city?: string
   country: string
   createdAt: Date
-  favPosts: string[]
+  email: string
+  favPosts: postResponse[]
+  firstName: string
+  followers: UserResponse[]
+  following: UserResponse[]
+  gender: string
+  lastName: string
+  password: string
+  posts: postResponse[]
+  salt: string
   sharedPosts: string[]
-  followers: string[]
-  following: string[]
+  username: string
 }
 
 export type UserFormFields = {
@@ -48,10 +51,28 @@ export const normalizeUser = (input: UserResponse) => ({
   city: input?.city || '',
   country: input?.country || '',
   createdAt: input?.createdAt ? new Date(input.createdAt) : new Date(),
-  favPosts: input?.favPosts || [],
+  favPosts:
+    input?.favPosts?.length > 0
+      ? input?.favPosts.map((post) => normalizePost({ ...post, isFav: true }))
+      : [],
+  myPosts: input?.posts?.length > 0 ? input?.posts.map(normalizePost) : [],
   sharedPosts: input?.sharedPosts || [],
-  followers: input?.followers || [],
-  following: input?.following || [],
+  followers:
+    input?.followers?.length > 0
+      ? input.followers.map((user) => ({
+          _id: user._id,
+          username: user.username,
+          firstName: user.firstName,
+        }))
+      : [],
+  following:
+    input?.following?.length > 0
+      ? input.following.map((user) => ({
+          _id: user._id,
+          username: user.username,
+          firstName: user.firstName,
+        }))
+      : [],
 })
 
 export type User = ReturnType<typeof normalizeUser>

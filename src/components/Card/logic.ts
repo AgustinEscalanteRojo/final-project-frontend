@@ -1,34 +1,25 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getMe } from '../../services/api/user'
 import {
   togglePostFavByUser,
   togglePostLikeByUser,
 } from '../../services/api/post'
-import type { User } from '../../models/User'
-import type { Post } from '../../models/Post'
+import type { Props } from './types'
 
-const useLogic = (post: Post) => {
+const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
   const navigate = useNavigate()
   const [isLike, setLike] = useState(post.isLike)
   const [isFav, setFav] = useState(post.isFav)
-  const [currentUser, setCurrentUser] = useState<User | null>(null)
-  const fetchUserMe = useCallback(async () => {
-    try {
-      const userInfo = await getMe()
-      setCurrentUser(userInfo)
-    } catch (error) {
-      console.error('Error fetching user data:', error)
-    }
-  }, [])
-
-  useEffect(() => {
-    fetchUserMe()
-  }, [fetchUserMe])
 
   const handleGoToEditForm = useCallback(async () => {
     navigate(`/posts/${post._id}?edit=true`)
   }, [navigate, post])
+
+  const handleOnRemove = useCallback(async () => {
+    if (onRemove) {
+      onRemove(post._id)
+    }
+  }, [onRemove, post])
 
   const handleDetailsClick = useCallback(() => {
     navigate(`/posts/${post._id}`)
@@ -45,11 +36,11 @@ const useLogic = (post: Post) => {
   }, [post])
 
   return {
-    currentUser,
     handleGoToEditForm,
     handleLikeClick,
     handleFavoriteClick,
     handleDetailsClick,
+    handleOnRemove,
     isFav,
     isLike,
   }

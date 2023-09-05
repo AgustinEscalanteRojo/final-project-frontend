@@ -2,9 +2,9 @@ import type { Post } from '../../models/Post'
 import { User } from '../../models/User'
 
 export type Props = {
-  onClick?: () => void
-  post: Post
+  isCurrentUserCreator: boolean
   isProfile?: boolean
-  onRemove: (postId: string) => void
-  currentUser?: User
+  onClick?: () => void
+  onRemove?: (postId: string) => void
+  post: Post
 }
