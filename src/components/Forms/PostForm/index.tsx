@@ -9,7 +9,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Typography, 
+
 } from '@mui/material'
 import {
   allergiesOptions,
@@ -247,14 +247,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
                   required
                   fullWidth
                 />
-                <TextField
-                  label="Image URL"
-                  name={`steps[${index}].imageUrl`}
-                  value={step.image}
-                  onChange={handleChange}
-                  required
-                  fullWidth
-                />
+
                 <Button
                   variant="outlined"
                   style={{ color: 'red' }}
