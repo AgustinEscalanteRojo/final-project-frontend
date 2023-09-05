@@ -8,7 +8,6 @@ import PlusIcon from '@mui/icons-material/AddBoxOutlined'
 export const Container = styled.header`
   display: flex;
   background-color: ${theme.colors.black};
-  border-bottom: 2px solid ${theme.colors.blue25};
   width: 100%;
   height: 70px;
   position: fixed;
