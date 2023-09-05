@@ -9,6 +9,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Typography, 
 } from '@mui/material'
 import {
   allergiesOptions,
@@ -31,6 +32,9 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
           onSubmit={handleSubmit}
           style={{ maxWidth: '600px', margin: '0 auto' }}
         >
+           <Typography variant="h4" align="center" gutterBottom>
+            Create Your New Recipe
+          </Typography>
           <TextField
             style={{ marginTop: '26px' }}
             label="Title"
