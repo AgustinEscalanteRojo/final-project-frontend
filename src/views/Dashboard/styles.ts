@@ -24,13 +24,11 @@ export const ContainerUsers = styled.div`
     transform: scale(0.7);
   }
   @media (min-width: 0px) and (max-width: 532px) {
-
-    top: -85px!important;
-    right: -45px!important;
-transform: scale(0.4)!important;
-}
+    top: -85px !important;
+    right: -45px !important;
+    transform: scale(0.4) !important;
+  }
 `
-
 export const UserCards = styled.div`
   width: 110%;
   margin-right: 20px;
@@ -57,7 +55,6 @@ export const UserCards = styled.div`
     background-color: transparent;
   }
 `
-
 export const ContainerFilters = styled.div`
   border: 1px solid ${theme.colors.blue175};
   border-radius: 30px;
@@ -76,11 +73,10 @@ export const ContainerFilters = styled.div`
     transform: scale(0.7);
   }
   @media (min-width: 0px) and (max-width: 532px) {
-
-top: -85px!important;
-left: -45px!important;
-transform: scale(0.4)!important;
-}
+    top: -85px !important;
+    left: -45px !important;
+    transform: scale(0.4) !important;
+  }
 `
 export const ContainerAllergies = styled.div`
   position: fixed;
@@ -93,7 +89,6 @@ export const ContainerAllergies = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `
-
 export const ContainerDifficulty = styled.div`
   position: fixed;
   left: 25px;
@@ -105,7 +100,6 @@ export const ContainerDifficulty = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `
-
 export const ContainerType = styled.div`
   position: fixed;
   left: 25px;
@@ -118,7 +112,6 @@ export const ContainerType = styled.div`
   flex-direction: column;
   align-items: flex-start;
 `
-
 export const ButtonStyled = styled(Button)`
   top: 10px;
   transform: scale(0.6);
@@ -132,12 +125,10 @@ export const ButtonStyled = styled(Button)`
 
   outline: none !important;
 `
-
 export const Typography = styled.div`
   margin-left: 10px;
   font-weight: bold;
 `
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -148,7 +139,6 @@ export const Container = styled.div`
   margin-bottom: 0;
   margin-left: 0;
 `
-
 export const DifficultyOption = styled.div`
   display: flex;
   align-items: center;
@@ -168,7 +158,6 @@ export const DifficultyIconContainer = styled.div`
 
   align-items: center;
 `
-
 export const TypeOption = styled.div`
   display: flex;
   align-items: center;
@@ -187,7 +176,6 @@ export const TypeIconContainer = styled.div`
   display: flex;
   align-items: center;
 `
-
 export const StyledCheckbox = styled(Checkbox)`
   transform: scale(0.7);
 `
@@ -210,7 +198,6 @@ export const AllergyIconContainer = styled.div`
   display: flex;
   align-items: center;
 `
-
 export const IconButtonStyled = styled(IconButton)`
   border: 3px solid ${theme.colors.blue225} !important;
   border-radius: 20%;
@@ -219,7 +206,6 @@ export const IconButtonStyled = styled(IconButton)`
   height: 30px;
   background-color: ${theme.colors.black};
 `
-
 export const ButtonController = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -228,13 +214,10 @@ export const ButtonController = styled.div`
   margin-bottom: 10px;
 
   @media (min-width: 200px) and (max-width: 842px) {
-margin-top: 90px;
-    transform: scale(0.6)!important;
-
+    margin-top: 90px;
+    transform: scale(0.6) !important;
   }
-
 `
-
 export const Cards = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -247,12 +230,6 @@ export const Cards = styled.div`
     bottom: -50px;
   }
   @media (min-width: 0px) and (max-width: 532px) {
-   
-   margin: -27px!important;
-  
- 
- 
-  
- }
-
+    margin: -27px !important;
+  }
 `
