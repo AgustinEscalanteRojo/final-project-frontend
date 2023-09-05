@@ -23,9 +23,21 @@ export const CustomImg = styled.img<{ $variant: 'default' | 'logoHeader' }>`
           }
         `
 
-
       default:
-        return ''
+        return `
+
+        height: 50px;
+        float: left;
+        margin-left: 10px;
+        
+        @media (max-width: 768px) {
+          align-items: center;
+          display: flex;
+          max-height: 200px;
+          max-width: 100%; /* El logotipo no superará el ancho del contenedor */
+          margin: 0 auto; /* Centra horizontalmente */
+          }
+        `
     }
   }}
 `
