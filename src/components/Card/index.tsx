@@ -12,6 +12,9 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import {
+  allergyIcons,
+} from '../../common/constants'
+import {
   LikeIcon,
   FavIcon,
   CardStyled,
@@ -22,6 +25,8 @@ import {
   DiningIconContainer,
   Description,
   Image,
+  AllergyIconContainer,
+  AllergyIcon,
 } from './style'
 import type { Props } from './types'
 import useLogic from './logic'
@@ -75,9 +80,19 @@ const RecipeReviewCard: FC<Props> = ({ onRemove, post }) => {
       />
       <Image src={post.mainImage} alt="Main of post with some data" />
       <CardContent>
-        <Description variant="body2" color="text.secondary">
+      <Description variant="body2" color="text.secondary">
           {post.description}
         </Description>
+
+        <AllergyIconContainer>
+          {post.allergies.map((allergy, index) => (
+            <AllergyIcon
+              key={index}
+              src={allergyIcons[allergy]} 
+              alt={allergy}
+            />
+          ))}
+        </AllergyIconContainer>
       </CardContent>
 
       <CardActions disableSpacing>

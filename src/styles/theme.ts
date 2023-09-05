@@ -58,9 +58,9 @@ const theme = {
     grey900: '#6E7A76',
 
     // Transparent Colors (RGBA)
-    transparentWhite: 'rgba(255, 255, 255, 0.8)',
+    transparentWhite: 'rgba(255, 255, 255, 0.4)',
     transparentBlack: 'rgba(0, 0, 0, 0.5)',
-    transparentBlue: 'rgba(83, 147, 222, 0.8)',
+    transparentBlue: 'rgba(23, 147, 192, 0.05)',
     transparentGrey: 'rgba(129, 144, 152, 0.9)',
     transparentRed: 'rgba(239, 83, 80, 0.8)',
     transparentGreen: 'rgba(44, 181, 50, 0.8)',
@@ -85,6 +85,9 @@ const theme = {
     softSky: '#edf8fd', // rgb: 237, 248, 253
     lagoonMist: '#03a9f4', // rgb: 3, 169, 244
     oceanicBlue: '#02679d', // rgb: 2, 103, 157
+    oceanicTitleBlue: '#004d76',
+    oceanicWriteBlue: '#083c57',
+    oceanicShadow: '#05354f',
     aquaSky: '#58dcfd', // rgb: 88, 220, 253
   },
 }

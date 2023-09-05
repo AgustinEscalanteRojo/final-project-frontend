@@ -17,7 +17,7 @@ const CreatePost: FC<Props> = ({ onLogout }) => {
         <PostForm onSubmit={handleCreate} />
       </Content>
       <Footer />
-      <ImageBackground imageSrc="/back.jpg" />
+      <ImageBackground imageSrc="/post.jpg" />
     </PostContainer>
   )
 }

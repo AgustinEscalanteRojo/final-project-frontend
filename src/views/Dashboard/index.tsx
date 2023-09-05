@@ -5,6 +5,7 @@ import { getPosts, removePostById } from '../../services/api/post'
 import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import UserCard from '../../components/UserCard'
 import RecipeReviewCard from '../../components/Card'
 import { Post } from '../../models/Post'
 import {
@@ -35,12 +36,20 @@ import {
   DifficultyLabel,
   DifficultyIconContainer,
   ContainerFilters,
+  UserCards,
+  Typography,
+  ContainerUsers,
+  ButtonStyled,
 } from './styles'
 import type { Props } from './types'
+import { getAllUsers } from '../../services/api/user'
+import { User } from '../../models/User'
+import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
   const [posts, setPosts] = useState<Post[]>([])
+  const [users, setUsers] = useState<User[]>([])
   const [allergies, setAllergies] = React.useState<string[]>([])
   const [types, setTypes] = React.useState<string[]>([])
   const [difficultys, setdifficultys] = React.useState<string[]>([])
@@ -94,6 +103,15 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     fetchPosts()
   }, [fetchPosts])
 
+  const fetchUsers = useCallback(async () => {
+    const usersList = await getAllUsers()
+    setUsers(usersList)
+  }, [])
+
+  useEffect(() => {
+    fetchUsers()
+  }, [fetchUsers])
+
   const handleRemovePost = useCallback(async (postId: string) => {
     const currentPosts = await getPosts()
     const filteredPosts = currentPosts.filter(
@@ -103,6 +121,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     setPosts(filteredPosts)
   }, [])
 
+ 
   return (
     <Container>
       <Header onLogout={onLogout} />
@@ -113,7 +132,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           color="primary"
           aria-label="add new post"
         >
-          <AddIcon fontSize="large" style={{ color: 'black' }} /> {}
+          <AddIcon fontSize="medium" style={{ color: 'black' }} /> {}
         </IconButtonStyled>
       </ButtonController>
 
@@ -129,6 +148,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
 
       <ContainerFilters>
         <ContainerAllergies>
+          <Typography> Allergies </Typography>
           {allergiesOptions.map((allergy) => (
             <AllergyOption key={allergy}>
               <StyledCheckbox
@@ -145,21 +165,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           ))}
         </ContainerAllergies>
 
-        <ContainerType>
-          {typeOptions.map((type) => (
-            <TypeOption key={type}>
-              <StyledCheckboxType
-                checked={types.indexOf(type) > -1}
-                onChange={(event) => handleTypeChange(event, type)}
-              />
-              <TypeLabel>
-                <TypeIconContainer>{type}</TypeIconContainer>
-              </TypeLabel>
-            </TypeOption>
-          ))}
-        </ContainerType>
-
         <ContainerDifficulty>
+          <Typography> Difficulty</Typography>
           {difficultyOptions.map((difficulty) => (
             <DifficultyOption key={difficulty}>
               <StyledCheckboxDifficulty
@@ -172,7 +179,32 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             </DifficultyOption>
           ))}
         </ContainerDifficulty>
+
+        <ContainerType>
+          <Typography> Type</Typography>
+          {typeOptions.map((type) => (
+            <TypeOption key={type}>
+              <StyledCheckboxType
+                checked={types.indexOf(type) > -1}
+                onChange={(event) => handleTypeChange(event, type)}
+              />
+              <TypeLabel>
+                <TypeIconContainer>{type}</TypeIconContainer>
+              </TypeLabel>
+            </TypeOption>
+          ))}
+        </ContainerType>
       </ContainerFilters>
+
+      <ContainerUsers>
+        <UserCards>
+        {users?.map((user, index) => <UserCard key={index} user={user} />)}
+        </UserCards>
+        <ButtonStyled variant="contained" color="primary" onClick={() => {}}>
+          See all{' '}
+        </ButtonStyled>
+      </ContainerUsers>
+
 
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />

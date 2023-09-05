@@ -13,7 +13,7 @@ export const DefaultInitialValues = {
 }
 
 export const ValidationSchema = object().shape({
-  title: string().required('Title is required'),
+  title: string().required('Title is required').max(40, 'Step title must be at most 20 characters long'),
   type: string()
     .oneOf(['Salad', 'Dessert', 'Breakfast'])
     .required('Type is required'),

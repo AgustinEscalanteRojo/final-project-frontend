@@ -10,13 +10,15 @@ import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
 import { Avatar, Button, ButtonGroup, Grid } from '@material-ui/core'
 import ImageBackground from '../../components/ImageBackground'
-import { getMe } from '../../services/api/user'
+import { getMe, getUserById } from '../../services/api/user'
 import { User } from '../../models/User'
 import { PerfilContainer, Content } from './styles'
 import type { Props } from './types'
+import UserCard from '../../components/UserCard'
 
 const Profile: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
+const [followingUsers, setFollowingUsers] = useState<User[]>([])
 
   const handleGoToLikes = useCallback(() => {
     navigate('/ ')
@@ -38,6 +40,21 @@ const Profile: FC<Props> = ({ onLogout }) => {
     try {
       const userInfo = await getMe()
       setUser(userInfo)
+    
+            if (userInfo && userInfo.following) {
+              const followingUserPromises = userInfo.following.map(
+                (followingUserId) => getUserById(followingUserId)
+              )
+
+              const followingUserList = await Promise.all(followingUserPromises)
+              setFollowingUsers(
+                followingUserList.filter((user) => user !== null) as User[]
+              )
+            }
+    
+    
+    
+    
     } catch (error) {
       console.error('Error fetching user data:', error)
     }
@@ -51,49 +68,25 @@ const Profile: FC<Props> = ({ onLogout }) => {
     <div>
     <Header onLogout={onLogout} />
     <PerfilContainer>
+      <Avatar style={{ backgroundColor: '#D4A373', marginTop: '150px' }}>
+        {user?.username ? user.username.charAt(0).toUpperCase() : ''}
+      </Avatar>
+      username: {user?.username} - email: {user?.email}
+      <ButtonController>
+        <Button onClick={handleGoToLikes}>Likes</Button>
+        <div>Followers / Following</div>
 
-      <Box sx={{ width: '50%', marginTop: '400px' }}>
-        <Grid container>
-          <Grid container xs={2}>
-            <Avatar style={{ backgroundColor: '#42adbd' }}>
-              {user?.username ? user.username.charAt(0).toUpperCase() : ''}
-            </Avatar>
-          </Grid>
-          <Grid container xs={2}>
-            <div>
-              username: {user?.username} - email: {user?.email}
-            </div>
-          </Grid>
-          <Grid container xs={5} alignItems="center" justifyContent="center">
-            <ButtonGroup
-              variant="contained"
-              aria-label="outlined primary button group"
-            >
-              <Button
-                variant="contained"
-                onClick={handleGoToLikes}
-                style={{ backgroundColor: '#42adbd' }}
-              >
-                Likes
-              </Button>
-              <Button
-                variant="contained"
-                onClick={handleGoToFollowers}
-                style={{ backgroundColor: '#42adbd' }}
-              >
-                Followers{' '}
-              </Button>
-              <Button
-                variant="contained"
-                onClick={handleGoToFollowers}
-                style={{ backgroundColor: '#42adbd' }}
-              >
-                Following{' '}
-              </Button>
-            </ButtonGroup>
-          </Grid>
-        </Grid>
-      </Box>
+        <div>
+          {followingUsers.map((followingUser) => (
+            <UserCard
+              key={followingUser._id}
+              user={followingUser}
+              username={followingUser.username}
+              avatar={followingUser.email}
+            />
+          ))}
+        </div>
+      </ButtonController>
 
       <Content>
         <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
