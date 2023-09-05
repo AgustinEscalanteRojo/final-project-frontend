@@ -19,8 +19,5 @@ export const Button = styled.div`
 `
 
 
-// export const AvatarContainer = styled.div`
-//   display: flex;
-//   align-items: flex-start;
-//   margin-top: 150px;
-// `;
+export const FollowersContainer = styled.div``
+export const FollowingContainer = styled.div``
