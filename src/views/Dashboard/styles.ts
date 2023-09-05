@@ -10,7 +10,6 @@ export const ContainerUsers = styled.div`
   position: fixed;
   right: 18px;
   top: 120px;
-
   width: 150px;
   height: 510px;
   padding: 20px;
@@ -19,11 +18,17 @@ export const ContainerUsers = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media (min-width: 10px) and (max-width: 770px) {
-    top: -150px;
-    right: -45px;
-    transform: scale(0.4);
+  @media (min-width: 532px) and (max-width: 842px) {
+    top: 35px;
+    right: -15px;
+    transform: scale(0.7);
   }
+  @media (min-width: 0px) and (max-width: 532px) {
+
+    top: -85px!important;
+    right: -45px!important;
+transform: scale(0.4)!important;
+}
 `
 
 export const UserCards = styled.div`
@@ -62,17 +67,21 @@ export const ContainerFilters = styled.div`
   width: 150px;
   height: 510px;
   padding: 20px;
-
   flex-direction: column;
   align-items: flex-start;
-
-  @media (min-width: 10px) and (max-width: 770px) {
-    top: -150px;
-    left: -45px;
-    transform: scale(0.4);
+  background-color: ${theme.colors.transparentBlue};
+  @media (min-width: 10px) and (max-width: 842px) {
+    top: 35px;
+    left: -15px;
+    transform: scale(0.7);
   }
-`
+  @media (min-width: 0px) and (max-width: 532px) {
 
+top: -85px!important;
+left: -45px!important;
+transform: scale(0.4)!important;
+}
+`
 export const ContainerAllergies = styled.div`
   position: fixed;
   left: 25px;
@@ -218,10 +227,12 @@ export const ButtonController = styled.div`
   margin-top: 140px;
   margin-bottom: 10px;
 
-  @media (max-width: 768px) {
-    margin-top: 10px;
-    justify-content: center;
+  @media (min-width: 200px) and (max-width: 842px) {
+margin-top: 90px;
+    transform: scale(0.6)!important;
+
   }
+
 `
 
 export const Cards = styled.div`
@@ -231,7 +242,17 @@ export const Cards = styled.div`
   justify-content: center;
   max-width: 1000px;
 
-  @media (max-width: 1221px) {
+  @media (max-width: 1317px) {
     grid-template-columns: 1fr;
+    bottom: -50px;
   }
+  @media (min-width: 0px) and (max-width: 532px) {
+   
+   margin: -27px!important;
+  
+ 
+ 
+  
+ }
+
 `
