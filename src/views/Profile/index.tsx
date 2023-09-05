@@ -2,18 +2,17 @@ import { FC, memo, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import Button from '../../components/Button'
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
-import { Avatar } from '@material-ui/core'
+import { Avatar, Button, ButtonGroup, Grid } from '@material-ui/core'
 import ImageBackground from '../../components/ImageBackground'
 import { getMe, getUserById } from '../../services/api/user'
 import { User } from '../../models/User'
-import { PerfilContainer, Content, ButtonController } from './styles'
+import { PerfilContainer, Content } from './styles'
 import type { Props } from './types'
 import UserCard from '../../components/UserCard'
 
@@ -66,8 +65,9 @@ const [followingUsers, setFollowingUsers] = useState<User[]>([])
   }, [fetchUserMe])
 
   return (
+    <div>
+    <Header onLogout={onLogout} />
     <PerfilContainer>
-      <Header onLogout={onLogout} />
       <Avatar style={{ backgroundColor: '#D4A373', marginTop: '150px' }}>
         {user?.username ? user.username.charAt(0).toUpperCase() : ''}
       </Avatar>
@@ -77,7 +77,6 @@ const [followingUsers, setFollowingUsers] = useState<User[]>([])
         <div>Followers / Following</div>
 
         <div>
-          {/* Representa a los usuarios que sigues usando UserCard */}
           {followingUsers.map((followingUser) => (
             <UserCard
               key={followingUser._id}
@@ -88,8 +87,9 @@ const [followingUsers, setFollowingUsers] = useState<User[]>([])
           ))}
         </div>
       </ButtonController>
+
       <Content>
-        <Box sx={{ marginTop: 7, width: '100%', typography: 'body1' }}>
+        <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList
@@ -100,6 +100,7 @@ const [followingUsers, setFollowingUsers] = useState<User[]>([])
                 <Tab label="my favorites" value="2" />
               </TabList>
             </Box>
+
             <TabPanel value="1"></TabPanel>
 
             <TabPanel value="2">
@@ -119,6 +120,7 @@ const [followingUsers, setFollowingUsers] = useState<User[]>([])
       <ImageBackground imageSrc="/back.jpg" />
       <Footer />
     </PerfilContainer>
+    </div>
   )
 }
 
