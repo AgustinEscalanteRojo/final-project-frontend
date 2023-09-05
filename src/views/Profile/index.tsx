@@ -2,22 +2,23 @@ import { FC, memo, useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import Button from '../../components/Button'
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
-import { Avatar } from '@material-ui/core'
+import { Avatar, Button, ButtonGroup, Grid } from '@material-ui/core'
 import ImageBackground from '../../components/ImageBackground'
-import { getMe } from '../../services/api/user'
+import { getMe, getUserById } from '../../services/api/user'
 import { User } from '../../models/User'
-import { PerfilContainer, Content, ButtonController } from './styles'
+import { PerfilContainer, Content } from './styles'
 import type { Props } from './types'
+import UserCard from '../../components/UserCard'
 
 const Profile: FC<Props> = ({ onLogout }) => {
   const navigate = useNavigate()
+const [followingUsers, setFollowingUsers] = useState<User[]>([])
 
   const handleGoToLikes = useCallback(() => {
     navigate('/ ')
@@ -39,6 +40,21 @@ const Profile: FC<Props> = ({ onLogout }) => {
     try {
       const userInfo = await getMe()
       setUser(userInfo)
+    
+            if (userInfo && userInfo.following) {
+              const followingUserPromises = userInfo.following.map(
+                (followingUserId) => getUserById(followingUserId)
+              )
+
+              const followingUserList = await Promise.all(followingUserPromises)
+              setFollowingUsers(
+                followingUserList.filter((user) => user !== null) as User[]
+              )
+            }
+    
+    
+    
+    
     } catch (error) {
       console.error('Error fetching user data:', error)
     }
@@ -49,18 +65,31 @@ const Profile: FC<Props> = ({ onLogout }) => {
   }, [fetchUserMe])
 
   return (
+    <div>
+    <Header onLogout={onLogout} />
     <PerfilContainer>
-      <Header onLogout={onLogout} />
       <Avatar style={{ backgroundColor: '#D4A373', marginTop: '150px' }}>
         {user?.username ? user.username.charAt(0).toUpperCase() : ''}
       </Avatar>
       username: {user?.username} - email: {user?.email}
       <ButtonController>
         <Button onClick={handleGoToLikes}>Likes</Button>
-        <Button onClick={handleGoToFollowers}>Followers / Following</Button>
+        <div>Followers / Following</div>
+
+        <div>
+          {followingUsers.map((followingUser) => (
+            <UserCard
+              key={followingUser._id}
+              user={followingUser}
+              username={followingUser.username}
+              avatar={followingUser.email}
+            />
+          ))}
+        </div>
       </ButtonController>
+
       <Content>
-        <Box sx={{ marginTop: 7, width: '100%', typography: 'body1' }}>
+        <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
           <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
               <TabList
@@ -71,6 +100,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
                 <Tab label="my favorites" value="2" />
               </TabList>
             </Box>
+
             <TabPanel value="1"></TabPanel>
 
             <TabPanel value="2">
@@ -90,6 +120,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
       <ImageBackground imageSrc="/back.jpg" />
       <Footer />
     </PerfilContainer>
+    </div>
   )
 }
 

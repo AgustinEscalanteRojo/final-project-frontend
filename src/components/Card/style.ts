@@ -10,6 +10,37 @@ interface AllergyIconProps {
   alt: string
 }
 
+export const CardStyled = styled(MuiCard)`
+  background-color: ${theme.colors.blue25} !important;
+  margin: 10px;
+  width:450px;
+  border: 1px solid ${theme.colors.blue175};
+  border-radius: 20px !important;
+  transition: max-width 0.3s ease-in-out;
+  transform: scale(0.9);
+
+  @media (min-width: 532px) and (max-width: 842px) {
+    margin: -100px;
+    bottom: -100px;
+    transform: scale(0.5)!important;
+    font-size: 14px !important;
+  }
+
+  @media (min-width: 0px) and (max-width: 532px) {
+   
+    margin: -170px!important;
+    bottom: -250px!important;
+    transform: scale(0.3)!important;
+  
+   
+  }
+
+`
+
+
+
+
+
 export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-top: 10px;
   margin-bottom: -18px;
@@ -32,28 +63,6 @@ export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
 `
 export const FavIcon = styled(BookmarkIcon)<{ isFav: boolean }>`
   color: ${(props) => (props.isFav ? 'blue' : 'grey')};
-`
-export const CardStyled = styled(MuiCard)`
-  background-color: ${theme.colors.blue25} !important;
-  margin: 10px;
-  border: 1px solid ${theme.colors.blue175};
-  border-radius: 20px !important;
-  max-width: 410px;
-  transition: max-width 0.3s ease-in-out;
-  font-size: 16px !important;
-
-  @media (min-width: 771px) and (max-width: 1500px) {
-    margin: -40px;
-    transform: scale(0.8);
-    font-size: 14px !important;
-  }
-
-  @media (min-width: 10px) and (max-width: 770px) {
-    margin: -150px;
-
-    transform: scale(0.4);
-   
-  }
 `
 export const DetailsIconButton = styled(IconButton)``
 

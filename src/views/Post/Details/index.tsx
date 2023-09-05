@@ -7,6 +7,7 @@ import Footer from '../../../components/Footer'
 import ImageBackground from '../../../components/ImageBackground'
 import * as S from './styles'
 import type { Props } from './types'
+import BackButton from '../../../components/BackButton'
 
 const Details: FC<Props> = ({ post }) => {
   const defaultImage =
@@ -14,6 +15,7 @@ const Details: FC<Props> = ({ post }) => {
 
   return (
     <S.DetailsContainer>
+      <BackButton />
       <S.Content>
         <S.MainImageContainer>
           <S.Title>{post?.title}</S.Title>

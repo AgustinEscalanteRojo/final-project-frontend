@@ -4,7 +4,6 @@ import theme from '../../styles/theme'
 export const Container = styled.footer`
   position: fixed;
   bottom: 0;
-  border-top: 1px solid ${theme.colors.buff};
   width: 100%;
   text-align: center;
   z-index: 3;
@@ -33,7 +32,7 @@ export const Content = styled.div`
 
 export const Text = styled.p`
   color: ${theme.colors.softSky};
-  font-size: 11px;
+  font-size: 9px;
   font-weight: bold;
 
   @media screen and (max-width: 768px) {
