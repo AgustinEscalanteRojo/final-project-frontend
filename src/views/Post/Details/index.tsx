@@ -50,14 +50,11 @@ const Details: FC<Props> = ({ post }) => {
         <S.StepsContainer>
           <S.Title>Steps</S.Title>
           <S.Steps>
-            {post?.steps.map((step, index) => (
+            {post?.steps.map((step) => (
               <S.Step key={step.title}>
                 <S.StepTitle>
-                  {step.order}. {step.title}
+                  {step.order}.{step.title}
                 </S.StepTitle>
-                {step?.image.map((image) => (
-                  <S.StepImage key={image} src={image} />
-                ))}
                 <S.StepDescription>{step.description}</S.StepDescription>
               </S.Step>
             ))}

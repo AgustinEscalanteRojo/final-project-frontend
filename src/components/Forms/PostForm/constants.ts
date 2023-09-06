@@ -9,11 +9,13 @@ export const DefaultInitialValues = {
   description: '',
   ingredients: [{ name: '', quantity: 0, unity: '' }],
   diners: 0,
-  steps: [{ title: '', description: '', order: 1, image: [] }],
+  steps: [{ title: '', description: '', order: 1 }],
 }
 
 export const ValidationSchema = object().shape({
-  title: string().required('Title is required').max(40, 'Step title must be at most 20 characters long'),
+  title: string()
+    .required('Title is required')
+    .max(40, 'Step title must be at most 20 characters long'),
   type: string()
     .oneOf(['Salad', 'Dessert', 'Breakfast'])
     .required('Type is required'),
@@ -36,7 +38,6 @@ export const ValidationSchema = object().shape({
       title: string().required('Step title is required'),
       description: string().required('Step description is required'),
       order: number().required('Step order is required'),
-      image: array(),
     })
   ),
 })
