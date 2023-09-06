@@ -155,33 +155,6 @@ const Router: FC = () => {
             </ProtectedRoutes>
           }
         />
-        {/*<Route
-          path="/posts/:postId"
-          element={
-            <ProtectedRoutes>
-              {post ? (
-                <UpdatePost
-                  onEditComplete={handleOnCompleteEdition}
-                  id={post._id}
-                  initialValues={{
-                    title: post.title,
-                    type: post.type,
-                    duration: post.duration,
-                    difficulty: post.difficulty,
-                    allergies: post.allergies as string,
-                    description: post.description,
-                    ingredients: post.ingredients,
-                    diners: post.diners,
-                    steps: post.steps,
-                  }}
-                  onLogout={recreateLogOut}
-                />
-              ) : (
-                <NotFound />
-              )}
-            </ProtectedRoutes>
-          }
-        />*/}
       </Routes>
     </BrowserRouter>
   )

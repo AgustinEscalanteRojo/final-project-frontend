@@ -21,9 +21,7 @@ const useLogic = () => {
       description: post?.description || '',
       ingredients: post?.ingredients || [{ name: '', quantity: 0, unity: '' }],
       diners: post?.diners || 0,
-      steps: post?.steps || [
-        { title: '', description: '', order: 1, image: [] },
-      ],
+      steps: post?.steps || [{ title: '', description: '', order: 1 }],
       mainImage: post?.mainImage || '',
     }),
     [post]
@@ -46,9 +44,10 @@ const useLogic = () => {
     async (values: Partial<PostFormFields>) => {
       if (post?._id) {
         await updatePostById({ id: post._id, input: values })
-        navigate(`/posts/${post._id}`)
+        navigate(`/posts/${post._id}`, { replace: true })
+        navigate(0)
         // TODO no debemos usar windows reload, la navegación debe ser reactiva
-        window.location.reload()
+        // window.location.reload()
       }
     },
     [post, navigate]
