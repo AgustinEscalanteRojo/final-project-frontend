@@ -3,9 +3,7 @@ import { postResponse, normalizePost } from './Post'
 export type UserResponse = {
   _id: string
   age: number
-  avatar?: string
   biography?: string
-  city?: string
   country: string
   createdAt: Date
   email: string
@@ -31,9 +29,7 @@ export type UserFormFields = {
   age: number
   gender: string
   country: string
-  city: string
   biography: string
-  avatar: string
 }
 
 export const normalizeUser = (input: UserResponse) => ({
@@ -47,8 +43,6 @@ export const normalizeUser = (input: UserResponse) => ({
   age: input?.age || 0,
   gender: input?.gender || 'male',
   biography: input?.biography || '',
-  avatar: input?.avatar || '',
-  city: input?.city || '',
   country: input?.country || '',
   createdAt: input?.createdAt ? new Date(input.createdAt) : new Date(),
   favPosts:
