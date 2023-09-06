@@ -39,7 +39,6 @@ export type postResponse = {
   }[]
   diners?: number
   steps: {
-    image: string[]
     title: string
     description: string
     order: number
@@ -69,7 +68,6 @@ export type PostFormFields = {
     title: string
     description: string
     order: number
-    image: string[]
   }[]
   mainImage?: string
 }

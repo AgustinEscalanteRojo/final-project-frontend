@@ -9,7 +9,6 @@ import {
   InputLabel,
   MenuItem,
   Select,
-
 } from '@mui/material'
 import {
   allergiesOptions,
@@ -32,7 +31,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
           onSubmit={handleSubmit}
           style={{ maxWidth: '600px', margin: '0 auto' }}
         >
-           <Title variant="h4" align="center" gutterBottom>
+          <Title variant="h4" align="center" gutterBottom>
             Create Your New Recipe
           </Title>
           <TextField
@@ -210,7 +209,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
               ))}
             </Grid>
           </FormControl>
-          
+
           <FormControl fullWidth style={{ marginTop: '16px' }}>
             {(values?.steps || []).map((step, index) => (
               <div
@@ -272,7 +271,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
               onClick={() => {
                 const updatedSteps = [
                   ...(values?.steps || []),
-                  { title: '', description: '', imageUrl: '' },
+                  { title: '', description: '' },
                 ]
                 handleChange({
                   target: {
