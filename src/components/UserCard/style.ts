@@ -1,11 +1,17 @@
 import styled from 'styled-components'
 import { ListItemText } from '@material-ui/core'
-import { Button} from '@mui/material'
+import Button from '@mui/material/Button'
+import DefaultAvatar from '@mui/material/Avatar'
+
 export const HeaderUser = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: -20px;
+`
+
+export const Avatar = styled(DefaultAvatar)`
+  cursor: pointer;
 `
 
 export const Name = styled(ListItemText)`
@@ -16,9 +22,7 @@ export const Name = styled(ListItemText)`
 `
 
 export const FollowButton = styled(Button)`
-
   transform: scale(0.8) !important;
-
 `
 
 export const CardContainer = styled.div`

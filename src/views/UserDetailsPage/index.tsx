@@ -1,4 +1,6 @@
 import { FC, memo } from 'react'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
@@ -8,9 +10,8 @@ import TabPanel from '@mui/lab/TabPanel'
 import { Avatar } from '@material-ui/core'
 import ImageBackground from '../../components/ImageBackground'
 import UserCard from '../../components/UserCard'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
 import RecipeReviewCard from '../../components/Card'
+import useLogic from './logic'
 import {
   PerfilContainer,
   Content,
@@ -20,11 +21,11 @@ import {
   Container,
 } from './styles'
 import type { Props } from './types'
-import useLogic from './logic'
 
-const Profile: FC<Props> = ({ onLogout }) => {
-  const { user, value, handleChange } = useLogic()
+const UserDetailsPage: FC<Props> = ({ onLogout }) => {
+  const { user, selectedTab, handleSetTab } = useLogic()
 
+  console.log({user})
   return (
     <Container>
       <Header onLogout={onLogout} />
@@ -43,17 +44,16 @@ const Profile: FC<Props> = ({ onLogout }) => {
         {user?.followers.map((user) => <UserCard key={user._id} user={user} />)}
         <Content>
           <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
-            <TabContext value={value}>
+            <TabContext value={selectedTab}>
               <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList
-                  onChange={handleChange}
+                  onChange={handleSetTab}
                   aria-label="lab API tabs example"
                 >
-                  <Tab label="My recipes" value="1" />
-                  <Tab label="my favorites" value="2" />
+                  <Tab label="Recipes" value="1" />
+                  <Tab label="no se que poner" value="2" />
                 </TabList>
               </Box>
-
               <TabPanel value="1">
                 {user && user.myPosts && user.myPosts.length > 0 ? (
                   <Posts>
@@ -69,22 +69,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
                   <p>Not have posts yet.</p>
                 )}
               </TabPanel>
-
-              <TabPanel value="2">
-                {user && user.favPosts && user.favPosts.length > 0 ? (
-                  <Posts>
-                    {user.favPosts.map((post) => (
-                      <RecipeReviewCard
-                        key={post._id}
-                        post={post}
-                        isCurrentUserCreator={user?._id === post.userId}
-                      />
-                    ))}
-                  </Posts>
-                ) : (
-                  <p>Not have favorite posts yet.</p>
-                )}
-              </TabPanel>
+              <TabPanel value="2"></TabPanel>
             </TabContext>
           </Box>
         </Content>
@@ -95,4 +80,4 @@ const Profile: FC<Props> = ({ onLogout }) => {
   )
 }
 
-export default memo(Profile)
+export default memo(UserDetailsPage)

@@ -1,4 +1,4 @@
-import { User, normalizeUser } from '../../models/User'
+import { normalizeUser, User } from '../../models/User'
 import { getToken } from '../storage/token'
 
 const BASE_URL = 'http://localhost:8080/users'
@@ -33,9 +33,8 @@ export const getUserById = async (id: string): Promise<User | null> => {
     }
 
     const data = await response.json()
-    const normalizedUser = normalizeUser(data) // Normalizar los datos del usuario
 
-    return normalizedUser
+    return normalizeUser(data)
   } catch (error) {
     console.error(error)
     return null
@@ -58,9 +57,23 @@ export const getMe = async (): Promise<User | null> => {
   return null
 }
 
+export const getProfile = async (): Promise<User | null> => {
+  try {
+    const response = await fetch(`${BASE_URL}/profile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    const data = await response.json()
 
-export const followUser = async (id:string): Promise<User | null> => {
+    return normalizeUser(data)
+  } catch (e) {
+    console.log(e)
+  }
+  return null
+}
 
+export const toggleFollowUser = async (id: string): Promise<User | null> => {
   try {
     const token = getToken()
     const response = await fetch(`${BASE_URL}/${id}/follow`, {

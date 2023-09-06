@@ -15,6 +15,7 @@ import CreatePost from '../../views/CreatePost'
 import PostDetailsView from '../../views/Post'
 import Faq from '../../views/Faq'
 import NotFound from '../../views/NotFound'
+import UserDetailsPage from '../../views/UserDetailsPage'
 import { getToken } from '../../services/storage/token'
 
 const Router: FC = () => {
@@ -103,6 +104,14 @@ const Router: FC = () => {
           element={
             <ProtectedRoutes>
               <Profile onLogout={recreateLogOut} />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/users/:userId"
+          element={
+            <ProtectedRoutes>
+              <UserDetailsPage onLogout={recreateLogOut} />
             </ProtectedRoutes>
           }
         />
