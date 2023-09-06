@@ -25,7 +25,6 @@ export const ValidationSignupSchema = object({
     .integer('Age must be an integer')
     .required('Age is required'),
   country: string().required('Country is required'),
-  city: string().required('City is required'),
   gender: string()
     .oneOf(
       ['male', 'female', 'non-binary'],
@@ -33,5 +32,4 @@ export const ValidationSignupSchema = object({
     )
     .required('Gender is required'),
   biography: string(),
-  avatar: string().required('Avatar is required'),
 })
