@@ -1,8 +1,5 @@
-import { FC, memo, useCallback, useState, useEffect, ChangeEvent } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { FC, memo} from 'react'
 import AddIcon from '@mui/icons-material/Add'
-import { getPosts, removePostById } from '../../services/api/post'
-import { getAllUsers } from '../../services/api/user'
 import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
@@ -15,8 +12,6 @@ import {
   typeOptions,
 } from '../../common/constants'
 import * as S from './styles'
-import type { User } from '../../models/User'
-import type { Post } from '../../models/Post'
 import type { Props } from './types'
 import useLogic from './logic'
 

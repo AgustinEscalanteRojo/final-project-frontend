@@ -9,9 +9,9 @@ export const ContainerUsers = styled.div`
   border-radius: 30px;
   position: fixed;
   right: 18px;
-  top: 120px;
+  top: 100px;
   width: 150px;
-  height: 510px;
+  height: 595px;
   padding: 20px;
   background-color: ${theme.colors.transparentWhite};
   display: flex;
@@ -19,12 +19,12 @@ export const ContainerUsers = styled.div`
   align-items: center;
 
   @media (min-width: 532px) and (max-width: 842px) {
-    top: 35px;
+    top: 0px;
     right: -15px;
     transform: scale(0.7);
   }
   @media (min-width: 0px) and (max-width: 532px) {
-    top: -85px !important;
+    top: -110px !important;
     right: -45px !important;
     transform: scale(0.4) !important;
   }
@@ -60,55 +60,55 @@ export const ContainerFilters = styled.div`
   border-radius: 30px;
   position: fixed;
   left: 18px;
-  top: 120px;
+  top: 100px;
   width: 150px;
-  height: 510px;
+  height: 595px;
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
   background-color: ${theme.colors.transparentBlue};
   @media (min-width: 10px) and (max-width: 842px) {
-    top: 35px;
+    top: 0px;
     left: -15px;
     transform: scale(0.7);
   }
   @media (min-width: 0px) and (max-width: 532px) {
-    top: -85px !important;
+    top: -110px !important;
     left: -45px !important;
     transform: scale(0.4) !important;
   }
 `
 export const ContainerAllergies = styled.div`
   position: fixed;
-  left: 25px;
-  margin-top: -80px;
+  left: 15px;
+  margin-top: -55px;
   transform: translateY(-50%);
   width: 200px;
   display: flex;
-  transform: scale(0.7);
+  transform: scale(0.78);
   flex-direction: column;
   align-items: flex-start;
 `
 export const ContainerDifficulty = styled.div`
   position: fixed;
-  left: 25px;
-  margin-top: 320px;
+  left: 15px;
+  margin-top: 372px;
   transform: translateY(-50%);
   width: 200px;
-  transform: scale(0.7);
+  transform: scale(0.78);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 `
 export const ContainerType = styled.div`
   position: fixed;
-  left: 25px;
-  margin-top: 420px;
+  left: 15px;
+  margin-top: 487px;
   transform: translateY(-50%);
   width: 200px;
   display: flex;
 
-  transform: scale(0.7);
+  transform: scale(0.78);
   flex-direction: column;
   align-items: flex-start;
 `
