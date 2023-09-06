@@ -289,7 +289,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
             style={{ marginTop: '26px' }}
             label="Main Image URL"
             name="mainImage"
-            value={values.mainImage}
+            value={values.mainImage || ''}
             onChange={handleChange}
             fullWidth
           />

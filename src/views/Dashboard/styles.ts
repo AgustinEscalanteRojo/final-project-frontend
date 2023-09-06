@@ -8,8 +8,8 @@ export const ContainerUsers = styled.div`
   border: 1px solid ${theme.colors.blue175};
   border-radius: 30px;
   position: fixed;
-  right: 18px;
-  top: 100px;
+  right: 15px;
+  top: 85px;
   width: 150px;
   height: 595px;
   padding: 20px;
@@ -17,6 +17,7 @@ export const ContainerUsers = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  transform: scale(0.95);
 
   @media (min-width: 532px) and (max-width: 842px) {
     top: 0px;
@@ -59,14 +60,15 @@ export const ContainerFilters = styled.div`
   border: 1px solid ${theme.colors.blue175};
   border-radius: 30px;
   position: fixed;
-  left: 18px;
-  top: 100px;
+  left: 15px;
+  top: 85px;
   width: 150px;
   height: 595px;
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
   background-color: ${theme.colors.transparentBlue};
+  transform: scale(0.95);
   @media (min-width: 10px) and (max-width: 842px) {
     top: 0px;
     left: -15px;
@@ -80,7 +82,7 @@ export const ContainerFilters = styled.div`
 `
 export const ContainerAllergies = styled.div`
   position: fixed;
-  left: 15px;
+  left: 7px;
   margin-top: -55px;
   transform: translateY(-50%);
   width: 200px;
@@ -91,7 +93,7 @@ export const ContainerAllergies = styled.div`
 `
 export const ContainerDifficulty = styled.div`
   position: fixed;
-  left: 15px;
+  left: 7px;
   margin-top: 372px;
   transform: translateY(-50%);
   width: 200px;
@@ -102,7 +104,7 @@ export const ContainerDifficulty = styled.div`
 `
 export const ContainerType = styled.div`
   position: fixed;
-  left: 15px;
+  left: 7px;
   margin-top: 487px;
   transform: translateY(-50%);
   width: 200px;
