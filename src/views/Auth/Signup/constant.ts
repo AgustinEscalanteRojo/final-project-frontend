@@ -8,10 +8,8 @@ export const InitialValues = {
   lastName: '',
   age: 0,
   country: '',
-  city: '',
   gender: '',
   biography: '',
-  avatar: '',
 }
 
 export const ValidationSignupSchema = object({
@@ -21,19 +19,17 @@ export const ValidationSignupSchema = object({
     .required('Password is required'),
   username: string().required('Username is required'),
   firstName: string().required('First name is required'),
-  lastName: string().required('Last name is required'),
+  lastName: string(),
   age: number()
     .positive('Age must be a positive number')
     .integer('Age must be an integer')
     .required('Age is required'),
   country: string().required('Country is required'),
-  city: string().required('City is required'),
   gender: string()
     .oneOf(
       ['male', 'female', 'non-binary'],
       'Gender must be male, female or non-binary'
     )
     .required('Gender is required'),
-  biography: string().required('Biography is required'),
-  avatar: string().required('Avatar is required'),
+  biography: string(),
 })

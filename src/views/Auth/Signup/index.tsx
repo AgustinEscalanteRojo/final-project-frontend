@@ -113,7 +113,6 @@ const Signup: FC<Props> = ({ onSignup }) => {
                         placeholder="Enter last name"
                         variant="outlined"
                         fullWidth
-                        required
                         name="lastName"
                         value={values.lastName}
                         onChange={handleChange}
@@ -147,20 +146,6 @@ const Signup: FC<Props> = ({ onSignup }) => {
                       />
                     </Grid>
                     <Grid item xs={6}>
-                      <TextField
-                        label="City"
-                        placeholder="Enter city"
-                        variant="outlined"
-                        fullWidth
-                        required
-                        name="city"
-                        value={values.city}
-                        onChange={handleChange}
-                      />
-                    </Grid>
-                  </Grid>
-                  <Grid item container spacing={2}>
-                    <Grid item xs={6}>
                       <FormControl fullWidth variant="outlined" required>
                         <InputLabel id="gender-label">Gender</InputLabel>
                         <Select
@@ -177,20 +162,8 @@ const Signup: FC<Props> = ({ onSignup }) => {
                         </Select>
                       </FormControl>
                     </Grid>
-
-                    <Grid item xs={6}>
-                      <TextField
-                        label="Avatar"
-                        placeholder="Please select an avatar"
-                        variant="outlined"
-                        fullWidth
-                        required
-                        name="avatar"
-                        value={values.avatar}
-                        onChange={handleChange}
-                      />
-                    </Grid>
                   </Grid>
+
                   <Grid item container spacing={2} justifyContent="center">
                     <Grid item xs={12}>
                       <TextField
@@ -198,7 +171,6 @@ const Signup: FC<Props> = ({ onSignup }) => {
                         placeholder="Write a brief biography"
                         variant="outlined"
                         fullWidth
-                        required
                         name="biography"
                         value={values.biography}
                         onChange={handleChange}
