@@ -64,7 +64,7 @@ const useLogic = () => {
   }
 
   const handleGoToPost = useCallback(() => {
-    navigate('/create-post')
+    navigate('/postform')
   }, [navigate])
 
   const fetchPosts = useCallback(async () => {

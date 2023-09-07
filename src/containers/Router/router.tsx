@@ -124,7 +124,7 @@ const Router: FC = () => {
           }
         />
         <Route
-          path="/create-post"
+          path="/postform"
           element={
             <ProtectedRoutes>
               <CreatePost onLogout={recreateLogOut} />
