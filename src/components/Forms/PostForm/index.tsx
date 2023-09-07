@@ -20,6 +20,8 @@ import { TextField, Title } from './styles'
 import type { Props } from './types'
 
 const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
+  const titleEdit = 'Edit Your Recipe'
+  const titleCreate = 'Create Your New Recipe'
   return (
     <Formik
       initialValues={initialValues || DefaultInitialValues}
@@ -32,7 +34,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
           style={{ maxWidth: '600px', margin: '0 auto' }}
         >
           <Title variant="h4" align="center" gutterBottom>
-            Create Your New Recipe
+            {window.location.pathname === '/postform' ? titleCreate : titleEdit}
           </Title>
           <TextField
             style={{ marginTop: '26px' }}

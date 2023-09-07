@@ -4,7 +4,7 @@ import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import UserCard from '../../components/UserCard'
-import RecipeReviewCard from '../../components/Card'
+import Card from '../../components/Card'
 import {
   allergiesOptions,
   allergyIcons,
@@ -44,7 +44,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       </S.ButtonController>
       <S.Cards>
         {posts?.map((post) => (
-          <RecipeReviewCard
+          <Card
             key={post._id}
             post={post}
             isCurrentUserCreator={currentUser?._id === post.userId}
