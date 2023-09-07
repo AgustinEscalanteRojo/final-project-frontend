@@ -18,8 +18,8 @@ export const CustomImg = styled.img<{ $variant: 'default' | 'logoHeader' }>`
           align-items: center;
           display: flex;
           max-height: 200px;
-          max-width: 100%; /* El logotipo no superará el ancho del contenedor */
-          margin: 0 auto; /* Centra horizontalmente */
+          max-width: 100%;
+          margin: 0 auto; 
           }
         `
 
@@ -34,8 +34,8 @@ export const CustomImg = styled.img<{ $variant: 'default' | 'logoHeader' }>`
           align-items: center;
           display: flex;
           max-height: 200px;
-          max-width: 100%; /* El logotipo no superará el ancho del contenedor */
-          margin: 0 auto; /* Centra horizontalmente */
+          max-width: 100%; 
+          margin: 0 auto; 
           }
         `
     }

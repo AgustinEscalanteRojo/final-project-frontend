@@ -29,7 +29,7 @@ import {
 import type { Props } from './types'
 import useLogic from './logic'
 
-const RecipeReviewCard: FC<Props> = ({
+const Card: FC<Props> = ({
   onRemove,
   post,
   isCurrentUserCreator,
@@ -124,4 +124,4 @@ const RecipeReviewCard: FC<Props> = ({
   )
 }
 
-export default memo(RecipeReviewCard)
+export default memo(Card)
