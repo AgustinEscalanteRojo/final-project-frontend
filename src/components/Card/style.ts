@@ -44,6 +44,7 @@ export const Image = styled.img`
   height: 20rem;
   object-fit: contain;
   width: 100%;
+  cursor: pointer;
 `
 export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
   color: ${(props) => (props.isLike ? 'red' : 'grey')};
@@ -56,7 +57,11 @@ export const DetailsIconButton = styled(IconButton)``
 export const CardHeaderStyled = styled(CardHeader)`
   font-size: 24px !important;
   font-weight: bold !important;
+
 `
+
+
+
 export const IconDetailsContainer = styled.div`
   display: flex;
   align-items: center;

@@ -81,7 +81,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
           </IconDetailsContainer>
         }
       />
-      <Image src={post.mainImage} alt="Main of post with some data" />
+      <Image src={post.mainImage} alt="Main of post with some data"  onClick={handleDetailsClick} />
       <CardContent>
         <Description variant="body2" color="text.secondary">
           {post.description}
