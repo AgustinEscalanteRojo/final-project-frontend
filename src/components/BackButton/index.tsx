@@ -1,10 +1,12 @@
 import { FC, memo } from 'react'
-import Button from '../Button'
 import useLogic from './logic'
+import {
+  ArrowBackIconStyle
+} from './styles'
 
 export const BackButton: FC = () => {
   const { handleGoBack } = useLogic()
-  return <Button onClick={handleGoBack}>Go back</Button>
+  return <ArrowBackIconStyle onClick={handleGoBack}>Go back</ArrowBackIconStyle>
 }
 
 export default memo(BackButton)

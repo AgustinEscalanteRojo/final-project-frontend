@@ -1,5 +1,18 @@
 import styled from 'styled-components'
 
+
+export const IconDetailsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-left: 50px;
+`
+export const DiningIconContainer = styled.span`
+  transform: scale(0.8);
+  margin-left: 10px;
+`
+
+
 export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,22 +44,17 @@ export const MainImageContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 600px;
-  height: auto;
-  border: 1px solid ${({ theme }) => theme.colors.lagoonMist};
-  border-radius: 20px;
-  background-color: ${({ theme }) => theme.colors.softSky};
+  max-width: 500px;
+  border: 1px solid ${({ theme }) => theme.colors.blue175};
+  background-color: ${({ theme }) =>theme.colors.blue25};
   box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
-  margin-top: 20px;
-  margin-bottom: 25px;
-  margin-left: 5px;
-  margin-right: 5px;
+  border-radius: 20px !important;
 
   @media (min-width: 769px) {
     width: 45%;
     margin-top: 150px;
     margin-left: 100px;
-    margin-right: 0; /* Para evitar que se aplique en dispositivos móviles */
+    margin-right: 0;
   }
 `
 

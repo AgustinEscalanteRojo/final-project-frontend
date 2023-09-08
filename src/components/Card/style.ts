@@ -4,6 +4,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import Typography from '@mui/material/Typography'
 import { Card as MuiCard, IconButton, CardHeader } from '@mui/material'
+import { AllergyIconProps } from './types'
 
 export const CardStyled = styled(MuiCard)`
   background-color: ${theme.colors.blue25} !important;
@@ -27,10 +28,6 @@ export const CardStyled = styled(MuiCard)`
     transform: scale(0.3) !important;
   }
 `
-interface AllergyIconProps {
-  src: string
-  alt: string
-}
 export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-top: 10px;
   margin-bottom: -18px;
