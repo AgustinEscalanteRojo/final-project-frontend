@@ -39,9 +39,8 @@ const Login: FC<Props> = ({ onLogin }) => {
               />
               {errors?.email && <S.InputError>{errors.email}</S.InputError>}
 
-              <S.Separation />
-
               <TextField
+                style={{ marginTop: '14px' }}
                 label="Password"
                 placeholder="Enter password"
                 type="password"
@@ -66,7 +65,6 @@ const Login: FC<Props> = ({ onLogin }) => {
               >
                 Log in
               </S.ButtonStyled>
-              <S.Link to="#">Forgot password ?</S.Link>
               <S.Link to="/signup">Do you have an account? Sign up here</S.Link>
             </Form>
           )}
