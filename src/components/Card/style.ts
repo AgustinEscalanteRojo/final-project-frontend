@@ -6,6 +6,15 @@ import Typography from '@mui/material/Typography'
 import { Card as MuiCard, IconButton, CardHeader } from '@mui/material'
 import { AllergyIconProps } from './types'
 
+export const TitleContainer = styled.div`
+  font-size: 17px;
+  margin-top: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  color: grey;
+  text-transform: uppercase;
+`
 export const CardStyled = styled(MuiCard)`
   background-color: ${theme.colors.blue25} !important;
   margin: 10px;
@@ -13,6 +22,7 @@ export const CardStyled = styled(MuiCard)`
   border: 1px solid ${theme.colors.blue175};
   border-radius: 20px !important;
   transition: max-width 0.3s ease-in-out;
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   transform: scale(0.9);
 
   @media (min-width: 532px) and (max-width: 842px) {
@@ -57,11 +67,7 @@ export const DetailsIconButton = styled(IconButton)``
 export const CardHeaderStyled = styled(CardHeader)`
   font-size: 24px !important;
   font-weight: bold !important;
-
 `
-
-
-
 export const IconDetailsContainer = styled.div`
   display: flex;
   align-items: center;
