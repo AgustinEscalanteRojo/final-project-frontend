@@ -5,15 +5,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 import Typography from '@mui/material/Typography'
 import { Card as MuiCard, IconButton, CardHeader } from '@mui/material'
 
-interface AllergyIconProps {
-  src: string
-  alt: string
-}
-
 export const CardStyled = styled(MuiCard)`
   background-color: ${theme.colors.blue25} !important;
   margin: 10px;
-  width:450px;
+  width: 450px;
   border: 1px solid ${theme.colors.blue175};
   border-radius: 20px !important;
   transition: max-width 0.3s ease-in-out;
@@ -22,25 +17,20 @@ export const CardStyled = styled(MuiCard)`
   @media (min-width: 532px) and (max-width: 842px) {
     margin: -100px;
     bottom: -100px;
-    transform: scale(0.5)!important;
+    transform: scale(0.5) !important;
     font-size: 14px !important;
   }
 
   @media (min-width: 0px) and (max-width: 532px) {
-   
-    margin: -170px!important;
-    bottom: -250px!important;
-    transform: scale(0.3)!important;
-  
-   
+    margin: -170px !important;
+    bottom: -250px !important;
+    transform: scale(0.3) !important;
   }
-
 `
-
-
-
-
-
+interface AllergyIconProps {
+  src: string
+  alt: string
+}
 export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-top: 10px;
   margin-bottom: -18px;
@@ -73,14 +63,11 @@ export const CardHeaderStyled = styled(CardHeader)`
 export const IconDetailsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 `
-export const TimeIconContainer = styled.span``
-
 export const DiningIconContainer = styled.span`
-  margin-left: 8px;
+  transform: scale(0.8);
 `
-
 export const Description = styled(Typography)`
   text-overflow: ellipsis;
   overflow: hidden;

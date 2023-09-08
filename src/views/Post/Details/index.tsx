@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
 import IngredientIcon from '@mui/icons-material/EggOutlined'
-import DifficultyIcon from '@mui/icons-material/TuneOutlined'
+import BarChartIcon from '@mui/icons-material/TuneOutlined'
 import Footer from '../../../components/Footer'
 import ImageBackground from '../../../components/ImageBackground'
 import * as S from './styles'
@@ -28,7 +28,7 @@ const Details: FC<Props> = ({ post }) => {
               <TimeIcon /> {post?.duration} min
             </S.InformationOption>
             <S.InformationOption>
-              <DifficultyIcon /> {post?.difficulty}
+              <BarChartIcon /> {post?.difficulty}
             </S.InformationOption>
             <S.InformationOption>
               <DiningIcon /> {post?.diners} Persons
