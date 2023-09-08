@@ -5,6 +5,7 @@ import Details from './Details'
 import useLogic from './logic'
 import { FormContainer } from './styles'
 import type { Props } from './types'
+import ImageBackground from '../../components/ImageBackground'
 
 const PostDetailsView: FC<Props> = ({ onLogout }) => {
   const { post, isLoading, isEdit, InitialValues, handleEditPost } = useLogic()
@@ -23,6 +24,7 @@ const PostDetailsView: FC<Props> = ({ onLogout }) => {
       ) : (
         <Details post={post} />
       )}
+      <ImageBackground imageSrc="/post.jpg" />
     </>
   )
 }
