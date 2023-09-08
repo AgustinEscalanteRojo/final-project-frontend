@@ -9,6 +9,8 @@ import {
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
 import RepeatIcon from '@mui/icons-material/Repeat'
 import DeleteIcon from '@mui/icons-material/Delete'
+import RestaurantIcon from '@mui/icons-material/Restaurant'
+import BarChartIcon from '@mui/icons-material/BarChart'
 import EditIcon from '@mui/icons-material/Edit'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import { allergyIcons } from '../../common/constants'
@@ -19,7 +21,6 @@ import {
   DetailsIconButton,
   CardHeaderStyled,
   IconDetailsContainer,
-  TimeIconContainer,
   DiningIconContainer,
   Description,
   Image,
@@ -29,11 +30,7 @@ import {
 import type { Props } from './types'
 import useLogic from './logic'
 
-const Card: FC<Props> = ({
-  onRemove,
-  post,
-  isCurrentUserCreator,
-}) => {
+const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
   const {
     handleGoToEditForm,
     handleDetailsClick,
@@ -65,14 +62,22 @@ const Card: FC<Props> = ({
         title={post.title}
         subheader={
           <IconDetailsContainer>
-            <TimeIconContainer>
+            <DiningIconContainer>
               <TimeIcon />
-            </TimeIconContainer>
+            </DiningIconContainer>
             {` ${post.duration}`}
             <DiningIconContainer>
               <DiningIcon />
             </DiningIconContainer>
             {` ${post.diners}`}
+            <DiningIconContainer>
+              <BarChartIcon />
+            </DiningIconContainer>
+            {` ${post.difficulty}`}
+            <DiningIconContainer>
+              <RestaurantIcon />
+            </DiningIconContainer>
+            {` ${post.type}`}
           </IconDetailsContainer>
         }
       />
