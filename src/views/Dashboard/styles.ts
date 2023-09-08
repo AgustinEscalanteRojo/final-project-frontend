@@ -18,6 +18,7 @@ export const ContainerUsers = styled.div`
   flex-direction: column;
   align-items: center;
   transform: scale(0.95);
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
 
   @media (min-width: 532px) and (max-width: 842px) {
     top: 0px;
@@ -69,6 +70,7 @@ export const ContainerFilters = styled.div`
   align-items: flex-start;
   background-color: ${theme.colors.transparentBlue};
   transform: scale(0.95);
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   @media (min-width: 10px) and (max-width: 842px) {
     top: 0px;
     left: -15px;
@@ -109,7 +111,6 @@ export const ContainerType = styled.div`
   transform: translateY(-50%);
   width: 200px;
   display: flex;
-
   transform: scale(0.78);
   flex-direction: column;
   align-items: flex-start;

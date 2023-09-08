@@ -26,6 +26,7 @@ import {
   Image,
   AllergyIconContainer,
   AllergyIcon,
+  TitleContainer,
 } from './style'
 import type { Props } from './types'
 import useLogic from './logic'
@@ -43,6 +44,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
 
   return (
     <CardStyled>
+      <TitleContainer onClick={handleDetailsClick}>{post.title}</TitleContainer>
       <CardHeaderStyled
         avatar={<Avatar aria-label="recipe"></Avatar>}
         action={
@@ -59,7 +61,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
             </>
           ) : null
         }
-        title={post.title}
+        // title={post.title}
         subheader={
           <IconDetailsContainer>
             <DiningIconContainer>
@@ -81,7 +83,11 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
           </IconDetailsContainer>
         }
       />
-      <Image src={post.mainImage} alt="Main of post with some data"  onClick={handleDetailsClick} />
+      <Image
+        src={post.mainImage}
+        alt="Main of post with some data"
+        onClick={handleDetailsClick}
+      />
       <CardContent>
         <Description variant="body2" color="text.secondary">
           {post.description}
