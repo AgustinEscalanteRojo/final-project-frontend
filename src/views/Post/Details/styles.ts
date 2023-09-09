@@ -1,16 +1,5 @@
 import styled from 'styled-components'
 
-export const IconDetailsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-left: 50px;
-`
-export const DiningIconContainer = styled.span`
-  transform: scale(0.8);
-  margin-left: 10px;
-`
-
 export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -23,7 +12,6 @@ export const DetailsContainer = styled.div`
     align-items: flex-start;
   }
 `
-
 export const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -38,44 +26,57 @@ export const Content = styled.div`
   }
 `
 
+
+
 export const MainImageContainer = styled.div`
+margin-top: 110px;
+  margin-left: 100px;
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 500px;
   border: 1px solid ${({ theme }) => theme.colors.blue175};
   background-color: ${({ theme }) => theme.colors.blue25};
-  box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
   border-radius: 20px !important;
-
-  @media (min-width: 769px) {
-    width: 45%;
-    margin-top: 150px;
-    margin-left: 100px;
-    margin-right: 0;
-  }
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
+  
 `
 
-export const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.oceanicTitleBlue};
-  font-size: 25px;
-  margin: 0;
-  padding: 10px;
+export const TitleContainer = styled.div`
+  font-size: 17px;
+  margin: 15px;
+  cursor: pointer;
+  font-weight: bold;
   text-align: center;
-  text-decoration-line: underline;
+  color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
+`
+
+export const IconDetailsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-left: 80px;
+  color: ${({ theme }) => theme.colors.greytitle};
+`
+export const DiningIconContainer = styled.span`
+  transform: scale(0.8);
+  margin-left: 10px;
+
 `
 
 export const MainImage = styled.img`
   align-self: center;
   border-radius: 12px;
-  border: 1.5px solid ${({ theme }) => theme.colors.lagoonMist};
-  box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
-  margin: 10px;
+  border: 1.5px solid ${({ theme }) => theme.colors.blue175};
+  margin: 7px;
   max-height: 20rem;
   width: 80%;
   object-fit: cover;
 `
+
+
+
 
 export const Information = styled.div`
   align-items: center;
@@ -130,47 +131,41 @@ export const ShortDescription = styled.p`
   color: ${({ theme }) => theme.colors.oceanicWriteBlue};
 `
 
+
+
+
+
+
+
 export const StepsContainer = styled.div`
+margin-top: 110px;
+  margin-left: 100px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 600px;
-  height: auto;
-  border: 1px solid ${({ theme }) => theme.colors.lagoonMist};
-  border-radius: 20px;
-  background-color: ${({ theme }) => theme.colors.softSky};
-  box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
-  margin-top: 20px;
-  margin-bottom: 25px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 500px;
+  border: 1px solid ${({ theme }) => theme.colors.blue175};
+  background-color: ${({ theme }) => theme.colors.blue25};
+  border-radius: 20px !important;
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
 
-  @media (min-width: 769px) {
-    width: 45%;
-    margin-top: 150px;
-    margin-right: 150px;
-  }
 `
-
 export const Steps = styled.div`
   display: flex;
   flex-flow: column;
 `
-
 export const Step = styled.div`
   color: ${({ theme }) => theme.colors.oceanicWriteBlue};
   text-align: left;
   font-size: 17px;
   font-weight: bold;
 `
-
 export const StepTitle = styled.h3`
   color: ${({ theme }) => theme.colors.oceanicTitleBlue};
   text-decoration: underline;
   margin-left: 30px;
   margin-bottom: 0px;
 `
-
 export const StepDescription = styled.p`
   font-size: 16px;
   font-weight: 600;
@@ -181,7 +176,6 @@ export const StepDescription = styled.p`
   margin-right: 30px;
   color: ${({ theme }) => theme.colors.oceanicWriteBlue};
 `
-
 export const StepImage = styled.img`
   align-self: center;
   border-radius: 3%;
