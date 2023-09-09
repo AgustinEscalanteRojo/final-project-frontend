@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const IconDetailsContainer = styled.div`
   display: flex;
   align-items: center;
@@ -11,7 +10,6 @@ export const DiningIconContainer = styled.span`
   transform: scale(0.8);
   margin-left: 10px;
 `
-
 
 export const DetailsContainer = styled.div`
   display: flex;
@@ -46,7 +44,7 @@ export const MainImageContainer = styled.div`
   width: 100%;
   max-width: 500px;
   border: 1px solid ${({ theme }) => theme.colors.blue175};
-  background-color: ${({ theme }) =>theme.colors.blue25};
+  background-color: ${({ theme }) => theme.colors.blue25};
   box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
   border-radius: 20px !important;
 
