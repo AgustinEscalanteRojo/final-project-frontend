@@ -37,8 +37,8 @@ import {
 import type { Props } from './types'
 
 const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
-  const titleEdit = 'EDIT YOUR RECIPE';
-  const titleCreate = 'CREATE YOUR NEW RECIPE';
+  const titleEdit = 'EDIT YOUR RECIPE'
+  const titleCreate = 'CREATE YOUR NEW RECIPE'
   return (
     <Formik
       initialValues={initialValues || DefaultInitialValues}
@@ -109,7 +109,6 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
               onChange={handleChange}
               fullWidth
             />
-
             <FormControl fullWidth>
               {(values?.ingredients || []).map((ingredient, index) => (
                 <FormControlIngredients key={index}>
