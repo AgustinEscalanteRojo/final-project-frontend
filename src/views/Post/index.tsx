@@ -6,7 +6,6 @@ import useLogic from './logic'
 import { FormContainer } from './styles'
 import type { Props } from './types'
 
-
 const PostDetailsView: FC<Props> = ({ onLogout }) => {
   const { post, isLoading, isEdit, InitialValues, handleEditPost } = useLogic()
 
@@ -24,7 +23,6 @@ const PostDetailsView: FC<Props> = ({ onLogout }) => {
       ) : (
         <Details post={post} />
       )}
-
     </>
   )
 }

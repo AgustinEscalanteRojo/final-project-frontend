@@ -7,8 +7,7 @@ import PlusIcon from '@mui/icons-material/AddBoxOutlined'
 
 export const Container = styled.header`
   display: flex;
-  background-color: ${theme.colors.black};
-  border-bottom: 2px solid ${theme.colors.blue25};
+  background-color: ${theme.colors.grey800};
   width: 100vw;
   position: fixed;
   z-index: 2;
@@ -36,12 +35,8 @@ export const DeskButtonController = styled.div`
 export const LogoDeskContainer = styled.div`
   border-radius: 4px;
   align-self: center;
-
-  &:hover,
-  &:active {
-    box-shadow: 0px 0px 5px 0.5px ${theme.colors.softSky};
-  }
-
+  transform: scale(0.9);
+  
   @media (min-width: 768px) {
     width: auto;
     height: auto;

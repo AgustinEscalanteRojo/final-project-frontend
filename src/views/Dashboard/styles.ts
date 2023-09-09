@@ -131,6 +131,7 @@ export const ButtonStyled = styled(Button)`
 export const Typography = styled.div`
   margin-left: 10px;
   font-weight: bold;
+  color: #333;
 `
 export const Container = styled.div`
   display: flex;
@@ -202,12 +203,13 @@ export const AllergyIconContainer = styled.div`
   align-items: center;
 `
 export const IconButtonStyled = styled(IconButton)`
-  border: 3px solid ${theme.colors.blue225} !important;
+  border: 2px solid ${theme.colors.blue225} !important;
   border-radius: 20%;
-  top: -20px;
+  top: -25px;
   width: 30px;
   height: 30px;
   background-color: ${theme.colors.black};
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1) !important;
 `
 export const ButtonController = styled.div`
   display: flex;
