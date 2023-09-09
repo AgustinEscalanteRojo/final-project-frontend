@@ -17,6 +17,9 @@ export const Title = styled(Typography)`
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px !important;
 `
+export const TypographyStyle = styled(Typography)`
+  margin-bottom: 10px !important;
+`
 export const TextField = styled(DefaultTextField)`
   margin-top: 26px !important;
 `
@@ -25,25 +28,23 @@ export const FormControlStyle = styled.div`
   display: flex !important;
   justify-content: center !important;
 `
-
 export const FormControlIngredients = styled.div`
   display: flex !important;
   align-items: center !important;
 `
-
 export const FormAllergieslStyle = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
   padding: 10px;
-
+  color: ${({ theme }) => theme.colors.greytitle};
   @media (min-width: 1px) and (max-width: 842px) {
-    font-size: 14px!important;
+    font-size: 14px !important;
   }
-`;
-
+`
 export const ContainerIcons = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 180px;
 `
 export const ImgIcons = styled.img`
   width: 25%;

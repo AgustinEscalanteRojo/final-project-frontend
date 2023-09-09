@@ -17,7 +17,7 @@ export const TitleContainer = styled.div`
   text-transform: uppercase;
 `
 export const CardStyled = styled(MuiCard)`
-  background-color: ${theme.colors.blue25} !important;
+  background-color: ${({ theme }) => theme.colors.blue25} !important;
   margin: 10px;
   width: 450px;
   border: 1px solid ${theme.colors.blue175};

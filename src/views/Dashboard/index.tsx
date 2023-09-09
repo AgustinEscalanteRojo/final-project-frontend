@@ -1,4 +1,4 @@
-import { FC, memo} from 'react'
+import { FC, memo } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'

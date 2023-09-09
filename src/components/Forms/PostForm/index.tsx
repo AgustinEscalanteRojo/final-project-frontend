@@ -8,6 +8,7 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  Typography,
 } from '@mui/material'
 import {
   allergiesOptions,
@@ -33,6 +34,7 @@ import {
   ContainerIcons,
   ImgIcons,
   FormAllergieslStyle,
+  TypographyStyle,
 } from './styles'
 import type { Props } from './types'
 
@@ -181,10 +183,11 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
               </ButtonAddIngredient>
             </FormControl>
             <FormAllergieslStyle>
+              <TypographyStyle> Allergies </TypographyStyle>
               <FormControl fullWidth>
                 <Grid container spacing={2}>
                   {allergiesOptions.map((allergy) => (
-                    <Grid item xs={4} key={allergy}>
+                    <Grid item xs={6} key={allergy}>
                       <FormControlLabel
                         control={
                           <Checkbox

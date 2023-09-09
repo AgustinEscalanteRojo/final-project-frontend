@@ -68,7 +68,7 @@ export const ContainerFilters = styled.div`
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
-  background-color: ${({ theme }) => theme.colors.transparentBlue};
+  background-color: ${({ theme }) => theme.colors.transparentWhite2};
   transform: scale(0.95);
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   @media (min-width: 10px) and (max-width: 842px) {
