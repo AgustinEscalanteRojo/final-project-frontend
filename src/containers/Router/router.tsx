@@ -17,6 +17,7 @@ import Faq from '../../views/Faq'
 import NotFound from '../../views/NotFound'
 import UserDetailsPage from '../../views/UserDetailsPage'
 import { getToken } from '../../services/storage/token'
+import { CircularProgress } from '@material-ui/core'
 
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -25,18 +26,29 @@ const Router: FC = () => {
     setIsLoading(true)
     setTimeout(() => {
       setIsLoading(false)
-    }, 1000)
+    }, 3000)
   }, [])
 
   const recreateLogOut = useCallback(() => {
     setIsLoading(true)
     setTimeout(() => {
       setIsLoading(false)
-    }, 1000)
+    }, 3000)
   }, [])
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100vh',
+        }}
+      >
+        <CircularProgress color="primary" />
+      </div>
+    )
   }
 
   const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {

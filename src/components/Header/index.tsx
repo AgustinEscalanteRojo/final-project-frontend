@@ -28,7 +28,7 @@ const Header: FC<Props> = ({ onLogout }) => {
   }, [navigate])
 
   const handleGoToPost = useCallback(() => {
-    navigate('/create-post')
+    navigate('/postform')
   }, [navigate])
 
   const handleGoToProfile = useCallback(() => {

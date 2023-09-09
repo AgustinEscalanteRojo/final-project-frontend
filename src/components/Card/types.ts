@@ -1,5 +1,4 @@
 import type { Post } from '../../models/Post'
-import { User } from '../../models/User'
 
 export type Props = {
   isCurrentUserCreator: boolean
@@ -7,4 +6,8 @@ export type Props = {
   onClick?: () => void
   onRemove?: (postId: string) => void
   post: Post
+}
+export type AllergyIconProps = {
+  src: string
+  alt: string
 }

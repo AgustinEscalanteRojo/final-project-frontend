@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 import theme from '../../styles/theme'
 
 export const ContainerUsers = styled.div`
-  border: 1px solid ${theme.colors.blue175};
+  border: 1px solid ${({ theme }) => theme.colors.blue175};
   border-radius: 30px;
   position: fixed;
   right: 15px;
@@ -18,6 +18,7 @@ export const ContainerUsers = styled.div`
   flex-direction: column;
   align-items: center;
   transform: scale(0.95);
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
 
   @media (min-width: 532px) and (max-width: 842px) {
     top: 0px;
@@ -44,12 +45,12 @@ export const UserCards = styled.div`
 
   &::-webkit-scrollbar-thumb {
     margin-right: 20px;
-    background-color: #888;
+    background-color: ${({ theme }) => theme.colors.grey};
     border-radius: 3px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
+    background-color: ${({ theme }) => theme.colors.grey900};
   }
 
   &::-webkit-scrollbar-track {
@@ -57,7 +58,7 @@ export const UserCards = styled.div`
   }
 `
 export const ContainerFilters = styled.div`
-  border: 1px solid ${theme.colors.blue175};
+  border: 1px solid ${({ theme }) => theme.colors.blue175};
   border-radius: 30px;
   position: fixed;
   left: 15px;
@@ -67,8 +68,9 @@ export const ContainerFilters = styled.div`
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
-  background-color: ${theme.colors.transparentBlue};
+  background-color: ${({ theme }) => theme.colors.transparentWhite2};
   transform: scale(0.95);
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   @media (min-width: 10px) and (max-width: 842px) {
     top: 0px;
     left: -15px;
@@ -109,7 +111,6 @@ export const ContainerType = styled.div`
   transform: translateY(-50%);
   width: 200px;
   display: flex;
-
   transform: scale(0.78);
   flex-direction: column;
   align-items: flex-start;
@@ -118,18 +119,18 @@ export const ButtonStyled = styled(Button)`
   top: 10px;
   transform: scale(0.6);
   background-color: transparent !important;
-  color: ${theme.colors.black} !important;
+  color: ${({ theme }) => theme.colors.black}!important;
   display: flex;
   align-items: center;
   justify-content: center;
   width: auto !important;
   padding: 0 !important;
-
   outline: none !important;
 `
 export const Typography = styled.div`
   margin-left: 10px;
   font-weight: bold;
+  color: ${({ theme }) => theme.colors.greytitle};
 `
 export const Container = styled.div`
   display: flex;
@@ -144,7 +145,6 @@ export const Container = styled.div`
 export const DifficultyOption = styled.div`
   display: flex;
   align-items: center;
-
   margin-bottom: -10px;
 `
 export const StyledCheckboxDifficulty = styled(Checkbox)`
@@ -157,13 +157,11 @@ export const DifficultyLabel = styled.label`
 export const DifficultyIconContainer = styled.div`
   width: 120px;
   display: flex;
-
   align-items: center;
 `
 export const TypeOption = styled.div`
   display: flex;
   align-items: center;
-
   margin-bottom: -10px;
 `
 export const StyledCheckboxType = styled(Checkbox)`
@@ -201,12 +199,13 @@ export const AllergyIconContainer = styled.div`
   align-items: center;
 `
 export const IconButtonStyled = styled(IconButton)`
-  border: 3px solid ${theme.colors.blue225} !important;
+  border: 2px solid ${theme.colors.blue225} !important;
   border-radius: 20%;
-  top: -20px;
+  top: -25px;
   width: 30px;
   height: 30px;
-  background-color: ${theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.transparentWhite}!important;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1) !important;
 `
 export const ButtonController = styled.div`
   display: flex;

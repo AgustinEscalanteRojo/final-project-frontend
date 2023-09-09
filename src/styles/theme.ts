@@ -54,11 +54,14 @@ const theme = {
     grey500: '#819098',
     grey600: '#757575',
     grey700: '#9E9E9E',
-    grey800: '#424242',
-    grey900: '#6E7A76',
+    grey800: '#111',
+    grey900: '#5E7A79',
+    grey: '#808080',
+    greytitle: '#555',
 
     // Transparent Colors (RGBA)
-    transparentWhite: 'rgba(255, 255, 255, 0.4)',
+    transparentWhite: 'rgba(255, 255, 255, 0.5)',
+    transparentWhite2: 'rgba(255, 255, 255, 0.2)',
     transparentBlack: 'rgba(0, 0, 0, 0.5)',
     transparentBlue: 'rgba(23, 147, 192, 0.05)',
     transparentGrey: 'rgba(129, 144, 152, 0.9)',

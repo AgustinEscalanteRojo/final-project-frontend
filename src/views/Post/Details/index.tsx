@@ -1,8 +1,9 @@
 import { FC, memo } from 'react'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
+import RestaurantIcon from '@mui/icons-material/Restaurant'
 import IngredientIcon from '@mui/icons-material/EggOutlined'
-import DifficultyIcon from '@mui/icons-material/TuneOutlined'
+import BarChartIcon from '@mui/icons-material/TuneOutlined'
 import Footer from '../../../components/Footer'
 import ImageBackground from '../../../components/ImageBackground'
 import * as S from './styles'
@@ -23,17 +24,24 @@ const Details: FC<Props> = ({ post }) => {
             src={post?.mainImage || defaultImage}
             alt="Añadir descripción basica"
           />
-          <S.Information>
-            <S.InformationOption>
-              <TimeIcon /> {post?.duration} min
-            </S.InformationOption>
-            <S.InformationOption>
-              <DifficultyIcon /> {post?.difficulty}
-            </S.InformationOption>
-            <S.InformationOption>
-              <DiningIcon /> {post?.diners} Persons
-            </S.InformationOption>
-          </S.Information>
+          <S.IconDetailsContainer>
+            <S.DiningIconContainer>
+              <TimeIcon />
+            </S.DiningIconContainer>
+            {post?.duration}
+            <S.DiningIconContainer>
+              <DiningIcon />
+            </S.DiningIconContainer>
+            {post?.diners}
+            <S.DiningIconContainer>
+              <BarChartIcon />
+            </S.DiningIconContainer>
+            {post?.difficulty}
+            <S.DiningIconContainer>
+              <RestaurantIcon />
+            </S.DiningIconContainer>
+            {post?.type}
+          </S.IconDetailsContainer>
           <S.IngredientTitle>
             <IngredientIcon />
             Ingredientes:

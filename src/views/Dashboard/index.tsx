@@ -1,4 +1,4 @@
-import { FC, memo} from 'react'
+import { FC, memo } from 'react'
 import AddIcon from '@mui/icons-material/Add'
 import ImageBackground from '../../components/ImageBackground'
 import Header from '../../components/Header'
@@ -33,7 +33,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           color="primary"
           aria-label="add new post"
         >
-          <AddIcon fontSize="medium" style={{ color: 'black' }} /> {}
+          <AddIcon fontSize="medium" style={{ color: 'grey' }} /> {}
         </S.IconButtonStyled>
       </S.ButtonController>
       <S.Cards>
@@ -47,7 +47,9 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
         ))}
       </S.Cards>
 
+
       <Filters onSubmit={handleFilter} />
+
 
       <S.ContainerUsers>
         <S.UserCards>
