@@ -9,6 +9,7 @@ import { AllergyIconProps } from './types'
 export const TitleContainer = styled.div`
   font-size: 17px;
   margin-top: 12px;
+  margin-bottom: -10px;
   cursor: pointer;
   font-weight: bold;
   text-align: center;
@@ -43,6 +44,7 @@ export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-bottom: -18px;
   width: 24px;
   height: 24px;
+  margin-bottom: -25px;
 `
 export const AllergyIconContainer = styled.div`
   display: flex;
@@ -55,6 +57,7 @@ export const Image = styled.img`
   object-fit: contain;
   width: 100%;
   cursor: pointer;
+  margin-bottom: -15px;
 `
 export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
   color: ${(props) => (props.isLike ? 'red' : 'grey')};
@@ -67,14 +70,17 @@ export const DetailsIconButton = styled(IconButton)``
 export const CardHeaderStyled = styled(CardHeader)`
   font-size: 24px !important;
   font-weight: bold !important;
+  margin-bottom: -15px;
 `
 export const IconDetailsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 11px;
+  
 `
 export const DiningIconContainer = styled.span`
   transform: scale(0.8);
+  margin-right: -10px;
 `
 export const Description = styled(Typography)`
   text-overflow: ellipsis;

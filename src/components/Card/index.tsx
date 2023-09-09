@@ -61,7 +61,6 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
             </>
           ) : null
         }
-        // title={post.title}
         subheader={
           <IconDetailsContainer>
             <DiningIconContainer>

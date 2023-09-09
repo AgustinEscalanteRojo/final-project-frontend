@@ -18,7 +18,7 @@ export const Container = styled.footer`
 `
 
 export const Content = styled.div`
-  background-color: ${theme.colors.black};
+  background-color: ${theme.colors.grey800};
   display: flex;
   justify-content: center;
   align-items: stretch;

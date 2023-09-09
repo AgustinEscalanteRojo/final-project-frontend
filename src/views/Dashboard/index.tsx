@@ -39,7 +39,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           color="primary"
           aria-label="add new post"
         >
-          <AddIcon fontSize="medium" style={{ color: 'black' }} /> {}
+          <AddIcon fontSize="medium" style={{ color: 'grey' }} /> {}
         </S.IconButtonStyled>
       </S.ButtonController>
       <S.Cards>
@@ -52,7 +52,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           />
         ))}
       </S.Cards>
-
       <S.ContainerFilters>
         <S.ContainerAllergies>
           <S.Typography> Allergies </S.Typography>
@@ -102,7 +101,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           ))}
         </S.ContainerType>
       </S.ContainerFilters>
-      
       <S.ContainerUsers>
         <S.UserCards>
           {users?.map((user, index) => <UserCard key={index} user={user} />)}
