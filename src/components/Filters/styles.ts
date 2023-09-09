@@ -1,19 +1,20 @@
 import styled from 'styled-components'
-import theme from '../../styles/theme'
 import Checkbox from '@mui/material/Checkbox'
 
 export const ContainerFilters = styled.div`
-  border: 1px solid ${theme.colors.blue175};
+  border: 1px solid ${({ theme }) => theme.colors.blue175};
   border-radius: 30px;
   position: fixed;
-  left: 18px;
-  top: 100px;
+  left: 15px;
+  top: 85px;
   width: 150px;
   height: 595px;
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
-  background-color: ${theme.colors.transparentBlue};
+  background-color: ${({ theme }) => theme.colors.transparentWhite2};
+  transform: scale(0.95);
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   @media (min-width: 10px) and (max-width: 842px) {
     top: 0px;
     left: -15px;
@@ -25,10 +26,9 @@ export const ContainerFilters = styled.div`
     transform: scale(0.4) !important;
   }
 `
-
 export const ContainerAllergies = styled.div`
   position: fixed;
-  left: 15px;
+  left: 7px;
   margin-top: -55px;
   transform: translateY(-50%);
   width: 200px;
@@ -39,7 +39,7 @@ export const ContainerAllergies = styled.div`
 `
 export const ContainerDifficulty = styled.div`
   position: fixed;
-  left: 15px;
+  left: 7px;
   margin-top: 372px;
   transform: translateY(-50%);
   width: 200px;
@@ -50,22 +50,20 @@ export const ContainerDifficulty = styled.div`
 `
 export const ContainerType = styled.div`
   position: fixed;
-  left: 15px;
+  left: 7px;
   margin-top: 487px;
   transform: translateY(-50%);
   width: 200px;
   display: flex;
-
   transform: scale(0.78);
   flex-direction: column;
   align-items: flex-start;
 `
-
 export const Typography = styled.div`
   margin-left: 10px;
   font-weight: bold;
+  color: ${({ theme }) => theme.colors.greytitle};
 `
-
 export const StyledCheckbox = styled(Checkbox)`
   transform: scale(0.7);
 `
@@ -74,14 +72,11 @@ export const AllergyOption = styled.div`
   align-items: center;
   margin-bottom: -10px;
 `
-
 export const DifficultyOption = styled.div`
   display: flex;
   align-items: center;
-
   margin-bottom: -10px;
 `
-
 export const StyledCheckboxDifficulty = styled(Checkbox)`
   transform: scale(0.7);
 `
@@ -115,13 +110,11 @@ export const DifficultyLabel = styled.label`
 export const DifficultyIconContainer = styled.div`
   width: 120px;
   display: flex;
-
   align-items: center;
 `
 export const TypeOption = styled.div`
   display: flex;
   align-items: center;
-
   margin-bottom: -10px;
 `
 export const StyledCheckboxType = styled(Checkbox)`
