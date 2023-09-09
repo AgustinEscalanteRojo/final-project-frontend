@@ -32,12 +32,13 @@ import {
   StepsTitle,
   ContainerIcons,
   ImgIcons,
+  FormAllergieslStyle,
 } from './styles'
 import type { Props } from './types'
 
 const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
-  const titleEdit = 'Edit Your Recipe'
-  const titleCreate = 'Create Your New Recipe'
+  const titleEdit = 'EDIT YOUR RECIPE';
+  const titleCreate = 'CREATE YOUR NEW RECIPE';
   return (
     <Formik
       initialValues={initialValues || DefaultInitialValues}
@@ -180,7 +181,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
                 Add Ingredient
               </ButtonAddIngredient>
             </FormControl>
-            <FormControlStyle>
+            <FormAllergieslStyle>
               <FormControl fullWidth>
                 <Grid container spacing={2}>
                   {allergiesOptions.map((allergy) => (
@@ -210,7 +211,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
                   ))}
                 </Grid>
               </FormControl>
-            </FormControlStyle>
+            </FormAllergieslStyle>
             <FormControlStep>
               <FormControl fullWidth>
                 {(values?.steps || []).map((step, index) => (

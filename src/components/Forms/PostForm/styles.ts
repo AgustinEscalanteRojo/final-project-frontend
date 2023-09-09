@@ -5,7 +5,7 @@ import { Typography } from '@mui/material'
 import { Button } from '@mui/material'
 
 export const FormContainer = styled.div`
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
 `
 export const Title = styled(Typography)`
@@ -15,17 +15,31 @@ export const Title = styled(Typography)`
   color: ${({ theme }) => theme.colors.greytitle};
   margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px !important;
 `
 export const TextField = styled(DefaultTextField)`
   margin-top: 26px !important;
 `
 export const FormControlStyle = styled.div`
   margin-top: 26px !important;
+  display: flex !important;
+  justify-content: center !important;
 `
+
 export const FormControlIngredients = styled.div`
   display: flex !important;
   align-items: center !important;
 `
+
+export const FormAllergieslStyle = styled.div`
+  margin-top: 40px;
+  padding: 10px;
+
+  @media (min-width: 1px) and (max-width: 842px) {
+    font-size: 14px!important;
+  }
+`;
+
 export const ContainerIcons = styled.div`
   display: flex;
   align-items: center;
@@ -58,7 +72,6 @@ export const ButtonRemoveStep = styled(Button)`
   color: ${({ theme }) => theme.colors.red300}!important;
 `
 export const ButtonAddIngredient = styled(Button)`
-  
   color: ${({ theme }) => theme.colors.green500}!important;
   margin-top: 26px !important;
 `

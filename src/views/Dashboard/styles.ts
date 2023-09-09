@@ -204,7 +204,7 @@ export const IconButtonStyled = styled(IconButton)`
   top: -25px;
   width: 30px;
   height: 30px;
-  background-color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.transparentWhite}!important;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1) !important;
 `
 export const ButtonController = styled.div`
