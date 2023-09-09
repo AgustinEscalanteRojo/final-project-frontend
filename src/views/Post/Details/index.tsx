@@ -8,7 +8,6 @@ import Footer from '../../../components/Footer'
 import ImageBackground from '../../../components/ImageBackground'
 import * as S from './styles'
 import type { Props } from './types'
-import BackButton from '../../../components/BackButton'
 
 const Details: FC<Props> = ({ post }) => {
   const defaultImage =
@@ -16,15 +15,10 @@ const Details: FC<Props> = ({ post }) => {
 
   return (
     <S.DetailsContainer>
-      <BackButton />
       <S.Content>
         <S.MainImageContainer>
-          <S.Title>{post?.title}</S.Title>
-          <S.MainImage
-            src={post?.mainImage || defaultImage}
-            alt="Añadir descripción basica"
-          />
-          <S.IconDetailsContainer>
+        <S.TitleContainer>{post?.title}</S.TitleContainer>
+        <S.IconDetailsContainer>
             <S.DiningIconContainer>
               <TimeIcon />
             </S.DiningIconContainer>
@@ -42,6 +36,10 @@ const Details: FC<Props> = ({ post }) => {
             </S.DiningIconContainer>
             {post?.type}
           </S.IconDetailsContainer>
+          <S.MainImage
+            src={post?.mainImage || defaultImage}
+            alt="Añadir descripción basica"
+          />
           <S.IngredientTitle>
             <IngredientIcon />
             Ingredientes:
@@ -55,8 +53,10 @@ const Details: FC<Props> = ({ post }) => {
           </S.IngredientsList>
           <S.ShortDescription>{post?.description}</S.ShortDescription>
         </S.MainImageContainer>
+
+
         <S.StepsContainer>
-          <S.Title>Steps</S.Title>
+          <S.TitleContainer>Steps</S.TitleContainer>
           <S.Steps>
             {post?.steps.map((step) => (
               <S.Step key={step.title}>
