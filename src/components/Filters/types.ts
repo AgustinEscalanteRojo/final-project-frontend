@@ -1,6 +1,6 @@
-import type { PostFormFields } from '../../models/Post'
+import type { FiltersFormFields } from '../../models/Post'
 
 export type Props = {
-  onSubmit: (data: Partial<PostFormFields>) => void
-  initialValues?: Partial<PostFormFields>
+  initialValues?: FiltersFormFields
+  onSubmit: (values: FiltersFormFields) => void
 }

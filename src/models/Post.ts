@@ -72,6 +72,12 @@ export type PostFormFields = {
   mainImage?: string
 }
 
+export type FiltersFormFields = {
+  type: string
+  difficulty: string
+  allergies: string[]
+}
+
 export const normalizePost = (input: postResponse) => ({
   _id: input?._id || '',
   userId: input?.userId || '',

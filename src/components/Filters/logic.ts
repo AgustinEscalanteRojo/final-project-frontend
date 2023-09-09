@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { ChangeEvent, useState } from 'react'
-
+import { Post } from '../../models/Post'
 
 const useLogic = () => {
   const navigate = useNavigate()
@@ -8,7 +8,7 @@ const useLogic = () => {
   const [allergies, setAllergies] = useState<string[]>([])
   const [types, setTypes] = useState<string[]>([])
   const [difficultys, setdifficultys] = useState<string[]>([])
-
+  const [allPosts, setPosts] = useState<Post[]>([])
   const handleDifficultysChange = (
     event: ChangeEvent<HTMLInputElement>,
     difficulty: string
@@ -44,8 +44,6 @@ const useLogic = () => {
       setTypes(types.filter((a) => a !== type))
     }
   }
-
-
 
   return {
     allergies,

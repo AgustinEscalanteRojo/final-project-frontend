@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { getPosts, removePostById } from '../../services/api/post'
 import { getAllUsers, getMe } from '../../services/api/user'
-import type { Post } from '../../models/Post'
+import type { FiltersFormFields, Post, PostFormFields } from '../../models/Post'
 import type { User } from '../../models/User'
 
 const useLogic = () => {
@@ -94,7 +94,24 @@ const useLogic = () => {
     setPosts(filteredPosts)
   }, [])
 
+  const handleFilter = async (values: Partial<FiltersFormFields>) => {
+    const selectedType = values.type || ''
+    console.log(selectedType)
+    try {
+      const allPosts = await getPosts()
+
+      const filterPosts = allPosts.filter(
+        (post) => post.type === selectedType
+      )
+
+      setPosts(filterPosts)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return {
+    handleFilter,
     allergies,
     currentUser,
     difficultys,
