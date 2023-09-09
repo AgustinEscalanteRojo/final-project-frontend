@@ -1,5 +1,6 @@
-import { FC, memo } from 'react'
+import { FC, memo, useState } from 'react'
 import { Form, Formik } from 'formik'
+import { Button } from '@mui/material'
 import {
   allergiesOptions,
   allergyIcons,
@@ -10,6 +11,8 @@ import useLogic from './logic'
 import { DefaultInitialValues, ValidationSchema } from './constants'
 import * as S from './styles'
 import type { Props } from './types'
+import { FiltersFormFields, Post } from '../../models/Post'
+import { getPosts } from '../../services/api/post'
 
 const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
   const {
@@ -20,15 +23,42 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
     handleDifficultysChange,
     handleTypeChange,
   } = useLogic()
+
+  const [posts, setPosts] = useState<Post[]>([])
+
+  const handleButtonClick = () => {
+    console.log('click')
+  }
+
+
+    const handleFilter = async (values: Partial<FiltersFormFields>) => {
+      const selectedType = values.type || ''
+      console.log(selectedType)
+      try {
+        const allPosts = await getPosts()
+
+        const filteredPosts = allPosts.filter(
+          (post) => post.type === selectedType
+        )
+
+        setPosts(filteredPosts)
+        console.log(posts)
+        return posts  
+      
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
   return (
-    <Formik
-      initialValues={initialValues || DefaultInitialValues}
-      validationSchema={ValidationSchema}
-      onSubmit={onSubmit}
-    >
-      {({ handleSubmit, handleChange, values }) => (
-        <Form onSubmit={handleSubmit}>
-          <S.ContainerFilters>
+    <S.ContainerFilters>
+      <Formik
+        initialValues={initialValues || DefaultInitialValues}
+        validationSchema={ValidationSchema}
+        onSubmit={onSubmit}
+      >
+        {({ handleSubmit, handleChange, values }) => (
+          <Form onSubmit={handleSubmit}>
             <S.ContainerAllergies>
               <S.Typography> Allergies </S.Typography>
               {allergiesOptions.map((allergy) => (
@@ -84,10 +114,21 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
                 </S.TypeOption>
               ))}
             </S.ContainerType>
-          </S.ContainerFilters>
-        </Form>
-      )}
-    </Formik>
+            <Button
+              type="submit"
+              style={{
+                backgroundColor: 'blue',
+                color: 'white',
+                marginTop: '600px',
+              }}
+              onClick={handleFilter}
+            >
+              Filter by
+            </Button>
+          </Form>
+        )}
+      </Formik>
+    </S.ContainerFilters>
   )
 }
 export default memo(Filters)
