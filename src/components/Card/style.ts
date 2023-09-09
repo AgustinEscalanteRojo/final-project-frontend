@@ -13,7 +13,7 @@ export const TitleContainer = styled.div`
   cursor: pointer;
   font-weight: bold;
   text-align: center;
-  color: grey;
+  color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
 `
 export const CardStyled = styled(MuiCard)`
@@ -76,7 +76,6 @@ export const IconDetailsContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 11px;
-  
 `
 export const DiningIconContainer = styled.span`
   transform: scale(0.8);
