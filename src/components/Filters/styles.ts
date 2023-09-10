@@ -5,17 +5,16 @@ export const ContainerFilters = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.blue175};
   border-radius: 30px;
   position: fixed;
-  left: 15px;
-  top: 85px;
+  left: 19px;
+  top: 104px;
   width: 150px;
   height: 595px;
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
   background-color: ${({ theme }) => theme.colors.transparentWhite2};
-  transform: scale(0.95);
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
-  @media (min-width: 10px) and (max-width: 842px) {
+  @media (min-width: 10px) and (max-width: 927px) {
     top: 0px;
     left: -15px;
     transform: scale(0.7);
@@ -28,7 +27,7 @@ export const ContainerFilters = styled.div`
 `
 export const ContainerAllergies = styled.div`
   position: fixed;
-  left: 7px;
+  left: 20px;
   margin-top: -55px;
   transform: translateY(-50%);
   width: 200px;
@@ -39,7 +38,7 @@ export const ContainerAllergies = styled.div`
 `
 export const ContainerDifficulty = styled.div`
   position: fixed;
-  left: 7px;
+  left: 20px;
   margin-top: 372px;
   transform: translateY(-50%);
   width: 200px;
@@ -50,7 +49,7 @@ export const ContainerDifficulty = styled.div`
 `
 export const ContainerType = styled.div`
   position: fixed;
-  left: 7px;
+  left: 20px;
   margin-top: 487px;
   transform: translateY(-50%);
   width: 200px;

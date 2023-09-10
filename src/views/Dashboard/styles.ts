@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Checkbox from '@mui/material/Checkbox'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import theme from '../../styles/theme'
@@ -8,8 +7,8 @@ export const ContainerUsers = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.blue175};
   border-radius: 30px;
   position: fixed;
-  right: 15px;
-  top: 85px;
+  right: 19px;
+  top: 104px;
   width: 150px;
   height: 595px;
   padding: 20px;
@@ -17,10 +16,9 @@ export const ContainerUsers = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform: scale(0.95);
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
 
-  @media (min-width: 532px) and (max-width: 842px) {
+  @media (min-width: 532px) and (max-width: 927px) {
     top: 0px;
     right: -15px;
     transform: scale(0.7);
@@ -29,6 +27,21 @@ export const ContainerUsers = styled.div`
     top: -110px !important;
     right: -45px !important;
     transform: scale(0.4) !important;
+  }
+`
+export const Cards = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: -50px;
+  justify-content: center;
+  max-width: 1000px;
+
+  @media (max-width: 1490px) {
+    grid-template-columns: 1fr;
+    bottom: -50px;
+  }
+  @media (min-width: 0px) and (max-width: 532px) {
+    margin-top: -17px !important;
   }
 `
 export const UserCards = styled.div`
@@ -82,7 +95,7 @@ export const Container = styled.div`
 export const IconButtonStyled = styled(IconButton)`
   border: 2px solid ${theme.colors.blue225} !important;
   border-radius: 20%;
-  top: -25px;
+  top: -45px;
   width: 30px;
   height: 30px;
   background-color: ${({ theme }) => theme.colors.transparentWhite}!important;
@@ -92,26 +105,12 @@ export const ButtonController = styled.div`
   display: flex;
   flex-flow: row wrap;
   gap: 10px;
-  margin-top: 140px;
+  margin-top: 150px;
   margin-bottom: 10px;
 
-  @media (min-width: 200px) and (max-width: 842px) {
-    margin-top: 90px;
+  @media (min-width: 200px) and (max-width: 927px) {
+    margin-top: 120px;
     transform: scale(0.6) !important;
   }
 `
-export const Cards = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: -50px;
-  justify-content: center;
-  max-width: 1000px;
 
-  @media (max-width: 1317px) {
-    grid-template-columns: 1fr;
-    bottom: -50px;
-  }
-  @media (min-width: 0px) and (max-width: 532px) {
-    margin: -27px !important;
-  }
-`
