@@ -18,15 +18,16 @@ export const TitleContainer = styled.div`
 `
 export const CardStyled = styled(MuiCard)`
   background-color: ${({ theme }) => theme.colors.blue25} !important;
-  margin: 10px;
+  margin: 50px;
   width: 450px;
   border: 1px solid ${theme.colors.blue175};
   border-radius: 20px !important;
   transition: max-width 0.3s ease-in-out;
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
-  transform: scale(0.9);
+  transform: scale(1.1);
 
-  @media (min-width: 532px) and (max-width: 842px) {
+  @media (min-width: 532px) and (max-width: 927px) {
+    top: 20px;
     margin: -100px;
     bottom: -100px;
     transform: scale(0.5) !important;
@@ -34,8 +35,7 @@ export const CardStyled = styled(MuiCard)`
   }
 
   @media (min-width: 0px) and (max-width: 532px) {
-    margin: -170px !important;
-    bottom: -250px !important;
+    margin: -150px !important;
     transform: scale(0.3) !important;
   }
 `
@@ -52,13 +52,15 @@ export const AllergyIconContainer = styled.div`
   gap: 8px;
 `
 export const Image = styled.img`
+margin-top: 10px;
+
   display: block;
-  height: 20rem;
-  object-fit: contain;
-  width: 100%;
+  max-width: 100%;
+  max-height: 15rem; 
+  width: 100%; 
+  object-fit: cover; 
   cursor: pointer;
-  margin-bottom: -15px;
-`
+`;
 export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
   color: ${(props) => (props.isLike ? 'red' : 'grey')};
 `
