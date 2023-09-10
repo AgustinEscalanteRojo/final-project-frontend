@@ -5,12 +5,12 @@ import theme from '../../styles/theme'
 
 export const ContainerUsers = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.blue175};
-  border-radius: 30px;
+  border-radius: 15px;
   position: fixed;
   right: 19px;
   top: 104px;
   width: 150px;
-  height: 595px;
+  height: 665px;
   padding: 20px;
   background-color: ${theme.colors.transparentWhite};
   display: flex;
@@ -33,6 +33,7 @@ export const Cards = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: -50px;
+  margin-bottom: 50px;
   justify-content: center;
   max-width: 1000px;
 
@@ -72,14 +73,13 @@ export const UserCards = styled.div`
 `
 export const ButtonStyled = styled(Button)`
   top: 10px;
-  transform: scale(0.6);
+  transform: scale(0.7);
   background-color: transparent !important;
   color: ${({ theme }) => theme.colors.black}!important;
   display: flex;
   align-items: center;
   justify-content: center;
   width: auto !important;
-  padding: 0 !important;
   outline: none !important;
 `
 export const Container = styled.div`

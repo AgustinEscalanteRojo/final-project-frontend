@@ -12,15 +12,11 @@ import Filters from '../../components/Filters'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const {
-
     currentUser,
-
     handleGoToPost,
     handleRemovePost,
-
     posts,
     users,
-
     handleFilter,
   } = useLogic()
 
@@ -33,7 +29,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           color="primary"
           aria-label="add new post"
         >
-          <AddIcon fontSize="medium"/> {}
+          <AddIcon fontSize="medium" /> {}
         </S.IconButtonStyled>
       </S.ButtonController>
       <S.Cards>
@@ -46,11 +42,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           />
         ))}
       </S.Cards>
-
-
       <Filters onSubmit={handleFilter} />
-
-
       <S.ContainerUsers>
         <S.UserCards>
           {users?.map((user, index) => <UserCard key={index} user={user} />)}

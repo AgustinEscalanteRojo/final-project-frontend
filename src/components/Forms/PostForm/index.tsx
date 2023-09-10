@@ -8,7 +8,6 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Typography,
 } from '@mui/material'
 import {
   allergiesOptions,
