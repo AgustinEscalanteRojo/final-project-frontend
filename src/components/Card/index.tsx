@@ -30,6 +30,7 @@ import {
 } from './style'
 import type { Props } from './types'
 import useLogic from './logic'
+import UserCard from '../UserCard'
 
 const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
   const {
@@ -40,13 +41,20 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     handleOnRemove,
     isLike,
     isFav,
+    creatorUser,
   } = useLogic(post, onRemove)
 
   return (
     <CardStyled>
       <TitleContainer onClick={handleDetailsClick}>{post.title}</TitleContainer>
       <CardHeaderStyled
-        avatar={<Avatar aria-label="recipe"></Avatar>}
+        avatar={
+          <Avatar aria-label="recipe">
+            {creatorUser
+              ? creatorUser.username.charAt(0).toUpperCase()
+              : post.userId.charAt(0)}
+          </Avatar>
+        }
         action={
           isCurrentUserCreator ? (
             <>
