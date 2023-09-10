@@ -52,15 +52,15 @@ export const AllergyIconContainer = styled.div`
   gap: 8px;
 `
 export const Image = styled.img`
-margin-top: 10px;
+  margin-top: 10px;
 
   display: block;
   max-width: 100%;
-  max-height: 15rem; 
-  width: 100%; 
-  object-fit: cover; 
+  max-height: 15rem;
+  width: 100%;
+  object-fit: cover;
   cursor: pointer;
-`;
+`
 export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
   color: ${(props) => (props.isLike ? 'red' : 'grey')};
 `
@@ -88,3 +88,4 @@ export const Description = styled(Typography)`
   overflow: hidden;
   white-space: nowrap;
 `
+export const UsernameContainer = styled.span``

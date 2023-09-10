@@ -7,6 +7,7 @@ import Footer from '../../../components/Footer'
 import ImageBackground from '../../../components/ImageBackground'
 import * as S from './styles'
 import type { Props } from './types'
+import { allergyIcons } from '../../../common/constants'
 
 const Details: FC<Props> = ({ post }) => {
   const defaultImage =
@@ -47,6 +48,16 @@ const Details: FC<Props> = ({ post }) => {
               </S.IngredientListOption>
             ))}
           </S.IngredientsList>
+          <S.AllergyTitle>Allergies</S.AllergyTitle>
+          <S.AllergyIconContainer>
+            {post?.allergies.map((allergy, index) => (
+              <S.AllergyIcon
+                key={index}
+                src={allergyIcons[allergy]}
+                alt={allergy}
+              />
+            ))}
+          </S.AllergyIconContainer>
           <S.Description>{post?.description}</S.Description>
         </S.ImageContainer>
         <S.StepsContainer>

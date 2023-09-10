@@ -27,10 +27,10 @@ import {
   AllergyIconContainer,
   AllergyIcon,
   TitleContainer,
+  UsernameContainer,
 } from './style'
 import type { Props } from './types'
 import useLogic from './logic'
-import UserCard from '../UserCard'
 
 const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
   const {
@@ -71,6 +71,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
         }
         subheader={
           <IconDetailsContainer>
+            <UsernameContainer>{creatorUser?.username}</UsernameContainer>
             <DiningIconContainer>
               <TimeIcon />
             </DiningIconContainer>

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { AllergyIconProps } from './types'
 
 export const DetailsContainer = styled.div`
   display: flex;
@@ -119,4 +120,24 @@ export const StepDescription = styled.p`
   margin-top: -10px;
   margin-right: 30px;
   color: ${({ theme }) => theme.colors.grey};
+`
+export const AllergyIcon = styled.img<AllergyIconProps>`
+  margin-top: 10px;
+  margin-bottom: -18px;
+  width: 24px;
+  height: 24px;
+  margin-bottom: -25px;
+`
+export const AllergyIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`
+export const AllergyTitle = styled.div`
+  font-size: 17px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 30px;
+  color: ${({ theme }) => theme.colors.greytitle};
 `
