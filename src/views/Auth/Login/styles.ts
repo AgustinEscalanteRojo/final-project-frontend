@@ -10,6 +10,11 @@ export const PaperStyled = styled(Paper)`
   max-width: 300px;
   margin: 170px auto;
   background-color: ${({ theme }) => theme.colors.blue25}!important;
+
+  @media screen and (max-width: 768px) {
+    max-width: 70%;
+    margin: 30px auto;
+  }
 `
 
 export const AvatarStyled = styled(Avatar)`
@@ -21,6 +26,10 @@ export const ButtonStyled = styled(Button)`
   margin-top: 14px !important;
   font-size: 25px;
   width: 50%;
+
+  @media screen and (max-width: 768px) {
+    width: 50%;
+  }
 `
 
 export const Container = styled.div`
@@ -28,6 +37,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   min-height: 100vh;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px;
+  }
 `
 
 export const Form = styled.form`
@@ -36,6 +49,10 @@ export const Form = styled.form`
   margin: 5rem auto;
   background-color: ${theme.colors.transparentWhite};
   max-width: 25rem;
+
+  @media screen and (max-width: 768px) {
+    margin: 2rem auto;
+  }
 `
 
 export const FormContent = styled.div`
