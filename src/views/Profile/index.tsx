@@ -23,13 +23,13 @@ import type { Props } from './types'
 import useLogic from './logic'
 
 const Profile: FC<Props> = ({ onLogout }) => {
-  const { user, value, handleChange } = useLogic()
+  const { user, value, handleChange, getRandomPastelColor } = useLogic()
 
   return (
     <Container>
       <Header onLogout={onLogout} />
       <PerfilContainer>
-        <Avatar style={{ backgroundColor: '#D4A373', marginTop: '150px' }}>
+        <Avatar style={{ backgroundColor: getRandomPastelColor(), marginTop: '150px' }}>
           {user?.username ? user.username.charAt(0).toUpperCase() : ''}
         </Avatar>
         username: {user?.username} - email: {user?.email}
