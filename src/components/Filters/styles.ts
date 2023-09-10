@@ -1,14 +1,15 @@
 import styled from 'styled-components'
 import Checkbox from '@mui/material/Checkbox'
+import { Button } from '@mui/material'
 
 export const ContainerFilters = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.blue175};
-  border-radius: 30px;
+  border-radius: 15px;
   position: fixed;
   left: 19px;
   top: 104px;
   width: 150px;
-  height: 595px;
+  height: 665px;
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
@@ -27,7 +28,7 @@ export const ContainerFilters = styled.div`
 `
 export const ContainerAllergies = styled.div`
   position: fixed;
-  left: 20px;
+  left: 24px;
   margin-top: -55px;
   transform: translateY(-50%);
   width: 200px;
@@ -38,7 +39,7 @@ export const ContainerAllergies = styled.div`
 `
 export const ContainerDifficulty = styled.div`
   position: fixed;
-  left: 20px;
+  left: 24px;
   margin-top: 372px;
   transform: translateY(-50%);
   width: 200px;
@@ -49,7 +50,7 @@ export const ContainerDifficulty = styled.div`
 `
 export const ContainerType = styled.div`
   position: fixed;
-  left: 20px;
+  left: 24px;
   margin-top: 487px;
   transform: translateY(-50%);
   width: 200px;
@@ -65,6 +66,18 @@ export const Typography = styled.div`
 `
 export const StyledCheckbox = styled(Checkbox)`
   transform: scale(0.7);
+`
+export const ButtonStyle = styled(Button)`
+  top: 633px;
+  margin-left: 17px!important;
+  transform: scale(0.7);
+  background-color: transparent !important;
+  color: ${({ theme }) => theme.colors.black}!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  outline: none !important;
 `
 export const AllergyOption = styled.div`
   display: flex;

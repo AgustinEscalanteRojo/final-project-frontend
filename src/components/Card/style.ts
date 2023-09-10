@@ -21,7 +21,7 @@ export const CardStyled = styled(MuiCard)`
   margin: 50px;
   width: 450px;
   border: 1px solid ${theme.colors.blue175};
-  border-radius: 20px !important;
+  border-radius: 15px !important;
   transition: max-width 0.3s ease-in-out;
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   transform: scale(1.1);

@@ -1,6 +1,5 @@
 import { FC, memo, useState } from 'react'
 import { Form, Formik } from 'formik'
-import { Button } from '@mui/material'
 import {
   allergiesOptions,
   allergyIcons,
@@ -30,25 +29,23 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
     console.log('click')
   }
 
+  const handleFilter = async (values: Partial<FiltersFormFields>) => {
+    const selectedType = values.type || ''
+    console.log(selectedType)
+    try {
+      const allPosts = await getPosts()
 
-    const handleFilter = async (values: Partial<FiltersFormFields>) => {
-      const selectedType = values.type || ''
-      console.log(selectedType)
-      try {
-        const allPosts = await getPosts()
+      const filteredPosts = allPosts.filter(
+        (post) => post.type === selectedType
+      )
 
-        const filteredPosts = allPosts.filter(
-          (post) => post.type === selectedType
-        )
-
-        setPosts(filteredPosts)
-        console.log(posts)
-        return posts  
-      
-      } catch (error) {
-        console.error(error)
-      }
+      setPosts(filteredPosts)
+      console.log(posts)
+      return posts
+    } catch (error) {
+      console.error(error)
     }
+  }
 
   return (
     <S.ContainerFilters>
@@ -114,17 +111,14 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
                 </S.TypeOption>
               ))}
             </S.ContainerType>
-            <Button
+            <S.ButtonStyle
               type="submit"
-              style={{
-                backgroundColor: 'blue',
-                color: 'white',
-                marginTop: '600px',
-              }}
+              variant="contained"
+              color="primary"
               onClick={handleFilter}
             >
               Filter by
-            </Button>
+            </S.ButtonStyle>
           </Form>
         )}
       </Formik>
