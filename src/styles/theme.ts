@@ -56,7 +56,7 @@ const theme = {
     grey700: '#9E9E9E',
     grey800: '#111',
     grey900: '#5E7A79',
-    grey: '#808080',
+    grey: '#6E6E6E',
     greytitle: '#555',
 
     // Transparent Colors (RGBA)

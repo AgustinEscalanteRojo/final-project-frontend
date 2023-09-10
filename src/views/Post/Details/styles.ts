@@ -2,186 +2,121 @@ import styled from 'styled-components'
 
 export const DetailsContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
 
   @media (min-width: 769px) {
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
   }
 `
-export const Content = styled.div`
+export const MainContent = styled.div`
+  width: 1290px;
   display: flex;
-  flex-wrap: wrap;
+  margin: 140px auto;
   justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
-  width: 100%;
-  padding: 20px;
-
-  @media (min-width: 769px) {
-    flex-wrap: nowrap;
-  }
-`
-
-
-
-export const MainImageContainer = styled.div`
-margin-top: 110px;
-  margin-left: 100px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
+  flex-wrap: wrap;
   border: 1px solid ${({ theme }) => theme.colors.blue175};
   background-color: ${({ theme }) => theme.colors.blue25};
   border-radius: 20px !important;
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
-  
 `
-
+export const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+`
 export const TitleContainer = styled.div`
-  font-size: 17px;
-  margin: 15px;
+  font-size: 27px;
+  margin: 25px;
   cursor: pointer;
   font-weight: bold;
   text-align: center;
   color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
 `
-
 export const IconDetailsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 9px;
-  margin-left: 80px;
+  transform: scale(1.1);
   color: ${({ theme }) => theme.colors.greytitle};
 `
 export const DiningIconContainer = styled.span`
+  margin-top: 5px;
   transform: scale(0.8);
-  margin-left: 10px;
-
+  margin-left: 70px;
+  margin-right: 4px;
 `
-
 export const MainImage = styled.img`
   align-self: center;
-  border-radius: 12px;
+  border-radius: 15px;
   border: 1.5px solid ${({ theme }) => theme.colors.blue175};
-  margin: 7px;
+  margin: 9px;
   max-height: 20rem;
-  width: 80%;
+  width: 580px;
   object-fit: cover;
+  border-radius: 20px;
 `
-
-
-
-
-export const Information = styled.div`
-  align-items: center;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-around;
-`
-
-export const InformationOption = styled.div`
-  align-items: center;
-  color: ${({ theme }) => theme.colors.lagoonMist};
-  display: flex;
-  flex-flow: row;
-  font-size: 18px;
-  font-weight: bold;
-`
-
 export const IngredientTitle = styled.div`
-  align-items: center;
-  color: ${({ theme }) => theme.colors.oceanicTitleBlue};
-  display: flex;
-  flex-flow: row;
-  font-size: 18px;
+  font-size: 17px;
+  margin-top: 15px;
+  cursor: pointer;
   font-weight: bold;
-  text-decoration: underline;
-  margin-top: 30px;
-  margin-left: 55px;
+  margin-left: 30px;
+  color: ${({ theme }) => theme.colors.greytitle};
 `
-
 export const IngredientsList = styled.ol`
   list-style-type: disc;
   margin-bottom: 0px;
-  margin-left: 65px;
-`
-
-export const IngredientListOption = styled.li`
-  color: ${({ theme }) => theme.colors.oceanicWriteBlue};
-  font-weight: bold;
-  font-size: 17px;
-`
-
-export const ShortDescription = styled.p`
+  margin-left: 25px;
   font-size: 15px;
-  font-weight: 600;
   font-style: italic;
-  text-align: left;
-  line-height: 1.3;
-  margin-top: 15px;
-  margin-left: 40px;
-  margin-right: 40px;
-  padding: 10px;
-  color: ${({ theme }) => theme.colors.oceanicWriteBlue};
 `
-
-
-
-
-
-
-
-export const StepsContainer = styled.div`
-margin-top: 110px;
-  margin-left: 100px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-  border: 1px solid ${({ theme }) => theme.colors.blue175};
-  background-color: ${({ theme }) => theme.colors.blue25};
-  border-radius: 20px !important;
-  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
-
-`
-export const Steps = styled.div`
-  display: flex;
-  flex-flow: column;
-`
-export const Step = styled.div`
-  color: ${({ theme }) => theme.colors.oceanicWriteBlue};
-  text-align: left;
+export const IngredientListOption = styled.li`
+  color: ${({ theme }) => theme.colors.grey};
   font-size: 17px;
-  font-weight: bold;
 `
-export const StepTitle = styled.h3`
-  color: ${({ theme }) => theme.colors.oceanicTitleBlue};
-  text-decoration: underline;
-  margin-left: 30px;
-  margin-bottom: 0px;
-`
-export const StepDescription = styled.p`
-  font-size: 16px;
+export const Description = styled.p`
+  font-size: 17px;
+  margin-top: 30px;
   font-weight: 600;
   font-style: italic;
   text-align: left;
   line-height: 1.3;
   margin-left: 30px;
   margin-right: 30px;
-  color: ${({ theme }) => theme.colors.oceanicWriteBlue};
+  color: ${({ theme }) => theme.colors.grey};
 `
-export const StepImage = styled.img`
-  align-self: center;
-  border-radius: 3%;
-  border: 1.5px solid ${({ theme }) => theme.colors.lagoonMist};
-  box-shadow: 0 0 3px 0.2px ${({ theme }) => theme.colors.oceanicShadow};
-  margin: 10px;
-  max-height: 40%;
-  max-width: 40%;
+export const StepsTitle = styled.div`
+  font-size: 17px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 30px;
+  color: ${({ theme }) => theme.colors.greytitle};
+`
+export const StepsContainer = styled.div`
+  margin-top: 105px;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+`
+export const StepTitle = styled.h3`
+  font-size: 17px;
+  margin-top: 15px;
+  font-weight: bold;
+  margin-left: 30px;
+  color: ${({ theme }) => theme.colors.greytitle};
+`
+export const Step = styled.div``
+export const StepDescription = styled.p`
+  font-size: 17px;
+  font-weight: 600;
+  font-style: italic;
+  text-align: left;
+  line-height: 1.3;
+  margin-left: 35px;
+  margin-top: -10px;
+  margin-right: 30px;
+  color: ${({ theme }) => theme.colors.grey};
 `
