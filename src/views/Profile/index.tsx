@@ -18,6 +18,7 @@ import {
   FollowingContainer,
   Posts,
   Container,
+  UserContainer,
 } from './styles'
 import type { Props } from './types'
 import useLogic from './logic'
@@ -29,6 +30,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
     <Container>
       <Header onLogout={onLogout} />
       <PerfilContainer>
+      <UserContainer>
         <Avatar style={{ backgroundColor: getRandomPastelColor(), marginTop: '150px' }}>
           {user?.username ? user.username.charAt(0).toUpperCase() : ''}
         </Avatar>
@@ -41,10 +43,12 @@ const Profile: FC<Props> = ({ onLogout }) => {
         </FollowingContainer>
         <FollowersContainer>Followers</FollowersContainer>
         {user?.followers.map((user) => <UserCard key={user._id} user={user} />)}
+        </UserContainer>
+        
         <Content>
           <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
             <TabContext value={value}>
-              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+              <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center' }}>
                 <TabList
                   onChange={handleChange}
                   aria-label="lab API tabs example"
