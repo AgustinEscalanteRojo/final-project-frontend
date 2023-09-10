@@ -53,9 +53,9 @@ export type postResponse = {
 
 export type PostFormFields = {
   title: string
-  type: string
+  type?: string
   duration: string
-  difficulty: string
+  difficulty?: string
   allergies: string[]
   description: string
   ingredients: {

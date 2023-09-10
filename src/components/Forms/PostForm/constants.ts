@@ -16,13 +16,9 @@ export const ValidationSchema = object().shape({
   title: string()
     .required('Title is required')
     .max(20, 'Step title must be at most 20 characters long'),
-  type: string()
-    .oneOf(['Salad', 'Dessert', 'Breakfast'])
-    .required('Type is required'),
+  type: string().oneOf(['Salad', 'Dessert', 'Breakfast']),
   duration: string().required('Duration is required'),
-  difficulty: string()
-    .oneOf(['Easy', 'Moderate', 'Difficult'])
-    .required('Difficulty is required'),
+  difficulty: string().oneOf(['Easy', 'Moderate', 'Difficult']),
   allergies: array().of(string()),
   description: string(),
   ingredients: array().of(
