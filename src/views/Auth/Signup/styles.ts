@@ -10,6 +10,11 @@ export const PaperStyled = styled(Paper)`
   max-width: 400px;
   margin: 50px auto;
   background-color: ${({ theme }) => theme.colors.blue25}!important;
+
+  @media screen and (max-width: 768px) {
+    max-width: 100%;
+    margin: 20px auto;
+  }
 `
 
 export const AvatarStyled = styled(Avatar)`
@@ -23,6 +28,10 @@ export const ButtonStyled = styled(Button)`
   margin-top: 10px !important;
   font-size: 12px;
   width: 30%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const Container = styled.div`
@@ -59,9 +68,11 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.colors.red300};
   font-size: 16px;
   margin-bottom: 14px;
-`
 
-export const Input = styled.input``
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+`
 
 export const TitleContainer = styled.div`
   align-items: center;
@@ -91,6 +102,10 @@ export const Link = styled(DefaultLink)`
 
   &:hover {
     color: ${({ theme }) => theme.colors.blue900};
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-top: 10px;
   }
 `
 
