@@ -2,7 +2,6 @@ import { FC, memo } from 'react'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
-import IngredientIcon from '@mui/icons-material/EggOutlined'
 import BarChartIcon from '@mui/icons-material/TuneOutlined'
 import Footer from '../../../components/Footer'
 import ImageBackground from '../../../components/ImageBackground'
@@ -15,10 +14,10 @@ const Details: FC<Props> = ({ post }) => {
 
   return (
     <S.DetailsContainer>
-      <S.Content>
-        <S.MainImageContainer>
-        <S.TitleContainer>{post?.title}</S.TitleContainer>
-        <S.IconDetailsContainer>
+      <S.MainContent>
+        <S.ImageContainer>
+          <S.TitleContainer>{post?.title}</S.TitleContainer>
+          <S.IconDetailsContainer>
             <S.DiningIconContainer>
               <TimeIcon />
             </S.DiningIconContainer>
@@ -40,10 +39,7 @@ const Details: FC<Props> = ({ post }) => {
             src={post?.mainImage || defaultImage}
             alt="Añadir descripción basica"
           />
-          <S.IngredientTitle>
-            <IngredientIcon />
-            Ingredientes:
-          </S.IngredientTitle>
+          <S.IngredientTitle>Ingredients</S.IngredientTitle>
           <S.IngredientsList>
             {post?.ingredients.map((ingredient) => (
               <S.IngredientListOption key={ingredient.name}>
@@ -51,26 +47,22 @@ const Details: FC<Props> = ({ post }) => {
               </S.IngredientListOption>
             ))}
           </S.IngredientsList>
-          <S.ShortDescription>{post?.description}</S.ShortDescription>
-        </S.MainImageContainer>
-
-
+          <S.Description>{post?.description}</S.Description>
+        </S.ImageContainer>
         <S.StepsContainer>
-          <S.TitleContainer>Steps</S.TitleContainer>
-          <S.Steps>
-            {post?.steps.map((step) => (
-              <S.Step key={step.title}>
-                <S.StepTitle>
-                  {step.order}.{step.title}
-                </S.StepTitle>
-                <S.StepDescription>{step.description}</S.StepDescription>
-              </S.Step>
-            ))}
-          </S.Steps>
+          <S.StepsTitle>Steps</S.StepsTitle>
+          {post?.steps.map((step) => (
+            <S.Step key={step.title}>
+              <S.StepTitle>
+                {step.order}.{step.title}
+              </S.StepTitle>
+              <S.StepDescription>{step.description}</S.StepDescription>
+            </S.Step>
+          ))}
         </S.StepsContainer>
-      </S.Content>
+      </S.MainContent>
       <Footer />
-      <ImageBackground imageSrc="/back.jpg" />
+      <ImageBackground imageSrc="/details.jpg" />
     </S.DetailsContainer>
   )
 }
