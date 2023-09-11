@@ -73,8 +73,8 @@ export type PostFormFields = {
 }
 
 export type FiltersFormFields = {
-  type: string
-  difficulty: string
+  type: string[]
+  difficulty: string[]
   allergies: string[]
 }
 

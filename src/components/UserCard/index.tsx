@@ -10,13 +10,13 @@ import {
 import useLogic from './logic'
 import type { Props } from './types'
 
-const UserCard: FC<Props> = ({ user }) => {
+const UserCard: FC<Props> = ({ user, currentUserFollowing }) => {
   const {
     handleFollowClick,
     getRandomPastelColor,
     isFollowing,
     handleGoToDetails,
-  } = useLogic(user)
+  } = useLogic(user, currentUserFollowing)
 
   return (
     <CardContainer>

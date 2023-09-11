@@ -1,12 +1,28 @@
-import { Post, PostFormFields, normalizePost } from '../../models/Post'
+import {
+  Post,
+  PostFormFields,
+  normalizePost,
+  FiltersFormFields,
+} from '../../models/Post'
 import { getToken, removeToken } from '../storage/token'
+import { buildFiltersQueryString } from '../../utils/filters'
 
 const BASE_URL = 'http://localhost:8080/posts'
 
-export const getPosts = async (): Promise<Post[]> => {
+export const getPosts = async (
+  filters?: FiltersFormFields
+): Promise<Post[]> => {
   try {
+    let url = BASE_URL
+    if (filters) {
+      const filtersQueryString = buildFiltersQueryString(filters)
+      if (filtersQueryString) {
+        url = `${url}?${filtersQueryString}`
+      }
+    }
+
     const token = getToken()
-    const response = await fetch(BASE_URL, {
+    const response = await fetch(url, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -27,33 +43,6 @@ export const getPosts = async (): Promise<Post[]> => {
 
   return []
 }
-
-export const getPostsByFilter = async (filters: string): Promise<Post[]> => {
-  try {
-    const token = getToken()
-    const response = await fetch(`${BASE_URL}?type=${filters}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-
-    if (!response || (!response.ok && response.status === 401)) {
-      removeToken()
-      window.location.reload()
-      return []
-    }
-
-    const data = await response.json()
-
-    return data?.posts?.map(normalizePost)
-  } catch (e) {
-    console.log(e)
-  }
-
-  return []
-}
-
-
 
 export const getPostById = async (id: string) => {
   try {

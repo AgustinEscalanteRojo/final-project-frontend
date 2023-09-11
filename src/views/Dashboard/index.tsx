@@ -18,6 +18,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     posts,
     users,
     handleFilter,
+    isLoading,
   } = useLogic()
 
   return (
@@ -32,20 +33,33 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           <AddIcon fontSize="medium" /> {}
         </S.IconButtonStyled>
       </S.ButtonController>
+
       <S.Cards>
-        {posts?.map((post) => (
-          <Card
-            key={post._id}
-            post={post}
-            isCurrentUserCreator={currentUser?._id === post.userId}
-            onRemove={handleRemovePost}
-          />
-        ))}
+        {isLoading && <div>Loading...</div>}
+        {!isLoading &&
+          posts?.map((post) => (
+            <Card
+              key={post._id}
+              post={post}
+              isCurrentUserCreator={currentUser?._id === post.userId}
+              onRemove={handleRemovePost}
+            />
+          ))}
       </S.Cards>
       <Filters onSubmit={handleFilter} />
       <S.ContainerUsers>
         <S.UserCards>
-          {users?.map((user, index) => <UserCard key={index} user={user} />)}
+          {users
+            ?.filter((user) => user._id !== currentUser?._id)
+            .map((user, index) => (
+              <UserCard
+                key={index}
+                user={user}
+                currentUserFollowing={currentUser?.following.map(
+                  (user) => user._id
+                )}
+              />
+            ))}
         </S.UserCards>
         <S.ButtonStyled variant="contained" color="primary" onClick={() => {}}>
           See all{' '}

@@ -84,14 +84,17 @@ export const AllergyOption = styled.div`
   align-items: center;
   margin-bottom: -10px;
 `
+
 export const DifficultyOption = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: -10px;
 `
+
 export const StyledCheckboxDifficulty = styled(Checkbox)`
   transform: scale(0.7);
 `
+
 export const AllergyLabel = styled.label`
   display: flex;
   align-items: center;

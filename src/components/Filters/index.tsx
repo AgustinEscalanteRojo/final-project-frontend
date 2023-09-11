@@ -1,101 +1,118 @@
-import { FC, memo, useState } from 'react'
-import { Form, Formik } from 'formik'
+import { FC, memo } from 'react'
+import { Form, Formik, FieldArray, FieldArrayRenderProps } from 'formik'
 import {
   allergiesOptions,
   allergyIcons,
   difficultyOptions,
   typeOptions,
 } from '../../common/constants'
+import { ValidationSchema } from './constants'
 import useLogic from './logic'
-import { DefaultInitialValues, ValidationSchema } from './constants'
 import * as S from './styles'
 import type { Props } from './types'
-import { FiltersFormFields, Post } from '../../models/Post'
-import { getPosts } from '../../services/api/post'
 
-const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
-  const {
-    allergies,
-    difficultys,
-    types,
-    handleAllergiesChange,
-    handleDifficultysChange,
-    handleTypeChange,
-  } = useLogic()
-
-  const [posts, setPosts] = useState<Post[]>([])
-
+const Filters: FC<Props> = ({ onSubmit }) => {
+  const { initialValues } = useLogic()
   return (
     <S.ContainerFilters>
       <Formik
-        initialValues={initialValues || DefaultInitialValues}
+        initialValues={initialValues}
         validationSchema={ValidationSchema}
         onSubmit={onSubmit}
       >
-        {({ handleSubmit, handleChange, values }) => (
+        {({ handleSubmit, values, setFieldValue }) => (
           <Form onSubmit={handleSubmit}>
             <S.ContainerAllergies>
-              <S.Typography> Allergies </S.Typography>
-              {allergiesOptions.map((allergy) => (
-                <S.AllergyOption key={allergy}>
-                  <S.StyledCheckbox
-                    checked={allergies.indexOf(allergy) > -1}
-                    onChange={(event) => handleAllergiesChange(event, allergy)}
-                    value={allergy}
-                  />
-                  <S.AllergyLabel>
-                    <S.AllergyIconContainer>
-                      <S.AllergyIcon
-                        src={allergyIcons[allergy]}
-                        alt={allergy}
+              <S.Typography> Allergies To Exclude</S.Typography>
+              <FieldArray
+                name="allergies"
+                render={(arrayHelpers: FieldArrayRenderProps) =>
+                  allergiesOptions.map((allergy, index) => (
+                    <S.AllergyOption key={allergy}>
+                      <S.StyledCheckbox
+                        name="allergies"
+                        value={allergy}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            arrayHelpers.push(allergy)
+                          } else {
+                            arrayHelpers.remove(index)
+                          }
+                        }}
                       />
-                      {allergy}
-                    </S.AllergyIconContainer>
-                  </S.AllergyLabel>
-                </S.AllergyOption>
-              ))}
+                      <S.AllergyLabel>
+                        <S.AllergyIconContainer>
+                          <S.AllergyIcon
+                            src={allergyIcons[allergy]}
+                            alt={allergy}
+                          />
+                          {allergy}
+                        </S.AllergyIconContainer>
+                      </S.AllergyLabel>
+                    </S.AllergyOption>
+                  ))
+                }
+              />
             </S.ContainerAllergies>
             <S.ContainerDifficulty>
               <S.Typography> Difficulty</S.Typography>
-              {difficultyOptions.map((difficulty) => (
-                <S.DifficultyOption key={difficulty}>
-                  <S.StyledCheckboxDifficulty
-                    value={difficulty}
-                    checked={difficultys.indexOf(difficulty) > -1}
-                    onChange={(event) =>
-                      handleDifficultysChange(event, difficulty)
-                    }
-                  />
-                  <S.DifficultyLabel>
-                    <S.DifficultyIconContainer>
-                      {difficulty}
-                    </S.DifficultyIconContainer>
-                  </S.DifficultyLabel>
-                </S.DifficultyOption>
-              ))}
+              <FieldArray
+                name="difficulty"
+                render={(arrayHelpers: FieldArrayRenderProps) =>
+                  difficultyOptions.map((difficulty, index) => (
+                    <S.DifficultyOption key={difficulty}>
+                      <S.StyledCheckbox
+                        name="difficulty"
+                        value={difficulty}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            arrayHelpers.push(difficulty)
+                          } else {
+                            arrayHelpers.remove(index)
+                          }
+                        }}
+                      />
+                      <S.DifficultyLabel>
+                        <S.DifficultyIconContainer>
+                          {difficulty}
+                        </S.DifficultyIconContainer>
+                      </S.DifficultyLabel>
+                    </S.DifficultyOption>
+                  ))
+                }
+              />
             </S.ContainerDifficulty>
             <S.ContainerType>
               <S.Typography> Type</S.Typography>
-              {typeOptions.map((type) => (
-                <S.TypeOption key={type}>
-                  <S.StyledCheckboxType
-                    value={type}
-                    checked={types.indexOf(type) > -1}
-                    onChange={(event) => handleTypeChange(event, type)}
-                  />
-                  <S.TypeLabel>
-                    <S.TypeIconContainer>{type}</S.TypeIconContainer>
-                  </S.TypeLabel>
-                </S.TypeOption>
-              ))}
+              <FieldArray
+                name="type"
+                render={(arrayHelpers: FieldArrayRenderProps) =>
+                  typeOptions.map((type, index) => (
+                    <S.TypeOption key={type}>
+                      <S.StyledCheckbox
+                        name="type"
+                        value={type}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            arrayHelpers.push(type)
+                          } else {
+                            arrayHelpers.remove(index)
+                          }
+                        }}
+                      />
+                      <S.TypeLabel>
+                        <S.TypeIconContainer>{type}</S.TypeIconContainer>
+                      </S.TypeLabel>
+                    </S.TypeOption>
+                  ))
+                }
+              />
             </S.ContainerType>
-            <S.ButtonStyle
-              type="submit"
-              variant="contained"
-              color="primary"
-              // onClick={handleFilter}
-            >
-              Filter by
+            <S.ButtonStyle type="submit" variant="contained" color="primary">
+              Apply
+            </S.ButtonStyle>
+            <S.ButtonStyle type="button" variant="contained" color="primary">
+              Clean
             </S.ButtonStyle>
           </Form>
         )}
