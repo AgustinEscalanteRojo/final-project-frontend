@@ -28,6 +28,33 @@ export const getPosts = async (): Promise<Post[]> => {
   return []
 }
 
+export const getPostsByFilter = async (filters: string): Promise<Post[]> => {
+  try {
+    const token = getToken()
+    const response = await fetch(`${BASE_URL}?type=${filters}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+
+    if (!response || (!response.ok && response.status === 401)) {
+      removeToken()
+      window.location.reload()
+      return []
+    }
+
+    const data = await response.json()
+
+    return data?.posts?.map(normalizePost)
+  } catch (e) {
+    console.log(e)
+  }
+
+  return []
+}
+
+
+
 export const getPostById = async (id: string) => {
   try {
     const token = getToken()
