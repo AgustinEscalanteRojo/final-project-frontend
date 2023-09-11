@@ -41,7 +41,7 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
                   <S.StyledCheckbox
                     checked={allergies.indexOf(allergy) > -1}
                     onChange={(event) => handleAllergiesChange(event, allergy)}
-                    value={allergies}
+                    value={allergy}
                   />
                   <S.AllergyLabel>
                     <S.AllergyIconContainer>
