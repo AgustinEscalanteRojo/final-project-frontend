@@ -28,9 +28,8 @@ export const ImageContainer = styled.div`
 export const TitleContainer = styled.div`
   font-size: 27px;
   margin: 25px;
-  cursor: pointer;
   font-weight: bold;
-  text-align: center;
+
   color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
 `
@@ -43,8 +42,8 @@ export const IconDetailsContainer = styled.div`
 export const DiningIconContainer = styled.span`
   margin-top: 5px;
   transform: scale(0.8);
-  margin-left: 70px;
-  margin-right: 4px;
+  margin-left: 50px;
+
 `
 export const MainImage = styled.img`
   align-self: center;
@@ -59,7 +58,6 @@ export const MainImage = styled.img`
 export const IngredientTitle = styled.div`
   font-size: 17px;
   margin-top: 15px;
-  cursor: pointer;
   font-weight: bold;
   margin-left: 30px;
   color: ${({ theme }) => theme.colors.greytitle};
@@ -78,6 +76,7 @@ export const IngredientListOption = styled.li`
 export const Description = styled.p`
   font-size: 17px;
   margin-top: 30px;
+  margin-bottom: 30px;
   font-weight: 600;
   font-style: italic;
   text-align: left;
@@ -89,27 +88,30 @@ export const Description = styled.p`
 export const StepsTitle = styled.div`
   font-size: 17px;
   margin-top: 15px;
-  cursor: pointer;
+  margin-bottom: 18px;
   font-weight: bold;
   margin-left: 30px;
   color: ${({ theme }) => theme.colors.greytitle};
 `
 export const StepsContainer = styled.div`
   margin-top: 105px;
-
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-left: -14px;
   max-width: 600px;
 `
 export const StepTitle = styled.h3`
   font-size: 17px;
-  margin-top: 15px;
   font-weight: bold;
+  margin-top: -1px;
+  margin-bottom: 16px;
   margin-left: 30px;
   color: ${({ theme }) => theme.colors.greytitle};
 `
-export const Step = styled.div``
+export const Step = styled.div`
+
+`
 export const StepDescription = styled.p`
   font-size: 17px;
   font-weight: 600;
@@ -117,26 +119,27 @@ export const StepDescription = styled.p`
   text-align: left;
   line-height: 1.3;
   margin-left: 35px;
-  margin-top: -10px;
   margin-right: 30px;
   color: ${({ theme }) => theme.colors.grey};
 `
 export const AllergyIcon = styled.img<AllergyIconProps>`
-  margin-top: 10px;
-  margin-bottom: -18px;
+  margin-top: 8px;
+  margin-bottom: -25px;
   width: 24px;
   height: 24px;
-  margin-bottom: -25px;
+
 `
 export const AllergyIconContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-left: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `
 export const AllergyTitle = styled.div`
   font-size: 17px;
   margin-top: 15px;
-  cursor: pointer;
   font-weight: bold;
   margin-left: 30px;
   color: ${({ theme }) => theme.colors.greytitle};

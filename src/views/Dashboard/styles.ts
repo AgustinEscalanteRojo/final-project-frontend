@@ -86,9 +86,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 320px;
-  padding: 0;
-  margin-top: 0;
+
+
+  
   margin-bottom: 0;
   margin-left: 0;
 `
