@@ -37,6 +37,7 @@ const useLogic = () => {
     event: ChangeEvent<HTMLInputElement>,
     type: string
   ) => {
+    console.log(event.target.value)
     const { checked } = event.target
     if (checked) {
       setTypes([...types, type])

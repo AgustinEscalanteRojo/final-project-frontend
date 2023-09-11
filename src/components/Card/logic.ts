@@ -27,6 +27,23 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
     fetchUsers()
   }, [fetchUsers])
 
+  function getRandomPastelColor() {
+    const pastelColors = [
+      '#FFD1DC', // Light Pink
+      '#FFABAB', // Light Red
+      '#FFC3A0', // Light Orange
+      '#FF677D', // Light Coral
+      '#D4A5A5', // Light Mauve
+      '#392F5A', // Light Indigo
+      '#31A2AC', // Light Teal
+      '#61C0BF', // Light Cyan
+      '#6B4226', // Light Brown
+      '#D9BF77', // Light Yellow
+    ]
+
+    return pastelColors[Math.floor(Math.random() * pastelColors.length)]
+  }
+
   const handleGoToEditForm = useCallback(async () => {
     navigate(`/posts/${post._id}?edit=true`)
   }, [navigate, post])
@@ -64,6 +81,7 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
     handleFavoriteClick,
     handleDetailsClick,
     handleOnRemove,
+    getRandomPastelColor,
     isFav,
     isLike,
     users,

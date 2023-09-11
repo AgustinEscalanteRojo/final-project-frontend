@@ -38,6 +38,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     handleLikeClick,
     handleFavoriteClick,
     handleOnRemove,
+    getRandomPastelColor,
     isLike,
     isFav,
     creatorUser,
@@ -50,7 +51,11 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
       <CardHeaderStyled
       
         avatar={
-          <Avatar aria-label="recipe" onClick={handleGoToProfile}>
+
+          <Avatar
+            aria-label="recipe"
+            style={{ backgroundColor: getRandomPastelColor() }} 
+          onClick={handleGoToProfile}>
             {creatorUser
               ? creatorUser.username.charAt(0).toUpperCase()
               : post.userId.charAt(0)}

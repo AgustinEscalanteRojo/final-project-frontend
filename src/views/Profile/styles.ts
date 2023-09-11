@@ -14,14 +14,33 @@ export const Content = styled.div`
   text-align: center;
 `
 
+export const UserContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: ${({ theme }) => theme.colors.blue900};
+  margin-top: 15px;
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 18px;
+`
+
 export const Button = styled.div`
   display: flex;
   flex-flow: row wrap;
 `
 
-export const FollowersContainer = styled.div``
+export const FollowersContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
-export const FollowingContainer = styled.div``
+export const FollowingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+`
 
 export const Posts = styled.div`
   display: grid;

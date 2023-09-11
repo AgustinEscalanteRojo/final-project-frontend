@@ -25,28 +25,6 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
 
   const [posts, setPosts] = useState<Post[]>([])
 
-  const handleButtonClick = () => {
-    console.log('click')
-  }
-
-  const handleFilter = async (values: Partial<FiltersFormFields>) => {
-    const selectedType = values.type || ''
-    console.log(selectedType)
-    try {
-      const allPosts = await getPosts()
-
-      const filteredPosts = allPosts.filter(
-        (post) => post.type === selectedType
-      )
-
-      setPosts(filteredPosts)
-      console.log(posts)
-      return posts
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
   return (
     <S.ContainerFilters>
       <Formik
@@ -63,7 +41,7 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
                   <S.StyledCheckbox
                     checked={allergies.indexOf(allergy) > -1}
                     onChange={(event) => handleAllergiesChange(event, allergy)}
-                    value={values.allergies}
+                    value={allergies}
                   />
                   <S.AllergyLabel>
                     <S.AllergyIconContainer>
@@ -82,7 +60,7 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
               {difficultyOptions.map((difficulty) => (
                 <S.DifficultyOption key={difficulty}>
                   <S.StyledCheckboxDifficulty
-                    value={values.difficulty}
+                    value={difficulty}
                     checked={difficultys.indexOf(difficulty) > -1}
                     onChange={(event) =>
                       handleDifficultysChange(event, difficulty)
@@ -101,7 +79,7 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
               {typeOptions.map((type) => (
                 <S.TypeOption key={type}>
                   <S.StyledCheckboxType
-                    value={values.type}
+                    value={type}
                     checked={types.indexOf(type) > -1}
                     onChange={(event) => handleTypeChange(event, type)}
                   />
@@ -115,7 +93,7 @@ const Filters: FC<Props> = ({ initialValues, onSubmit }) => {
               type="submit"
               variant="contained"
               color="primary"
-              onClick={handleFilter}
+              // onClick={handleFilter}
             >
               Filter by
             </S.ButtonStyle>

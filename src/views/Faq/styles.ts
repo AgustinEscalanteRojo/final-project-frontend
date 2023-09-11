@@ -25,7 +25,7 @@ export const Content = styled.div`
 `;
 
 export const Backgroundcolor = styled(AccordionDetails)`
-  background-color: ${theme.colors.blue75};
+  background-color: #DAF6FC;
   border-radius: 5px;
 `
 
