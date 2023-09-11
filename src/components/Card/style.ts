@@ -88,3 +88,19 @@ export const Description = styled(Typography)`
   overflow: hidden;
   white-space: nowrap;
 `
+export const AvatarStyled = styled.div`
+  width: 45px; 
+  height: 45px;
+  background-color: ${({ theme }) => theme.colors.grey300};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+  }
+`;

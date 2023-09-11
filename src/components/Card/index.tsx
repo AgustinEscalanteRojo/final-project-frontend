@@ -27,6 +27,7 @@ import {
   AllergyIconContainer,
   AllergyIcon,
   TitleContainer,
+  AvatarStyled,
 } from './style'
 import type { Props } from './types'
 import useLogic from './logic'
@@ -49,20 +50,19 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     <CardStyled>
       <TitleContainer onClick={handleDetailsClick}>{post.title}</TitleContainer>
       <CardHeaderStyled
-      
         avatar={
-
-          <Avatar
-            aria-label="recipe"
-            style={{ backgroundColor: getRandomPastelColor() }} 
-          onClick={handleGoToProfile}>
-            {creatorUser
-              ? creatorUser.username.charAt(0).toUpperCase()
-              : post.userId.charAt(0)}
-              
-          </Avatar>
+          <AvatarStyled>
+            <Avatar
+              aria-label="recipe"
+              style={{ backgroundColor: getRandomPastelColor() }}
+              onClick={handleGoToProfile}
+            >
+              {creatorUser
+                ? creatorUser.username.charAt(0).toUpperCase()
+                : post.userId.charAt(0)}
+            </Avatar>
+          </AvatarStyled>
         }
-        
         action={
           isCurrentUserCreator ? (
             <>
@@ -107,7 +107,6 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
         <Description variant="body2" color="text.secondary">
           {post.description}
         </Description>
-
         <AllergyIconContainer>
           {post.allergies.map((allergy, index) => (
             <AllergyIcon
