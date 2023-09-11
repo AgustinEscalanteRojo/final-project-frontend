@@ -30,25 +30,45 @@ const Profile: FC<Props> = ({ onLogout }) => {
     <Container>
       <Header onLogout={onLogout} />
       <PerfilContainer>
-      <UserContainer>
-        <Avatar style={{ backgroundColor: getRandomPastelColor(), marginTop: '150px' }}>
-          {user?.username ? user.username.charAt(0).toUpperCase() : ''}
-        </Avatar>
-        username: {user?.username} - email: {user?.email}
-        <FollowingContainer>
-          Following
-          {user?.following.map((user) => (
+        <UserContainer>
+          <Avatar
+            style={{
+              backgroundColor: getRandomPastelColor(),
+              marginTop: '150px',
+            }}
+          >
+            {user?.username ? user.username.charAt(0).toUpperCase() : ''}
+          </Avatar>
+          <div>Username: {user?.username}</div>
+          <div>Email: {user?.email}</div>
+          <div>FirstName: {user?.firstName}</div>
+          <div>LastName: {user?.lastName}</div>
+          <div>Gender: {user?.gender}</div>
+          <div>Country: {user?.country}</div>
+          <div>Biography: {user?.biography}</div>
+          <FollowingContainer>
+            Following
+            {user?.following.map((user) => (
+              <UserCard key={user._id} user={user} />
+            ))}
+          </FollowingContainer>
+          <FollowersContainer>Followers</FollowersContainer>
+          {user?.followers.map((user) => (
             <UserCard key={user._id} user={user} />
           ))}
-        </FollowingContainer>
-        <FollowersContainer>Followers</FollowersContainer>
-        {user?.followers.map((user) => <UserCard key={user._id} user={user} />)}
         </UserContainer>
-        
+
         <Content>
           <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
             <TabContext value={value}>
-              <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center' }}>
+              <Box
+                sx={{
+                  borderBottom: 1,
+                  borderColor: 'divider',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
                 <TabList
                   onChange={handleChange}
                   aria-label="lab API tabs example"
