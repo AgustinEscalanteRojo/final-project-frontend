@@ -29,7 +29,6 @@ export const TitleContainer = styled.div`
   font-size: 27px;
   margin: 25px;
   font-weight: bold;
-
   color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
 `
@@ -76,7 +75,7 @@ export const IngredientListOption = styled.li`
 export const Description = styled.p`
   font-size: 17px;
   margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: -30px;
   font-weight: 600;
   font-style: italic;
   text-align: left;
@@ -143,4 +142,64 @@ export const AllergyTitle = styled.div`
   font-weight: bold;
   margin-left: 30px;
   color: ${({ theme }) => theme.colors.greytitle};
+`
+
+export const CommentSection = styled.div`
+  width: 1290px;
+  margin-top: 20px;
+  padding-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`
+
+export const CommentTitle = styled.h2`
+  font-size: 17px;
+  font-weight: bold;
+
+  color: ${({ theme }) => theme.colors.greytitle};
+`
+
+export const CommentList = styled.ul`
+  width: 1290px;
+  list-style-type: none;
+  padding: 0;
+  display: flex; 
+  flex-direction: column;
+  overflow-x: auto; 
+`
+
+export const CommentItem = styled.li`
+  margin-right: 10px; 
+  font-size: 0.9em;
+  flex: 0 0 auto; 
+`
+
+export const CommentForm = styled.form`
+  display: flex;
+  margin-top: 20px;
+`
+
+export const CommentInput = styled.input`
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9em;
+  margin-right: 10px;
+`
+export const CommentButton = styled.button`
+   background-color: ${({ theme }) => theme.colors.green500}!important;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  cursor: pointer;
+
+
+  &:hover {
+    background-color: #0056b3;
+  }
 `
