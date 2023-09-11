@@ -41,6 +41,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     isLike,
     isFav,
     creatorUser,
+    handleGoToProfile,
   } = useLogic(post, onRemove)
 
   return (
@@ -49,7 +50,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
       <CardHeaderStyled
       
         avatar={
-          <Avatar aria-label="recipe">
+          <Avatar aria-label="recipe" onClick={handleGoToProfile}>
             {creatorUser
               ? creatorUser.username.charAt(0).toUpperCase()
               : post.userId.charAt(0)}

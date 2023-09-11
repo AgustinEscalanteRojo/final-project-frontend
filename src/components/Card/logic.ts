@@ -51,9 +51,14 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
     setFav((prev) => !prev)
   }, [post])
 
+  const handleGoToProfile = useCallback(() => {
+    navigate(`/users/${post.userId}`)
+  }, [navigate]);
+
   const creatorUser = users.find((user) => user._id === post.userId)
 
   return {
+    handleGoToProfile,
     handleGoToEditForm,
     handleLikeClick,
     handleFavoriteClick,
