@@ -6,8 +6,8 @@ export const Container = styled.footer`
   position: fixed;
   bottom: 0;
   width: 100%;
-  text-align: center;
-  z-index: 3;
+
+
 
   @media screen and (max-width: 768px) {
     position: fixed;
@@ -19,11 +19,11 @@ export const Container = styled.footer`
 `
 
 export const Content = styled.div`
-  background-color: ${theme.colors.grey800};
+  background-color: ${theme.colors.transparentBlack};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -34,9 +34,9 @@ export const Content = styled.div`
 export const Text = styled.p`
   color: ${theme.colors.softSky};
   font-family: Oswald;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: bold;
-  margin-left: 10px;
+  margin-left: 20px;
 
   @media screen and (max-width: 768px) {
     padding: 0px 0;
@@ -49,7 +49,7 @@ export const FAQLink = styled(Link)`
   font-size: 9px;
   font-weight: bold;
   text-decoration: none;
-  margin-right: 10px;
+  margin-right: 20px;
 
   &:hover {
     text-decoration: underline; 

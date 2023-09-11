@@ -62,7 +62,7 @@ const theme = {
     // Transparent Colors (RGBA)
     transparentWhite: 'rgba(255, 255, 255, 0.5)',
     transparentWhite2: 'rgba(255, 255, 255, 0.2)',
-    transparentBlack: 'rgba(0, 0, 0, 0.5)',
+    transparentBlack: 'rgba(0, 0, 0, 0.8)',
     transparentBlue: 'rgba(23, 147, 192, 0.05)',
     transparentGrey: 'rgba(129, 144, 152, 0.9)',
     transparentRed: 'rgba(239, 83, 80, 0.8)',

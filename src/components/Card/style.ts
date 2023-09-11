@@ -88,4 +88,3 @@ export const Description = styled(Typography)`
   overflow: hidden;
   white-space: nowrap;
 `
-export const UsernameContainer = styled.span``

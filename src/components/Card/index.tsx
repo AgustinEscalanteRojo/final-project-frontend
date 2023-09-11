@@ -27,7 +27,6 @@ import {
   AllergyIconContainer,
   AllergyIcon,
   TitleContainer,
-  UsernameContainer,
 } from './style'
 import type { Props } from './types'
 import useLogic from './logic'
@@ -48,13 +47,16 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     <CardStyled>
       <TitleContainer onClick={handleDetailsClick}>{post.title}</TitleContainer>
       <CardHeaderStyled
+      
         avatar={
           <Avatar aria-label="recipe">
             {creatorUser
               ? creatorUser.username.charAt(0).toUpperCase()
               : post.userId.charAt(0)}
+              
           </Avatar>
         }
+        
         action={
           isCurrentUserCreator ? (
             <>
@@ -71,7 +73,6 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
         }
         subheader={
           <IconDetailsContainer>
-            <UsernameContainer>{creatorUser?.username}</UsernameContainer>
             <DiningIconContainer>
               <TimeIcon />
             </DiningIconContainer>

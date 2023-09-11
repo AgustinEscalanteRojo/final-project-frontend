@@ -31,3 +31,10 @@ export const CardContainer = styled.div`
   transform: scale(0.7);
   border-radius: 20px;
 `
+
+
+export const UsernameContainer = styled.div`
+
+  transform: scale(0.7);
+
+`

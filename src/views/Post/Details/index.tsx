@@ -40,7 +40,7 @@ const Details: FC<Props> = ({ post }) => {
             src={post?.mainImage || defaultImage}
             alt="Añadir descripción basica"
           />
-          <S.IngredientTitle>Ingredients</S.IngredientTitle>
+          <S.IngredientTitle>INGREDIENTS</S.IngredientTitle>
           <S.IngredientsList>
             {post?.ingredients.map((ingredient) => (
               <S.IngredientListOption key={ingredient.name}>
@@ -48,7 +48,7 @@ const Details: FC<Props> = ({ post }) => {
               </S.IngredientListOption>
             ))}
           </S.IngredientsList>
-          <S.AllergyTitle>Allergies</S.AllergyTitle>
+          <S.AllergyTitle>ALLERGIES</S.AllergyTitle>
           <S.AllergyIconContainer>
             {post?.allergies.map((allergy, index) => (
               <S.AllergyIcon
@@ -61,7 +61,7 @@ const Details: FC<Props> = ({ post }) => {
           <S.Description>{post?.description}</S.Description>
         </S.ImageContainer>
         <S.StepsContainer>
-          <S.StepsTitle>Steps</S.StepsTitle>
+          <S.StepsTitle>STEPS</S.StepsTitle>
           {post?.steps.map((step) => (
             <S.Step key={step.title}>
               <S.StepTitle>
