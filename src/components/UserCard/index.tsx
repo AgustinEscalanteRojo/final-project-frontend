@@ -1,5 +1,12 @@
 import { FC, memo } from 'react'
-import { Avatar, CardContainer, HeaderUser, Name, FollowButton } from './style'
+import {
+  Avatar,
+  CardContainer,
+  HeaderUser,
+  Name,
+  FollowButton,
+  AvatarStyled,
+} from './style'
 import useLogic from './logic'
 import type { Props } from './types'
 
@@ -14,13 +21,19 @@ const UserCard: FC<Props> = ({ user }) => {
   return (
     <CardContainer>
       <HeaderUser>
-        <Avatar
-          style={{ backgroundColor: getRandomPastelColor() }}
+        <AvatarStyled>
+          <Avatar
+            style={{ backgroundColor: getRandomPastelColor() }}
+            onClick={handleGoToDetails}
+          >
+            {user.username?.charAt(0)}
+          </Avatar>
+        </AvatarStyled>
+        <Name
+          primary={user.username}
+          secondary={user.firstName}
           onClick={handleGoToDetails}
-        >
-          {user.username?.charAt(0)}
-        </Avatar>
-        <Name primary={user.username} secondary={user.firstName} />
+        />
         <FollowButton
           variant="text"
           color={isFollowing ? 'secondary' : 'primary'}
