@@ -1,20 +1,23 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { getPosts, removePostById } from '../../services/api/post'
 import { getAllUsers, getMe } from '../../services/api/user'
-import type { FiltersFormFields, Post, PostFormFields } from '../../models/Post'
+import type { FiltersFormFields, Post } from '../../models/Post'
 import type { User } from '../../models/User'
+import { buildFiltersQueryString } from '../../utils/filters'
 
 const useLogic = () => {
+  const [searchParams] = useSearchParams()
   const navigate = useNavigate()
   const [posts, setPosts] = useState<Post[]>([])
   const [users, setUsers] = useState<User[]>([])
+  const [isLoading, setIsLoading] = useState(false)
   const [allergies, setAllergies] = useState<string[]>([])
   const [types, setTypes] = useState<string[]>([])
   const [difficultys, setdifficultys] = useState<string[]>([])
   const [currentUser, setCurrentUser] = useState<User | null>(null)
 
-  const fetchUserMe = useCallback(async () => {
+  const handleFetchUserMe = useCallback(async () => {
     try {
       const userInfo = await getMe()
       setCurrentUser(userInfo)
@@ -24,8 +27,23 @@ const useLogic = () => {
   }, [])
 
   useEffect(() => {
-    fetchUserMe()
-  }, [fetchUserMe])
+    handleFetchUserMe()
+  }, [handleFetchUserMe])
+
+  const handleFetchPosts = useCallback(async (filters?: FiltersFormFields) => {
+    setIsLoading(true)
+    const postsList = await getPosts(filters)
+    setPosts(postsList)
+    setIsLoading(false)
+  }, [])
+
+  useEffect(() => {
+    const allergies = searchParams.get('allergies')?.split(',') || []
+    const type = searchParams.get('type')?.split(',') || []
+    const difficulty = searchParams.get('difficulty')?.split(',') || []
+
+    handleFetchPosts({ allergies, type, difficulty })
+  }, [handleFetchPosts])
 
   const handleDifficultysChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -67,15 +85,6 @@ const useLogic = () => {
     navigate('/postform')
   }, [navigate])
 
-  const fetchPosts = useCallback(async () => {
-    const postsList = await getPosts()
-    setPosts(postsList)
-  }, [])
-
-  useEffect(() => {
-    fetchPosts()
-  }, [fetchPosts])
-
   const fetchUsers = useCallback(async () => {
     const usersList = await getAllUsers()
     setUsers(usersList)
@@ -94,21 +103,14 @@ const useLogic = () => {
     setPosts(filteredPosts)
   }, [])
 
-  const handleFilter = async (values: Partial<FiltersFormFields>) => {
-    const selectedType = values.type || ''
-    console.log(selectedType)
-    try {
-      const allPosts = await getPosts()
-
-      const filterPosts = allPosts.filter(
-        (post) => post.type === selectedType
-      )
-
-      setPosts(filterPosts)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+  const handleFilter = useCallback(
+    async (filters: FiltersFormFields) => {
+      const filtersQueryString = buildFiltersQueryString(filters)
+      navigate(`?${filtersQueryString}`)
+      await handleFetchPosts(filters)
+    },
+    [searchParams]
+  )
 
   return {
     handleFilter,
@@ -123,6 +125,7 @@ const useLogic = () => {
     posts,
     users,
     types,
+    isLoading,
   }
 }
 

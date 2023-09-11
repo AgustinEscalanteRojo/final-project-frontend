@@ -46,7 +46,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
       validationSchema={ValidationSchema}
       onSubmit={onSubmit}
     >
-      {({ handleSubmit, handleChange, values }) => (
+      {({ handleSubmit, handleChange, values, errors }) => (
         <Form onSubmit={handleSubmit}>
           <FormContainer>
             <Title variant="h4" align="center" gutterBottom>
@@ -126,6 +126,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
                     name={`ingredients[${index}].quantity`}
                     value={ingredient.quantity}
                     onChange={handleChange}
+                    type="number"
                     required
                     fullWidth
                   />
@@ -261,9 +262,15 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
                 <ButtonAddStep
                   variant="outlined"
                   onClick={() => {
+                    const currentSteps = [...(values?.steps || [])]
+                    const lastOrder = currentSteps.pop()
                     const updatedSteps = [
                       ...(values?.steps || []),
-                      { title: '', description: '' },
+                      {
+                        title: '',
+                        description: '',
+                        order: (lastOrder?.order || 0) + 1,
+                      },
                     ]
                     handleChange({
                       target: {

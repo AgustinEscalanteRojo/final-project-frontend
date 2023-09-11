@@ -25,7 +25,6 @@ import type { Props } from './types'
 const UserDetailsPage: FC<Props> = ({ onLogout }) => {
   const { user, selectedTab, handleSetTab } = useLogic()
 
-  console.log({user})
   return (
     <Container>
       <Header onLogout={onLogout} />

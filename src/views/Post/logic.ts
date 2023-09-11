@@ -42,6 +42,7 @@ const useLogic = () => {
 
   const handleEditPost = useCallback(
     async (values: Partial<PostFormFields>) => {
+      console.log({ values })
       if (post?._id) {
         await updatePostById({ id: post._id, input: values })
         navigate(`/posts/${post._id}`, { replace: true })
