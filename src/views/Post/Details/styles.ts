@@ -144,6 +144,8 @@ export const AllergyTitle = styled.div`
   color: ${({ theme }) => theme.colors.greytitle};
 `
 
+
+
 export const CommentSection = styled.div`
   width: 1290px;
   margin-top: 20px;
@@ -162,37 +164,39 @@ export const CommentTitle = styled.h2`
 `
 
 export const CommentList = styled.ul`
-  width: 1290px;
+  width: 1190px;
   list-style-type: none;
   padding: 0;
   display: flex; 
   flex-direction: column;
   overflow-x: auto; 
-`
-
-export const CommentItem = styled.li`
-  margin-right: 10px; 
-  font-size: 0.9em;
-  flex: 0 0 auto; 
+  
 `
 
 export const CommentForm = styled.form`
   display: flex;
   margin-top: 20px;
+  
+  
 `
 
 export const CommentInput = styled.input`
   flex: 1;
   padding: 10px;
+  width: 1093px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 0.9em;
   margin-right: 10px;
 `
+
+
 export const CommentButton = styled.button`
    background-color: ${({ theme }) => theme.colors.green500}!important;
   color: #fff;
+  transform: scale(0.7);
   border: none;
+  margin-left: -10px;
   padding: 10px 20px;
   border-radius: 4px;
   font-size: 0.9em;
@@ -203,3 +207,5 @@ export const CommentButton = styled.button`
     background-color: #0056b3;
   }
 `
+
+

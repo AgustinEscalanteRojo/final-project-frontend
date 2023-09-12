@@ -43,7 +43,7 @@ const Details: FC<Props> = ({ post }) => {
           createdAt: nuevoComentario.createdAt,
         },
       ])
-      setComment('') // Limpia el campo de comentarios
+      setComment('') 
     } catch (error) {
       console.error('Error al enviar el comentario:', error)
     }
@@ -59,11 +59,9 @@ const Details: FC<Props> = ({ post }) => {
 
   return (
     <S.DetailsContainer>
-      
       <S.MainContent>
-        
         <S.ImageContainer>
-        <S.TitleContainer>{post?.title}</S.TitleContainer>
+          <S.TitleContainer>{post?.title}</S.TitleContainer>
           <S.IconDetailsContainer>
             <S.DiningIconContainer>
               <TimeIcon />
@@ -114,6 +112,11 @@ const Details: FC<Props> = ({ post }) => {
             </S.Step>
           ))}
         </S.StepsContainer>
+
+
+
+
+
         <S.CommentSection>
           <S.CommentTitle>Comments</S.CommentTitle>
 
@@ -122,9 +125,9 @@ const Details: FC<Props> = ({ post }) => {
               comments.map((comment: any) => (
                 <CardComment
                   key={comment._id}
-                  author={comment.userId} 
+                  author={comment.userId}
                   content={comment.comment}
-                  avatarUrl={comment.avatar} 
+                  avatarUrl={comment.avatar}
                   date={comment.createdAt.toLocaleString()}
                 />
               ))}
@@ -137,11 +140,16 @@ const Details: FC<Props> = ({ post }) => {
               onChange={handleCommentChange}
               placeholder="Write a comment..."
             />
-            <S.CommentButton type="submit"><SendIcon/></S.CommentButton>
+            <S.CommentButton type="submit">
+              <SendIcon />
+            </S.CommentButton>
           </S.CommentForm>
         </S.CommentSection>
-      </S.MainContent>
 
+
+
+
+      </S.MainContent>
       <Footer />
       <ImageBackground imageSrc="/details.jpg" />
     </S.DetailsContainer>

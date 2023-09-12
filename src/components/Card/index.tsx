@@ -29,7 +29,7 @@ import {
   TitleContainer,
   AvatarStyled,
   ButtonDetails,
-} from './style'
+} from './styles'
 import type { Props } from './types'
 import useLogic from './logic'
 
