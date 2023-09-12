@@ -11,18 +11,35 @@ import useLogic from './logic'
 import * as S from './styles'
 import type { Props } from './types'
 import { allergyIcons } from '../../../common/constants'
+import { Avatar } from '@mui/material'
 
 const Details: FC<Props> = ({ post }) => {
-  const { comments, handleCommentSubmit, comment, handleCommentChange } =
-    useLogic(post)
+  const {
+    comments,
+    handleCommentSubmit,
+    comment,
+    handleCommentChange,
+    getRandomPastelColor,
+    handleGoToProfile,
+    creatorUser,
+  } = useLogic(post)
 
   return (
     <S.DetailsContainer>
-      
       <S.MainContent>
-        
+        <S.AvatarStyled>
+          <Avatar
+            aria-label="recipe"
+            style={{ backgroundColor: getRandomPastelColor() }}
+            onClick={handleGoToProfile}
+          >
+            {creatorUser
+              ? creatorUser.username.charAt(0).toUpperCase()
+              : post?.userId.charAt(0)}
+          </Avatar>
+        </S.AvatarStyled>
         <S.ImageContainer>
-        <S.TitleContainer>{post?.title}</S.TitleContainer>
+          <S.TitleContainer>{post?.title}</S.TitleContainer>
           <S.IconDetailsContainer>
             <S.DiningIconContainer>
               <TimeIcon />
