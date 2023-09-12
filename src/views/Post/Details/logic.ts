@@ -10,7 +10,6 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
   const navigate = useNavigate()
   const [users, setUsers] = useState<User[]>([])
   const [comment, setComment] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
   const [comments, setComments] = useState<NormalizedUserPostComment[]>([])
 
   const fetchUsers = useCallback(async () => {
@@ -39,7 +38,7 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
         return
       }
 
-      const nuevoComentario = await sendComment(comment, post._id)
+      const nuevoComentario = await sendComment(comment, post._id, post.userId)
 
       setComments((prevComments) => [
         ...prevComments,
