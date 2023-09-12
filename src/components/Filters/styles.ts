@@ -70,7 +70,7 @@ export const StyledCheckbox = styled(Checkbox)`
 export const ButtonApply = styled(Button)`
   top: 600px;
   margin-left: 24px!important;
-  transform: scale(0.6);
+  transform: scale(0.7);
   background-color: transparent !important;
   color: ${({ theme }) => theme.colors.black}!important;
   display: flex;
@@ -83,7 +83,7 @@ export const ButtonApply = styled(Button)`
 export const ButtonClean = styled(Button)`
   top: 600px;
   margin-left: 24px!important;
-  transform: scale(0.6);
+  transform: scale(0.7);
   background-color: transparent !important;
   color: ${({ theme }) => theme.colors.black}!important;
   display: flex;
