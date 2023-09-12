@@ -18,7 +18,7 @@ import {
   LikeIcon,
   FavIcon,
   CardStyled,
-  DetailsIconButton,
+  // DetailsIconButton,
   CardHeaderStyled,
   IconDetailsContainer,
   DiningIconContainer,
@@ -28,6 +28,7 @@ import {
   AllergyIcon,
   TitleContainer,
   AvatarStyled,
+  ButtonDetails,
 } from './style'
 import type { Props } from './types'
 import useLogic from './logic'
@@ -134,16 +135,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
             </IconButton>
           </>
         )}
-        <DetailsIconButton onClick={handleDetailsClick}>
-          <Typography
-            variant="body1"
-            style={{
-              fontSize: 'medium',
-            }}
-          >
-            Details
-          </Typography>
-        </DetailsIconButton>
+        <ButtonDetails  type="button"   onClick={handleDetailsClick}>Details</ButtonDetails>
       </CardActions>
     </CardStyled>
   )

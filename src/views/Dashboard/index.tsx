@@ -5,10 +5,10 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import UserCard from '../../components/UserCard'
 import Card from '../../components/Card'
+import Filters from '../../components/Filters'
 import * as S from './styles'
 import type { Props } from './types'
 import useLogic from './logic'
-import Filters from '../../components/Filters'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const {
@@ -49,7 +49,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <Filters onSubmit={handleFilter} />
       <S.ContainerUsers>
         <S.UserCards>
-        <S.Typography> Main Chefs</S.Typography>
+        <S.Typography> Top Main Chefs </S.Typography>
           {users
             ?.filter((user) => user._id !== currentUser?._id)
             .map((user, index) => (

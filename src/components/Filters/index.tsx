@@ -108,12 +108,12 @@ const Filters: FC<Props> = ({ onSubmit }) => {
                 }
               />
             </S.ContainerType>
-            <S.ButtonStyle type="submit" variant="contained" color="primary">
+            <S.ButtonApply type="submit" variant="contained" color="primary">
               Apply
-            </S.ButtonStyle>
-            <S.ButtonStyle type="button" variant="contained" color="primary">
+            </S.ButtonApply>
+            <S.ButtonClean type="button" variant="contained" color="primary">
               Clean
-            </S.ButtonStyle>
+            </S.ButtonClean>
           </Form>
         )}
       </Formik>

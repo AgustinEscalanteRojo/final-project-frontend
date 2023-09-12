@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import theme from '../../styles/theme'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import { Button } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { Card as MuiCard, IconButton, CardHeader } from '@mui/material'
 import { AllergyIconProps } from './types'
@@ -104,3 +105,17 @@ export const AvatarStyled = styled.div`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
   }
 `;
+export const UsernameContainer = styled.span``
+
+export const ButtonDetails = styled(Button)`
+
+
+  transform: scale(0.6);
+  background-color: transparent !important;
+  color: ${({ theme }) => theme.colors.black}!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  outline: none !important;
+`

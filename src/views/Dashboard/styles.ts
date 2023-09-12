@@ -113,7 +113,7 @@ export const ButtonController = styled.div`
 `
 
 export const Typography = styled.div`
-  margin-left: 14px;
+  margin-left: 34px;
   margin-top: -10px;;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.grey};
