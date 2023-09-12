@@ -15,6 +15,7 @@ import {
   unityOptions,
 } from '../../../common/constants'
 import { DefaultInitialValues, ValidationSchema } from './constants'
+import * as S from './styles'
 import {
   TextField,
   Title,
@@ -61,7 +62,9 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
               onChange={handleChange}
               required
               fullWidth
+              error={!!errors?.title}
             />
+            {errors?.title && <S.InputError>{errors.title}</S.InputError>}
             <TextField
               label="Diners"
               name="diners"
@@ -69,7 +72,9 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
               onChange={handleChange}
               required
               fullWidth
+              error={!!errors?.diners}
             />
+            {errors?.diners && <S.InputError>{errors.diners}</S.InputError>}
             <FormControlStyle>
               <FormControl fullWidth>
                 <InputLabel>Type</InputLabel>
@@ -131,7 +136,9 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
                     fullWidth
                   />
                   <FormControl fullWidth>
+                    <InputLabel id="gender-label">Unity</InputLabel>
                     <SelectIngredients
+                      labelId="gender-label"
                       label="Unity"
                       name={`ingredients[${index}].unity`}
                       value={ingredient.unity}
