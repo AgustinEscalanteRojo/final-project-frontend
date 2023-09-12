@@ -36,7 +36,8 @@ export const getComments = async (
 
 export const sendComment = async (
   comment: string,
-  postId: string
+  postId: string,
+  userId: string
 ): Promise<NormalizedUserPostComment> => {
   try {
     const token = getToken()
@@ -46,7 +47,7 @@ export const sendComment = async (
         'Content-Type': 'application/json',
         authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ comment, postId }),
+      body: JSON.stringify({ comment, postId, userId }),
     })
 
     if (response.ok) {
