@@ -68,9 +68,9 @@ export const StyledCheckbox = styled(Checkbox)`
   transform: scale(0.7);
 `
 export const ButtonStyle = styled(Button)`
-  top: 633px;
-  margin-left: 17px!important;
-  transform: scale(0.7);
+  top: 600px;
+  margin-left: 24px!important;
+  transform: scale(0.6);
   background-color: transparent !important;
   color: ${({ theme }) => theme.colors.black}!important;
   display: flex;
@@ -84,17 +84,14 @@ export const AllergyOption = styled.div`
   align-items: center;
   margin-bottom: -10px;
 `
-
 export const DifficultyOption = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: -10px;
 `
-
 export const StyledCheckboxDifficulty = styled(Checkbox)`
   transform: scale(0.7);
 `
-
 export const AllergyLabel = styled.label`
   display: flex;
   align-items: center;

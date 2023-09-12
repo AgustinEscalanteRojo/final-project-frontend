@@ -49,6 +49,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <Filters onSubmit={handleFilter} />
       <S.ContainerUsers>
         <S.UserCards>
+        <S.Typography> Main Chefs</S.Typography>
           {users
             ?.filter((user) => user._id !== currentUser?._id)
             .map((user, index) => (
@@ -61,9 +62,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
               />
             ))}
         </S.UserCards>
-        <S.ButtonStyled variant="contained" color="primary" onClick={() => {}}>
-          See all{' '}
-        </S.ButtonStyled>
       </S.ContainerUsers>
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
