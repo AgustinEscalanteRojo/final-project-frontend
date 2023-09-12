@@ -67,7 +67,20 @@ export const Typography = styled.div`
 export const StyledCheckbox = styled(Checkbox)`
   transform: scale(0.7);
 `
-export const ButtonStyle = styled(Button)`
+export const ButtonApply = styled(Button)`
+  top: 600px;
+  margin-left: 24px!important;
+  transform: scale(0.6);
+  background-color: transparent !important;
+  color: ${({ theme }) => theme.colors.black}!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  outline: none !important;
+`
+
+export const ButtonClean = styled(Button)`
   top: 600px;
   margin-left: 24px!important;
   transform: scale(0.6);
