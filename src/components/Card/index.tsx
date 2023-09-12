@@ -4,7 +4,6 @@ import {
   CardActions,
   Avatar,
   IconButton,
-  Typography,
 } from '@mui/material'
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
 import RepeatIcon from '@mui/icons-material/Repeat'
@@ -18,7 +17,6 @@ import {
   LikeIcon,
   FavIcon,
   CardStyled,
-  // DetailsIconButton,
   CardHeaderStyled,
   IconDetailsContainer,
   DiningIconContainer,
@@ -29,6 +27,7 @@ import {
   TitleContainer,
   AvatarStyled,
   ButtonDetails,
+  Name,
 } from './styles'
 import type { Props } from './types'
 import useLogic from './logic'
@@ -53,6 +52,11 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
       <CardHeaderStyled
         avatar={
           <AvatarStyled>
+            <Name
+              onClick={handleGoToProfile}
+              primary={creatorUser?.username}
+              secondary={creatorUser?.firstName}
+            />
             <Avatar
               aria-label="recipe"
               style={{ backgroundColor: getRandomPastelColor() }}
@@ -135,7 +139,9 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
             </IconButton>
           </>
         )}
-        <ButtonDetails  type="button"   onClick={handleDetailsClick}>Details</ButtonDetails>
+        <ButtonDetails type="button" onClick={handleDetailsClick}>
+          Details
+        </ButtonDetails>
       </CardActions>
     </CardStyled>
   )

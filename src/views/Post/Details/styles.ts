@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { ListItemText } from '@material-ui/core'
 import { AllergyIconProps } from './types'
 
 export const DetailsContainer = styled.div`
@@ -10,6 +11,7 @@ export const DetailsContainer = styled.div`
   }
 `
 export const MainContent = styled.div`
+ position: relative;
   width: 1290px;
   display: flex;
   margin: 140px auto;
@@ -21,24 +23,30 @@ export const MainContent = styled.div`
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
 `
 
+
+export const Name = styled(ListItemText)`
+  position: absolute; 
+  margin-left: 50px; 
+  margin-top: -3px!important; 
+`
+
 export const AvatarStyled = styled.div`
+margin-top: 30px;
+margin-left: 20px;
   width: 45px;
   height: 45px;
-  background-color: ${({ theme }) => theme.colors.grey300};
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
   cursor: pointer;
   transition:
     transform 0.3s,
     box-shadow 0.3s;
 
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    &:hover {
+    transform: scale(1.1); 
+  
   }
-`
+`;
 
 export const ImageContainer = styled.div`
   display: flex;
@@ -47,13 +55,17 @@ export const ImageContainer = styled.div`
 `
 export const TitleContainer = styled.div`
   font-size: 27px;
+  position: absolute; 
   margin: 25px;
+  margin-left: 455px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
 `
 export const IconDetailsContainer = styled.div`
   display: flex;
+  margin-top: 90px;
+  margin-left: 30px;
   align-items: center;
   transform: scale(1.1);
   color: ${({ theme }) => theme.colors.greytitle};
@@ -61,7 +73,8 @@ export const IconDetailsContainer = styled.div`
 export const DiningIconContainer = styled.span`
   margin-top: 5px;
   transform: scale(0.8);
-  margin-left: 50px;
+  margin-left: 30px;
+
 `
 export const MainImage = styled.img`
   align-self: center;
@@ -105,7 +118,7 @@ export const Description = styled.p`
 `
 export const StepsTitle = styled.div`
   font-size: 17px;
-  margin-top: 15px;
+  margin-top: 22px;
   margin-bottom: 18px;
   font-weight: bold;
   margin-left: 30px;
@@ -160,8 +173,6 @@ export const AllergyTitle = styled.div`
   color: ${({ theme }) => theme.colors.greytitle};
 `
 
-
-
 export const CommentSection = styled.div`
   width: 1290px;
   margin-top: 20px;
@@ -185,14 +196,11 @@ export const CommentList = styled.ul`
   padding: 0;
   display: flex;
   flex-direction: column;
-
 `
 
 export const CommentForm = styled.form`
   display: flex;
   margin-top: 20px;
-  
-  
 `
 
 export const CommentInput = styled.input`
@@ -204,7 +212,6 @@ export const CommentInput = styled.input`
   font-size: 0.9em;
   margin-right: 10px;
 `
-
 
 export const CommentButton = styled.button`
   background-color: ${({ theme }) => theme.colors.green500}!important;

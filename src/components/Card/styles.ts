@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import theme from '../../styles/theme'
 import BookmarkIcon from '@mui/icons-material/Bookmark'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import { Button } from '@mui/material'
+import { Button, ListItemText } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { Card as MuiCard, IconButton, CardHeader } from '@mui/material'
 import { AllergyIconProps } from './types'
@@ -52,6 +52,13 @@ export const AllergyIconContainer = styled.div`
   align-items: center;
   gap: 8px;
 `
+export const Name = styled(ListItemText)`
+  position: absolute; 
+  margin-left: 50px; 
+  margin-top: 15px!important; 
+  transform: scale(0.76); 
+  transform-origin: top left;
+`
 export const Image = styled.img`
   margin-top: 10px;
 
@@ -78,11 +85,15 @@ export const CardHeaderStyled = styled(CardHeader)`
 export const IconDetailsContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 8px;
+  margin-top: 2px;
+  margin-left: 30px;
+  transform: scale(0.9); 
 `
 export const DiningIconContainer = styled.span`
   transform: scale(0.8);
-  margin-right: -10px;
+  margin-top: 2px;
+  margin-right: -8px;
 `
 export const Description = styled(Typography)`
   text-overflow: ellipsis;
@@ -90,18 +101,18 @@ export const Description = styled(Typography)`
   white-space: nowrap;
 `
 export const AvatarStyled = styled.div`
-  width: 45px; 
-  height: 45px;
+  width: 40px; 
+  height: 40px;
   background-color: ${({ theme }) => theme.colors.grey300};
   border-radius: 50%;
   display: flex;
-  justify-content: center;
+    transform: scale(0.9); 
   align-items: center;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 
   &:hover {
-    transform: scale(1.1); 
+    transform: scale(1); 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
   }
 `;

@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useState } from 'react'
+import { FC, memo } from 'react'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
 import SendIcon from '@mui/icons-material/Send'
@@ -14,7 +14,6 @@ import { allergyIcons } from '../../../common/constants'
 import { Avatar } from '@mui/material'
 
 const Details: FC<Props> = ({ post }) => {
-
   const {
     comments,
     handleCommentSubmit,
@@ -25,12 +24,15 @@ const Details: FC<Props> = ({ post }) => {
     creatorUser,
   } = useLogic(post)
 
-
   return (
     <S.DetailsContainer>
       <S.MainContent>
-
         <S.AvatarStyled>
+          <S.Name onClick={handleGoToProfile}
+          primary={creatorUser?.username}
+          secondary={creatorUser?.firstName}
+          
+        />
           <Avatar
             aria-label="recipe"
             style={{ backgroundColor: getRandomPastelColor() }}
@@ -39,10 +41,14 @@ const Details: FC<Props> = ({ post }) => {
             {creatorUser
               ? creatorUser.username.charAt(0).toUpperCase()
               : post?.userId.charAt(0)}
+              
           </Avatar>
-        </S.AvatarStyled>
 
+       
+        </S.AvatarStyled>
+        
         <S.ImageContainer>
+    
           <S.TitleContainer>{post?.title}</S.TitleContainer>
           <S.IconDetailsContainer>
             <S.DiningIconContainer>
@@ -96,7 +102,6 @@ const Details: FC<Props> = ({ post }) => {
         </S.StepsContainer>
         <S.CommentSection>
           <S.CommentTitle>Comments</S.CommentTitle>
-
           <S.CommentList>
             {comments &&
               comments.map((comment: any) => (
@@ -109,7 +114,6 @@ const Details: FC<Props> = ({ post }) => {
                 />
               ))}
           </S.CommentList>
-
           <S.CommentForm onSubmit={handleCommentSubmit}>
             <S.CommentInput
               type="text"
