@@ -7,55 +7,14 @@ import BarChartIcon from '@mui/icons-material/TuneOutlined'
 import Footer from '../../../components/Footer'
 import ImageBackground from '../../../components/ImageBackground'
 import CardComment from '../../../../src/components/CardComment'
-import { NormalizedUserPostComment } from '../../../models/UserPostComment'
-import { getComments, sendComment } from '../../../../src/services/api/comments'
+import useLogic from './logic'
 import * as S from './styles'
 import type { Props } from './types'
 import { allergyIcons } from '../../../common/constants'
 
 const Details: FC<Props> = ({ post }) => {
-  const [comment, setComment] = useState('')
-  const [comments, setComments] = useState<NormalizedUserPostComment[]>([])
-
-  const handleCommentChange = (e: any) => {
-    setComment(e.target.value)
-  }
-
-  const handleCommentSubmit = async (e: any) => {
-    e.preventDefault()
-
-    try {
-      if (!post) {
-        console.error('No se ha encontrado el post')
-        return
-      }
-
-      const nuevoComentario = await sendComment(comment, post._id)
-
-      setComments((prevComments) => [
-        ...prevComments,
-        {
-          _id: nuevoComentario._id,
-          userId: nuevoComentario.userId,
-          postId: nuevoComentario.postId,
-          comment: nuevoComentario.comment,
-          replyTo: nuevoComentario.replyTo,
-          createdAt: nuevoComentario.createdAt,
-        },
-      ])
-      setComment('') // Limpia el campo de comentarios
-    } catch (error) {
-      console.error('Error al enviar el comentario:', error)
-    }
-  }
-
-  useEffect(() => {
-    if (post) {
-      getComments(post._id)
-        .then((comments) => setComments(comments))
-        .catch((error) => console.error('Error al obtener comentarios:', error))
-    }
-  }, [post])
+  const { comments, handleCommentSubmit, comment, handleCommentChange } =
+    useLogic(post)
 
   return (
     <S.DetailsContainer>
@@ -120,9 +79,9 @@ const Details: FC<Props> = ({ post }) => {
               comments.map((comment: any) => (
                 <CardComment
                   key={comment._id}
-                  author={comment.userId} 
+                  author={comment.userId}
                   content={comment.comment}
-                  avatarUrl={comment.avatar} 
+                  avatarUrl={comment.avatar}
                   date={comment.createdAt.toLocaleString()}
                 />
               ))}
@@ -135,7 +94,9 @@ const Details: FC<Props> = ({ post }) => {
               onChange={handleCommentChange}
               placeholder="Write a comment..."
             />
-            <S.CommentButton type="submit"><SendIcon/></S.CommentButton>
+            <S.CommentButton type="submit">
+              <SendIcon />
+            </S.CommentButton>
           </S.CommentForm>
         </S.CommentSection>
       </S.MainContent>
