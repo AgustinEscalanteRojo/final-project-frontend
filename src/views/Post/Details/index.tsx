@@ -14,6 +14,7 @@ import { allergyIcons } from '../../../common/constants'
 import { Avatar } from '@mui/material'
 
 const Details: FC<Props> = ({ post }) => {
+
   const {
     comments,
     handleCommentSubmit,
@@ -24,9 +25,11 @@ const Details: FC<Props> = ({ post }) => {
     creatorUser,
   } = useLogic(post)
 
+
   return (
     <S.DetailsContainer>
       <S.MainContent>
+
         <S.AvatarStyled>
           <Avatar
             aria-label="recipe"
@@ -38,6 +41,7 @@ const Details: FC<Props> = ({ post }) => {
               : post?.userId.charAt(0)}
           </Avatar>
         </S.AvatarStyled>
+
         <S.ImageContainer>
           <S.TitleContainer>{post?.title}</S.TitleContainer>
           <S.IconDetailsContainer>
@@ -119,7 +123,6 @@ const Details: FC<Props> = ({ post }) => {
           </S.CommentForm>
         </S.CommentSection>
       </S.MainContent>
-
       <Footer />
       <ImageBackground imageSrc="/details.jpg" />
     </S.DetailsContainer>
