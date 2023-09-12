@@ -110,7 +110,7 @@ export const UsernameContainer = styled.span``
 export const ButtonDetails = styled(Button)`
 
 
-  transform: scale(0.6);
+  transform: scale(0.7);
   background-color: transparent !important;
   color: ${({ theme }) => theme.colors.black}!important;
   display: flex;
@@ -118,4 +118,8 @@ export const ButtonDetails = styled(Button)`
   justify-content: center;
   width: auto !important;
   outline: none !important;
+
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
 `

@@ -50,16 +50,19 @@ export const ImgIcons = styled.img`
   width: 25%;
   margin-left: 2px;
 `
-export const FormControlStep = styled.div``
+export const FormControlStep = styled.div`
+`
 
 export const Steps = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 `
 export const StepsTitle = styled(DefaultTextField)`
-  margin: o auto !important;
-`
+  /* margin: o auto !important; */
+ margin-top: 25px !important;
+ `  
+
 export const ButtonRemoveIngredient = styled(Button)`
   color: ${({ theme }) => theme.colors.white}!important;
   background-color: ${({ theme }) => theme.colors.red300}!important;
@@ -70,6 +73,7 @@ export const SelectIngredients = styled(Select)`
   margin-top: 26px !important;
 `
 export const ButtonRemoveStep = styled(Button)`
+ margin-top: 25px !important;
   color: ${({ theme }) => theme.colors.red300}!important;
 `
 export const ButtonAddIngredient = styled(Button)`
@@ -77,7 +81,7 @@ export const ButtonAddIngredient = styled(Button)`
   margin-top: 26px !important;
 `
 export const ButtonAddStep = styled(Button)`
-  margin-top: 10px !important;
+  margin-top: 16px !important;
   color: ${({ theme }) => theme.colors.green500}!important;
 `
 export const ButtonSaveRecipe = styled(Button)`

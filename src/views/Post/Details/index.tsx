@@ -59,9 +59,11 @@ const Details: FC<Props> = ({ post }) => {
 
   return (
     <S.DetailsContainer>
+      
       <S.MainContent>
+        
         <S.ImageContainer>
-          <S.TitleContainer>{post?.title}</S.TitleContainer>
+        <S.TitleContainer>{post?.title}</S.TitleContainer>
           <S.IconDetailsContainer>
             <S.DiningIconContainer>
               <TimeIcon />
