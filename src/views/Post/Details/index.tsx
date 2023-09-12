@@ -14,10 +14,9 @@ import useLogic from './logic'
 import * as S from './styles'
 import type { Props } from './types'
 import { allergyIcons } from '../../../common/constants'
-
+import { NormalizedUserPostComment } from '../../../models/UserPostComment'
 
 const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
-
   const {
     comments,
     handleCommentSubmit,
@@ -30,11 +29,9 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     handleOnRemove,
   } = useLogic(post, onRemove)
 
-
   return (
     <S.DetailsContainer>
       <S.MainContent>
-
         <S.AvatarStyled>
           <Avatar
             aria-label="recipe"
