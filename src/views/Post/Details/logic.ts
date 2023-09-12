@@ -6,10 +6,11 @@ import { getAllUsers } from '../../../services/api/user'
 import { Props } from './types'
 import { useNavigate } from 'react-router-dom'
 
-const useLogic = (post: Props['post']) => {
+const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
   const navigate = useNavigate()
   const [users, setUsers] = useState<User[]>([])
   const [comment, setComment] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [comments, setComments] = useState<NormalizedUserPostComment[]>([])
 
   const fetchUsers = useCallback(async () => {
@@ -88,6 +89,16 @@ const useLogic = (post: Props['post']) => {
 
   const creatorUser = users.find((user) => user._id === post?.userId)
 
+  const handleGoToEditForm = useCallback(async () => {
+    navigate(`/posts/${post?._id}?edit=true`)
+  }, [navigate, post])
+
+  const handleOnRemove = useCallback(async () => {
+    if (post && onRemove) {
+      onRemove(post._id)
+    }
+  }, [onRemove, post])
+
   return {
     comment,
     comments,
@@ -96,6 +107,8 @@ const useLogic = (post: Props['post']) => {
     getRandomPastelColor,
     handleGoToProfile,
     creatorUser,
+    handleGoToEditForm,
+    handleOnRemove,
   }
 }
 
