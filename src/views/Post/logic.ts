@@ -1,7 +1,13 @@
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Post, PostFormFields } from '../../models/Post'
-import { getPostById, updatePostById } from '../../services/api/post'
+import {
+  getPostById,
+  removePostById,
+  updatePostById,
+} from '../../services/api/post'
+import { User } from '../../models/User'
+import { getMe } from '../../services/api/user'
 
 const useLogic = () => {
   const navigate = useNavigate()
@@ -10,6 +16,20 @@ const useLogic = () => {
   const [post, setPost] = useState<Post | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [isEdit] = useState(searchParams.get('edit') === 'true')
+  const [currentUser, setCurrentUser] = useState<User | null>(null)
+
+  const handleFetchUserMe = useCallback(async () => {
+    try {
+      const userInfo = await getMe()
+      setCurrentUser(userInfo)
+    } catch (error) {
+      console.error('Error fetching user data:', error)
+    }
+  }, [])
+
+  useEffect(() => {
+    handleFetchUserMe()
+  }, [handleFetchUserMe])
 
   const InitialValues = useMemo<Partial<PostFormFields>>(
     () => ({
@@ -54,12 +74,22 @@ const useLogic = () => {
     [post, navigate]
   )
 
+  const handleRemovePost = useCallback(
+    async (postId: string) => {
+      await removePostById(postId)
+      navigate('/dashboard')
+    },
+    [navigate]
+  )
+
   return {
     post,
     isLoading,
     isEdit,
     InitialValues,
     handleEditPost,
+    handleRemovePost,
+    currentUser,
   }
 }
 

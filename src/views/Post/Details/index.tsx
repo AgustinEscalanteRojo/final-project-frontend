@@ -1,4 +1,7 @@
 import { FC, memo, useEffect, useState } from 'react'
+import { Avatar, IconButton } from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
 import SendIcon from '@mui/icons-material/Send'
@@ -11,9 +14,8 @@ import useLogic from './logic'
 import * as S from './styles'
 import type { Props } from './types'
 import { allergyIcons } from '../../../common/constants'
-import { Avatar } from '@mui/material'
 
-const Details: FC<Props> = ({ post }) => {
+const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
   const {
     comments,
     handleCommentSubmit,
@@ -22,7 +24,9 @@ const Details: FC<Props> = ({ post }) => {
     getRandomPastelColor,
     handleGoToProfile,
     creatorUser,
-  } = useLogic(post)
+    handleGoToEditForm,
+    handleOnRemove,
+  } = useLogic(post, onRemove)
 
   return (
     <S.DetailsContainer>
@@ -38,9 +42,22 @@ const Details: FC<Props> = ({ post }) => {
               : post?.userId.charAt(0)}
           </Avatar>
         </S.AvatarStyled>
+
         <S.ImageContainer>
           <S.TitleContainer>{post?.title}</S.TitleContainer>
           <S.IconDetailsContainer>
+            {isCurrentUserCreator ? (
+              <>
+                <IconButton aria-label="settings" onClick={handleGoToEditForm}>
+                  <EditIcon />
+                </IconButton>
+                {onRemove && (
+                  <IconButton aria-label="settings" onClick={handleOnRemove}>
+                    <DeleteIcon />
+                  </IconButton>
+                )}
+              </>
+            ) : null}
             <S.DiningIconContainer>
               <TimeIcon />
             </S.DiningIconContainer>

@@ -8,7 +8,15 @@ import type { Props } from './types'
 import ImageBackground from '../../components/ImageBackground'
 
 const PostDetailsView: FC<Props> = ({ onLogout }) => {
-  const { post, isLoading, isEdit, InitialValues, handleEditPost } = useLogic()
+  const {
+    post,
+    isLoading,
+    isEdit,
+    InitialValues,
+    handleEditPost,
+    handleRemovePost,
+    currentUser,
+  } = useLogic()
 
   if (isLoading) {
     return <div>Cargando</div>
@@ -23,7 +31,11 @@ const PostDetailsView: FC<Props> = ({ onLogout }) => {
           <ImageBackground imageSrc="/post.jpg" />
         </FormContainer>
       ) : (
-        <Details post={post} />
+        <Details
+          post={post}
+          isCurrentUserCreator={currentUser?._id === post?.userId}
+          onRemove={handleRemovePost}
+        />
       )}
     </>
   )
