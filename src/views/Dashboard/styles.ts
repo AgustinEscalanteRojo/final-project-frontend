@@ -10,7 +10,7 @@ export const ContainerUsers = styled.div`
   right: 19px;
   top: 104px;
   width: 150px;
-  height: 665px;
+  height: 295px;
   padding: 20px;
   background-color: ${theme.colors.transparentWhite};
   display: flex;

@@ -1,9 +1,8 @@
 import React from 'react'
 import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
 import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
 
+import * as S from './styles'
 interface CardCommentProps {
   author: string
   content: string
@@ -19,20 +18,16 @@ const CardComment: React.FC<CardCommentProps> = ({
 }) => {
   return (
     <Card>
-      <CardContent>
-        <div
-          style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}
-        >
+      <S.CardContentStyle>
           <Avatar src={avatarUrl} alt={author} />
-          <Typography variant="subtitle1" style={{ marginLeft: '8px' }}>
+          <S.TypographyStyle variant="subtitle1" style={{ marginLeft: '8px', marginTop: '8px' }}>
             {author}
-          </Typography>
-        </div>
-        <Typography variant="body1">{content}</Typography>
-        <Typography variant="caption" color="textSecondary">
+          </S.TypographyStyle>
+        <S.TypographyStyle variant="body1">{content}</S.TypographyStyle>
+        <S.TypographyStyle variant="caption" color="textSecondary">
           {date}
-        </Typography>
-      </CardContent>
+        </S.TypographyStyle>
+      </S.CardContentStyle>
     </Card>
   )
 }

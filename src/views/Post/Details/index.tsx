@@ -15,7 +15,9 @@ import * as S from './styles'
 import type { Props } from './types'
 import { allergyIcons } from '../../../common/constants'
 
+
 const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
+
   const {
     comments,
     handleCommentSubmit,
@@ -28,9 +30,11 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     handleOnRemove,
   } = useLogic(post, onRemove)
 
+
   return (
     <S.DetailsContainer>
       <S.MainContent>
+
         <S.AvatarStyled>
           <Avatar
             aria-label="recipe"
@@ -136,7 +140,6 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
           </S.CommentForm>
         </S.CommentSection>
       </S.MainContent>
-
       <Footer />
       <ImageBackground imageSrc="/details.jpg" />
     </S.DetailsContainer>
