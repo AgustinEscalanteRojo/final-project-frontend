@@ -48,6 +48,7 @@ export const Cards = styled.div`
 export const UserCards = styled.div`
   width: 110%;
   margin-right: 20px;
+  margin-top:-15px;
   padding: 20px;
   overflow: auto;
   scrollbar-width: thin;
@@ -86,9 +87,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
-  
   margin-bottom: 0;
   margin-left: 0;
 `
@@ -114,3 +112,10 @@ export const ButtonController = styled.div`
   }
 `
 
+export const Typography = styled.div`
+  margin-left: 14px;
+  margin-top: -10px;;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.grey};
+  transform: scale(0.77);
+`
