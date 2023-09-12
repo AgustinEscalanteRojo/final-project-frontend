@@ -20,6 +20,26 @@ export const MainContent = styled.div`
   border-radius: 20px !important;
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
 `
+
+export const AvatarStyled = styled.div`
+  width: 45px;
+  height: 45px;
+  background-color: ${({ theme }) => theme.colors.grey300};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+`
+
 export const ImageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,7 +62,6 @@ export const DiningIconContainer = styled.span`
   margin-top: 5px;
   transform: scale(0.8);
   margin-left: 50px;
-
 `
 export const MainImage = styled.img`
   align-self: center;
@@ -108,9 +127,7 @@ export const StepTitle = styled.h3`
   margin-left: 30px;
   color: ${({ theme }) => theme.colors.greytitle};
 `
-export const Step = styled.div`
-
-`
+export const Step = styled.div``
 export const StepDescription = styled.p`
   font-size: 17px;
   font-weight: 600;
@@ -126,7 +143,6 @@ export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-bottom: -25px;
   width: 24px;
   height: 24px;
-
 `
 export const AllergyIconContainer = styled.div`
   display: flex;
@@ -167,10 +183,9 @@ export const CommentList = styled.ul`
   width: 1190px;
   list-style-type: none;
   padding: 0;
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  overflow-x: auto; 
-  
+
 `
 
 export const CommentForm = styled.form`
@@ -192,7 +207,7 @@ export const CommentInput = styled.input`
 
 
 export const CommentButton = styled.button`
-   background-color: ${({ theme }) => theme.colors.green500}!important;
+  background-color: ${({ theme }) => theme.colors.green500}!important;
   color: #fff;
   transform: scale(0.7);
   border: none;
@@ -202,10 +217,7 @@ export const CommentButton = styled.button`
   font-size: 0.9em;
   cursor: pointer;
 
-
   &:hover {
     background-color: #0056b3;
   }
 `
-
-

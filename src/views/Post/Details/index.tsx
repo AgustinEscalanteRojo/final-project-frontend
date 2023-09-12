@@ -7,59 +7,41 @@ import BarChartIcon from '@mui/icons-material/TuneOutlined'
 import Footer from '../../../components/Footer'
 import ImageBackground from '../../../components/ImageBackground'
 import CardComment from '../../../../src/components/CardComment'
-import { NormalizedUserPostComment } from '../../../models/UserPostComment'
-import { getComments, sendComment } from '../../../../src/services/api/comments'
+import useLogic from './logic'
 import * as S from './styles'
 import type { Props } from './types'
 import { allergyIcons } from '../../../common/constants'
+import { Avatar } from '@mui/material'
 
 const Details: FC<Props> = ({ post }) => {
-  const [comment, setComment] = useState('')
-  const [comments, setComments] = useState<NormalizedUserPostComment[]>([])
 
-  const handleCommentChange = (e: any) => {
-    setComment(e.target.value)
-  }
+  const {
+    comments,
+    handleCommentSubmit,
+    comment,
+    handleCommentChange,
+    getRandomPastelColor,
+    handleGoToProfile,
+    creatorUser,
+  } = useLogic(post)
 
-  const handleCommentSubmit = async (e: any) => {
-    e.preventDefault()
-
-    try {
-      if (!post) {
-        console.error('No se ha encontrado el post')
-        return
-      }
-
-      const nuevoComentario = await sendComment(comment, post._id)
-
-      setComments((prevComments) => [
-        ...prevComments,
-        {
-          _id: nuevoComentario._id,
-          userId: nuevoComentario.userId,
-          postId: nuevoComentario.postId,
-          comment: nuevoComentario.comment,
-          replyTo: nuevoComentario.replyTo,
-          createdAt: nuevoComentario.createdAt,
-        },
-      ])
-      setComment('') 
-    } catch (error) {
-      console.error('Error al enviar el comentario:', error)
-    }
-  }
-
-  useEffect(() => {
-    if (post) {
-      getComments(post._id)
-        .then((comments) => setComments(comments))
-        .catch((error) => console.error('Error al obtener comentarios:', error))
-    }
-  }, [post])
 
   return (
     <S.DetailsContainer>
       <S.MainContent>
+
+        <S.AvatarStyled>
+          <Avatar
+            aria-label="recipe"
+            style={{ backgroundColor: getRandomPastelColor() }}
+            onClick={handleGoToProfile}
+          >
+            {creatorUser
+              ? creatorUser.username.charAt(0).toUpperCase()
+              : post?.userId.charAt(0)}
+          </Avatar>
+        </S.AvatarStyled>
+
         <S.ImageContainer>
           <S.TitleContainer>{post?.title}</S.TitleContainer>
           <S.IconDetailsContainer>
@@ -112,11 +94,6 @@ const Details: FC<Props> = ({ post }) => {
             </S.Step>
           ))}
         </S.StepsContainer>
-
-
-
-
-
         <S.CommentSection>
           <S.CommentTitle>Comments</S.CommentTitle>
 
@@ -145,10 +122,6 @@ const Details: FC<Props> = ({ post }) => {
             </S.CommentButton>
           </S.CommentForm>
         </S.CommentSection>
-
-
-
-
       </S.MainContent>
       <Footer />
       <ImageBackground imageSrc="/details.jpg" />

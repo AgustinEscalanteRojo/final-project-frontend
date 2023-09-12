@@ -92,3 +92,10 @@ export const ButtonSaveRecipe = styled(Button)`
   margin-bottom: 96px !important;
   margin-top: 20px !important;
 `
+
+export const InputError = styled.span`
+  color: ${({ theme }) => theme.colors.danger};
+  font-size: 12px;
+  line-height: 0.9;
+  margin-top: 8px;
+`
