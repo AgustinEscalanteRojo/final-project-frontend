@@ -51,7 +51,7 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
           createdAt: nuevoComentario.createdAt,
         },
       ])
-      setComment('') // Limpia el campo de comentarios
+      setComment('') 
     } catch (error) {
       console.error('Error al enviar el comentario:', error)
     }
@@ -67,16 +67,16 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
 
   function getRandomPastelColor() {
     const pastelColors = [
-      '#FFD1DC', // Light Pink
-      '#FFABAB', // Light Red
-      '#FFC3A0', // Light Orange
-      '#FF677D', // Light Coral
-      '#D4A5A5', // Light Mauve
-      '#392F5A', // Light Indigo
-      '#31A2AC', // Light Teal
-      '#61C0BF', // Light Cyan
-      '#6B4226', // Light Brown
-      '#D9BF77', // Light Yellow
+      '#FFD1DC',
+      '#FFABAB', 
+      '#FFC3A0', 
+      '#FF677D', 
+      '#D4A5A5', 
+      '#392F5A', 
+      '#31A2AC', 
+      '#61C0BF', 
+      '#6B4226', 
+      '#D9BF77', 
     ]
 
     return pastelColors[Math.floor(Math.random() * pastelColors.length)]

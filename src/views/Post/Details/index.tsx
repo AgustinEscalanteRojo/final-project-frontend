@@ -1,5 +1,5 @@
 
-import { FC, memo, useEffect, useState } from 'react'
+import { FC, memo } from 'react'
 import { Avatar, IconButton } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -15,8 +15,6 @@ import useLogic from './logic'
 import * as S from './styles'
 import type { Props } from './types'
 import { allergyIcons } from '../../../common/constants'
-
-import { NormalizedUserPostComment } from '../../../models/UserPostComment'
 
 const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
 

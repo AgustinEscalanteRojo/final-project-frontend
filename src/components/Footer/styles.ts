@@ -7,13 +7,10 @@ export const Container = styled.footer`
   bottom: 0;
   width: 100%;
 
-
-
   @media screen and (max-width: 768px) {
     position: fixed;
     bottom: 0;
     border: none;
-    padding: 2.6px;
     max-height: none;
   }
 `
@@ -23,7 +20,6 @@ export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -46,16 +42,15 @@ export const Text = styled.p`
 export const FAQLink = styled(Link)`
   color: ${theme.colors.softSky};
   font-family: Oswald;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: bold;
   text-decoration: none;
   margin-right: 20px;
 
   &:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
   }
 
   @media screen and (max-width: 768px) {
-    
   }
 `
