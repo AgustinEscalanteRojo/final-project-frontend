@@ -1,12 +1,38 @@
 import styled from 'styled-components'
+import { Card } from '@mui/material'
+import TabPanel from '@mui/lab/TabPanel'
 
-export const Container = styled.div``
+export const CardStyle = styled(Card)`
+  max-width: 400px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background-color: ${({ theme }) => theme.colors.transparentGrey}!important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 16px !important;
+  margin: 100px auto !important;
+  border-radius: 35px !important;
+`
+
+export const TabPanelStyle = styled(TabPanel)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+`
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 export const PerfilContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  flex-direction: column;
 `
 
 export const Content = styled.div`
@@ -19,7 +45,6 @@ export const UserContainer = styled.div`
   flex-direction: column;
   align-items: center;
   color: ${({ theme }) => theme.colors.blue900};
-  margin-top: 15px;
   font-family: 'Roboto', sans-serif !important;
   font-size: 18px;
 `
