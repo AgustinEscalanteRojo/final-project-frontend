@@ -66,7 +66,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
             >
               {user?.username ? user.username.charAt(0).toUpperCase() : ''}
             </Avatar>
-            <CardContent>
+            <CardContent style={{ textAlign: 'center' }}>
               <Typography variant="h5">Username: {user?.username}</Typography>
               <ListItem>
                 <ListItemIcon>
