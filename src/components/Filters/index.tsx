@@ -20,7 +20,7 @@ import { Grid } from '@mui/material'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
-const Filters: FC<Props> = ({ onSubmit }) => {
+const Filters: FC<Props> = ({ onSubmit, onReset }) => {
   const { initialValues } = useLogic()
   const [openAllergies, setOpenAllergies] = useState(false)
   const [openDifficulty, setOpenDifficulty] = useState(false)
@@ -215,7 +215,12 @@ const Filters: FC<Props> = ({ onSubmit }) => {
             <S.ButtonStyle type="submit" variant="contained" color="primary">
               Apply
             </S.ButtonStyle>
-            <S.ButtonStyle type="button" variant="contained" color="primary">
+            <S.ButtonStyle
+              onClick={onReset}
+              type="button"
+              variant="contained"
+              color="primary"
+            >
               Clean
             </S.ButtonStyle>
           </ContainerButton>

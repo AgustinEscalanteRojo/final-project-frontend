@@ -83,6 +83,12 @@ export const createPost = async (
       'Content-Type': 'application/json',
     },
   })
+
+  if (!response.ok) {
+    const error = await response.json()
+    throw new Error(error || 'An error occurred while creating the recipe')
+  }
+
   const data = await response.json()
 
   return normalizePost(data)
@@ -109,6 +115,11 @@ export const updatePostById = async ({
     removeToken()
     window.location.reload()
     return null
+  }
+
+  if (!response.ok) {
+    const error = await response.json()
+    throw new Error(error || 'An error occurred while edit the recipe')
   }
 
   const data = await response.json()

@@ -17,16 +17,15 @@ export const TitleContainer = styled.div`
   color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
 `
-export const CardStyled = styled(MuiCard)`
+export const Container = styled(MuiCard)`
   background-color: ${({ theme }) => theme.colors.blue25} !important;
-  margin: 50px;
   border: 1px solid ${theme.colors.blue175};
   border-radius: 15px !important;
   transition: max-width 0.3s ease-in-out;
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
-  transform: scale(1.1);
+  max-width: 450px;
 
-  @media (max-width: 927px) {
+ /* @media (max-width: 927px) {
     margin: 20px;
     transform: scale(0.8) !important;
   }
@@ -34,7 +33,7 @@ export const CardStyled = styled(MuiCard)`
   @media (max-width: 532px) {
     margin: 10px;
     transform: scale(0.6) !important;
-  }
+  }*/
 `
 export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-top: 10px;
@@ -64,7 +63,6 @@ export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
 export const FavIcon = styled(BookmarkIcon)<{ isFav: boolean }>`
   color: ${(props) => (props.isFav ? 'blue' : 'grey')};
 `
-export const DetailsIconButton = styled(IconButton)``
 
 export const CardHeaderStyled = styled(CardHeader)`
   font-size: 24px !important;
@@ -72,8 +70,9 @@ export const CardHeaderStyled = styled(CardHeader)`
   margin-bottom: -15px;
 `
 export const IconDetailsContainer = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-flow: row wrap;
   gap: 8px;
   margin-top: 2px;
   margin-left: 38px;

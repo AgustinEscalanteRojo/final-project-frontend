@@ -41,10 +41,10 @@ const useLogic = () => {
   }
 
   return {
-    user,
-    handleChange,
-    value,
     getRandomPastelColor,
+    handleChange,
+    user,
+    value,
   }
 }
 

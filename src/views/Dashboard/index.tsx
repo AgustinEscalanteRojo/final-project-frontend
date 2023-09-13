@@ -21,6 +21,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     posts,
     users,
     handleFilter,
+    handleReset,
     isLoading,
   } = useLogic()
 
@@ -29,23 +30,10 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <Header onLogout={onLogout} />
       <S.Container>
         <S.ButtonController>
-          <Typography
-            marginTop="95px"
-            marginBottom="5px"
-            textAlign="center"
-            fontFamily="Oswald"
-            fontWeight="5px"
-            fontSize="50px"
-          >
-            Welcome to the Shared Flavours.
-          </Typography>
-          <Typography
-            marginBottom="88px"
-            textAlign="center"
-            fontFamily="Oswald"
-          >
+          <S.Title>Welcome to the Shared Flavours.</S.Title>
+          <S.Subtitle>
             Click on the + symbol and create your first recipe.
-          </Typography>
+          </S.Subtitle>
 
           <S.IconButtonStyled
             onClick={handleGoToPost}
@@ -63,7 +51,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
                   textAlign: 'center',
                   fontWeight: 'bold',
                 }}
-              ></Typography>
+              />
               <Box
                 display="flex"
                 justifyContent="center"
@@ -71,7 +59,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
                 height="100vh"
                 flexDirection="row"
               >
-                <Filters onSubmit={handleFilter} />
+                <Filters onSubmit={handleFilter} onReset={handleReset} />
               </Box>
             </CardContent>
           </S.StickyCardStyle>

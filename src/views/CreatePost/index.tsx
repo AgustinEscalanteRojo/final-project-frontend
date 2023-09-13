@@ -8,13 +8,13 @@ import { PostContainer, Content } from './styles'
 import type { Props } from './types'
 
 const CreatePost: FC<Props> = ({ onLogout }) => {
-  const { handleCreate } = useLogic()
+  const { handleCreate, formError } = useLogic()
 
   return (
     <PostContainer>
       <Header onLogout={onLogout} />
       <Content>
-        <PostForm onSubmit={handleCreate} />
+        <PostForm onSubmit={handleCreate} formError={formError} />
       </Content>
       <Footer />
       <ImageBackground imageSrc="/post.jpg" />

@@ -1,18 +1,11 @@
 import { FC, memo } from 'react'
 import Header from '../../components/Header'
-import Footer from '../../components/Footer'
 import * as React from 'react'
 import Box from '@mui/material/Box'
-import Tab from '@mui/material/Tab'
-import TabContext from '@mui/lab/TabContext'
-import TabList from '@mui/lab/TabList'
-import TabPanel from '@mui/lab/TabPanel'
 import { Avatar } from '@material-ui/core'
-import EmailIcon from '@mui/icons-material/Email'
 import LocationCityIcon from '@mui/icons-material/LocationCity'
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle'
 import ImageBackground from '../../components/ImageBackground'
-import UserCard from '../../components/UserCard'
 import {
   CardContent,
   Grid,
@@ -21,30 +14,14 @@ import {
   ListItemText,
   Typography,
 } from '@mui/material'
-import PersonIcon from '@mui/icons-material/Person'
 import RecipeReviewCard from '../../components/Card'
 import useLogic from './logic'
-import {
-  PerfilContainer,
-  Content,
-  FollowersContainer,
-  FollowingContainer,
-  Posts,
-  Container,
-  CardStyle,
-  TabPanelStyle,
-} from './styles'
+import { Content, Posts, Container, CardStyle } from './styles'
 import type { Props } from './types'
+import UsersCardsModal from '../../containers/Modal/UsersCardsModal'
 
 const UserDetailsPage: FC<Props> = ({ onLogout }) => {
-  const {
-    user,
-    value,
-    handleChange,
-    selectedTab,
-    handleSetTab,
-    getRandomPastelColor,
-  } = useLogic()
+  const { user, getRandomPastelColor } = useLogic()
 
   return (
     <Container>
@@ -73,35 +50,19 @@ const UserDetailsPage: FC<Props> = ({ onLogout }) => {
             </Avatar>
             <CardContent>
               <Typography variant="h5">Username: {user?.username}</Typography>
-              <ListItem>
-                <ListItemIcon>
-                  <PersonIcon />
-                </ListItemIcon>
-                <ListItemText primary={`Name: ${user?.firstName}`} />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <PersonIcon />
-                </ListItemIcon>
-                <ListItemText primary={`Lastname: ${user?.lastName}`} />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <EmailIcon />
-                </ListItemIcon>
-                <ListItemText primary={`Email: ${user?.email}`} />
-              </ListItem>
+              <UsersCardsModal
+                users={user?.followers || []}
+                buttonText={`Followers: ${user?.followers?.length || 0}`}
+              />
+              <UsersCardsModal
+                users={user?.following || []}
+                buttonText={`Following: ${user?.following?.length || 0}`}
+              />
               <ListItem>
                 <ListItemIcon>
                   <LocationCityIcon />
                 </ListItemIcon>
                 <ListItemText primary={`Country: ${user?.country}`} />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <PersonIcon />
-                </ListItemIcon>
-                <ListItemText primary={`Gender: ${user?.gender}`} />
               </ListItem>
               <ListItem>
                 <ListItemIcon>
@@ -115,54 +76,19 @@ const UserDetailsPage: FC<Props> = ({ onLogout }) => {
         <Grid item xs={12} md={8}>
           <Content>
             <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
-              <TabContext value={value}>
-                <Box
-                  sx={{
-                    borderBottom: 1,
-                    borderColor: 'divider',
-                    display: 'flex',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <TabList
-                    onChange={handleChange}
-                    aria-label="lab API tabs example"
-                  >
-                    <Tab label="My recipes" value="1" />
-                    <Tab label="Saved Recipes" value="2" />
-                  </TabList>
-                </Box>
-                <TabPanelStyle value="1">
-                  {user && user.myPosts && user.myPosts.length > 0 ? (
-                    <Posts>
-                      {user.myPosts.map((post) => (
-                        <RecipeReviewCard
-                          key={post._id}
-                          post={post}
-                          isCurrentUserCreator={user?._id === post.userId}
-                        />
-                      ))}
-                    </Posts>
-                  ) : (
-                    <p>Not have posts yet.</p>
-                  )}
-                </TabPanelStyle>
-                <TabPanel value="2">
-                  {user && user.favPosts && user.favPosts.length > 0 ? (
-                    <Posts>
-                      {user.favPosts.map((post) => (
-                        <RecipeReviewCard
-                          key={post._id}
-                          post={post}
-                          isCurrentUserCreator={user?._id === post.userId}
-                        />
-                      ))}
-                    </Posts>
-                  ) : (
-                    <p>Not have favorite posts yet.</p>
-                  )}
-                </TabPanel>
-              </TabContext>
+              {user && user.myPosts && user.myPosts.length > 0 ? (
+                <Posts>
+                  {user.myPosts.map((post) => (
+                    <RecipeReviewCard
+                      key={post._id}
+                      post={post}
+                      isCurrentUserCreator={user?._id === post.userId}
+                    />
+                  ))}
+                </Posts>
+              ) : (
+                <p>Not have posts yet.</p>
+              )}
             </Box>
           </Content>
         </Grid>

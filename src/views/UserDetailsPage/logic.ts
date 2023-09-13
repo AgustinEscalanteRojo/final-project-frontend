@@ -1,4 +1,4 @@
-import { SyntheticEvent, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { getUserById } from '../../services/api/user'
 import type { User } from '../../models/User'
@@ -6,16 +6,6 @@ import type { User } from '../../models/User'
 const useLogic = () => {
   const { userId } = useParams()
   const [user, setUser] = useState<User | null>(null)
-  const [selectedTab, setSelectedTab] = useState('1')
-  const [value, setValue] = useState('1')
-
-  const handleChange = (event: SyntheticEvent, newValue: string) => {
-    setValue(newValue)
-  }
-
-  const handleSetTab = (event: SyntheticEvent, newValue: string) => {
-    setSelectedTab(newValue)
-  }
 
   const handleFetchUser = useCallback(async () => {
     try {
@@ -51,10 +41,6 @@ const useLogic = () => {
 
   return {
     user,
-    selectedTab,
-    value,
-    handleChange,
-    handleSetTab,
     getRandomPastelColor,
   }
 }
