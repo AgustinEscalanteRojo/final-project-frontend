@@ -49,7 +49,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <Filters onSubmit={handleFilter} />
       <S.ContainerUsers>
         <S.UserCards>
-        <S.Typography> Top Main Chefs </S.Typography>
+        <S.Typography><S.CrownIconStyle/> Top Main Chefs </S.Typography>
           {users
             ?.filter((user) => user._id !== currentUser?._id)
             .map((user, index) => (

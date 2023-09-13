@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
+import CrownIcon from '@mui/icons-material/EmojiEvents'; 
 import theme from '../../styles/theme'
 
 export const ContainerUsers = styled.div`
@@ -113,9 +114,18 @@ export const ButtonController = styled.div`
 `
 
 export const Typography = styled.div`
-  margin-left: 34px;
-  margin-top: -10px;;
+  margin-left: 8px;
+  margin-top: -12px;;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.grey};
-  transform: scale(0.77);
+  transform: scale(0.8);
+`
+
+export const CrownIconStyle = styled(CrownIcon)`
+  padding: 2px;
+  border: 1px solid ${theme.colors.blue225} !important;
+  border-radius: 50%;
+  margin-top: -5px!important;
+  background-color: ${({ theme }) => theme.colors.transparentWhite}!important;
+
 `
