@@ -1,23 +1,24 @@
-import React from 'react'
+import { FC } from 'react'
 import Card from '@mui/material/Card'
 import Avatar from '@mui/material/Avatar'
-
 import * as S from './styles'
 import type { CardCommentProps } from './types'
 import useLogic from './logic'
 
-const CardComment: React.FC<CardCommentProps> = ({
+const CardComment: FC<CardCommentProps> = ({
   author,
   content,
   avatarUrl,
   date,
   comment,
-  post,
+  isCurrentUserCreator,
 }) => {
-  const { getRandomPastelColor, commentCreator, handleGoToProfile } = useLogic(
-    comment,
-    post
-  )
+  const {
+    getRandomPastelColor,
+    commentCreator,
+    handleGoToProfile,
+    handleGoToCurrentUserProfile,
+  } = useLogic(comment)
   return (
     <Card>
       <S.CardContentStyle>
@@ -26,7 +27,11 @@ const CardComment: React.FC<CardCommentProps> = ({
           alt={author}
           aria-label="recipe"
           style={{ backgroundColor: getRandomPastelColor() }}
-          onClick={handleGoToProfile}
+          onClick={
+            isCurrentUserCreator
+              ? handleGoToCurrentUserProfile
+              : handleGoToProfile
+          }
         >
           {commentCreator
             ? commentCreator.username?.charAt(0).toUpperCase()
