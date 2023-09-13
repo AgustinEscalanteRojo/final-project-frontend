@@ -35,8 +35,23 @@ const CardComment: FC<CardCommentProps> = ({
         >
           {commentCreator
             ? commentCreator.username?.charAt(0).toUpperCase()
-            : comment?.userId.charAt(0)}
+            : comment?.userId.charAt(0)
+            }
+
         </Avatar>
+        
+        <S.Name
+            onClick={
+              isCurrentUserCreator
+                ? handleGoToCurrentUserProfile
+                : handleGoToProfile
+
+            }
+            primary={commentCreator?.username} 
+            secondary={commentCreator?.firstName}
+            
+          />
+        
         <S.TypographyStyle
           variant="subtitle1"
           style={{ marginLeft: '8px', marginTop: '8px' }}
