@@ -25,7 +25,7 @@ export const MainContent = styled.div`
 
 export const Name = styled(ListItemText)`
   position: absolute; 
-  margin-left: 60px; 
+  margin-left: 50px; 
   margin-top: -3px!important; 
 `
 
