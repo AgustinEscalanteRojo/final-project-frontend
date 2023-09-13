@@ -1,10 +1,5 @@
 import React, { FC, memo } from 'react'
-import {
-  CardContent,
-  CardActions,
-  Avatar,
-  IconButton,
-} from '@mui/material'
+import { CardContent, CardActions, Avatar, IconButton } from '@mui/material'
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
 import RepeatIcon from '@mui/icons-material/Repeat'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -44,6 +39,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     isFav,
     creatorUser,
     handleGoToProfile,
+    handleGoToCurrentUserProfile,
   } = useLogic(post, onRemove)
 
   return (
@@ -53,14 +49,22 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
         avatar={
           <AvatarStyled>
             <Name
-              onClick={handleGoToProfile}
+              onClick={
+                isCurrentUserCreator
+                  ? handleGoToCurrentUserProfile
+                  : handleGoToProfile
+              }
               primary={creatorUser?.username}
               secondary={creatorUser?.firstName}
             />
             <Avatar
               aria-label="recipe"
               style={{ backgroundColor: getRandomPastelColor() }}
-              onClick={handleGoToProfile}
+              onClick={
+                isCurrentUserCreator
+                  ? handleGoToCurrentUserProfile
+                  : handleGoToProfile
+              }
             >
               {creatorUser
                 ? creatorUser.username.charAt(0).toUpperCase()
@@ -71,7 +75,6 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
         action={
           isCurrentUserCreator ? (
             <>
-       
               <IconButton aria-label="settings" onClick={handleGoToEditForm}>
                 <EditIcon />
               </IconButton>
