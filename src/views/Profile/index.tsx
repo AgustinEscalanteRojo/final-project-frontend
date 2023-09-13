@@ -61,6 +61,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
                 backgroundColor: getRandomPastelColor(),
                 width: 60,
                 height: 60,
+                marginBottom: -10,
               }}
             >
               {user?.username ? user.username.charAt(0).toUpperCase() : ''}
