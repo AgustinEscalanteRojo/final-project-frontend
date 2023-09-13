@@ -1,4 +1,3 @@
-
 import { FC, memo } from 'react'
 
 import { Avatar, IconButton } from '@mui/material'
@@ -28,6 +27,7 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     creatorUser,
     handleGoToEditForm,
     handleOnRemove,
+    handleGoToCurrentUserProfile,
   } = useLogic(post, onRemove)
 
   return (
@@ -35,14 +35,22 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
       <S.MainContent>
         <S.AvatarStyled>
           <S.Name
-            onClick={handleGoToProfile}
+            onClick={
+              isCurrentUserCreator
+                ? handleGoToCurrentUserProfile
+                : handleGoToProfile
+            }
             primary={creatorUser?.username}
             secondary={creatorUser?.firstName}
           />
           <Avatar
             aria-label="recipe"
             style={{ backgroundColor: getRandomPastelColor() }}
-            onClick={handleGoToProfile}
+            onClick={
+              isCurrentUserCreator
+                ? handleGoToCurrentUserProfile
+                : handleGoToProfile
+            }
           >
             {creatorUser
               ? creatorUser.username.charAt(0).toUpperCase()
