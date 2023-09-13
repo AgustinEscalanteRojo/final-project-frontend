@@ -45,6 +45,7 @@ export const LogoDeskContainer = styled.div`
 
 export const IconDeskContainer = styled.div`
   align-self: center;
+  margin-right: 30px!important;
 `
 
 export const MobileButtonController = styled.div`
