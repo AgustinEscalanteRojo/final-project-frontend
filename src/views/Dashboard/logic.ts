@@ -112,8 +112,13 @@ const useLogic = () => {
     [searchParams]
   )
 
+  const handleReset = useCallback(async () => {
+    await handleFetchPosts()
+  }, [searchParams])
+
   return {
     handleFilter,
+    handleReset,
     allergies,
     currentUser,
     difficultys,

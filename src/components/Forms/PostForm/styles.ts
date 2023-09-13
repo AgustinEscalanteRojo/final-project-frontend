@@ -4,25 +4,32 @@ import { Select } from '@mui/material'
 import { Typography } from '@mui/material'
 import { Button } from '@mui/material'
 
+export const Container = styled.div`
+  margin-bottom: 100px;
+`
+
 export const FormContainer = styled.div`
   max-width: 620px;
   margin: 0 auto;
 `
+
 export const Title = styled(Typography)`
   font-family: 'Roboto', sans-serif !important;
   font-size: 24px !important;
   font-weight: bold !important;
   color: ${({ theme }) => theme.colors.greytitle};
-  margin-bottom: 10px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px !important;
 `
+
 export const TypographyStyle = styled(Typography)`
   margin-bottom: 10px !important;
 `
+
 export const TextField = styled(DefaultTextField)`
   margin-top: 26px !important;
 `
+
 export const FormControlStyle = styled.div`
   margin-top: 26px !important;
   display: flex !important;
@@ -84,17 +91,33 @@ export const ButtonAddStep = styled(Button)`
   color: ${({ theme }) => theme.colors.green500}!important;
 `
 export const ButtonSaveRecipe = styled(Button)`
-  display: block !important;
-  margin: 0 auto !important;
-  background-color: ${({ theme }) => theme.colors.green500}!important;
-  color: ${({ theme }) => theme.colors.white}!important;
-  margin-bottom: 96px !important;
-  margin-top: 20px !important;
+  &&& {
+    background-color: ${({ theme }) => theme.colors.green500};
+    color: ${({ theme }) => theme.colors.white};
+    margin-top: 16px;
+    
+    &.Mui-disabled {
+      background-color: ${({ theme }) => theme.colors.grey400};
+    }
+  }
 `
 
-export const InputError = styled.span`
-  color: ${({ theme }) => theme.colors.danger};
+export const ButtonContainer = styled.div`
+  &&& {
+    display: flex;
+    justify-content: center;
+  }
+`
+
+export const InputError = styled.div`
+  color: ${({ theme }) => theme.colors.pastelCoral};
   font-size: 12px;
   line-height: 0.9;
   margin-top: 8px;
+`
+
+export const FormError = styled(InputError)`
+  text-align: center;
+  font-size: 16px;
+  margin: 16px 0;
 `

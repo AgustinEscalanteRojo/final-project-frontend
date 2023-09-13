@@ -14,6 +14,7 @@ const useLogic = () => {
   const { postId } = useParams()
   const [searchParams] = useSearchParams()
   const [post, setPost] = useState<Post | null>(null)
+  const [formError, setFormError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [isEdit] = useState(searchParams.get('edit') === 'true')
   const [currentUser, setCurrentUser] = useState<User | null>(null)
@@ -62,13 +63,14 @@ const useLogic = () => {
 
   const handleEditPost = useCallback(
     async (values: Partial<PostFormFields>) => {
-      console.log({ values })
-      if (post?._id) {
-        await updatePostById({ id: post._id, input: values })
-        navigate(`/posts/${post._id}`, { replace: true })
-        navigate(0)
-        // TODO no debemos usar windows reload, la navegación debe ser reactiva
-        // window.location.reload()
+      try {
+        if (post?._id) {
+          await updatePostById({ id: post._id, input: values })
+          navigate(`/posts/${post._id}`, { replace: true })
+          navigate(0)
+        }
+      } catch (e) {
+        setFormError((e as Error).message)
       }
     },
     [post, navigate]
@@ -90,6 +92,7 @@ const useLogic = () => {
     handleEditPost,
     handleRemovePost,
     currentUser,
+    formError,
   }
 }
 

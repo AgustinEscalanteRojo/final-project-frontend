@@ -1,31 +1,11 @@
-import { FC, memo, useState } from 'react'
-import * as React from 'react'
-import Box from '@mui/material/Box'
-import Tab from '@mui/material/Tab'
-import TabContext from '@mui/lab/TabContext'
-import TabList from '@mui/lab/TabList'
+import { FC, memo } from 'react'
+import { TabContext, TabList, TabPanel } from '@mui/lab'
 import { Avatar } from '@material-ui/core'
-import ImageBackground from '../../components/ImageBackground'
-import UserCard from '../../components/UserCard'
-import Header from '../../components/Header'
-import Footer from '../../components/Footer'
-import RecipeReviewCard from '../../components/Card'
-import LocationCityIcon from '@mui/icons-material/LocationCity'
-import { Button, Modal } from '@mui/material'
 import {
-  Content,
-  FollowersContainer,
-  FollowingContainer,
-  Posts,
-  Container,
-  UserContainer,
-  CardStyle,
-  StyledCard,
-  StyledCardContent,
-  TabPanelStyle,
-} from './styles'
-import type { Props } from './types'
-import useLogic from './logic'
+  Email as EmailIcon,
+  Person as PersonIcon,
+  LocationCity as LocationCityIcon,
+} from '@mui/icons-material'
 import {
   CardContent,
   Grid,
@@ -33,27 +13,19 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
+  Box,
+  Tab,
 } from '@mui/material'
-import PersonIcon from '@mui/icons-material/Person'
-import EmailIcon from '@mui/icons-material/Email'
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle'
-import { TabPanel } from '@mui/lab'
+import ImageBackground from '../../components/ImageBackground'
+import Header from '../../components/Header'
+import RecipeReviewCard from '../../components/Card'
+import UsersCardsModal from '../../containers/Modal/UsersCardsModal'
+import useLogic from './logic'
+import { Content, Posts, Container, CardStyle, TabPanelStyle } from './styles'
+import type { Props } from './types'
 
 const Profile: FC<Props> = ({ onLogout }) => {
-  const FollowingAndFollowers = (user: any) => {
-    const [openModal, setOpenModal] = useState(false)
-    const [modalContent, setModalContent] = useState([])
-
-    const handleOpenModal = (content: any) => {
-      setModalContent(content)
-      setOpenModal(true)
-    }
-
-    const handleCloseModal = () => {
-      setOpenModal(false)
-    }
-  }
-
   const { user, value, handleChange, getRandomPastelColor } = useLogic()
 
   return (
@@ -83,6 +55,14 @@ const Profile: FC<Props> = ({ onLogout }) => {
             </Avatar>
             <CardContent>
               <Typography variant="h5">Username: {user?.username}</Typography>
+              <UsersCardsModal
+                users={user?.followers || []}
+                buttonText={`Followers: ${user?.followers?.length || 0}`}
+              />
+              <UsersCardsModal
+                users={user?.following || []}
+                buttonText={`Following: ${user?.following?.length || 0}`}
+              />
               <ListItem>
                 <ListItemIcon>
                   <PersonIcon />
@@ -122,40 +102,6 @@ const Profile: FC<Props> = ({ onLogout }) => {
             </CardContent>
           </CardStyle>
         </Grid>
-        <StyledCard>
-          <StyledCardContent>
-            <FollowingContainer>
-              <TabContext value={value}>
-                <Box
-                  sx={{
-                    borderBottom: 1,
-                    borderColor: 'divider',
-                    display: 'flex',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <TabList
-                    onChange={handleChange}
-                    aria-label="lab API tabs example"
-                  >
-                    <Tab label="Followers" value="1" />
-                    <Tab label="Followings" value="2" />
-                  </TabList>
-                </Box>
-                <TabPanel value="1">
-                  {user?.followers.map((user) => (
-                    <UserCard key={user._id} user={user} />
-                  ))}
-                </TabPanel>
-                <TabPanel value="2">
-                  {user?.following.map((user) => (
-                    <UserCard key={user._id} user={user} />
-                  ))}
-                </TabPanel>
-              </TabContext>
-            </FollowingContainer>
-          </StyledCardContent>
-        </StyledCard>
         <Grid item xs={12} md={8}>
           <Content>
             <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>

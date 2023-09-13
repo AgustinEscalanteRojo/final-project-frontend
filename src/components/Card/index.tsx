@@ -8,10 +8,10 @@ import BarChartIcon from '@mui/icons-material/BarChart'
 import EditIcon from '@mui/icons-material/Edit'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import { allergyIcons } from '../../common/constants'
+import useLogic from './logic'
 import {
   LikeIcon,
   FavIcon,
-  CardStyled,
   CardHeaderStyled,
   IconDetailsContainer,
   DiningIconContainer,
@@ -23,9 +23,9 @@ import {
   AvatarStyled,
   ButtonDetails,
   Name,
+  Container,
 } from './styles'
 import type { Props } from './types'
-import useLogic from './logic'
 
 const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
   const {
@@ -43,7 +43,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
   } = useLogic(post, onRemove)
 
   return (
-    <CardStyled>
+    <Container>
       <TitleContainer onClick={handleDetailsClick}>{post.title}</TitleContainer>
       <CardHeaderStyled
         avatar={
@@ -131,6 +131,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
           <>
             <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
               <LikeIcon isLike={isLike} />
+              {post.likes}
             </IconButton>
             <IconButton
               aria-label="add to favorites"
@@ -147,7 +148,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
           Details
         </ButtonDetails>
       </CardActions>
-    </CardStyled>
+    </Container>
   )
 }
 

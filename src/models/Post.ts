@@ -44,6 +44,7 @@ export type postResponse = {
     order: number
   }[]
   createdAt: Date
+  likes?: number
 
   // custom user fields
   isFav?: boolean
@@ -95,6 +96,7 @@ export const normalizePost = (input: postResponse) => ({
   isFav: input?.isFav || false,
   isLike: input?.isLike || false,
   isShared: input?.isShared || false,
+  likes: input?.likes || 0,
 })
 
 export type Post = ReturnType<typeof normalizePost>

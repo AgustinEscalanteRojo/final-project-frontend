@@ -16,6 +16,7 @@ const PostDetailsView: FC<Props> = ({ onLogout }) => {
     handleEditPost,
     handleRemovePost,
     currentUser,
+    formError,
   } = useLogic()
 
   if (isLoading) {
@@ -27,7 +28,11 @@ const PostDetailsView: FC<Props> = ({ onLogout }) => {
       <Header onLogout={onLogout} />
       {isEdit ? (
         <FormContainer>
-          <PostForm onSubmit={handleEditPost} initialValues={InitialValues} />
+          <PostForm
+            onSubmit={handleEditPost}
+            initialValues={InitialValues}
+            formError={formError}
+          />
           <ImageBackground imageSrc="/post.jpg" />
         </FormContainer>
       ) : (
