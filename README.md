@@ -1,3 +1,33 @@
+# Shared Flavours
+
+Welcome to the frontend of our exciting Shared Flavours Social web application! This README provides an overview of the key components, highlighted features, and setup instructions for our frontend.
+
+## Overview
+
+Shared Flavours is a platform where cooking enthusiasts can connect, share their favorite recipes, and discover new culinary delights. Our frontend is the user interface that allows users to interact intuitively with the platform.
+
+## Key Features
+
+- **Modern User Interface:**
+
+We have designed an attractive and user-friendly interface using React to provide an exceptional user experience.
+
+- **Recipe Exploration:**
+
+Users can explore a wide variety of recipes shared by the community and find inspiration for their meals.
+
+- **Recipe Creation and Sharing:**
+
+It allows users to create their own recipes, share them with the community, and receive comments and appreciations.
+
+- **Social Interaction:**
+
+Users can follow other cooking enthusiasts, like and comment on their friends' recipes.
+
+- **Advanced Search:**
+
+We facilitate the search for specific recipes by ingredients, categories, and more.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
