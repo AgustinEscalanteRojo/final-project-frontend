@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Card } from '@mui/material'
+import { Card, CardContent } from '@mui/material'
 import TabPanel from '@mui/lab/TabPanel'
 
 export const CardStyle = styled(Card)`
@@ -57,8 +57,9 @@ export const Button = styled.div`
 export const FollowersContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-`
+  margin-top: 15px;`
 
 export const FollowingContainer = styled.div`
   display: flex;
@@ -82,3 +83,12 @@ export const Posts = styled.div`
     margin: -27px !important;
   }
 `
+
+
+
+export const StyledCard = styled(Card)`
+  /* Estilos personalizados para la tarjeta */
+`
+
+export const StyledCardContent = styled(CardContent)``
+  /* Estilos personalizados para el contenido de la tarjeta */

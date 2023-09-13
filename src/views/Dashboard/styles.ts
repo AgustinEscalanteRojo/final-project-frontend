@@ -129,7 +129,6 @@ export const Typography = styled.div`
   color: ${({ theme }) => theme.colors.grey};
   transform: scale(0.8);
 `
-
 export const CrownIconStyle = styled(CrownIcon)`
   position: absolute;
   padding: 2px;
