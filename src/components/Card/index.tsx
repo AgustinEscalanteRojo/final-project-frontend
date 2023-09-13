@@ -71,6 +71,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
         action={
           isCurrentUserCreator ? (
             <>
+       
               <IconButton aria-label="settings" onClick={handleGoToEditForm}>
                 <EditIcon />
               </IconButton>

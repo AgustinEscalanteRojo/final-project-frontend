@@ -1,4 +1,3 @@
-
 import { FC, memo, useEffect, useState } from 'react'
 import { Avatar, IconButton } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
@@ -16,10 +15,7 @@ import * as S from './styles'
 import type { Props } from './types'
 import { allergyIcons } from '../../../common/constants'
 
-import { NormalizedUserPostComment } from '../../../models/UserPostComment'
-
 const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
-
   const {
     comments,
     handleCommentSubmit,
@@ -28,21 +24,19 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     getRandomPastelColor,
     handleGoToProfile,
     creatorUser,
-
     handleGoToEditForm,
     handleOnRemove,
   } = useLogic(post, onRemove)
-
 
   return (
     <S.DetailsContainer>
       <S.MainContent>
         <S.AvatarStyled>
-          <S.Name onClick={handleGoToProfile}
-          primary={creatorUser?.username}
-          secondary={creatorUser?.firstName}
-          
-        />
+          <S.Name
+            onClick={handleGoToProfile}
+            primary={creatorUser?.username}
+            secondary={creatorUser?.firstName}
+          />
           <Avatar
             aria-label="recipe"
             style={{ backgroundColor: getRandomPastelColor() }}
@@ -51,14 +45,9 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
             {creatorUser
               ? creatorUser.username.charAt(0).toUpperCase()
               : post?.userId.charAt(0)}
-              
           </Avatar>
-
-       
         </S.AvatarStyled>
-        
         <S.ImageContainer>
-    
           <S.TitleContainer>{post?.title}</S.TitleContainer>
           <S.IconDetailsContainer>
             {isCurrentUserCreator ? (

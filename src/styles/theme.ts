@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 const theme = {
   colors: {
     // Pastel
@@ -92,7 +94,16 @@ const theme = {
     oceanicWriteBlue: '#083c57',
     oceanicShadow: '#05354f',
     aquaSky: '#58dcfd', // rgb: 88, 220, 253
+
+
+
+    
   },
 }
+
+
+export const GeneralContainer = styled.div`
+  overflow-x: hidden;
+`;
 
 export default theme
