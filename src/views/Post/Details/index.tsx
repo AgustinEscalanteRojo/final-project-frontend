@@ -1,4 +1,6 @@
-import { FC, memo, useEffect, useState } from 'react'
+
+import { FC, memo } from 'react'
+
 import { Avatar, IconButton } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
