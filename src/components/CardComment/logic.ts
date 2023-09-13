@@ -31,16 +31,9 @@ const useLogic = (comment: CardCommentProps['comment']) => {
 
   function getRandomPastelColor() {
     const pastelColors = [
-      '#FFD1DC',
-      '#FFABAB',
-      '#FFC3A0',
-      '#FF677D',
-      '#D4A5A5',
-      '#392F5A',
-      '#31A2AC',
+
       '#61C0BF',
-      '#6B4226',
-      '#D9BF77',
+
     ]
 
     return pastelColors[Math.floor(Math.random() * pastelColors.length)]
