@@ -10,7 +10,6 @@ import Signup from '../../views/Auth/Signup'
 import Login from '../../views/Auth/Login'
 import Dashboard from '../../views/Dashboard'
 import Profile from '../../views/Profile'
-import Followers from '../../views/Followers'
 import CreatePost from '../../views/CreatePost'
 import PostDetailsView from '../../views/Post'
 import Faq from '../../views/Faq'
@@ -124,14 +123,6 @@ const Router: FC = () => {
           element={
             <ProtectedRoutes>
               <UserDetailsPage onLogout={recreateLogOut} />
-            </ProtectedRoutes>
-          }
-        />
-        <Route
-          path="/followers"
-          element={
-            <ProtectedRoutes>
-              <Followers onLogout={recreateLogOut} />
             </ProtectedRoutes>
           }
         />

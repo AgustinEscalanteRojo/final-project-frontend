@@ -1,9 +1,8 @@
-import styled from 'styled-components';
-import type { Props } from './types';
-import theme from '../../styles/theme';
+import styled from 'styled-components'
+import type { Props } from './types'
+import theme from '../../styles/theme'
 
 export const CustomButton = styled.button<{ $variant: Props['variant'] }>`
-
   background-color: ${theme.colors.buff};
   color: ${theme.colors.white};
   padding: 10px 24px;
@@ -28,4 +27,4 @@ export const CustomButton = styled.button<{ $variant: Props['variant'] }>`
     outline: none;
     box-shadow: 0 0 8px ${theme.colors.blue700};
   }
-`;
+`

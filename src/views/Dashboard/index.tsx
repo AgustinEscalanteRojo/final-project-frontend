@@ -13,7 +13,6 @@ import Typography from '@mui/material/Typography'
 import CardContent from '@mui/material/CardContent'
 import Box from '@material-ui/core/Box'
 
-
 const Dashboard: FC<Props> = ({ onLogout }) => {
   const {
     currentUser,
@@ -31,7 +30,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <S.Container>
         <S.ButtonController>
           <Typography
-           marginTop="95px"
+            marginTop="95px"
             marginBottom="5px"
             textAlign="center"
             fontFamily="Oswald"
@@ -56,16 +55,13 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             <AddIcon fontSize="medium" />
           </S.IconButtonStyled>
 
-
-          <S.StickyCardStyle
-          >
-            <CardContent >
+          <S.StickyCardStyle>
+            <CardContent>
               <Typography
                 variant="body1"
                 style={{
                   textAlign: 'center',
                   fontWeight: 'bold',
-              
                 }}
               ></Typography>
               <Box
@@ -80,7 +76,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
             </CardContent>
           </S.StickyCardStyle>
 
-
           <S.Cards>
             {isLoading && <div>Loading...</div>}
             {!isLoading &&
@@ -94,8 +89,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
               ))}
           </S.Cards>
         </S.ButtonController>
-
-
 
         {/* <S.ContainerUsers>
         <S.UserCards>

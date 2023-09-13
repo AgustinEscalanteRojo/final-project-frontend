@@ -4,15 +4,14 @@ import Typography from '@mui/material/Typography'
 import { ListItemText } from '@material-ui/core'
 
 export const CardContentStyle = styled(CardContent)`
-  margin-bottom: 1px; 
-    margin-left: 16px; 
-    margin-top: 11px;
-    `
-
-
+  margin-bottom: 1px;
+  margin-left: 16px;
+  margin-top: 11px;
+`
 
 export const TypographyStyle = styled(Typography)`
-  margin-bottom: 16px; `
+  margin-bottom: 16px; 
+  `
 
 
 export const Name = styled(ListItemText)`
@@ -22,3 +21,4 @@ export const Name = styled(ListItemText)`
   transform: scale(0.9); 
   transform-origin: top left;
 `
+

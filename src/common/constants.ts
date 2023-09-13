@@ -30,19 +30,9 @@ export const allergiesOptions = [
   'Sulphites',
 ]
 
+export const difficultyOptions = ['Easy', 'Moderate', 'Difficult']
 
-export const difficultyOptions = [
-  'Easy',
-  'Moderate',
-  'Difficult',
-]
-
-export const typeOptions = [
-  'Salad',
-  'Dessert',
-  'Breakfast',
-]
-
+export const typeOptions = ['Salad', 'Dessert', 'Breakfast']
 
 export const unityOptions = [
   'Liter',

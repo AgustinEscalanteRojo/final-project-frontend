@@ -51,23 +51,21 @@ const Filters: FC<Props> = ({ onSubmit }) => {
   }
 
   return (
-    <Formik 
+    <Formik
       initialValues={initialValues}
       validationSchema={ValidationSchema}
       onSubmit={onSubmit}
     >
       {({ handleSubmit, values, setFieldValue }) => (
-        <Form onSubmit={handleSubmit} >
+        <Form onSubmit={handleSubmit}>
           <Grid
             container
             spacing={1}
             display="flex"
             justifyContent="center"
             alignItems="center"
-           
           >
-          
-            <Box 
+            <Box
               display="flex"
               justifyContent="center"
               alignItems="center"
@@ -213,8 +211,7 @@ const Filters: FC<Props> = ({ onSubmit }) => {
               </S.ContainerType>
             </DialogContent>
           </Dialog>
-          <ContainerButton
-          >
+          <ContainerButton>
             <S.ButtonStyle type="submit" variant="contained" color="primary">
               Apply
             </S.ButtonStyle>

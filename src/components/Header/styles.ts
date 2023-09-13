@@ -36,7 +36,7 @@ export const LogoDeskContainer = styled.div`
   border-radius: 4px;
   align-self: center;
   transform: scale(0.9);
-  
+
   @media (min-width: 768px) {
     width: auto;
     height: auto;
@@ -45,7 +45,7 @@ export const LogoDeskContainer = styled.div`
 
 export const IconDeskContainer = styled.div`
   align-self: center;
-  margin-right: 30px!important;
+  margin-right: 30px !important;
 `
 
 export const MobileButtonController = styled.div`

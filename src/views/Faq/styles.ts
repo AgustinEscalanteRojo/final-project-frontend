@@ -16,16 +16,16 @@ export const Content = styled.div`
   display: flex;
   justify-content: center;
   max-width: 600px;
-  margin: 0 auto; 
-  
+  margin: 0 auto;
+
   @media (max-width: 768px) {
-    margin-top: 50px; 
-    padding: 30px; 
+    margin-top: 50px;
+    padding: 30px;
   }
-`;
+`
 
 export const Backgroundcolor = styled(AccordionDetails)`
-  background-color: #DAF6FC;
+  background-color: #daf6fc;
   border-radius: 5px;
 `
 
@@ -36,22 +36,21 @@ export const Tittle = styled.h1`
   font-style: italic;
   text-align: center;
 
-  
   @media (max-width: 768px) {
-    font-size: 24px; 
+    font-size: 24px;
   }
-`;
+`
 
 export const QuestionTitle = styled.h2`
   color: ${({ theme }) => theme.colors.blue900};
-  margin-top: 15px; 
-  font-family: 'Roboto', sans-serif !important; 
+  margin-top: 15px;
+  font-family: 'Roboto', sans-serif !important;
   font-size: 24px;
 
   @media (max-width: 768px) {
-    font-size: 18px; 
+    font-size: 18px;
   }
-`;
+`
 
 export const StyledTypography = styled.p`
   color: ${theme.colors.blue900};
@@ -60,6 +59,6 @@ export const StyledTypography = styled.p`
   text-align: center;
 
   @media (max-width: 768px) {
-    font-size: 16px; 
+    font-size: 16px;
   }
-`;
+`

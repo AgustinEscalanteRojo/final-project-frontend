@@ -2,16 +2,13 @@ import styled from 'styled-components'
 import Checkbox from '@mui/material/Checkbox'
 import { Button } from '@mui/material'
 
-
-
 export const ContainerButton = styled.div`
-margin-left: 1000px;
+  margin-left: 1000px;
   display: flex;
   justify-content: center;
   margin-top: -4px;
   flex-direction: row;
-  
-`;
+`
 
 export const ButtonStyle = styled(Button)`
   margin: -5px !important;
@@ -24,7 +21,7 @@ export const ButtonStyle = styled(Button)`
     transform: scale(0.7);
     transition: transform 0.3s ease;
   }
-`;
+`
 export const Typography = styled.div`
   margin-left: 10px;
   font-weight: bold;
@@ -51,20 +48,15 @@ export const AllergyIconContainer = styled.div`
   align-items: center;
 `
 
-export const ContainerAllergies = styled.div`
-`
-export const ContainerDifficulty = styled.div`
-`
-export const ContainerType = styled.div`
-`
+export const ContainerAllergies = styled.div``
+export const ContainerDifficulty = styled.div``
+export const ContainerType = styled.div``
 export const DivContainerFilter = styled.div``
 
 export const SpanFilters = styled.div``
 
-export const StyledCheckboxDifficulty = styled(Checkbox)`
-`
-export const StyledCheckbox = styled(Checkbox)`
-`
+export const StyledCheckboxDifficulty = styled(Checkbox)``
+export const StyledCheckbox = styled(Checkbox)``
 export const AllergyLabel = styled.label`
   display: flex;
   align-items: center;
