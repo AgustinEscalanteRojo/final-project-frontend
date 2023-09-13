@@ -22,8 +22,9 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
   } = useLogic()
 
   return (
+    <>
+    <Header onLogout={onLogout} />
     <S.Container>
-      <Header onLogout={onLogout} />
       <S.ButtonController>
         <S.IconButtonStyled
           onClick={handleGoToPost}
@@ -33,7 +34,6 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           <AddIcon fontSize="medium" /> {}
         </S.IconButtonStyled>
       </S.ButtonController>
-
       <S.Cards>
         {isLoading && <div>Loading...</div>}
         {!isLoading &&
@@ -66,6 +66,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
       <Footer />
       <ImageBackground imageSrc="/back.jpg" />
     </S.Container>
+    </>
   )
 }
 

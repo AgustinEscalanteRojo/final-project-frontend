@@ -23,28 +23,25 @@ export const MainContent = styled.div`
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
 `
 
-
 export const Name = styled(ListItemText)`
   position: absolute; 
-  margin-left: 50px; 
+  margin-left: 60px; 
   margin-top: -3px!important; 
 `
 
 export const AvatarStyled = styled.div`
 margin-top: 30px;
-margin-left: 20px;
+position: absolute; 
+margin-left: -1100px!important;
   width: 45px;
   height: 45px;
   border-radius: 50%;
-
   cursor: pointer;
   transition:
     transform 0.3s,
     box-shadow 0.3s;
-
     &:hover {
     transform: scale(1.1); 
-  
   }
 `;
 
@@ -57,7 +54,8 @@ export const TitleContainer = styled.div`
   font-size: 27px;
   position: absolute; 
   margin: 25px;
-  margin-left: 455px;
+  margin-left: 166px;
+  margin-top: 31px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
@@ -81,7 +79,7 @@ export const MainImage = styled.img`
   border-radius: 15px;
   border: 1.5px solid ${({ theme }) => theme.colors.blue175};
   margin: 9px;
-  max-height: 20rem;
+  max-height: 21rem;
   width: 580px;
   object-fit: cover;
   border-radius: 20px;
@@ -118,7 +116,7 @@ export const Description = styled.p`
 `
 export const StepsTitle = styled.div`
   font-size: 17px;
-  margin-top: 22px;
+  margin-top: 30px;
   margin-bottom: 18px;
   font-weight: bold;
   margin-left: 30px;

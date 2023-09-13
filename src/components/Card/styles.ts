@@ -52,13 +52,6 @@ export const AllergyIconContainer = styled.div`
   align-items: center;
   gap: 8px;
 `
-export const Name = styled(ListItemText)`
-  position: absolute; 
-  margin-left: 50px; 
-  margin-top: 15px!important; 
-  transform: scale(0.76); 
-  transform-origin: top left;
-`
 export const Image = styled.img`
   margin-top: 10px;
 
@@ -87,7 +80,7 @@ export const IconDetailsContainer = styled.div`
   align-items: center;
   gap: 8px;
   margin-top: 2px;
-  margin-left: 30px;
+  margin-left: 38px;
   transform: scale(0.9); 
 `
 export const DiningIconContainer = styled.span`
@@ -100,19 +93,27 @@ export const Description = styled(Typography)`
   overflow: hidden;
   white-space: nowrap;
 `
+export const Name = styled(ListItemText)`
+  position: absolute; 
+  margin-left: 50px; 
+  margin-top: 15px!important; 
+  transform: scale(0.9); 
+  transform-origin: top left;
+`
 export const AvatarStyled = styled.div`
   width: 40px; 
   height: 40px;
+  margin-left: -8px;
   background-color: ${({ theme }) => theme.colors.grey300};
   border-radius: 50%;
   display: flex;
-    transform: scale(0.9); 
+    transform: scale(0.8); 
   align-items: center;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 
   &:hover {
-    transform: scale(1); 
+    transform: scale(0.83); 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
   }
 `;
