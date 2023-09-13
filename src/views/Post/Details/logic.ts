@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { NormalizedUserPostComment } from '../../../models/UserPostComment'
 import { User } from '../../../models/User'
 import { getComments, sendComment } from '../../../services/api/comments'
-import { getAllUsers } from '../../../services/api/user'
+import { getAllUsers, getMe } from '../../../services/api/user'
 import { Props } from './types'
 import { useNavigate } from 'react-router-dom'
 
@@ -11,6 +11,20 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
   const [users, setUsers] = useState<User[]>([])
   const [comment, setComment] = useState('')
   const [comments, setComments] = useState<NormalizedUserPostComment[]>([])
+  const [currentUser, setCurrentUser] = useState<User | null>(null)
+
+  const handleFetchUserMe = useCallback(async () => {
+    try {
+      const userInfo = await getMe()
+      setCurrentUser(userInfo)
+    } catch (error) {
+      console.error('Error fetching user data:', error)
+    }
+  }, [])
+
+  useEffect(() => {
+    handleFetchUserMe()
+  }, [handleFetchUserMe])
 
   const fetchUsers = useCallback(async () => {
     try {
@@ -110,6 +124,7 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
     getRandomPastelColor,
     handleGoToProfile,
     creatorUser,
+    currentUser,
     handleGoToEditForm,
     handleOnRemove,
     handleGoToCurrentUserProfile,

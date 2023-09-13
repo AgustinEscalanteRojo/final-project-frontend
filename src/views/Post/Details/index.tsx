@@ -25,6 +25,7 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     getRandomPastelColor,
     handleGoToProfile,
     creatorUser,
+    currentUser,
     handleGoToEditForm,
     handleOnRemove,
     handleGoToCurrentUserProfile,
@@ -127,9 +128,11 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
             {comments &&
               comments.map((comment: any) => (
                 <CardComment
+                  isCurrentUserCreator={currentUser?._id === comment.userId}
                   key={comment._id}
                   author={comment.userId}
                   content={comment.comment}
+                  comment={comment}
                   avatarUrl={comment.avatar}
                   date={comment.createdAt.toLocaleString()}
                 />

@@ -1,4 +1,3 @@
-import { Post } from '../../models/Post'
 import { NormalizedUserPostComment } from '../../models/UserPostComment'
 
 export type CardCommentProps = {
@@ -6,6 +5,6 @@ export type CardCommentProps = {
   content: string
   avatarUrl: string
   date: string
-  comment?: NormalizedUserPostComment
-  post?: Post
+  comment: NormalizedUserPostComment
+  isCurrentUserCreator: boolean
 }
