@@ -3,7 +3,7 @@ import { Card } from '@mui/material'
 import TabPanel from '@mui/lab/TabPanel'
 
 export const CardStyle = styled(Card)`
-  max-width: 400px !important;
+  max-width: 300px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
