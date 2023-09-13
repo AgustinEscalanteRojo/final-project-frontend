@@ -12,6 +12,7 @@ export const HeaderUser = styled.div`
 export const Avatar = styled(DefaultAvatar)`
   cursor: pointer;
 `
+
 export const Name = styled(ListItemText)`
   margin-left: 10px;
   margin: 15px;

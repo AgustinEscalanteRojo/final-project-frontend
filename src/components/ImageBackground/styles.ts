@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const BackgroundContainer = styled.div`
   position: fixed;
@@ -7,11 +7,11 @@ export const BackgroundContainer = styled.div`
   width: 100%;
   height: 100%;
   z-index: -3;
-`;
+`
 
 export const Image = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: none; 
+  object-fit: none;
   object-position: bottom;
-`;
+`

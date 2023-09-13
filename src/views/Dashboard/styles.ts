@@ -1,19 +1,17 @@
 import styled from 'styled-components'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
-import CrownIcon from '@mui/icons-material/EmojiEvents'; 
+import CrownIcon from '@mui/icons-material/EmojiEvents'
 import StickyCard from '@mui/material/Card'
 import theme from '../../styles/theme'
 
-
 export const StickyCardStyle = styled(StickyCard)`
-width: 1635px;
-    background-color: ${({ theme }) => theme.colors.blue25}!important;
-    border: 1px solid ${theme.colors.blue175};
-    border-radius: 15px !important;
-    box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
-    height: 55px;
-    
+  width: 1635px;
+  background-color: ${({ theme }) => theme.colors.blue25}!important;
+  border: 1px solid ${theme.colors.blue175};
+  border-radius: 15px !important;
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
+  height: 55px;
 `
 export const ContainerUsers = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.blue175};
@@ -23,8 +21,8 @@ export const ContainerUsers = styled.div`
   top: 104px;
   width: 160px;
   height: 150px;
-  padding-top: 45px!important;
-  padding:23px;
+  padding-top: 45px !important;
+  padding: 23px;
   background-color: ${({ theme }) => theme.colors.blue25} !important;
   display: flex;
   flex-direction: column;
@@ -51,15 +49,15 @@ export const Cards = styled.div`
   overflow: auto;
 
   @media (max-width: 1490px) {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
     margin-top: -25px;
-    padding-left: 0; 
+    padding-left: 0;
   }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     margin-top: -10px;
-    padding-left: 0; 
+    padding-left: 0;
   }
 
   @media (max-width: 532px) {
@@ -122,21 +120,19 @@ export const ButtonController = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
-
 `
 export const Typography = styled.div`
-position: absolute;
+  position: absolute;
   margin-left: 48px;
-  margin-top: -52px;;
+  margin-top: -52px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.grey};
   transform: scale(0.8);
 `
 
 export const CrownIconStyle = styled(CrownIcon)`
-position: absolute;
+  position: absolute;
   padding: 2px;
   margin-left: -38px;
-  margin-top: -3px!important;
-
+  margin-top: -3px !important;
 `

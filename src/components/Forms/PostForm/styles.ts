@@ -50,8 +50,7 @@ export const ImgIcons = styled.img`
   width: 25%;
   margin-left: 2px;
 `
-export const FormControlStep = styled.div`
-`
+export const FormControlStep = styled.div``
 
 export const Steps = styled.div`
   display: flex;
@@ -60,8 +59,8 @@ export const Steps = styled.div`
 `
 export const StepsTitle = styled(DefaultTextField)`
   /* margin: o auto !important; */
- margin-top: 25px !important;
- `  
+  margin-top: 25px !important;
+`
 
 export const ButtonRemoveIngredient = styled(Button)`
   color: ${({ theme }) => theme.colors.white}!important;
@@ -73,7 +72,7 @@ export const SelectIngredients = styled(Select)`
   margin-top: 26px !important;
 `
 export const ButtonRemoveStep = styled(Button)`
- margin-top: 25px !important;
+  margin-top: 25px !important;
   color: ${({ theme }) => theme.colors.red300}!important;
 `
 export const ButtonAddIngredient = styled(Button)`

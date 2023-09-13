@@ -50,7 +50,7 @@ const UserDetailsPage: FC<Props> = ({ onLogout }) => {
                   aria-label="lab API tabs example"
                 >
                   <Tab label="Recipes" value="1" />
-                  <Tab label="no se que poner" value="2" />
+                  <Tab label="Saved recipes" value="2" />
                 </TabList>
               </Box>
               <TabPanel value="1">

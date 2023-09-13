@@ -12,7 +12,7 @@ import {
   Backgroundcolor,
   Tittle,
   QuestionTitle,
-  StyledTypography 
+  StyledTypography,
 } from './styles'
 import type { Props } from './types'
 
@@ -117,7 +117,9 @@ const Faq: FC<Props> = ({ onLogout }) => {
                   aria-controls="panel1c-content"
                   id="panel1c-header"
                 >
-                  <StyledTypography>How do I publish a recipe?</StyledTypography>
+                  <StyledTypography>
+                    How do I publish a recipe?
+                  </StyledTypography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Backgroundcolor>
@@ -180,7 +182,9 @@ const Faq: FC<Props> = ({ onLogout }) => {
                   aria-controls="panel1f-content"
                   id="panel1f-header"
                 >
-                  <StyledTypography>How do I favorite a recipe?</StyledTypography>
+                  <StyledTypography>
+                    How do I favorite a recipe?
+                  </StyledTypography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Backgroundcolor>
