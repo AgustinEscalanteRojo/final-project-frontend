@@ -1,4 +1,4 @@
-import { getToken, removeToken } from '../storage/token'
+import { getToken } from '../storage/token'
 import {
   NormalizedUserPostComment,
   normalizeUserPostComment,

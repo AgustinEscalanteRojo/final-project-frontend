@@ -5,6 +5,7 @@ import {
   FormControl,
   FormControlLabel,
   Grid,
+  InputAdornment,
   InputLabel,
   MenuItem,
   Select,
@@ -114,6 +115,13 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit }) => {
               value={values.duration}
               onChange={handleChange}
               fullWidth
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    {values.duration ? 'min' : ''}
+                  </InputAdornment>
+                ),
+              }}
             />
             <FormControl fullWidth>
               {(values?.ingredients || []).map((ingredient, index) => (
