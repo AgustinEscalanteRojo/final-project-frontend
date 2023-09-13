@@ -2,18 +2,30 @@ import styled from 'styled-components'
 import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import CrownIcon from '@mui/icons-material/EmojiEvents'; 
+import StickyCard from '@mui/material/Card'
 import theme from '../../styles/theme'
 
+
+export const StickyCardStyle = styled(StickyCard)`
+width: 1635px;
+    background-color: ${({ theme }) => theme.colors.blue25}!important;
+    border: 1px solid ${theme.colors.blue175};
+    border-radius: 15px !important;
+    box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
+    height: 55px;
+    
+`
 export const ContainerUsers = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.blue175};
   border-radius: 15px;
   position: fixed;
-  right: 19px;
+  right: 140px;
   top: 104px;
-  width: 150px;
-  height: 295px;
-  padding: 20px;
-  background-color: ${theme.colors.transparentWhite};
+  width: 160px;
+  height: 150px;
+  padding-top: 45px!important;
+  padding:23px;
+  background-color: ${({ theme }) => theme.colors.blue25} !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,24 +44,31 @@ export const ContainerUsers = styled.div`
 `
 export const Cards = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: -50px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
   margin-bottom: 50px;
   justify-content: center;
-  max-width: 1000px;
+  overflow: auto;
 
   @media (max-width: 1490px) {
-    grid-template-columns: 1fr;
-    bottom: -50px;
+    grid-template-columns: repeat(2, 1fr); 
+    margin-top: -25px;
+    padding-left: 0; 
   }
-  @media (min-width: 0px) and (max-width: 532px) {
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    margin-top: -10px;
+    padding-left: 0; 
+  }
+
+  @media (max-width: 532px) {
     margin-top: -17px !important;
   }
 `
 export const UserCards = styled.div`
   width: 110%;
   margin-right: 20px;
-  margin-top:-15px;
   padding: 20px;
   overflow: auto;
   scrollbar-width: thin;
@@ -86,10 +105,8 @@ export const ButtonStyled = styled(Button)`
 `
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 0;
-  margin-left: 0;
+  flex-direction: row;
+  justify-content: center;
 `
 export const IconButtonStyled = styled(IconButton)`
   border: 2px solid ${theme.colors.blue225} !important;
@@ -102,30 +119,24 @@ export const IconButtonStyled = styled(IconButton)`
 `
 export const ButtonController = styled.div`
   display: flex;
-  flex-flow: row wrap;
-  gap: 10px;
-  margin-top: 150px;
-  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
 
-  @media (min-width: 200px) and (max-width: 927px) {
-    margin-top: 120px;
-    transform: scale(0.6) !important;
-  }
 `
-
 export const Typography = styled.div`
-  margin-left: 8px;
-  margin-top: -12px;;
+position: absolute;
+  margin-left: 48px;
+  margin-top: -52px;;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.grey};
   transform: scale(0.8);
 `
 
 export const CrownIconStyle = styled(CrownIcon)`
+position: absolute;
   padding: 2px;
-  border: 1px solid ${theme.colors.blue225} !important;
-  border-radius: 50%;
-  margin-top: -5px!important;
-  background-color: ${({ theme }) => theme.colors.transparentWhite}!important;
+  margin-left: -38px;
+  margin-top: -3px!important;
 
 `
