@@ -9,8 +9,8 @@ import * as S from './styles'
 import type { Props } from './types'
 import useLogic from './logic'
 import Filters from '../../components/Filters'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
+import { Card as MUICard, CardContent, Typography } from '@mui/material'
+import CrownIcon from '@mui/icons-material/AccountCircle'
 import Box from '@material-ui/core/Box'
 
 const Dashboard: FC<Props> = ({ onLogout }) => {
@@ -89,23 +89,26 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
               ))}
           </S.Cards>
         </S.ButtonController>
-
-        {/* <S.ContainerUsers>
-        <S.UserCards>
-        <S.Typography><S.CrownIconStyle/> Top Main Chefs </S.Typography>
-          {users
-            ?.filter((user) => user._id !== currentUser?._id)
-            .map((user, index) => (
-              <UserCard
-                key={index}
-                user={user}
-                currentUserFollowing={currentUser?.following.map(
-                  (user) => user._id
-                )}
-              />
-            ))}
-        </S.UserCards>
-      </S.ContainerUsers>   */}
+        <S.ContainerUsers>
+          <MUICard>
+            <CardContent>
+              <Typography variant="h6">
+                <CrownIcon /> Top Chefs
+              </Typography>
+              {users
+                ?.filter((user) => user._id !== currentUser?._id)
+                .map((user, index) => (
+                  <UserCard
+                    key={index}
+                    user={user}
+                    currentUserFollowing={currentUser?.following.map(
+                      (user) => user._id
+                    )}
+                  />
+                ))}
+            </CardContent>
+          </MUICard>
+        </S.ContainerUsers>
 
         <Footer />
         <ImageBackground imageSrc="/back.jpg" />

@@ -20,24 +20,20 @@ export const TitleContainer = styled.div`
 export const CardStyled = styled(MuiCard)`
   background-color: ${({ theme }) => theme.colors.blue25} !important;
   margin: 50px;
-  width: 450px;
   border: 1px solid ${theme.colors.blue175};
   border-radius: 15px !important;
   transition: max-width 0.3s ease-in-out;
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   transform: scale(1.1);
 
-  @media (min-width: 532px) and (max-width: 927px) {
-    top: 20px;
-    margin: -100px;
-    bottom: -100px;
-    transform: scale(0.5) !important;
-    font-size: 14px !important;
+  @media (max-width: 927px) {
+    margin: 20px;
+    transform: scale(0.8) !important;
   }
 
-  @media (min-width: 0px) and (max-width: 532px) {
-    margin: -150px !important;
-    transform: scale(0.3) !important;
+  @media (max-width: 532px) {
+    margin: 10px;
+    transform: scale(0.6) !important;
   }
 `
 export const AllergyIcon = styled.img<AllergyIconProps>`

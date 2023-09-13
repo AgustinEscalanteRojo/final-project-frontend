@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC, memo, useState } from 'react'
 import * as React from 'react'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
@@ -11,8 +11,8 @@ import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import RecipeReviewCard from '../../components/Card'
 import LocationCityIcon from '@mui/icons-material/LocationCity'
+import { Button, Modal } from '@mui/material'
 import {
-  // PerfilContainer,
   Content,
   FollowersContainer,
   FollowingContainer,
@@ -20,6 +20,8 @@ import {
   Container,
   UserContainer,
   CardStyle,
+  StyledCard,
+  StyledCardContent,
   TabPanelStyle,
 } from './styles'
 import type { Props } from './types'
@@ -38,6 +40,20 @@ import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle'
 import { TabPanel } from '@mui/lab'
 
 const Profile: FC<Props> = ({ onLogout }) => {
+  const FollowingAndFollowers = (user: any) => {
+    const [openModal, setOpenModal] = useState(false)
+    const [modalContent, setModalContent] = useState([])
+
+    const handleOpenModal = (content: any) => {
+      setModalContent(content)
+      setOpenModal(true)
+    }
+
+    const handleCloseModal = () => {
+      setOpenModal(false)
+    }
+  }
+
   const { user, value, handleChange, getRandomPastelColor } = useLogic()
 
   return (
@@ -61,12 +77,11 @@ const Profile: FC<Props> = ({ onLogout }) => {
                 backgroundColor: getRandomPastelColor(),
                 width: 60,
                 height: 60,
-                marginBottom: -10,
               }}
             >
               {user?.username ? user.username.charAt(0).toUpperCase() : ''}
             </Avatar>
-            <CardContent style={{ textAlign: 'center' }}>
+            <CardContent>
               <Typography variant="h5">Username: {user?.username}</Typography>
               <ListItem>
                 <ListItemIcon>
@@ -107,6 +122,40 @@ const Profile: FC<Props> = ({ onLogout }) => {
             </CardContent>
           </CardStyle>
         </Grid>
+        <StyledCard>
+          <StyledCardContent>
+            <FollowingContainer>
+              <TabContext value={value}>
+                <Box
+                  sx={{
+                    borderBottom: 1,
+                    borderColor: 'divider',
+                    display: 'flex',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <TabList
+                    onChange={handleChange}
+                    aria-label="lab API tabs example"
+                  >
+                    <Tab label="Followers" value="1" />
+                    <Tab label="Followings" value="2" />
+                  </TabList>
+                </Box>
+                <TabPanel value="1">
+                  {user?.followers.map((user) => (
+                    <UserCard key={user._id} user={user} />
+                  ))}
+                </TabPanel>
+                <TabPanel value="2">
+                  {user?.following.map((user) => (
+                    <UserCard key={user._id} user={user} />
+                  ))}
+                </TabPanel>
+              </TabContext>
+            </FollowingContainer>
+          </StyledCardContent>
+        </StyledCard>
         <Grid item xs={12} md={8}>
           <Content>
             <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
@@ -124,7 +173,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
                     aria-label="lab API tabs example"
                   >
                     <Tab label="My recipes" value="1" />
-                    <Tab label="my favorites" value="2" />
+                    <Tab label="Saved Recipes" value="2" />
                   </TabList>
                 </Box>
                 <TabPanelStyle value="1">
