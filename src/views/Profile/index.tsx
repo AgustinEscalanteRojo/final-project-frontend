@@ -24,6 +24,7 @@ import UsersCardsModal from '../../containers/Modal/UsersCardsModal'
 import useLogic from './logic'
 import { Content, Posts, Container, CardStyle, TabPanelStyle } from './styles'
 import type { Props } from './types'
+import Footer from '../../components/Footer'
 
 const Profile: FC<Props> = ({ onLogout }) => {
   const { user, value, handleChange, getRandomPastelColor } = useLogic()
@@ -158,6 +159,7 @@ const Profile: FC<Props> = ({ onLogout }) => {
         </Grid>
       </Grid>
       <ImageBackground imageSrc="/back.jpg" />
+      <Footer />
     </Container>
   )
 }
