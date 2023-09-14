@@ -4,8 +4,24 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { Button, ListItemText } from '@mui/material'
 import Typography from '@mui/material/Typography'
-import { Card as MuiCard, CardHeader } from '@mui/material'
+import { Card as MuiCard, CardHeader, CardActions } from '@mui/material'
 import { AllergyIconProps } from './types'
+
+export const CardActionsStyle = styled(CardActions)`
+  display: flex;
+`
+
+export const ButtonDetails = styled(Button)`
+  background-color: transparent !important;
+  color: ${({ theme }) => theme.colors.black} !important;
+  outline: none !important;
+  transform: scale(0.7);
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+`
+
+export const ContainerLike = styled.div``
 
 export const TitleContainer = styled.div`
   font-size: 17px;
@@ -25,6 +41,7 @@ export const Container = styled(MuiCard)`
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   max-width: 450px;
 `
+
 export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-top: 10px;
   margin-bottom: -18px;
@@ -37,7 +54,7 @@ export const AllergyIconContainer = styled.div`
   align-items: center;
   gap: 8px;
 `
-export const Image = styled.img`         
+export const Image = styled.img`
   margin-top: 10px;
   display: block;
   max-width: 100%;
@@ -104,18 +121,3 @@ export const AvatarStyled = styled.div`
   }
 `
 export const UsernameContainer = styled.span``
-
-export const ButtonDetails = styled(Button)`
-  transform: scale(0.7);
-  background-color: transparent !important;
-  color: ${({ theme }) => theme.colors.black}!important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: auto !important;
-  outline: none !important;
-
-  &:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-`

@@ -1,7 +1,6 @@
 import { FC, memo } from 'react'
-import { CardContent, CardActions, Avatar, IconButton } from '@mui/material'
+import { CardContent, Avatar, IconButton } from '@mui/material'
 import DiningIcon from '@mui/icons-material/RamenDiningOutlined'
-import RepeatIcon from '@mui/icons-material/Repeat'
 import DeleteIcon from '@mui/icons-material/Delete'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
 import BarChartIcon from '@mui/icons-material/BarChart'
@@ -24,6 +23,8 @@ import {
   ButtonDetails,
   Name,
   Container,
+  CardActionsStyle,
+  ContainerLike,
 } from './styles'
 import type { Props } from './types'
 
@@ -126,28 +127,30 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
           ))}
         </AllergyIconContainer>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActionsStyle disableSpacing>
         {!isCurrentUserCreator && (
           <>
-            <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
-              <LikeIcon isLike={isLike} />
-              {post.likes}
-            </IconButton>
-            <IconButton
-              aria-label="add to favorites"
-              onClick={handleFavoriteClick}
-            >
-              <FavIcon isFav={isFav} />
-            </IconButton>
-            <IconButton aria-label="share">
-              <RepeatIcon />
-            </IconButton>
+            <ContainerLike>
+              <IconButton
+                aria-label="add to favorites"
+                onClick={handleLikeClick}
+              >
+                <LikeIcon isLike={isLike} />
+                {post.likes}
+              </IconButton>
+              <IconButton
+                aria-label="add to favorites"
+                onClick={handleFavoriteClick}
+              >
+                <FavIcon isFav={isFav} />
+              </IconButton>
+            </ContainerLike>
           </>
         )}
         <ButtonDetails type="button" onClick={handleDetailsClick}>
-          Details
+          View More
         </ButtonDetails>
-      </CardActions>
+      </CardActionsStyle>
     </Container>
   )
 }
