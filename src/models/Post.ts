@@ -13,7 +13,7 @@ export type postResponse = {
     | 'Thai'
     | 'American'
     | 'Vegan'
-  duration: string
+  duration: number
   difficulty: 'Easy' | 'Intermediate' | 'Advanced'
   allergies: Array<
     | 'Gluten'
@@ -64,7 +64,7 @@ export type postResponse = {
 export type PostFormFields = {
   title: string
   type?: string
-  duration: string
+  duration: number
   difficulty?: string
   allergies: string[]
   description: string
@@ -94,7 +94,7 @@ export const normalizePost = (input: postResponse) => ({
   mainImage: input?.mainImage || '',
   title: input?.title || '',
   type: input?.type || '',
-  duration: input?.duration || '',
+  duration: input?.duration || 0,
   difficulty: input?.difficulty || '',
   allergies: input?.allergies || [],
   description: input?.description || '',

@@ -36,7 +36,7 @@ const useLogic = () => {
     () => ({
       title: post?.title || '',
       type: post?.type || '',
-      duration: post?.duration || '',
+      duration: post?.duration || 0,
       difficulty: post?.difficulty || '',
       allergies: post?.allergies || [],
       description: post?.description || '',
