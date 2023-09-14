@@ -29,20 +29,11 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
     <>
       <Header onLogout={onLogout} />
       <S.Container>
-        <S.ButtonController>
-          <S.Title>Welcome to the Shared Flavours.</S.Title>
+        <S.ContainerFilter>
+          {/* <S.Title>Welcome to the Shared Flavours.</S.Title>
           <S.Subtitle>
             Click on the + symbol and create your first recipe.
-          </S.Subtitle>
-
-          <S.IconButtonStyled
-            onClick={handleGoToPost}
-            color="primary"
-            aria-label="add new post"
-          >
-            <AddIcon fontSize="medium" />
-          </S.IconButtonStyled>
-
+          </S.Subtitle> */}
           <S.StickyCardStyle>
             <CardContent>
               <Typography
@@ -63,7 +54,13 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
               </Box>
             </CardContent>
           </S.StickyCardStyle>
-
+          <S.IconButtonStyled
+            onClick={handleGoToPost}
+            color="primary"
+            aria-label="add new post"
+          >
+            <AddIcon fontSize="medium" />
+          </S.IconButtonStyled>
           <S.Cards>
             {isLoading && <div>Loading...</div>}
             {!isLoading &&
@@ -76,26 +73,26 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
                 />
               ))}
           </S.Cards>
-        </S.ButtonController>
+        </S.ContainerFilter>
+
         <S.ContainerUsers>
-          <MUICard>
-            <CardContent>
-              <Typography variant="h6">
-                <CrownIcon /> Top Chefs
-              </Typography>
-              {users
-                ?.filter((user) => user._id !== currentUser?._id)
-                .map((user, index) => (
-                  <UserCard
-                    key={index}
-                    user={user}
-                    currentUserFollowing={currentUser?.following.map(
-                      (user) => user._id
-                    )}
-                  />
-                ))}
-            </CardContent>
-          </MUICard>
+          <S.ContainerCardsUsers>
+            <Typography variant="h6">
+              <CrownIcon /> Top Chefs
+            </Typography>
+            {users
+              ?.filter((user) => user._id !== currentUser?._id)
+              .slice(0, 3)
+              .map((user, index) => (
+                <UserCard
+                  key={index}
+                  user={user}
+                  currentUserFollowing={currentUser?.following.map(
+                    (user) => user._id
+                  )}
+                />
+              ))}
+          </S.ContainerCardsUsers>
         </S.ContainerUsers>
 
         <Footer />

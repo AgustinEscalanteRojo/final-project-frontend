@@ -24,16 +24,6 @@ export const Container = styled(MuiCard)`
   transition: max-width 0.3s ease-in-out;
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   max-width: 450px;
-
-  /* @media (max-width: 927px) {
-    margin: 20px;
-    transform: scale(0.8) !important;
-  }
-
-  @media (max-width: 532px) {
-    margin: 10px;
-    transform: scale(0.6) !important;
-  }*/
 `
 export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-top: 10px;
@@ -47,9 +37,8 @@ export const AllergyIconContainer = styled.div`
   align-items: center;
   gap: 8px;
 `
-export const Image = styled.img`
+export const Image = styled.img`         
   margin-top: 10px;
-
   display: block;
   max-width: 100%;
   max-height: 15rem;
