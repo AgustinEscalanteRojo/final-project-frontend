@@ -1,7 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import { NormalizedUserPostComment } from '../../../models/UserPostComment'
 import { User } from '../../../models/User'
-import { getComments, sendComment } from '../../../services/api/comments'
+import {
+  getComments,
+  removeCommentById,
+  sendComment,
+} from '../../../services/api/comments'
 import { getAllUsers, getMe } from '../../../services/api/user'
 import { Props } from './types'
 import { useNavigate } from 'react-router-dom'
@@ -116,6 +120,20 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
     }
   }, [onRemove, post])
 
+  const handleRemoveComment = useCallback(
+    async (commentId: string) => {
+      if (post) {
+        const currentComments = await getComments(post._id)
+        const filteredComments = currentComments.filter(
+          (currentComment) => commentId !== currentComment._id
+        )
+        await removeCommentById(commentId)
+        setComments(filteredComments)
+      }
+    },
+    [post]
+  )
+
   return {
     comment,
     comments,
@@ -128,6 +146,7 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
     handleGoToEditForm,
     handleOnRemove,
     handleGoToCurrentUserProfile,
+    handleRemoveComment,
   }
 }
 

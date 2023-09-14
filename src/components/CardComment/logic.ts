@@ -4,7 +4,10 @@ import type { User } from '../../models/User'
 import type { CardCommentProps } from './types'
 import { getAllUsers } from '../../services/api/user'
 
-const useLogic = (comment: CardCommentProps['comment']) => {
+const useLogic = (
+  comment: CardCommentProps['comment'],
+  onRemove: CardCommentProps['onRemove']
+) => {
   const navigate = useNavigate()
   const [users, setUsers] = useState<User[]>([])
 
@@ -29,6 +32,12 @@ const useLogic = (comment: CardCommentProps['comment']) => {
     navigate(`/profile`)
   }, [navigate])
 
+  const handleOnRemove = useCallback(async () => {
+    if (onRemove) {
+      onRemove(comment._id)
+    }
+  }, [onRemove, comment])
+
   function getRandomPastelColor() {
     const pastelColors = ['#61C0BF']
 
@@ -42,6 +51,7 @@ const useLogic = (comment: CardCommentProps['comment']) => {
     commentCreator,
     handleGoToProfile,
     handleGoToCurrentUserProfile,
+    handleOnRemove,
   }
 }
 

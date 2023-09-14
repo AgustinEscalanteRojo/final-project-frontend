@@ -5,6 +5,7 @@ import {
 } from '../../models/UserPostComment'
 
 const API_URL = 'http://localhost:8080/posts/comentarios'
+const BASE_URL = 'http://localhost:8080/posts/comments'
 
 export const getComments = async (
   postId: string
@@ -71,4 +72,16 @@ export const sendComment = async (
     console.error('Error en la conexión:', error)
     throw new Error('Error en la conexión')
   }
+}
+
+export const removeCommentById = async (id: string): Promise<boolean> => {
+  const token = getToken()
+  await fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  })
+
+  return true
 }

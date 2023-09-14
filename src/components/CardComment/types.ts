@@ -7,4 +7,5 @@ export type CardCommentProps = {
   date: string
   comment: NormalizedUserPostComment
   isCurrentUserCreator: boolean
+  onRemove?: (commentId: string) => void
 }

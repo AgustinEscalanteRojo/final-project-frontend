@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import Card from '@mui/material/Card'
 import Avatar from '@mui/material/Avatar'
+import { IconButton } from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete'
 import * as S from './styles'
 import type { CardCommentProps } from './types'
 import useLogic from './logic'
@@ -12,13 +14,15 @@ const CardComment: FC<CardCommentProps> = ({
   date,
   comment,
   isCurrentUserCreator,
+  onRemove,
 }) => {
   const {
     getRandomPastelColor,
     commentCreator,
     handleGoToProfile,
     handleGoToCurrentUserProfile,
-  } = useLogic(comment)
+    handleOnRemove,
+  } = useLogic(comment, onRemove)
   return (
     <Card>
       <S.CardContentStyle>
@@ -35,23 +39,19 @@ const CardComment: FC<CardCommentProps> = ({
         >
           {commentCreator
             ? commentCreator.username?.charAt(0).toUpperCase()
-            : comment?.userId.charAt(0)
-            }
-
+            : comment?.userId.charAt(0)}
         </Avatar>
-        
-        <S.Name
-            onClick={
-              isCurrentUserCreator
-                ? handleGoToCurrentUserProfile
-                : handleGoToProfile
 
-            }
-            primary={commentCreator?.username} 
-            secondary={commentCreator?.firstName}
-            
-          />
-        
+        <S.Name
+          onClick={
+            isCurrentUserCreator
+              ? handleGoToCurrentUserProfile
+              : handleGoToProfile
+          }
+          primary={commentCreator?.username}
+          secondary={commentCreator?.firstName}
+        />
+
         <S.TypographyStyle
           variant="subtitle1"
           style={{ marginLeft: '8px', marginTop: '8px' }}
@@ -62,6 +62,15 @@ const CardComment: FC<CardCommentProps> = ({
         <S.TypographyStyle variant="caption" color="textSecondary">
           {date}
         </S.TypographyStyle>
+        {isCurrentUserCreator ? (
+          <>
+            {onRemove && (
+              <IconButton aria-label="settings" onClick={handleOnRemove}>
+                <DeleteIcon />
+              </IconButton>
+            )}
+          </>
+        ) : null}
       </S.CardContentStyle>
     </Card>
   )
