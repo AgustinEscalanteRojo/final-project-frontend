@@ -7,6 +7,7 @@ import BarChartIcon from '@mui/icons-material/BarChart'
 import EditIcon from '@mui/icons-material/Edit'
 import TimeIcon from '@mui/icons-material/AccessTime'
 import useLogic from './logic'
+import { allergyIcons } from '../../common/constants'
 import {
   LikeIcon,
   FavIcon,
@@ -15,8 +16,8 @@ import {
   DiningIconContainer,
   Description,
   Image,
-  // AllergyIconContainer,
-  // AllergyIcon,
+  AllergyIconContainer,
+  AllergyIcon,
   TitleContainer,
   AvatarStyled,
   ButtonDetails,
@@ -26,6 +27,7 @@ import {
   ContainerLike,
 } from './styles'
 import type { Props } from './types'
+
 
 const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
   const {
@@ -114,7 +116,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
         <Description variant="body2" color="text.secondary">
           {post.description}
         </Description>
-        {/*   <AllergyIconContainer>
+          <AllergyIconContainer>
           {post.allergies.map((allergy, index) => (
             <AllergyIcon
               key={index}
@@ -122,7 +124,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
               alt={allergy}
             />
           ))}
-        </AllergyIconContainer>*/}
+        </AllergyIconContainer>
       </CardContent>
       <CardActionsStyle disableSpacing>
         {!isCurrentUserCreator && (
