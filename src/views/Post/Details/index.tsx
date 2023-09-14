@@ -91,7 +91,11 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
             {post?.type} likes: {post?.likes}
           </S.IconDetailsContainer>
           <S.MainImage
-            src={post?.mainImage ? post.mainImage : '/logo&tipo.png'}
+            src={
+              post?.mainImage
+                ? post.mainImage
+                : '/SharedFlavoursImageRandom.jpg'
+            }
             alt="Añadir descripción basica"
           />
           <S.IngredientTitle>Ingredients</S.IngredientTitle>
