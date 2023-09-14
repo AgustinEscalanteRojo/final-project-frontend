@@ -95,8 +95,8 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
           </S.ContainerCardsUsers>
         </S.ContainerUsers>
 
-        <Footer />
         <ImageBackground imageSrc="/back.jpg" />
+        <Footer />
       </S.Container>
     </>
   )

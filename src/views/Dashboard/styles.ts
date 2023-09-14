@@ -5,7 +5,6 @@ import theme from '../../styles/theme'
 
 export const Container = styled.div`
   padding-top: 130px;
-  padding: 0 40px;
   max-width: 2000px;
 `
 export const ContainerFilter = styled.div`
