@@ -29,6 +29,7 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
     handleGoToEditForm,
     handleOnRemove,
     handleGoToCurrentUserProfile,
+    handleRemoveComment,
   } = useLogic(post, onRemove)
 
   return (
@@ -142,6 +143,7 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
                   comment={comment}
                   avatarUrl={comment.avatar}
                   date={comment.createdAt.toLocaleString()}
+                  onRemove={handleRemoveComment}
                 />
               ))}
           </S.CommentList>
