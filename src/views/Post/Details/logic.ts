@@ -98,7 +98,7 @@ const useLogic = (post: Props['post'], onRemove: Props['onRemove']) => {
 
   const handleGoToProfile = useCallback(() => {
     navigate(`/users/${post?.userId}`)
-  }, [navigate])
+  }, [navigate, post?.userId])
 
   const handleGoToCurrentUserProfile = useCallback(() => {
     navigate(`/profile`)
