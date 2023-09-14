@@ -3,9 +3,18 @@ export type postResponse = {
   userId: string
   mainImage?: string
   title: string
-  type: 'Salad' | 'Dessert' | 'Breakfast'
+  type:
+    | 'Salad'
+    | 'Dessert'
+    | 'Breakfast'
+    | 'Chinese'
+    | 'Japanese'
+    | 'Mediterranean'
+    | 'Thai'
+    | 'American'
+    | 'Vegan'
   duration: string
-  difficulty: 'Easy' | 'Moderate' | 'Difficult'
+  difficulty: 'Easy' | 'Intermediate' | 'Advanced'
   allergies: Array<
     | 'Gluten'
     | 'Crustaceans'
