@@ -7,7 +7,7 @@ export const HeaderUser = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: -20px;
+  margin-right: -40px;
 `
 export const Avatar = styled(DefaultAvatar)`
   cursor: pointer;
@@ -17,7 +17,7 @@ export const Name = styled(ListItemText)`
   margin-left: 10px;
   margin: 15px;
   padding-right: 10px;
-  margin-right: 10px;
+  margin-right: -15px;
   cursor: pointer;
   transition:
     transform 0.3s,
