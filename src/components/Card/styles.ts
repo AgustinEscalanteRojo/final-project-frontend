@@ -81,8 +81,7 @@ export const IconDetailsContainer = styled.div`
   flex-flow: row wrap;
   gap: 8px;
   margin-top: 2px;
-  margin-left: 38px;
-  transform: scale(0.9);
+  font-size: 12px;
 `
 export const DiningIconContainer = styled.span`
   transform: scale(0.8);
@@ -93,6 +92,7 @@ export const Description = styled(Typography)`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  max-width: 333px;
 `
 export const Name = styled(ListItemText)`
   position: absolute;

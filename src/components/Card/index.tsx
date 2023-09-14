@@ -6,7 +6,6 @@ import RestaurantIcon from '@mui/icons-material/Restaurant'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import EditIcon from '@mui/icons-material/Edit'
 import TimeIcon from '@mui/icons-material/AccessTime'
-import { allergyIcons } from '../../common/constants'
 import useLogic from './logic'
 import {
   LikeIcon,
@@ -16,8 +15,8 @@ import {
   DiningIconContainer,
   Description,
   Image,
-  AllergyIconContainer,
-  AllergyIcon,
+  // AllergyIconContainer,
+  // AllergyIcon,
   TitleContainer,
   AvatarStyled,
   ButtonDetails,
@@ -87,37 +86,35 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
             </>
           ) : null
         }
-        subheader={
-          <IconDetailsContainer>
-            <DiningIconContainer>
-              <TimeIcon />
-            </DiningIconContainer>
-            {` ${post.duration}`}
-            <DiningIconContainer>
-              <DiningIcon />
-            </DiningIconContainer>
-            {` ${post.diners}`}
-            <DiningIconContainer>
-              <BarChartIcon />
-            </DiningIconContainer>
-            {` ${post.difficulty}`}
-            <DiningIconContainer>
-              <RestaurantIcon />
-            </DiningIconContainer>
-            {` ${post.type}`}
-          </IconDetailsContainer>
-        }
       />
       <Image
         src={post.mainImage ? post.mainImage : '/SharedFlavoursImageRandom.jpg'}
         alt="Main of post with some data"
         onClick={handleDetailsClick}
       />
+      <IconDetailsContainer>
+        <DiningIconContainer>
+          <TimeIcon />
+        </DiningIconContainer>
+        {post.duration}
+        <DiningIconContainer>
+          <DiningIcon />
+        </DiningIconContainer>
+        {post.diners}
+        <DiningIconContainer>
+          <BarChartIcon />
+        </DiningIconContainer>
+        {post.difficulty}
+        <DiningIconContainer>
+          <RestaurantIcon />
+        </DiningIconContainer>
+        {post.type}
+      </IconDetailsContainer>
       <CardContent>
         <Description variant="body2" color="text.secondary">
           {post.description}
         </Description>
-        <AllergyIconContainer>
+        {/*   <AllergyIconContainer>
           {post.allergies.map((allergy, index) => (
             <AllergyIcon
               key={index}
@@ -125,7 +122,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
               alt={allergy}
             />
           ))}
-        </AllergyIconContainer>
+        </AllergyIconContainer>*/}
       </CardContent>
       <CardActionsStyle disableSpacing>
         {!isCurrentUserCreator && (

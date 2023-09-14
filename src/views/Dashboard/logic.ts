@@ -1,5 +1,5 @@
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { getPosts, removePostById } from '../../services/api/post'
 import { getAllUsers, getMe } from '../../services/api/user'
 import type { FiltersFormFields, Post } from '../../models/Post'
@@ -7,14 +7,11 @@ import type { User } from '../../models/User'
 import { buildFiltersQueryString } from '../../utils/filters'
 
 const useLogic = () => {
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
   const [posts, setPosts] = useState<Post[]>([])
   const [users, setUsers] = useState<User[]>([])
   const [isLoading, setIsLoading] = useState(false)
-  const [allergies, setAllergies] = useState<string[]>([])
-  const [types, setTypes] = useState<string[]>([])
-  const [difficultys, setdifficultys] = useState<string[]>([])
   const [currentUser, setCurrentUser] = useState<User | null>(null)
 
   const handleFetchUserMe = useCallback(async () => {
@@ -44,42 +41,6 @@ const useLogic = () => {
 
     handleFetchPosts({ allergies, type, difficulty })
   }, [handleFetchPosts, searchParams])
-
-  const handleDifficultysChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    difficulty: string
-  ) => {
-    const { checked } = event.target
-    if (checked) {
-      setdifficultys([...difficultys, difficulty])
-    } else {
-      setdifficultys(difficultys.filter((a) => a !== difficulty))
-    }
-  }
-
-  const handleAllergiesChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    allergy: string
-  ) => {
-    const { checked } = event.target
-    if (checked) {
-      setAllergies([...allergies, allergy])
-    } else {
-      setAllergies(allergies.filter((a) => a !== allergy))
-    }
-  }
-
-  const handleTypeChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    type: string
-  ) => {
-    const { checked } = event.target
-    if (checked) {
-      setTypes([...types, type])
-    } else {
-      setTypes(types.filter((a) => a !== type))
-    }
-  }
 
   const handleGoToPost = useCallback(() => {
     navigate('/postform')
@@ -112,24 +73,22 @@ const useLogic = () => {
     [handleFetchPosts, navigate]
   )
 
-  const handleReset = useCallback(async () => {
+  const handleResetFilters = useCallback(async () => {
+    searchParams.delete('allergies')
+    searchParams.delete('type')
+    searchParams.delete('difficulty')
+    setSearchParams(searchParams)
     await handleFetchPosts()
-  }, [handleFetchPosts])
+  }, [handleFetchPosts, setSearchParams, searchParams])
 
   return {
     handleFilter,
-    handleReset,
-    allergies,
+    handleResetFilters,
     currentUser,
-    difficultys,
-    handleAllergiesChange,
-    handleDifficultysChange,
     handleGoToPost,
     handleRemovePost,
-    handleTypeChange,
     posts,
     users,
-    types,
     isLoading,
   }
 }

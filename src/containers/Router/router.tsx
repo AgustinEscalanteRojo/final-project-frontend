@@ -16,7 +16,7 @@ import Faq from '../../views/Faq'
 import NotFound from '../../views/NotFound'
 import UserDetailsPage from '../../views/UserDetailsPage'
 import { getToken } from '../../services/storage/token'
-import { CircularProgress } from '@material-ui/core'
+import Spinner from '../../components/Spinner'
 
 const Router: FC = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -36,18 +36,7 @@ const Router: FC = () => {
   }, [])
 
   if (isLoading) {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100vh',
-        }}
-      >
-        <CircularProgress color="primary" />
-      </div>
-    )
+    return <Spinner fullScreen />
   }
 
   const ProtectedRoutes = ({ children }: { children: JSX.Element }) => {
