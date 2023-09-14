@@ -108,7 +108,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
         }
       />
       <Image
-        src={post.mainImage}
+        src={post.mainImage ? post.mainImage : '/logo&tipo.png'}
         alt="Main of post with some data"
         onClick={handleDetailsClick}
       />

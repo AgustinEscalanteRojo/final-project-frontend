@@ -88,10 +88,12 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
             <S.DiningIconContainer>
               <RestaurantIcon />
             </S.DiningIconContainer>
-            {post?.type}{' '}
-            likes: {post?.likes}
+            {post?.type} likes: {post?.likes}
           </S.IconDetailsContainer>
-          <S.MainImage src={post?.mainImage} alt="Añadir descripción basica" />
+          <S.MainImage
+            src={post?.mainImage ? post.mainImage : '/logo&tipo.png'}
+            alt="Añadir descripción basica"
+          />
           <S.IngredientTitle>Ingredients</S.IngredientTitle>
           <S.IngredientsList>
             {post?.ingredients.map((ingredient) => (
