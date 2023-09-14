@@ -128,6 +128,7 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit, formError }) => {
                 name="duration"
                 value={values.duration}
                 onChange={handleChange}
+                type="number"
                 fullWidth
                 InputProps={{
                   endAdornment: (

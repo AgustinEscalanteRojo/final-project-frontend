@@ -3,7 +3,7 @@ import { object, string, number, array } from 'yup'
 export const DefaultInitialValues = {
   title: '',
   type: '',
-  duration: '',
+  duration: 0,
   difficulty: '',
   allergies: [],
   description: '',
@@ -27,7 +27,7 @@ export const ValidationSchema = object().shape({
     'American',
     'Vegan',
   ]),
-  duration: string().required('Duration is required'),
+  duration: number().required('Duration is required'),
   difficulty: string().oneOf(['Easy', 'Intermediate', 'Advanced']),
   allergies: array().of(string()),
   description: string(),
