@@ -7,8 +7,34 @@ import Typography from '@mui/material/Typography'
 import { Card as MuiCard, CardHeader, CardActions } from '@mui/material'
 import { AllergyIconProps } from './types'
 
+
+
+export const Container = styled(MuiCard)`
+  background-color: ${({ theme }) => theme.colors.blue25} !important;
+  border: 1px solid ${theme.colors.blue175};
+  border-radius: 15px !important;
+  transition: max-width 0.3s ease-in-out;
+  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
+`;
+
 export const CardActionsStyle = styled(CardActions)`
   display: flex;
+  width: 450px;
+  margin: 10px;
+
+  @media (max-width: 768px) {
+    width: 300px; 
+  }
+`;
+
+export const Image = styled.img`
+  margin-top: 10px;
+  display: block;
+  max-width: 100%;
+  max-height: 15rem;
+  width: 100%;
+  object-fit: cover;
+  cursor: pointer;
 `
 
 export const ButtonDetails = styled(Button)`
@@ -23,6 +49,7 @@ export const ButtonDetails = styled(Button)`
 
 export const ContainerLike = styled.div``
 
+
 export const TitleContainer = styled.div`
   font-size: 17px;
   margin-top: 12px;
@@ -33,14 +60,6 @@ export const TitleContainer = styled.div`
   color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
 `
-export const Container = styled(MuiCard)`
-  background-color: ${({ theme }) => theme.colors.blue25} !important;
-  border: 1px solid ${theme.colors.blue175};
-  border-radius: 15px !important;
-  transition: max-width 0.3s ease-in-out;
-  box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
-  max-width: 450px;
-`
 
 export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-top: 10px;
@@ -49,23 +68,18 @@ export const AllergyIcon = styled.img<AllergyIconProps>`
   height: 24px;
   margin-bottom: -25px;
 `
+
 export const AllergyIconContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
 `
-export const Image = styled.img`
-  margin-top: 10px;
-  display: block;
-  max-width: 100%;
-  max-height: 15rem;
-  width: 100%;
-  object-fit: cover;
-  cursor: pointer;
-`
+
+
 export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
   color: ${(props) => (props.isLike ? 'red' : 'grey')};
 `
+
 export const FavIcon = styled(BookmarkIcon)<{ isFav: boolean }>`
   color: ${(props) => (props.isFav ? 'blue' : 'grey')};
 `
@@ -74,26 +88,33 @@ export const CardHeaderStyled = styled(CardHeader)`
   font-size: 24px !important;
   font-weight: bold !important;
   margin-bottom: -15px;
+  
 `
+
 export const IconDetailsContainer = styled.div`
   align-items: center;
   display: flex;
   flex-flow: row wrap;
   gap: 8px;
+  margin-left: 10px;
+  color: ${({ theme }) => theme.colors.greyt} !important;
   margin-top: 2px;
   font-size: 12px;
 `
+
 export const DiningIconContainer = styled.span`
   transform: scale(0.8);
   margin-top: 2px;
   margin-right: -8px;
 `
+
 export const Description = styled(Typography)`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   max-width: 333px;
 `
+
 export const Name = styled(ListItemText)`
   position: absolute;
   margin-left: 50px;
@@ -101,6 +122,7 @@ export const Name = styled(ListItemText)`
   transform: scale(0.9);
   transform-origin: top left;
 `
+
 export const AvatarStyled = styled.div`
   width: 40px;
   height: 40px;
@@ -112,12 +134,13 @@ export const AvatarStyled = styled.div`
   align-items: center;
   cursor: pointer;
   transition:
-    transform 0.3s,
-    box-shadow 0.3s;
+  transform 0.3s,
+  box-shadow 0.3s;
 
   &:hover {
     transform: scale(0.83);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }
 `
+
 export const UsernameContainer = styled.span``
