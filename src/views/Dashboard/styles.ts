@@ -61,6 +61,7 @@ margin-top: 40px;
   border: 2px solid ${theme.colors.blue225} !important;
   border-radius: 20%;
   width: 30px;
+  cursor: pointer;
   height: 30px;
   background-color: ${({ theme }) => theme.colors.transparentWhite}!important;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1) !important;
