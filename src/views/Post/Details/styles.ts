@@ -11,8 +11,9 @@ export const DetailsContainer = styled.div`
   }
 `
 export const MainContent = styled.div`
- position: relative;
-  width: 1290px;
+  position: relative;
+  width: 90%; /* Cambiamos el ancho a 100% */
+  max-width: 1290px; /* Mantenemos un ancho máximo */
   display: flex;
   margin: 140px auto;
   justify-content: center;
@@ -21,6 +22,8 @@ export const MainContent = styled.div`
   background-color: ${({ theme }) => theme.colors.blue25};
   border-radius: 20px !important;
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
+
+
 `
 
 export const Name = styled(ListItemText)`
@@ -51,22 +54,25 @@ export const ImageContainer = styled.div`
   max-width: 600px;
 `
 export const TitleContainer = styled.div`
-  font-size: 27px;
-  position: absolute; 
-  margin: 25px;
+  font-size: 2vw;
+  /* font-size: clamp(2vw, 24px, 4vw); */
+  /* position: absolute;  */
+  /* margin: 25px; */
   margin-left: 166px;
-  margin-top: 31px;
+  margin-top: 15px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.greytitle};
   text-transform: uppercase;
+  /* max-width: 400px; */
 `
 export const IconDetailsContainer = styled.div`
   display: flex;
-  margin-top: 90px;
-  margin-left: 30px;
+  margin-top: 2vw; /* 2% del ancho de la ventana */
+  margin-left: 2vw;
   align-items: center;
   transform: scale(1.1);
   color: ${({ theme }) => theme.colors.greytitle};
+
 `
 export const DiningIconContainer = styled.span`
   margin-top: 5px;
@@ -78,10 +84,11 @@ export const MainImage = styled.img`
   align-self: center;
   border-radius: 15px;
   border: 1.5px solid ${({ theme }) => theme.colors.blue175};
-  margin: 9px;
-  max-height: 21rem;
-  width: 580px;
+  margin: 1vw; /* 1% del ancho de la ventana */
+  max-width: 90%; /* Hace que la imagen sea responsive */
+  height: auto; /* Altura automática para mantener la proporción */
   object-fit: cover;
+  border-radius: 20px;
   border-radius: 20px;
 `
 export const IngredientTitle = styled.div`

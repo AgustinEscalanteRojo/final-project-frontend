@@ -60,6 +60,7 @@ const Details: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
           </Avatar>
         </S.AvatarStyled>
         <S.ImageContainer>
+          
           <S.TitleContainer>{post?.title}</S.TitleContainer>
           <S.IconDetailsContainer>
             {isCurrentUserCreator ? (
