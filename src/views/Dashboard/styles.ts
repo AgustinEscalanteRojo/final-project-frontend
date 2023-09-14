@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import IconButton from '@mui/material/IconButton'
-import Button from '@mui/material/Button'
-import CrownIcon from '@mui/icons-material/EmojiEvents'
 import StickyCard from '@mui/material/Card'
 import theme from '../../styles/theme'
 

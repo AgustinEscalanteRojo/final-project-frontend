@@ -23,18 +23,14 @@ const useLogic = (comment: CardCommentProps['comment']) => {
 
   const handleGoToProfile = useCallback(() => {
     navigate(`/users/${comment.userId}`)
-  }, [navigate])
+  }, [navigate, comment.userId])
 
   const handleGoToCurrentUserProfile = useCallback(() => {
     navigate(`/profile`)
   }, [navigate])
 
   function getRandomPastelColor() {
-    const pastelColors = [
-
-      '#61C0BF',
-
-    ]
+    const pastelColors = ['#61C0BF']
 
     return pastelColors[Math.floor(Math.random() * pastelColors.length)]
   }

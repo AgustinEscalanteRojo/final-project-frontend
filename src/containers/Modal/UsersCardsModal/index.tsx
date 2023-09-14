@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useState } from 'react'
+import { FC, memo, useState } from 'react'
 import {
   Container,
   Content,

@@ -12,7 +12,7 @@ const useLogic = (
 
   useEffect(() => {
     setIsFollowing(!!currentUserFollowing?.includes(user?._id || ''))
-  }, [currentUserFollowing])
+  }, [currentUserFollowing, user?._id])
 
   const handleFollowClick = useCallback(async () => {
     if (user._id) {
