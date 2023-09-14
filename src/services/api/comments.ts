@@ -4,7 +4,6 @@ import {
   normalizeUserPostComment,
 } from '../../models/UserPostComment'
 
-const API_URL = 'http://localhost:8080/posts/comentarios'
 const BASE_URL = 'http://localhost:8080/posts/comments'
 
 export const getComments = async (
@@ -12,7 +11,7 @@ export const getComments = async (
 ): Promise<NormalizedUserPostComment[]> => {
   try {
     const token = getToken()
-    const response = await fetch(`${API_URL}/${postId}`, {
+    const response = await fetch(`${BASE_URL}/${postId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -42,7 +41,7 @@ export const sendComment = async (
 ): Promise<NormalizedUserPostComment> => {
   try {
     const token = getToken()
-    const response = await fetch(API_URL, {
+    const response = await fetch(BASE_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
