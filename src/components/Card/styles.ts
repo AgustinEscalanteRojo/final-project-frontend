@@ -4,7 +4,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import { Button, ListItemText } from '@mui/material'
 import Typography from '@mui/material/Typography'
-import { Card as MuiCard, IconButton, CardHeader } from '@mui/material'
+import { Card as MuiCard, CardHeader } from '@mui/material'
 import { AllergyIconProps } from './types'
 
 export const TitleContainer = styled.div`
@@ -25,7 +25,7 @@ export const Container = styled(MuiCard)`
   box-shadow: 15px 12px 20px rgba(0, 0, 0, 0.1) !important;
   max-width: 450px;
 
- /* @media (max-width: 927px) {
+  /* @media (max-width: 927px) {
     margin: 20px;
     transform: scale(0.8) !important;
   }

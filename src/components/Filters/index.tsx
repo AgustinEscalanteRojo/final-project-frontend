@@ -1,7 +1,6 @@
 import { FC, memo, useState } from 'react'
 import { Dialog, DialogContent, IconButton } from '@mui/material'
 import WarningIcon from '@mui/icons-material/Warning'
-import PublicIcon from '@mui/icons-material/Public'
 import BarChartIcon from '@mui/icons-material/BarChart'
 import RestaurantIcon from '@mui/icons-material/Restaurant'
 import { Form, Formik, FieldArray, FieldArrayRenderProps } from 'formik'

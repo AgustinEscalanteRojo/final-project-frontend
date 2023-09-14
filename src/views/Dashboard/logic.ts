@@ -43,7 +43,7 @@ const useLogic = () => {
     const difficulty = searchParams.get('difficulty')?.split(',') || []
 
     handleFetchPosts({ allergies, type, difficulty })
-  }, [handleFetchPosts])
+  }, [handleFetchPosts, searchParams])
 
   const handleDifficultysChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -109,12 +109,12 @@ const useLogic = () => {
       navigate(`?${filtersQueryString}`)
       await handleFetchPosts(filters)
     },
-    [searchParams]
+    [handleFetchPosts, navigate]
   )
 
   const handleReset = useCallback(async () => {
     await handleFetchPosts()
-  }, [searchParams])
+  }, [handleFetchPosts])
 
   return {
     handleFilter,

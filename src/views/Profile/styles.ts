@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Card, CardContent } from '@mui/material'
+import { Card } from '@mui/material'
 import TabPanel from '@mui/lab/TabPanel'
 
 export const CardStyle = styled(Card)`
