@@ -16,12 +16,13 @@ import {
 } from '@mui/material'
 import RecipeReviewCard from '../../components/Card'
 import useLogic from './logic'
-import { Content, Posts, Container, CardStyle } from './styles'
+import { Content, Posts, Container, CardStyle, FollowButton } from './styles'
 import type { Props } from './types'
 import UsersCardsModal from '../../containers/Modal/UsersCardsModal'
 
-const UserDetailsPage: FC<Props> = ({ onLogout }) => {
-  const { user, getRandomPastelColor } = useLogic()
+const UserDetailsPage: FC<Props> = ({ onLogout, currentUserFollowing }) => {
+  const { user, getRandomPastelColor, handleFollowClick, isFollowing } =
+    useLogic(currentUserFollowing)
 
   return (
     <Container>
@@ -48,6 +49,14 @@ const UserDetailsPage: FC<Props> = ({ onLogout }) => {
             >
               {user?.username ? user.username.charAt(0).toUpperCase() : ''}
             </Avatar>
+            <FollowButton
+              variant="text"
+              color={isFollowing ? 'secondary' : 'primary'}
+              onClick={handleFollowClick}
+            >
+              {isFollowing ? 'UNFOLLOW' : 'FOLLOW'}
+            </FollowButton>
+
             <CardContent>
               <Typography variant="h5">Username: {user?.username}</Typography>
               <UsersCardsModal
