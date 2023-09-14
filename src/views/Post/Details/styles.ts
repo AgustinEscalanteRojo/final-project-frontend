@@ -12,8 +12,8 @@ export const DetailsContainer = styled.div`
 `
 export const MainContent = styled.div`
   position: relative;
-  width: 90%; /* Cambiamos el ancho a 100% */
-  max-width: 1290px; /* Mantenemos un ancho máximo */
+  width: 90%; 
+  max-width: 1290px; 
   display: flex;
   margin: 140px auto;
   justify-content: center;
@@ -33,20 +33,22 @@ export const Name = styled(ListItemText)`
 `
 
 export const AvatarStyled = styled.div`
-margin-top: 30px;
-position: absolute; 
-margin-left: -1100px!important;
-  width: 45px;
-  height: 45px;
+  margin-top: 2%;
+  position: absolute;
+  left: 4%;
+  width: 5%; 
+  height: auto; 
+  max-width: 45px;
   border-radius: 50%;
   cursor: pointer;
   transition:
     transform 0.3s,
     box-shadow 0.3s;
-    &:hover {
-    transform: scale(1.1); 
+
+  &:hover {
+    transform: scale(1.1);
   }
-`;
+`
 
 export const ImageContainer = styled.div`
   display: flex;
@@ -58,7 +60,7 @@ export const TitleContainer = styled.div`
   /* font-size: clamp(2vw, 24px, 4vw); */
   /* position: absolute;  */
   /* margin: 25px; */
-  margin-left: 166px;
+  margin-left: 40%;
   margin-top: 15px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.greytitle};
@@ -67,7 +69,7 @@ export const TitleContainer = styled.div`
 `
 export const IconDetailsContainer = styled.div`
   display: flex;
-  margin-top: 2vw; /* 2% del ancho de la ventana */
+  margin-top: 2vw; 
   margin-left: 2vw;
   align-items: center;
   transform: scale(1.1);
@@ -84,9 +86,9 @@ export const MainImage = styled.img`
   align-self: center;
   border-radius: 15px;
   border: 1.5px solid ${({ theme }) => theme.colors.blue175};
-  margin: 1vw; /* 1% del ancho de la ventana */
-  max-width: 90%; /* Hace que la imagen sea responsive */
-  height: auto; /* Altura automática para mantener la proporción */
+  margin: 1vw; 
+  max-width: 90%;
+  height: auto; 
   object-fit: cover;
   border-radius: 20px;
   border-radius: 20px;
