@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Card } from '@mui/material'
+import Button from '@mui/material/Button'
 
 export const CardStyle = styled(Card)`
   max-width: 400px !important;
@@ -20,10 +21,10 @@ export const Content = styled.div`
   text-align: center;
 `
 
-export const Button = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-`
+// export const Button = styled.div`
+//   display: flex;
+//   flex-flow: row wrap;
+// `
 
 export const Posts = styled.div`
   display: flex;
@@ -41,4 +42,8 @@ export const Posts = styled.div`
   @media (min-width: 0px) and (max-width: 532px) {
     margin: -27px !important;
   }*/
+`
+
+export const FollowButton = styled(Button)`
+  transform: scale(0.8) !important;
 `
