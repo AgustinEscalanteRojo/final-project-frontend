@@ -91,6 +91,12 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit, formError }) => {
                     <MenuItem value="Salad">Salad</MenuItem>
                     <MenuItem value="Breakfast">Breakfast</MenuItem>
                     <MenuItem value="Dessert">Dessert</MenuItem>
+                    <MenuItem value="Chinese">Chinese</MenuItem>
+                    <MenuItem value="Japanese">Japanese</MenuItem>
+                    <MenuItem value="Mediterranean">Mediterranean</MenuItem>
+                    <MenuItem value="Thai">Thai</MenuItem>
+                    <MenuItem value="American">American</MenuItem>
+                    <MenuItem value="Vegan">Vegan</MenuItem>
                   </Select>
                 </FormControl>
               </FormControlStyle>
@@ -112,8 +118,8 @@ const PostForm: FC<Props> = ({ initialValues, onSubmit, formError }) => {
                     onChange={handleChange}
                   >
                     <MenuItem value="Easy">Easy</MenuItem>
-                    <MenuItem value="Moderate">Intermediate</MenuItem>
-                    <MenuItem value="Difficult">Advanced</MenuItem>
+                    <MenuItem value="Intermediate">Intermediate</MenuItem>
+                    <MenuItem value="Advanced">Advanced</MenuItem>
                   </Select>
                 </FormControl>
               </FormControlStyle>
