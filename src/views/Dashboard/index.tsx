@@ -37,7 +37,7 @@ const Dashboard: FC<Props> = ({ onLogout }) => {
               />
             ))}
         </S.Posts>
-        <S.TopChefs users={users} loggedUser={currentUser!} />
+        <S.TopChefs users={users.slice(0,4)} loggedUser={currentUser!} />
         <ImageBackground imageSrc="/back.jpg" />
       </S.Container>
       <Footer />
