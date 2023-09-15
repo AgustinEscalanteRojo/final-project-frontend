@@ -4,7 +4,7 @@ import {
   normalizeUserPostComment,
 } from '../../models/UserPostComment'
 
-const BASE_URL = 'http://localhost:8080/posts/comments'
+const BASE_URL = 'http://localhost:8080/posts/commentarios'
 
 export const getComments = async (
   postId: string

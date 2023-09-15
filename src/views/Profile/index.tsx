@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
-import { Avatar } from '@material-ui/core'
+import { Avatar, Button } from '@material-ui/core'
 import {
   Email as EmailIcon,
   Person as PersonIcon,
