@@ -13,14 +13,16 @@ export const CardStyle = styled(Card)`
   padding: 16px !important;
   margin: 100px auto !important;
   border-radius: 35px !important;
+  transform: scale(0.9) !important;
 `
 
 export const TabPanelStyle = styled(TabPanel)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 `
+
 
 export const Container = styled.div``
 

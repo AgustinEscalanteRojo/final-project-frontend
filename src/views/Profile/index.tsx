@@ -5,6 +5,7 @@ import {
   Email as EmailIcon,
   Person as PersonIcon,
   LocationCity as LocationCityIcon,
+  CenterFocusWeak,
 } from '@mui/icons-material'
 import {
   CardContent,
@@ -105,10 +106,11 @@ const Profile: FC<Props> = ({ onLogout }) => {
         </Grid>
         <Grid item xs={12} md={8}>
           <Content>
-            <Box sx={{ marginTop: 10, width: '100%', typography: 'body1' }}>
+            <Box sx={{ marginTop: 0, width: '100%', typography: 'body1' }}>
               <TabContext value={value}>
                 <Box
                   sx={{
+                    marginTop: -12,
                     borderBottom: 1,
                     borderColor: 'divider',
                     display: 'flex',
@@ -138,7 +140,15 @@ const Profile: FC<Props> = ({ onLogout }) => {
                     <p>Not have posts yet.</p>
                   )}
                 </TabPanelStyle>
-                <TabPanel value="2">
+                <TabPanel
+                  value="2"
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginTop: -5,
+                  }}
+                >
                   {user && user.favPosts && user.favPosts.length > 0 ? (
                     <Posts>
                       {user.favPosts.map((post) => (
