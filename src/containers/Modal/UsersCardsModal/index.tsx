@@ -20,7 +20,7 @@ const UsersCardsModal: FC<Props> = ({ users, buttonText }) => {
   return (
     <Container>
       <Box display="flex" justifyContent="center" alignItems="center">
-        <Button variant="contained" onClick={handleOpen}>
+        <Button variant="outlined" onClick={handleOpen} style={{ marginBottom: '7px' }}>
           {buttonText}
         </Button>
       </Box>

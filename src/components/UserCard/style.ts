@@ -22,12 +22,11 @@ export const Name = styled(ListItemText)`
     transform 0.3s,
     box-shadow 0.3s;
 
-  &:hover {
-    transform: scale(1.2);
-  }
+
 `
 export const FollowButton = styled(Button)`
   transform: scale(0.8) !important;
+  left: 10px;
 `
 export const CardContainer = styled.div`
   margin-left: 1px;
