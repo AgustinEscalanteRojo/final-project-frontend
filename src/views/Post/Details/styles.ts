@@ -69,12 +69,27 @@ export const TitleContainer = styled.div`
 `
 export const IconDetailsContainer = styled.div`
   display: flex;
-  margin-top: 2vw; 
+  margin-top: 2vw;
   margin-left: 2vw;
   align-items: center;
   transform: scale(1.1);
   color: ${({ theme }) => theme.colors.greytitle};
 
+  @media (max-width: 390px) {
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+    transform: scale(0.9);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (max-height: 812px) and (orientation: landscape) {
+    margin-top: 1.5rem;
+    margin-left: 1.5rem;
+    transform: scale(0.9);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `
 export const DiningIconContainer = styled.span`
   margin-top: 5px;
