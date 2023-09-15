@@ -9,7 +9,7 @@ import {
 import type { Props } from './types'
 import UserCard from '../../../components/UserCard'
 import * as React from 'react'
-import { Button } from '@mui/material'
+import { Box, Button } from '@mui/material'
 
 const UsersCardsModal: FC<Props> = ({ users, buttonText }) => {
   const [openModal, setOpenModal] = useState(false)
@@ -19,9 +19,11 @@ const UsersCardsModal: FC<Props> = ({ users, buttonText }) => {
 
   return (
     <Container>
-      <Button variant="text" onClick={handleOpen}>
-        {buttonText}
-      </Button>
+      <Box display="flex" justifyContent="center" alignItems="center">
+        <Button variant="contained" onClick={handleOpen}>
+          {buttonText}
+        </Button>
+      </Box>
       <ModalContainer open={openModal} onClose={handleClose}>
         <Content>
           <UsersContent>

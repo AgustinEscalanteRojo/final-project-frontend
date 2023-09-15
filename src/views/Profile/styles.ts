@@ -28,12 +28,6 @@ export const Content = styled.div`
   color: ${({ theme }) => theme.colors.black};
   text-align: center;
 `
-
-export const Button = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-`
-
 export const Posts = styled.div`
   display: flex;
   flex-flow: row wrap;
