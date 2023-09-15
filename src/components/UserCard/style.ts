@@ -7,6 +7,7 @@ export const HeaderUser = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: scale(0.8) !important;
 `
 export const Avatar = styled(DefaultAvatar)`
   cursor: pointer;
