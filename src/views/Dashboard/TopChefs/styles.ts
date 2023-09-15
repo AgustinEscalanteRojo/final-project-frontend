@@ -1,4 +1,12 @@
 import styled from 'styled-components'
+import StarIcon from '@mui/icons-material/Star';
+
+
+export const StarIconStyle = styled(StarIcon)`
+color: ${({ theme }) => theme.colors.greytitle};
+margin-top: 10px;
+margin-left: 26px;
+`
 
 export const Container = styled.div`
   padding: 16px;
@@ -12,6 +20,11 @@ export const Container = styled.div`
 
 export const Title = styled.h4`
   text-align: center;
+  margin-top: -30px;
+  margin-left: 20px;
+  color: ${({ theme }) => theme.colors.greytitle};
+
+  
 `
 
 export const Users = styled.div``

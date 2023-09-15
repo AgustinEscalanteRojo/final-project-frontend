@@ -5,7 +5,6 @@ import {
   Email as EmailIcon,
   Person as PersonIcon,
   LocationCity as LocationCityIcon,
-  CenterFocusWeak,
 } from '@mui/icons-material'
 import {
   CardContent,
@@ -56,7 +55,9 @@ const Profile: FC<Props> = ({ onLogout }) => {
               {user?.username ? user.username.charAt(0).toUpperCase() : ''}
             </Avatar>
             <CardContent>
-              <Typography variant="h5">Username: {user?.username}</Typography>
+              <Typography variant="h5" style={{ textAlign: 'center', marginBottom: '15px' }}>
+                Username: {user?.username}
+              </Typography>
               <UsersCardsModal
                 users={user?.followers || []}
                 buttonText={`Followers: ${user?.followers?.length || 0}`}

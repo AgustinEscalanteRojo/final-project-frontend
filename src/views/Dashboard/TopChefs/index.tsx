@@ -1,12 +1,13 @@
 import { FC, memo } from 'react'
 import type { Props } from './types'
-import { Container, Title, Users } from './styles'
+import { Container, Title, Users, StarIconStyle } from './styles'
 import UserCard from '../../../components/UserCard'
 
 const TopChefs: FC<Props> = ({ users, loggedUser, className }) => {
   return (
     <Container className={className}>
-      <Title>Top Chefs</Title>
+      <StarIconStyle fontSize="large" />
+      <Title>Top 10 Chefs</Title>
       <Users>
         {users
           ?.filter((user) => user._id !== loggedUser?._id)
