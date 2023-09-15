@@ -11,6 +11,7 @@ import { allergyIcons } from '../../common/constants'
 import {
   LikeIcon,
   FavIcon,
+  LikeNumber,
   CardHeaderStyled,
   IconDetailsContainer,
   DiningIconContainer,
@@ -135,7 +136,7 @@ const Card: FC<Props> = ({ onRemove, post, isCurrentUserCreator }) => {
                 onClick={handleLikeClick}
               >
                 <LikeIcon isLike={isLike} />
-                {post.likes}
+                <LikeNumber>{post.likes}</LikeNumber>
               </IconButton>
               <IconButton
                 aria-label="add to favorites"

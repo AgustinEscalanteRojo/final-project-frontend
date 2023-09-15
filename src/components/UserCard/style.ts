@@ -11,6 +11,7 @@ export const HeaderUser = styled.div`
 export const Avatar = styled(DefaultAvatar)`
   cursor: pointer;
 `
+
 export const Name = styled(ListItemText)`
   margin-left: 10px;
   margin: 15px;
@@ -32,6 +33,8 @@ export const CardContainer = styled.div`
   margin-left: 1px;
   border-radius: 20px;
 `
+
+
 export const AvatarStyled = styled.div`
   width: 40px;
   height: 40px;

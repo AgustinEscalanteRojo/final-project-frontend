@@ -61,6 +61,11 @@ export const TitleContainer = styled.div`
   text-transform: uppercase;
 `
 
+export const LikeNumber = styled.div`
+  transform: scale(0.7) !important; 
+  margin-left: 4px;
+`
+
 export const AllergyIcon = styled.img<AllergyIconProps>`
   margin-top: 10px;
   margin-bottom: -18px;
@@ -74,7 +79,6 @@ export const AllergyIconContainer = styled.div`
   align-items: center;
   gap: 8px;
 `
-
 
 export const LikeIcon = styled(FavoriteIcon)<{ isLike: boolean }>`
   color: ${(props) => (props.isLike ? 'red' : 'grey')};
@@ -95,11 +99,11 @@ export const IconDetailsContainer = styled.div`
   align-items: center;
   display: flex;
   flex-flow: row wrap;
-  gap: 8px;
-  margin-left: 10px;
-  color: ${({ theme }) => theme.colors.greyt} !important;
-  margin-top: 2px;
-  font-size: 12px;
+  gap: 12px;
+  margin-left: 14px;
+  color: ${({ theme }) => theme.colors.greytitle} !important;
+  margin-top: 6px;
+  font-size: 15px;
 `
 
 export const DiningIconContainer = styled.span`
@@ -118,8 +122,8 @@ export const Description = styled(Typography)`
 export const Name = styled(ListItemText)`
   position: absolute;
   margin-left: 50px;
-  margin-top: 15px !important;
-  transform: scale(0.9);
+  margin-top: 5px !important;
+  transform: scale(1);
   transform-origin: top left;
 `
 
